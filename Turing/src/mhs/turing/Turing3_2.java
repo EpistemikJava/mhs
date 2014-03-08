@@ -10,6 +10,7 @@
  
   mhs.turing.Turing3_2.java
   Created May 11, 2012
+  git version created Mar 3, 2014
  
 *************************************************************************************** */
 
@@ -24,7 +25,7 @@ import joptsimple.OptionSet;
  * i.e. 001011011101111011111...
  * 
  * @author mhsatto
- * @version 1.4.3
+ * @version 1.4.4
  * 
  */
 public class Turing3_2
@@ -52,6 +53,9 @@ public class Turing3_2
   
   /** state names for display */
   static final String[] STR_STATES = { "STATE_BEGIN", "STATE_PRINT_X", "STATE_ERASE_X", "STATE_PRINT_0", "STATE_PRINT_1" };
+  
+  /** character to use to print blank positions of the tape - default is 'space' */
+  static String blank = " " ;
   
   /** use an array as a substitute for the infinite tape */
   private int[] ar_tape ;
@@ -102,7 +106,7 @@ public class Turing3_2
       "\n -h to print this message." +
       "\n -t <int> to specify the size of the tape array (within reason)." +
       "\n -s [int] to have each step of the algorithm displayed, with a 2 second delay between steps," +
-      "\n    > the optional argument will specify an alternate delay between each step, in milliseconds.\n" );
+      "\n    > the optional argument sets an alternate delay between each step, in milliseconds.\n" );
 /*
       try
       {
@@ -117,11 +121,14 @@ public class Turing3_2
       System.exit( 0 );
     }
     
-    /* use -s [delay] to show steps and optionally specify a delay interval by entering an integer argument */
+    /* use -s [delay] to show each step and optionally specify a delay interval by entering an integer argument */
     int requested_delay = MIN_DELAY_MS ;
     if( options.has("s") )
     {
       show_steps = true ;
+      
+      // use "-" for blank squares to see each step more clearly
+      blank = "-" ;
       
       if( options.hasArgument("s") )
       {
@@ -280,15 +287,13 @@ public class Turing3_2
   }
   
   /**
-   * move right by the specified number of squares
-   * - not in Turing's description but more convenient
+   * move right by the specified number of squares - not in Turing's description but more convenient
    * 
    * @param count - number of squares to move to the right
    */
   private void move_right( int count )
   {
-    for( int i=0; i < count; i++ )
-      position++ ;
+    position += count ;
     
     /* end program if position moves beyond the end of the array */
     if( position >= tape_size )
@@ -305,17 +310,15 @@ public class Turing3_2
   }
   
   /**
-   * move left by the specified number of squares
-   * - not in Turing's description but more convenient
+   * move left by the specified number of squares - not in Turing's description but more convenient
    * 
    * @param count - number of squares to move to the left
    */
   private void move_left( int count )
   {
-    for( int i=0; i < count; i++ )
-      position-- ;
+    position -= count ;
     
-    // return to 0 if move before the beginning of the array
+    /* return to 0 if move before the start of the array */
     if( position < 0 )
       position = 0 ;
   }
@@ -327,56 +330,56 @@ public class Turing3_2
   {
     if( ! show_steps )
     {
-      // print the tape using the default character to display a blank square
       printTape();
     }
     
-    System.out.println();
+    System.out.println( "\nDONE" );
     System.exit( 0 );
   }
   
   /**
-   *  display the tape with a space printed for each blank square
+   * display the sequence of symbols on the tape to stdout 
    */
   private void printTape()
   {
-    printTape( " " );
+    for( int posn : ar_tape )
+    {
+      printSymbol( posn, true );
+    }
+    System.out.println( "E" );
   }
   
   /**
-   * display the sequence of symbols on the tape to stdout 
+   * display the symbol used for different types of position on the tape to stdout 
    * 
-   * @param blank - character to use to display a blank square on the tape
+   * @param posn - position on the tape to display
+   * @param newline - new line starting at each 'zero'
    */
-  private void printTape( String blank )
+  private void printSymbol( int posn, boolean newline )
   {
-    for( int symbol : ar_tape )
+    switch( posn )
     {
-      switch( symbol )
-      {
-        case nBLANK:
-          System.out.print( blank ); break ;
-          
-        case nSCHWA:
-          System.out.print( "@" ); break ;
-          
-        case nX:
-          System.out.print( "x" ); break ;
-          
-        case nZERO:
-          // start a new line before each zero
+      case nBLANK:
+        System.out.print( blank ); break ;
+        
+      case nSCHWA:
+        System.out.print( "@" ); break ;
+        
+      case nX:
+        System.out.print( "x" ); break ;
+        
+      case nZERO:
+        if( newline)
           System.out.println();
-          System.out.print( "0" ); break ;
-          
-        case nONE:
-          System.out.print( "1" ); break ;
-          
-        default: throw new IllegalStateException( "\n\t>> Current symbol is '" + symbol + "'?!" );
-      }
+        System.out.print( "0" ); break ;
+        
+      case nONE:
+        System.out.print( "1" ); break ;
+      
+      default: throw new IllegalStateException( "\n\t>> Current symbol is '" + posn + "'?!" );
     }
-    System.out.println();
   }
-
+  
   /**
    * display the number sequence and machine state at a particular point in the program
    *
@@ -384,10 +387,11 @@ public class Turing3_2
    */
   private void show_step( int step )
   {
-    System.out.println( "Step #" + step + " - State = " + STR_STATES[state] + " - Position is " + position );
+    System.out.print( "Step #" + step + " - State = " + STR_STATES[state] + " - Position is " + position + "[" );
+    printSymbol( ar_tape[position], false );
+    System.out.println( "]" );
     
-    // use "-" for blank squares to see each step more clearly
-    printTape( "-" );
+    printTape();
     
     // pause to allow easier inspection of each step
     try
