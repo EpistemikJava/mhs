@@ -10,6 +10,7 @@
  
   mhs.latinsquare.LatinSquareGrid.java
   Eclipse version created on Nov 30, 2007, 10:51 PM
+  git version created Mar 8, 2014
  
 *************************************************************************************** */
 
@@ -203,7 +204,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
       myCols = new boolean[ MAX_SQRS ] ;
       myZones = new boolean[ MAX_SQRS ] ;
       
-      sqrs = new Vector<Square>( MAX_SQRS );
+      sqrs = new Vector<>( MAX_SQRS );
     }
     
     /** Reset all mutable fields to default values  */
@@ -339,7 +340,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     
     totalSqrs = gridLength * gridLength ;
     
-    undoVector = new Vector<UndoMatrix>( totalSqrs, gridLength );
+    undoVector = new Vector<>( totalSqrs, gridLength );
     
     autoSolvedSqrs = new boolean[gridLength][gridLength];
     
