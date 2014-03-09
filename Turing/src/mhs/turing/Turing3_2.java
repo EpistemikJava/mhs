@@ -20,22 +20,45 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
 /**
- * Java implementation of the Turing machine described in "On Computable Numbers (1936)", section 3.II,
- * which generates a sequence of 0's followed by an increasing number of 1's, from 0 to infinity,
- * i.e. 001011011101111011111...
+ * Java implementation of the Turing machine described in "On Computable Numbers (1936)", section 3.II,<br>
+ * which generates a sequence of 0's followed by an increasing number of 1's, from 0 to infinity,<br>
+ * i.e. 001011011101111011111...<br>
+ * See also <i>The Annotated Turing</i> by <b>Charles Petzold</b>; Chapter 5, pp.85-94.
  * 
  * @author mhsatto
- * @version 1.4.4
+ * @version 1.4.5
  * 
  */
 public class Turing3_2
 {
-  final static int DEFAULT_TAPE_SIZE = 1024 ;
-  final static int     MAX_TAPE_SIZE = 1024 * 16 ;
-  final static int     MIN_TAPE_SIZE =   64 ;
+  /** current state of the machine */
+  private int state ;
+  /** current position on the 'tape' */
+  private int position ;
   
+  /** use an array as a substitute for the <em>infinite</em> tape */
+  private int[] ar_tape ;
+  /** size of the 'tape' array */
+  private int tape_size ;
+
+  /** number of 'squares' available on the 'tape' */
+  final static int DEFAULT_TAPE_SIZE = 1024 ;
+  /** MAXIMUM number of 'squares' available on the 'tape' */
+  final static int     MAX_TAPE_SIZE = 1024*16 ;
+  /** MINIMUM number of 'squares' available on the 'tape' */
+  final static int     MIN_TAPE_SIZE =   32 ;
+  
+  /** determine whether each step is displayed */
+  private boolean show_steps ;
+  /** delay, in milliseconds, between each step display */
+  private int step_delay ;
+
+  /** if displaying each step of the algorithm, DEFAULT delay (in msec) between each step */
   final static int DEFAULT_DELAY_MS = 2000 ;
+  /** if displaying each step of the algorithm, MINIMUM delay (in msec) between each step */
   final static int     MIN_DELAY_MS =    5 ;
+  /** if displaying each step of the algorithm, MAXIMUM delay (in msec) between each step */
+  final static int     MAX_DELAY_MS = 1000*60*60 ;
   
   /** tape symbol */
   final static int nSCHWA = -101 ,
@@ -57,23 +80,8 @@ public class Turing3_2
   /** character to use to print blank positions of the tape - default is 'space' */
   static String blank = " " ;
   
-  /** use an array as a substitute for the infinite tape */
-  private int[] ar_tape ;
-  /** need a finite size for our array */
-  private int tape_size ;
-  
-  /** current state of the machine */
-  private int state ;
-  /** current position on the tape */
-  private int position ;
-  
-  /** control whether each step is displayed */
-  private boolean show_steps ;
-  /** user-determined delay, in milliseconds, between each step display */
-  private int step_delay ;
-  
   /**
-   * create the class and enter setup()
+   * create the machine, process the command line, then start the algorithm
    * 
    * @param args - from command line
    */
@@ -85,7 +93,7 @@ public class Turing3_2
   }
   
   /**
-   * initialize, then generate the number sequence on the tape
+   * process the command line arguments and initialize the program
    * 
    * @param args - from command line
    */ 
@@ -105,7 +113,7 @@ public class Turing3_2
       "\n Usage: java <executable> [-h] [-s [arg]] [-t <arg>] " +
       "\n -h to print this message." +
       "\n -t <int> to specify the size of the tape array (within reason)." +
-      "\n -s [int] to have each step of the algorithm displayed, with a 2 second delay between steps," +
+      "\n -s [int] to have each step of the algorithm displayed, with a 2-second delay between steps," +
       "\n    > the optional argument sets an alternate delay between each step, in milliseconds.\n" );
 /*
       try
@@ -119,10 +127,12 @@ public class Turing3_2
       }
 */
       System.exit( 0 );
-    }
+      
+    }// -h
+    
+    step_delay = DEFAULT_DELAY_MS ;
     
     /* use -s [delay] to show each step and optionally specify a delay interval by entering an integer argument */
-    int requested_delay = MIN_DELAY_MS ;
     if( options.has("s") )
     {
       show_steps = true ;
@@ -132,34 +142,39 @@ public class Turing3_2
       
       if( options.hasArgument("s") )
       {
-        requested_delay = Integer.valueOf( (String)options.valueOf("s") );
-        if( requested_delay < 0 )
+        step_delay = Integer.valueOf( (String)options.valueOf("s") );
+        if( step_delay < MIN_DELAY_MS )
         {
-          System.out.println( "\n\t>>> You must specify a NON-NEGATIVE INTEGER for the step delay value! <<<" );
-          show_steps = false ;
+          System.out.println( "\n\t>>> MINIMUM value for the step delay is " + MIN_DELAY_MS + ". <<<" );
+          step_delay = MIN_DELAY_MS ;
+        }
+        else
+        if( step_delay > MAX_DELAY_MS )
+        {
+          System.out.println( "\n\t>>> MAXIMUM value for the step delay is " + MAX_DELAY_MS + ". <<<" );
+          step_delay = MAX_DELAY_MS ;
         }
       }
-    }
-    step_delay = ( requested_delay < 0 ? DEFAULT_DELAY_MS : requested_delay );
+    }// -s
+    
+    tape_size = DEFAULT_TAPE_SIZE ;
     
     /* use -t <tape_size> to request a particular array (tape) size */
-    int requested_size = MIN_TAPE_SIZE ;
     if( options.has("t") )
     {
-      requested_size = Integer.valueOf( (String)options.valueOf("t") );
-      if( requested_size < 0 )
+      tape_size = Integer.valueOf( (String)options.valueOf("t") );
+      if( tape_size < MIN_TAPE_SIZE )
       {
-        System.out.println( "\n\t>>> You must specify a NON-NEGATIVE INTEGER for the tape size! <<<\n" );
+        tape_size = MIN_TAPE_SIZE ;
+        System.out.println( "\n\t>>> MINIMUM value for the tape size is " + MIN_TAPE_SIZE + ". <<<" );
       }
-      
-      // prevent unreasonably large size...
-      if( requested_size > MAX_TAPE_SIZE )
+      else
+      if( tape_size > MAX_TAPE_SIZE )
       {
-        requested_size = DEFAULT_TAPE_SIZE ;
-        System.out.println( "\n\t>>> MAXIMUM VALUE for tape size is " + MAX_TAPE_SIZE + "! <<<" );
+        tape_size = MAX_TAPE_SIZE ;
+        System.out.println( "\n\t>>> MAXIMUM value for the tape size is " + MAX_TAPE_SIZE + ". <<<" );
       }
-    }
-    tape_size = ( requested_size <= 0 ? DEFAULT_TAPE_SIZE : requested_size );
+    }// -t
     
     ar_tape = new int[ tape_size ];
     
@@ -168,33 +183,39 @@ public class Turing3_2
   }
   
   /**
-   * the algorithm: move to the proper position on the "tape", create or erase a symbol, then set the next state.
+   * run the algorithm:<br>
+   *   - check the current state<br>
+   *   - check the current position on the "tape"<br>
+   *   - create or erase a symbol if necessary<br>
+   *   - move to a different position on the "tape" if necessary<br>
+   *   - set the next state<br>
    */
   private void generate()
   {
     int location ;
     int step = 0 ;
     
-    System.out.println( "\n Size of tape array is " + ar_tape.length + "\n" );
+    System.out.println( "\n Size of tape array is " + ar_tape.length );
+    if( show_steps )
+      System.out.println( " Step delay is " + step_delay + "\n" );
+    else
+      System.out.println();
+    
+    // initial state
+    begin();
 
     /* we don't have an infinite tape -- continue until we move past the end of the array */
     do 
     {
       step++ ;
+      location = ar_tape[position] ;
+      
+      if( show_steps )
+        show_step( step );
+      
       switch( state )
       {
-        case STATE_BEGIN:
-          set( nSCHWA ); move_right();
-          set( nSCHWA ); move_right();
-          set( nZERO );
-          move_right( 2 );
-          set( nZERO );
-          move_left( 2 );
-          state = STATE_PRINT_X ;
-          break;
-          
         case STATE_PRINT_X:
-          location = ar_tape[position] ;
           if( location == nONE )
           {
             move_right();
@@ -208,7 +229,6 @@ public class Turing3_2
           break;
           
         case STATE_ERASE_X:
-          location = ar_tape[position] ;
           if( location == nX )
           {
             erase();
@@ -227,7 +247,6 @@ public class Turing3_2
           break ;
           
         case STATE_PRINT_0:
-          location = ar_tape[position] ;
           if( location == nBLANK )
           {
             set( nZERO );
@@ -241,7 +260,6 @@ public class Turing3_2
           break;
           
         case STATE_PRINT_1:
-          location = ar_tape[position] ;
           if( location == nBLANK )
           {
             set( nONE );
@@ -255,15 +273,38 @@ public class Turing3_2
           break;
           
         default: throw new IllegalStateException( "\n\t>> Current state is '" + state + "'?!" );
-      }
+      }// switch
       
-      // see the number sequence and machine state after each step
-      if( show_steps )
-        show_step( step );
-    }
+    }// do
     while( position < tape_size );
-  }
+    
+    end();
+    
+  }// generate()
   
+  /**
+   * the actions of the initial state of the algorithm -- NEVER return to this state again
+   */
+  private void begin()
+  {
+    if( state != STATE_BEGIN )
+      return ;
+    
+    if( show_steps )
+      show_step( 0 );
+    
+    set( nSCHWA );
+    move_right();
+    set( nSCHWA );
+    move_right();
+    
+    set( nZERO );
+    move_right( 2 );
+    set( nZERO );
+    move_left( 2 );
+    state = STATE_PRINT_X ;
+  }
+      
   /**
    * set the specified symbol on the tape at the current position
    * 
@@ -295,9 +336,10 @@ public class Turing3_2
   {
     position += count ;
     
-    /* end program if position moves beyond the end of the array */
+    /* end program when position moves beyond the end of the array */
     if( position >= tape_size )
     {
+      System.out.println( "Position is " + position + "." );
       end();
     }
     
@@ -324,7 +366,7 @@ public class Turing3_2
   }
   
   /**
-   * print info for the user, display the sequence of symbols on the tape, and exit. 
+   * display the sequence of symbols on the tape, then exit. 
    */
   private void end()
   {
@@ -333,12 +375,12 @@ public class Turing3_2
       printTape();
     }
     
-    System.out.println( "\nDONE" );
+    System.out.println( "\n == DONE ==" );
     System.exit( 0 );
   }
   
   /**
-   * display the sequence of symbols on the tape to stdout 
+   * display the sequence of symbols on the tape
    */
   private void printTape()
   {
@@ -350,7 +392,7 @@ public class Turing3_2
   }
   
   /**
-   * display the symbol used for different types of position on the tape to stdout 
+   * display the symbol used for different types of <code>position</code> on the tape to stdout 
    * 
    * @param posn - position on the tape to display
    * @param newline - new line starting at each 'zero'
@@ -381,9 +423,9 @@ public class Turing3_2
   }
   
   /**
-   * display the number sequence and machine state at a particular point in the program
+   * display the step sequence and machine state at a particular point in the program
    *
-   * @param step - current place in the series of instructions
+   * @param step - current count in the series of instructions
    */
   private void show_step( int step )
   {
