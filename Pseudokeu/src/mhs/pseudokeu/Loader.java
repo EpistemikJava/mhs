@@ -10,6 +10,7 @@
  
   mhs.latinsquare.LatinSquareLoader.java
   Eclipse version created on Nov 30, 2007, 10:49 PM
+  git version created Mar 8, 2014
  
 *************************************************************************************** */
 

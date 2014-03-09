@@ -10,6 +10,7 @@
  
   mhs.latinsquare.LogController.java
   Eclipse version created Jan 23, 2008, 09h31
+  git version created Mar 8, 2014
  
 *************************************************************************************** */
 

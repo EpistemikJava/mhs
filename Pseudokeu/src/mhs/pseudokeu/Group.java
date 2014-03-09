@@ -10,6 +10,7 @@
  
   mhs.latinsquare.LatinSquareGroup.java
   Eclipse version created on Dec 25, 2007, 13:53 PM
+  git version created Mar 8, 2014
  
 *************************************************************************************** */
 
