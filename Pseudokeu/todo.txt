@@ -1,0 +1,87 @@
+$File: //depot/Eclipse/Java/workspace/Pseudokeu/todo.txt $
+$Revision: #2 $
+$Change: 12 $
+$DateTime: 2010/10/24 10:21:11 $
+
+    DONE
+    ----
+  1. +  Fix methods so REPLACING values for squares works properly - i.e. unsets the previous value.
+  
+  2. +  Subclass Group to Row, Col, Zone and use parent methods for Row, Col, but new sub-class methods for Zone.
+  
+  3. +  Add debugging framework to print out different categories of information,
+        e.g. only method names to build a method call list.
+  
+  4. +  Amalgamate the Square methods: setMyCol, setMyRow, setMyZone to ? setGroups( c, r, z ) ? or similar.
+  
+  5. +  Have checkGrid write a message to Label indicating "OK" or problem.
+  
+  6. +- Multi-thread: so far just have loading Games in a separate thread...
+  
+  7. +  Create a pseudokeu.Logger Class to centralize all logging activity.
+   	 +	Create special pseudokeu Buffer to store log info as preferred >> field of PskLogger
+  	 +	Create special pseudokeu.Formatter Class to format logs as preferred.
+  
+  8.    ?? Use exceptions, e.g. IllegalSquareValueException where appropriate.
+  
+  9. +  Add indicator widget for "CHECK" function to show while processing.
+ 
+ 10. +  Fix background of top and bottom button panels to match grid panel.
+ 
+ 11. +  Fix PREFERRED_SIZE to use GAME_WIDTH & GAME_HEIGHT parameters
+        and then use these to calculate xBorder & yBorder for grid centering.
+ 
+ 12. +  Add initFrame() method to Launcher to set frame size, background, etc 
+        & call in Constructor before initComponents()
+ 
+ 13.    ?? Add Square[] myGroupSquares to each Square and set on initialization - use when setting/replacing values.
+           Do Not Need the 2dArray of Squares?
+           - replace with a 1d Squares array or just create and access via the Groups?
+ 
+ 14. +  Fix activeSqr hilite to turn off when cursor is out of Grid and Active state is OFF.
+ 
+ 15. +  Add actual file name to fields of SavedGame and display when loaded.
+ 
+ 16.    ?? Add more parameters to control logging, e.g. SET_VALUE_CHAIN_LOG_LEVEL.
+        ?? Use a separate logger for Grid or Loader.
+ 
+ 17.    Externalize strings.
+ 
+ 18. +  Add method setGridKeymap() to Launcher which sets action keys for the buttons then calls setGridDebugKeymap()
+ 
+ 19. +  Investigate if calling Launcher.repaint() too much and can replace with Grid.repaint() in places.
+        >> CANNOT USE Grid.repaint() -- it does NOT display the proper Grid font !!
+           -- use Grid.paintComponent() instead and this seems to work.
+     -  >> STILL may be a more efficient way to organize the calls to Launcher.repaint()...
+ 
+ 20.    Change log calls from a set level, e.g. fine, to a custom one based on the method.
+        For example, 'setValueChainLogging', for methods in the 'set value chain', so this can be set
+        to a particular level when needed, by a debug command, independent of other methods.
+ 
+ 21. +  Enable Undo/Redo.
+ 
+ 22. +- ENABLE SOLVE. Need: indicator widget, Timer, Pause enabled, etc.
+        >> IMPROVE SOLVING TO FUNCTION EFFICIENTLY AND SAVE RESULTS OF FINDING PAIRS, TRIPLES, QUADS, WINGS, ETC.
+ 
+ 23. +  Need a help menu with explanation of using Alt key, etc.
+ 
+ 24. +  Alt + keypad numbers is intercepted by the Windows charmap function... try Shift instead.
+        >> FIXED so Alt+Numpad works
+ 
+ 25. +  Add Alt + mnemonic letter for Menu titles (Game, Settings & Help).
+ 
+ 26. +  Create an 'Add Game' feature - add values to an empty grid then save to a file/jarfile
+        >> Automatically keep track of and forbid any problem values.
+ 
+ 27. +  'Select Game' ComboBox is getting too long as more SavedGames are added - change to a spinner
+        where user can directly enter the number of the game to load.
+ 
+ 28. +  Change load game to search a given directory and check/load any files found, of whatever filename,
+        then check for gameXXX entries in a jar file.
+ 
+ 29. +  Games of different difficulties (easy,moderate,hard,very hard,insane) are stored in separate SavedGame arrays.
+        User chooses the current level of difficulty from a pop-up frame.
+ 
+ 30.    ?? Display Group sqrsCanBeVal in Squares as temp values.
+ 
+ 

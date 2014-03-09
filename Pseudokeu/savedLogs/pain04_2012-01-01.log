@@ -1,0 +1,5130 @@
+
+=================================================================
+Pseudokeu START
+Jan 1, 2012 8:18:51 AM
+=================================================================
+
+SEVERE: Pseudokeu record #1
+mhs.pseudokeu.LogControl <init>
+STARTING log level is CONFIG
+
+SEVERE: Pseudokeu record #2
+mhs.pseudokeu.Launcher <init>
+<INIT> Screen width = 1920 & height = 1080 & Resolution = 96
+
+SEVERE: Pseudokeu record #3
+mhs.pseudokeu.Launcher <init>
+<INIT> Initial Game width = 660 & height = 860 & msg Frame width = 552
+
+SEVERE: Pseudokeu record #4
+mhs.pseudokeu.Launcher initComponents
+<INIT> basic
+
+SEVERE: Pseudokeu record #5
+mhs.pseudokeu.Launcher initMenuBar
+<INIT> basic
+
+SEVERE: Pseudokeu record #6
+mhs.pseudokeu.Launcher initGameMenu
+<INIT> basic
+
+SEVERE: Pseudokeu record #7
+mhs.pseudokeu.Launcher initSettingsMenu
+<INIT> basic
+
+SEVERE: Pseudokeu record #8
+mhs.pseudokeu.Launcher initHelpMenu
+<INIT> basic
+
+SEVERE: Pseudokeu record #9
+mhs.pseudokeu.Launcher initTopEnclosingPanel
+<INIT> basic
+
+SEVERE: Pseudokeu record #10
+mhs.pseudokeu.Launcher initMessagePanel
+<INIT> basic
+
+SEVERE: Pseudokeu record #11
+mhs.pseudokeu.Launcher initTopButtonPanel
+<INIT> basic
+
+SEVERE: Pseudokeu record #12
+mhs.pseudokeu.Launcher initBotButtonPanel
+<INIT> basic
+
+SEVERE: Pseudokeu record #13
+mhs.pseudokeu.Launcher initActions
+<INIT> basic
+
+SEVERE: Pseudokeu record #14
+mhs.pseudokeu.Launcher initMenuActions
+<INIT> basic
+
+SEVERE: Pseudokeu record #15
+mhs.pseudokeu.Launcher go
+<INIT> basic
+
+SEVERE: Pseudokeu record #16
+mhs.pseudokeu.Launcher createGrid
+<INIT> basic
+
+SEVERE: Pseudokeu record #17
+mhs.pseudokeu.Grid <init>
+<INIT> Grid.zoneLength = 3
+
+SEVERE: Pseudokeu record #18
+mhs.pseudokeu.Grid initSqrsAndGroups
+<INIT> basic
+
+SEVERE: Pseudokeu record #19
+mhs.pseudokeu.Grid initFonts
+<INIT> basic
+
+INFO: Pseudokeu record #20
+mhs.pseudokeu.Grid changeSize
+Current Sqr size = 0; New Sqr size = 60
+
+INFO: Pseudokeu record #21
+mhs.pseudokeu.Grid changeSize
+Grid size = 540 x 540
+
+SEVERE: Pseudokeu record #22
+mhs.pseudokeu.Grid initLocation
+<INIT> Grid: xLocation = 55 & yLocation = 43
+
+SEVERE: Pseudokeu record #23
+mhs.pseudokeu.Grid activate
+<INIT> basic
+
+SEVERE: Pseudokeu record #24
+mhs.pseudokeu.Launcher setGridKeyMap
+<INIT> basic
+
+SEVERE: Pseudokeu record #25
+mhs.pseudokeu.Launcher setGridDebugKeyMap
+<INIT> basic
+
+SEVERE: Pseudokeu record #26
+mhs.pseudokeu.Launcher createLoader
+<INIT> basic
+
+SEVERE: Pseudokeu record #27
+mhs.pseudokeu.Loader <init>
+<INIT> basic
+
+SEVERE: Pseudokeu record #28
+mhs.pseudokeu.Launcher createLoadWorker
+<INIT> basic
+
+SEVERE: Pseudokeu record #29
+mhs.pseudokeu.Launcher createInnerClasses
+<INIT> basic
+
+SEVERE: Pseudokeu record #30
+mhs.pseudokeu.Loader loadAllGames
+<INIT> Running on Thread[SwingWorker-pool-1-thread-1,5,main]
+
+INFO: Pseudokeu record #31
+mhs.pseudokeu.Loader loadGamesFromLocation
+Loading from Location 'savedGames'
+
+INFO: Pseudokeu record #32
+mhs.pseudokeu.Loader loadFromDifficultyFolders
+Find difficulty folders in 'savedGames'
+
+CONFIG: Pseudokeu record #33
+mhs.pseudokeu.Loader loadGamesFromFolder
+Loading from Folder 'savedGames/EASY'
+
+CONFIG: Pseudokeu record #34
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy17.psk'
+
+INFO: Pseudokeu record #35
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy17.psk'
+
+INFO: Pseudokeu record #36
+mhs.pseudokeu.Loader loadScannedGame
+easy17 : difficulty = 0
+
+INFO: Pseudokeu record #37
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy17; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #38
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy4.psk'
+
+INFO: Pseudokeu record #39
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy4.psk'
+
+INFO: Pseudokeu record #40
+mhs.pseudokeu.Loader loadScannedGame
+easy4 : difficulty = 0
+
+INFO: Pseudokeu record #41
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy4; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #42
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy14.psk'
+
+INFO: Pseudokeu record #43
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy14.psk'
+
+INFO: Pseudokeu record #44
+mhs.pseudokeu.Loader loadScannedGame
+easy14 : difficulty = 0
+
+INFO: Pseudokeu record #45
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy14; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #46
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy10.psk'
+
+INFO: Pseudokeu record #47
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy10.psk'
+
+INFO: Pseudokeu record #48
+mhs.pseudokeu.Loader loadScannedGame
+easy10 : difficulty = 0
+
+INFO: Pseudokeu record #49
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy10; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #50
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy2.psk'
+
+INFO: Pseudokeu record #51
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy2.psk'
+
+INFO: Pseudokeu record #52
+mhs.pseudokeu.Loader loadScannedGame
+easy2 : difficulty = 0
+
+INFO: Pseudokeu record #53
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy2; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #54
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy3.psk'
+
+INFO: Pseudokeu record #55
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy3.psk'
+
+INFO: Pseudokeu record #56
+mhs.pseudokeu.Loader loadScannedGame
+easy3 : difficulty = 0
+
+INFO: Pseudokeu record #57
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy3; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #58
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy22.psk'
+
+INFO: Pseudokeu record #59
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy22.psk'
+
+INFO: Pseudokeu record #60
+mhs.pseudokeu.Loader loadScannedGame
+easy22 : difficulty = 0
+
+INFO: Pseudokeu record #61
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy22; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #62
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy6.psk'
+
+INFO: Pseudokeu record #63
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy6.psk'
+
+INFO: Pseudokeu record #64
+mhs.pseudokeu.Loader loadScannedGame
+easy6 : difficulty = 0
+
+INFO: Pseudokeu record #65
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy6; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #66
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy19.psk'
+
+INFO: Pseudokeu record #67
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy19.psk'
+
+INFO: Pseudokeu record #68
+mhs.pseudokeu.Loader loadScannedGame
+easy19 : difficulty = 0
+
+INFO: Pseudokeu record #69
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy19; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #70
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy5.psk'
+
+INFO: Pseudokeu record #71
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy5.psk'
+
+INFO: Pseudokeu record #72
+mhs.pseudokeu.Loader loadScannedGame
+easy5 : difficulty = 0
+
+INFO: Pseudokeu record #73
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy5; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #74
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy12.psk'
+
+INFO: Pseudokeu record #75
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy12.psk'
+
+INFO: Pseudokeu record #76
+mhs.pseudokeu.Loader loadScannedGame
+easy12 : difficulty = 0
+
+INFO: Pseudokeu record #77
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy12; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #78
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy15.psk'
+
+INFO: Pseudokeu record #79
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy15.psk'
+
+INFO: Pseudokeu record #80
+mhs.pseudokeu.Loader loadScannedGame
+easy15 : difficulty = 0
+
+INFO: Pseudokeu record #81
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy15; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #82
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy16.psk'
+
+INFO: Pseudokeu record #83
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy16.psk'
+
+INFO: Pseudokeu record #84
+mhs.pseudokeu.Loader loadScannedGame
+easy16 : difficulty = 0
+
+INFO: Pseudokeu record #85
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy16; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #86
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy21.psk'
+
+INFO: Pseudokeu record #87
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy21.psk'
+
+INFO: Pseudokeu record #88
+mhs.pseudokeu.Loader loadScannedGame
+easy21 : difficulty = 0
+
+INFO: Pseudokeu record #89
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy21; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #90
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy20.psk'
+
+INFO: Pseudokeu record #91
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy20.psk'
+
+INFO: Pseudokeu record #92
+mhs.pseudokeu.Loader loadScannedGame
+easy20 : difficulty = 0
+
+INFO: Pseudokeu record #93
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy20; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #94
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy13.psk'
+
+INFO: Pseudokeu record #95
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy13.psk'
+
+INFO: Pseudokeu record #96
+mhs.pseudokeu.Loader loadScannedGame
+easy13 : difficulty = 0
+
+INFO: Pseudokeu record #97
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy13; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #98
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy8.psk'
+
+INFO: Pseudokeu record #99
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy8.psk'
+
+INFO: Pseudokeu record #100
+mhs.pseudokeu.Loader loadScannedGame
+easy8 : difficulty = 0
+
+INFO: Pseudokeu record #101
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy8; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #102
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy9.psk'
+
+INFO: Pseudokeu record #103
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy9.psk'
+
+INFO: Pseudokeu record #104
+mhs.pseudokeu.Loader loadScannedGame
+easy9 : difficulty = 0
+
+INFO: Pseudokeu record #105
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy9; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #106
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy7.psk'
+
+INFO: Pseudokeu record #107
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy7.psk'
+
+INFO: Pseudokeu record #108
+mhs.pseudokeu.Loader loadScannedGame
+easy7 : difficulty = 0
+
+INFO: Pseudokeu record #109
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy7; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #110
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy18.psk'
+
+INFO: Pseudokeu record #111
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy18.psk'
+
+INFO: Pseudokeu record #112
+mhs.pseudokeu.Loader loadScannedGame
+easy18 : difficulty = 0
+
+INFO: Pseudokeu record #113
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy18; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #114
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy1.psk'
+
+INFO: Pseudokeu record #115
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy1.psk'
+
+INFO: Pseudokeu record #116
+mhs.pseudokeu.Loader loadScannedGame
+easy1 : difficulty = 0
+
+INFO: Pseudokeu record #117
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy1; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #118
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/EASY/easy11.psk'
+
+INFO: Pseudokeu record #119
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/EASY/easy11.psk'
+
+INFO: Pseudokeu record #120
+mhs.pseudokeu.Loader loadScannedGame
+easy11 : difficulty = 0
+
+INFO: Pseudokeu record #121
+mhs.pseudokeu.Loader$SavedGame <init>
+name = easy11; length = 9; difficulty = 0
+
+CONFIG: Pseudokeu record #122
+mhs.pseudokeu.Loader loadGamesFromFolder
+Loading from Folder 'savedGames/MODERATE'
+
+CONFIG: Pseudokeu record #123
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/MODERATE/mod1.psk'
+
+INFO: Pseudokeu record #124
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/MODERATE/mod1.psk'
+
+INFO: Pseudokeu record #125
+mhs.pseudokeu.Loader loadScannedGame
+mod1 : difficulty = 1
+
+INFO: Pseudokeu record #126
+mhs.pseudokeu.Loader$SavedGame <init>
+name = mod1; length = 9; difficulty = 1
+
+CONFIG: Pseudokeu record #127
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/MODERATE/mod2.psk'
+
+INFO: Pseudokeu record #128
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/MODERATE/mod2.psk'
+
+INFO: Pseudokeu record #129
+mhs.pseudokeu.Loader loadScannedGame
+mod2 : difficulty = 1
+
+INFO: Pseudokeu record #130
+mhs.pseudokeu.Loader$SavedGame <init>
+name = mod2; length = 9; difficulty = 1
+
+CONFIG: Pseudokeu record #131
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/MODERATE/mod3.psk'
+
+INFO: Pseudokeu record #132
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/MODERATE/mod3.psk'
+
+INFO: Pseudokeu record #133
+mhs.pseudokeu.Loader loadScannedGame
+mod3 : difficulty = 1
+
+INFO: Pseudokeu record #134
+mhs.pseudokeu.Loader$SavedGame <init>
+name = mod3; length = 9; difficulty = 1
+
+CONFIG: Pseudokeu record #135
+mhs.pseudokeu.Loader loadGamesFromFolder
+Loading from Folder 'savedGames/HARD'
+
+CONFIG: Pseudokeu record #136
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard8.psk'
+
+INFO: Pseudokeu record #137
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard8.psk'
+
+INFO: Pseudokeu record #138
+mhs.pseudokeu.Loader loadScannedGame
+hard8 : difficulty = 2
+
+INFO: Pseudokeu record #139
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard8; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #140
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard11.psk'
+
+INFO: Pseudokeu record #141
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard11.psk'
+
+INFO: Pseudokeu record #142
+mhs.pseudokeu.Loader loadScannedGame
+hard11 : difficulty = 2
+
+INFO: Pseudokeu record #143
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard11; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #144
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard2.psk'
+
+INFO: Pseudokeu record #145
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard2.psk'
+
+INFO: Pseudokeu record #146
+mhs.pseudokeu.Loader loadScannedGame
+hard2 : difficulty = 2
+
+INFO: Pseudokeu record #147
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard2; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #148
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard10.psk'
+
+INFO: Pseudokeu record #149
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard10.psk'
+
+INFO: Pseudokeu record #150
+mhs.pseudokeu.Loader loadScannedGame
+hard10 : difficulty = 2
+
+INFO: Pseudokeu record #151
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard10; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #152
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard9.psk'
+
+INFO: Pseudokeu record #153
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard9.psk'
+
+INFO: Pseudokeu record #154
+mhs.pseudokeu.Loader loadScannedGame
+hard9 : difficulty = 2
+
+INFO: Pseudokeu record #155
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard9; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #156
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard4.psk'
+
+INFO: Pseudokeu record #157
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard4.psk'
+
+INFO: Pseudokeu record #158
+mhs.pseudokeu.Loader loadScannedGame
+hard4 : difficulty = 2
+
+INFO: Pseudokeu record #159
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard4; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #160
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard5.psk'
+
+INFO: Pseudokeu record #161
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard5.psk'
+
+INFO: Pseudokeu record #162
+mhs.pseudokeu.Loader loadScannedGame
+hard5 : difficulty = 2
+
+INFO: Pseudokeu record #163
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard5; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #164
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard3.psk'
+
+INFO: Pseudokeu record #165
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard3.psk'
+
+INFO: Pseudokeu record #166
+mhs.pseudokeu.Loader loadScannedGame
+hard3 : difficulty = 2
+
+INFO: Pseudokeu record #167
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard3; length = 9; difficulty = 2
+
+SEVERE: Pseudokeu record #168
+mhs.pseudokeu.Launcher$SelectGameFrame <init>
+<INIT> basic
+
+CONFIG: Pseudokeu record #169
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard6.psk'
+
+INFO: Pseudokeu record #170
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard6.psk'
+
+INFO: Pseudokeu record #171
+mhs.pseudokeu.Loader loadScannedGame
+hard6 : difficulty = 2
+
+INFO: Pseudokeu record #172
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard6; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #173
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard7.psk'
+
+INFO: Pseudokeu record #174
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard7.psk'
+
+INFO: Pseudokeu record #175
+mhs.pseudokeu.Loader loadScannedGame
+hard7 : difficulty = 2
+
+INFO: Pseudokeu record #176
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard7; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #177
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/HARD/hard1.psk'
+
+INFO: Pseudokeu record #178
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/HARD/hard1.psk'
+
+INFO: Pseudokeu record #179
+mhs.pseudokeu.Loader loadScannedGame
+hard1 : difficulty = 2
+
+INFO: Pseudokeu record #180
+mhs.pseudokeu.Loader$SavedGame <init>
+name = hard1; length = 9; difficulty = 2
+
+CONFIG: Pseudokeu record #181
+mhs.pseudokeu.Loader loadGamesFromFolder
+Loading from Folder 'savedGames/PAINFUL'
+
+CONFIG: Pseudokeu record #182
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/PAINFUL/pain3.psk'
+
+INFO: Pseudokeu record #183
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/PAINFUL/pain3.psk'
+
+INFO: Pseudokeu record #184
+mhs.pseudokeu.Loader loadScannedGame
+pain3 : difficulty = 3
+
+INFO: Pseudokeu record #185
+mhs.pseudokeu.Loader$SavedGame <init>
+name = pain3; length = 9; difficulty = 3
+
+CONFIG: Pseudokeu record #186
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/PAINFUL/pain1.psk'
+
+INFO: Pseudokeu record #187
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/PAINFUL/pain1.psk'
+
+INFO: Pseudokeu record #188
+mhs.pseudokeu.Loader loadScannedGame
+pain1 : difficulty = 3
+
+INFO: Pseudokeu record #189
+mhs.pseudokeu.Loader$SavedGame <init>
+name = pain1; length = 9; difficulty = 3
+
+CONFIG: Pseudokeu record #190
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/PAINFUL/pain4.psk'
+
+INFO: Pseudokeu record #191
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/PAINFUL/pain4.psk'
+
+INFO: Pseudokeu record #192
+mhs.pseudokeu.Loader loadScannedGame
+pain4 : difficulty = 3
+
+INFO: Pseudokeu record #193
+mhs.pseudokeu.Loader$SavedGame <init>
+name = pain4; length = 9; difficulty = 3
+
+CONFIG: Pseudokeu record #194
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/PAINFUL/pain2.psk'
+
+INFO: Pseudokeu record #195
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/PAINFUL/pain2.psk'
+
+INFO: Pseudokeu record #196
+mhs.pseudokeu.Loader loadScannedGame
+pain2 : difficulty = 3
+
+INFO: Pseudokeu record #197
+mhs.pseudokeu.Loader$SavedGame <init>
+name = pain2; length = 9; difficulty = 3
+
+CONFIG: Pseudokeu record #198
+mhs.pseudokeu.Loader loadGamesFromFolder
+Loading from Folder 'savedGames/DEADLY'
+
+CONFIG: Pseudokeu record #199
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/DEADLY/dead2.psk'
+
+INFO: Pseudokeu record #200
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/DEADLY/dead2.psk'
+
+INFO: Pseudokeu record #201
+mhs.pseudokeu.Loader loadScannedGame
+dead2 : difficulty = 4
+
+INFO: Pseudokeu record #202
+mhs.pseudokeu.Loader$SavedGame <init>
+name = dead2; length = 9; difficulty = 4
+
+CONFIG: Pseudokeu record #203
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/DEADLY/dead1.psk'
+
+INFO: Pseudokeu record #204
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/DEADLY/dead1.psk'
+
+INFO: Pseudokeu record #205
+mhs.pseudokeu.Loader loadScannedGame
+dead1 : difficulty = 4
+
+INFO: Pseudokeu record #206
+mhs.pseudokeu.Loader$SavedGame <init>
+name = dead1; length = 9; difficulty = 4
+
+CONFIG: Pseudokeu record #207
+mhs.pseudokeu.Loader loadGamesFromFolder
+Loading from Folder 'savedGames/USER'
+
+CONFIG: Pseudokeu record #208
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/USER/user1.psk'
+
+INFO: Pseudokeu record #209
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/USER/user1.psk'
+
+INFO: Pseudokeu record #210
+mhs.pseudokeu.Loader loadScannedGame
+user1 : difficulty = 5
+
+INFO: Pseudokeu record #211
+mhs.pseudokeu.Loader$SavedGame <init>
+name = user1; length = 9; difficulty = 5
+
+CONFIG: Pseudokeu record #212
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/USER/user4.psk'
+
+INFO: Pseudokeu record #213
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/USER/user4.psk'
+
+INFO: Pseudokeu record #214
+mhs.pseudokeu.Loader loadScannedGame
+user4 : difficulty = 5
+
+INFO: Pseudokeu record #215
+mhs.pseudokeu.Loader$SavedGame <init>
+name = user4; length = 9; difficulty = 5
+
+CONFIG: Pseudokeu record #216
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/USER/user3.psk'
+
+INFO: Pseudokeu record #217
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/USER/user3.psk'
+
+INFO: Pseudokeu record #218
+mhs.pseudokeu.Loader loadScannedGame
+user3 : difficulty = 5
+
+INFO: Pseudokeu record #219
+mhs.pseudokeu.Loader$SavedGame <init>
+name = user3; length = 9; difficulty = 5
+
+CONFIG: Pseudokeu record #220
+mhs.pseudokeu.Loader getFileGame
+Looking for game file 'savedGames/USER/user2.psk'
+
+INFO: Pseudokeu record #221
+mhs.pseudokeu.Loader scanFile
+Scanned file 'savedGames/USER/user2.psk'
+
+INFO: Pseudokeu record #222
+mhs.pseudokeu.Loader loadScannedGame
+user2 : difficulty = 5
+
+INFO: Pseudokeu record #223
+mhs.pseudokeu.Loader$SavedGame <init>
+name = user2; length = 9; difficulty = 5
+
+SEVERE: Pseudokeu record #224
+mhs.pseudokeu.Launcher$AddGameFrame <init>
+<INIT> Frame width = 768 & height = 420
+
+SEVERE: Pseudokeu record #225
+mhs.pseudokeu.Launcher$AddGameFrame initComponents
+<INIT> msgPanel height = 300; confirmPanel height = 120
+
+SEVERE: Pseudokeu record #226
+mhs.pseudokeu.Launcher$GameSizeFrame <init>
+<INIT> basic
+
+SEVERE: Pseudokeu record #227
+mhs.pseudokeu.Launcher$SolveDelayFrame <init>
+<INIT> basic
+
+SEVERE: Pseudokeu record #228
+mhs.pseudokeu.Launcher$ChooseDifficultyFrame <init>
+<INIT> basic
+
+INFO: Pseudokeu record #229
+mhs.pseudokeu.Launcher$GameListener actionPerformed
+Difficulty Level... event
+
+INFO: Pseudokeu record #230
+mhs.pseudokeu.Launcher launchChooseDifficultyFrame
+java.awt.Point[x=560,y=66]
+
+INFO: Pseudokeu record #231
+mhs.pseudokeu.Launcher$ChooseDifficultyFrame actionPerformed
+comboBoxChanged
+
+INFO: Pseudokeu record #232
+mhs.pseudokeu.Launcher$ChooseDifficultyFrame actionPerformed
+comboBoxChanged
+
+INFO: Pseudokeu record #233
+mhs.pseudokeu.Launcher$ChooseDifficultyFrame actionPerformed
+Accept
+
+INFO: Pseudokeu record #234
+mhs.pseudokeu.Launcher$ChooseDifficultyFrame confirm
+Current difficulty is 'EASY' & New difficulty will be 'PAINFUL'
+
+INFO: Pseudokeu record #235
+mhs.pseudokeu.Launcher newGame
+load game # -1
+
+CONFIG: Pseudokeu record #236
+mhs.pseudokeu.Grid activateGame
+Sun Jan 01 08:19:52 EST 2012
+
+INFO: Pseudokeu record #237
+mhs.pseudokeu.Loader getSavedGame
+Returning Game 'pain4'
+
+INFO: Pseudokeu record #238
+mhs.pseudokeu.Square newValue
+Sqr r1c3 : Set value to '1'
+
+CONFIG: Pseudokeu record #239
+mhs.pseudokeu.Grid incBlankCount
+81 >> 80 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #240
+mhs.pseudokeu.Square setFixed
+Sqr r1c3
+
+INFO: Pseudokeu record #241
+mhs.pseudokeu.Square newValue
+Sqr r1c5 : Set value to '7'
+
+CONFIG: Pseudokeu record #242
+mhs.pseudokeu.Grid incBlankCount
+80 >> 79 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #243
+mhs.pseudokeu.Square setFixed
+Sqr r1c5
+
+INFO: Pseudokeu record #244
+mhs.pseudokeu.Square newValue
+Sqr r1c8 : Set value to '8'
+
+CONFIG: Pseudokeu record #245
+mhs.pseudokeu.Grid incBlankCount
+79 >> 78 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #246
+mhs.pseudokeu.Square setFixed
+Sqr r1c8
+
+INFO: Pseudokeu record #247
+mhs.pseudokeu.Square newValue
+Sqr r2c1 : Set value to '7'
+
+CONFIG: Pseudokeu record #248
+mhs.pseudokeu.Grid incBlankCount
+78 >> 77 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #249
+mhs.pseudokeu.Square setFixed
+Sqr r2c1
+
+INFO: Pseudokeu record #250
+mhs.pseudokeu.Square newValue
+Sqr r2c3 : Set value to '3'
+
+CONFIG: Pseudokeu record #251
+mhs.pseudokeu.Grid incBlankCount
+77 >> 76 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #252
+mhs.pseudokeu.Square setFixed
+Sqr r2c3
+
+INFO: Pseudokeu record #253
+mhs.pseudokeu.Square newValue
+Sqr r2c4 : Set value to '9'
+
+CONFIG: Pseudokeu record #254
+mhs.pseudokeu.Grid incBlankCount
+76 >> 75 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #255
+mhs.pseudokeu.Square setFixed
+Sqr r2c4
+
+INFO: Pseudokeu record #256
+mhs.pseudokeu.Square newValue
+Sqr r2c5 : Set value to '2'
+
+CONFIG: Pseudokeu record #257
+mhs.pseudokeu.Grid incBlankCount
+75 >> 74 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #258
+mhs.pseudokeu.Square setFixed
+Sqr r2c5
+
+INFO: Pseudokeu record #259
+mhs.pseudokeu.Square newValue
+Sqr r2c6 : Set value to '5'
+
+CONFIG: Pseudokeu record #260
+mhs.pseudokeu.Grid incBlankCount
+74 >> 73 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #261
+mhs.pseudokeu.Square setFixed
+Sqr r2c6
+
+INFO: Pseudokeu record #262
+mhs.pseudokeu.Square newValue
+Sqr r2c7 : Set value to '4'
+
+CONFIG: Pseudokeu record #263
+mhs.pseudokeu.Grid incBlankCount
+73 >> 72 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #264
+mhs.pseudokeu.Square setFixed
+Sqr r2c7
+
+INFO: Pseudokeu record #265
+mhs.pseudokeu.Square newValue
+Sqr r2c8 : Set value to '1'
+
+CONFIG: Pseudokeu record #266
+mhs.pseudokeu.Grid incBlankCount
+72 >> 71 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #267
+mhs.pseudokeu.Square setFixed
+Sqr r2c8
+
+INFO: Pseudokeu record #268
+mhs.pseudokeu.Square newValue
+Sqr r3c2 : Set value to '4'
+
+CONFIG: Pseudokeu record #269
+mhs.pseudokeu.Grid incBlankCount
+71 >> 70 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #270
+mhs.pseudokeu.Square setFixed
+Sqr r3c2
+
+INFO: Pseudokeu record #271
+mhs.pseudokeu.Square newValue
+Sqr r3c7 : Set value to '9'
+
+CONFIG: Pseudokeu record #272
+mhs.pseudokeu.Grid incBlankCount
+70 >> 69 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #273
+mhs.pseudokeu.Square setFixed
+Sqr r3c7
+
+INFO: Pseudokeu record #274
+mhs.pseudokeu.Square newValue
+Sqr r3c8 : Set value to '2'
+
+CONFIG: Pseudokeu record #275
+mhs.pseudokeu.Grid incBlankCount
+69 >> 68 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #276
+mhs.pseudokeu.Square setFixed
+Sqr r3c8
+
+INFO: Pseudokeu record #277
+mhs.pseudokeu.Square newValue
+Sqr r4c2 : Set value to '5'
+
+CONFIG: Pseudokeu record #278
+mhs.pseudokeu.Grid incBlankCount
+68 >> 67 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #279
+mhs.pseudokeu.Square setFixed
+Sqr r4c2
+
+INFO: Pseudokeu record #280
+mhs.pseudokeu.Square newValue
+Sqr r4c6 : Set value to '6'
+
+CONFIG: Pseudokeu record #281
+mhs.pseudokeu.Grid incBlankCount
+67 >> 66 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #282
+mhs.pseudokeu.Square setFixed
+Sqr r4c6
+
+INFO: Pseudokeu record #283
+mhs.pseudokeu.Square newValue
+Sqr r5c0 : Set value to '9'
+
+CONFIG: Pseudokeu record #284
+mhs.pseudokeu.Grid incBlankCount
+66 >> 65 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #285
+mhs.pseudokeu.Square setFixed
+Sqr r5c0
+
+INFO: Pseudokeu record #286
+mhs.pseudokeu.Square newValue
+Sqr r5c1 : Set value to '3'
+
+CONFIG: Pseudokeu record #287
+mhs.pseudokeu.Grid incBlankCount
+65 >> 64 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #288
+mhs.pseudokeu.Square setFixed
+Sqr r5c1
+
+INFO: Pseudokeu record #289
+mhs.pseudokeu.Square newValue
+Sqr r5c6 : Set value to '4'
+
+CONFIG: Pseudokeu record #290
+mhs.pseudokeu.Grid incBlankCount
+64 >> 63 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #291
+mhs.pseudokeu.Square setFixed
+Sqr r5c6
+
+INFO: Pseudokeu record #292
+mhs.pseudokeu.Square newValue
+Sqr r6c0 : Set value to '1'
+
+CONFIG: Pseudokeu record #293
+mhs.pseudokeu.Grid incBlankCount
+63 >> 62 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #294
+mhs.pseudokeu.Square setFixed
+Sqr r6c0
+
+INFO: Pseudokeu record #295
+mhs.pseudokeu.Square newValue
+Sqr r6c1 : Set value to '9'
+
+CONFIG: Pseudokeu record #296
+mhs.pseudokeu.Grid incBlankCount
+62 >> 61 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #297
+mhs.pseudokeu.Square setFixed
+Sqr r6c1
+
+INFO: Pseudokeu record #298
+mhs.pseudokeu.Square newValue
+Sqr r6c2 : Set value to '2'
+
+CONFIG: Pseudokeu record #299
+mhs.pseudokeu.Grid incBlankCount
+61 >> 60 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #300
+mhs.pseudokeu.Square setFixed
+Sqr r6c2
+
+INFO: Pseudokeu record #301
+mhs.pseudokeu.Square newValue
+Sqr r6c3 : Set value to '7'
+
+CONFIG: Pseudokeu record #302
+mhs.pseudokeu.Grid incBlankCount
+60 >> 59 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #303
+mhs.pseudokeu.Square setFixed
+Sqr r6c3
+
+INFO: Pseudokeu record #304
+mhs.pseudokeu.Square newValue
+Sqr r6c4 : Set value to '8'
+
+CONFIG: Pseudokeu record #305
+mhs.pseudokeu.Grid incBlankCount
+59 >> 58 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #306
+mhs.pseudokeu.Square setFixed
+Sqr r6c4
+
+INFO: Pseudokeu record #307
+mhs.pseudokeu.Square newValue
+Sqr r6c5 : Set value to '5'
+
+CONFIG: Pseudokeu record #308
+mhs.pseudokeu.Grid incBlankCount
+58 >> 57 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #309
+mhs.pseudokeu.Square setFixed
+Sqr r6c5
+
+INFO: Pseudokeu record #310
+mhs.pseudokeu.Square newValue
+Sqr r6c7 : Set value to '6'
+
+CONFIG: Pseudokeu record #311
+mhs.pseudokeu.Grid incBlankCount
+57 >> 56 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #312
+mhs.pseudokeu.Square setFixed
+Sqr r6c7
+
+INFO: Pseudokeu record #313
+mhs.pseudokeu.Square newValue
+Sqr r7c0 : Set value to '5'
+
+CONFIG: Pseudokeu record #314
+mhs.pseudokeu.Grid incBlankCount
+56 >> 55 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #315
+mhs.pseudokeu.Square setFixed
+Sqr r7c0
+
+INFO: Pseudokeu record #316
+mhs.pseudokeu.Square newValue
+Sqr r7c3 : Set value to '4'
+
+CONFIG: Pseudokeu record #317
+mhs.pseudokeu.Grid incBlankCount
+55 >> 54 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #318
+mhs.pseudokeu.Square setFixed
+Sqr r7c3
+
+INFO: Pseudokeu record #319
+mhs.pseudokeu.Square newValue
+Sqr r7c5 : Set value to '3'
+
+CONFIG: Pseudokeu record #320
+mhs.pseudokeu.Grid incBlankCount
+54 >> 53 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #321
+mhs.pseudokeu.Square setFixed
+Sqr r7c5
+
+INFO: Pseudokeu record #322
+mhs.pseudokeu.Loader$SavedGame <init>
+name = SOLUTION_pain4; length = 9; difficulty = 3
+
+INFO: Pseudokeu record #323
+mhs.pseudokeu.Grid getSolutionGame
+SOLUTION_pain4
+
+SEVERE: Pseudokeu record #324
+mhs.pseudokeu.Grid createSolveWorker
+<INIT> basic
+
+SEVERE: Pseudokeu record #325
+mhs.pseudokeu.Launcher newGame
+Loaded 'pain4'
+
+INFO: Pseudokeu record #326
+mhs.pseudokeu.Launcher startClock
+Sun Jan 01 08:19:52 EST 2012
+
+INFO: Pseudokeu record #327
+mhs.pseudokeu.Solver getSolution
+Running on Thread[SwingWorker-pool-1-thread-2,5,main]
+
+INFO: Pseudokeu record #328
+mhs.pseudokeu.Solver search
+
+ ---- SOLUTION FOUND! ---- 
+ (306 search loops)
+
+INFO: Pseudokeu record #329
+mhs.pseudokeu.Solver displayResults
+
+	2 1 3 | 8 5 4 | 9 7 6 | 
+	4 5 9 | 1 6 7 | 2 3 8 | 
+	8 7 6 | 3 9 2 | 5 4 1 | 
+	-----------------------
+	6 8 4 | 5 3 1 | 7 9 2 | 
+	7 2 5 | 9 4 8 | 6 1 3 | 
+	9 3 1 | 2 7 6 | 4 8 5 | 
+	-----------------------
+	1 9 2 | 7 8 5 | 3 6 4 | 
+	5 6 7 | 4 1 3 | 8 2 9 | 
+	3 4 8 | 6 2 9 | 1 5 7 | 
+
+
+INFO: Pseudokeu record #330
+mhs.pseudokeu.Solver getSolution
+Search time was 13 msecs
+
+INFO: Pseudokeu record #331
+mhs.pseudokeu.Solver checkSolution
+>> Solution OK!
+
+INFO: Pseudokeu record #332
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #333
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #334
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 1
+
+INFO: Pseudokeu record #335
+mhs.pseudokeu.Square newValue
+Sqr r2c0 : Set value to '6'
+
+INFO: Pseudokeu record #336
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+INFO: Pseudokeu record #337
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '68'
+
+CONFIG: Pseudokeu record #338
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 2
+
+INFO: Pseudokeu record #339
+mhs.pseudokeu.Square newValue
+Sqr r2c0 : Set value to '68'
+
+INFO: Pseudokeu record #340
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #341
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #342
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 3
+
+INFO: Pseudokeu record #343
+mhs.pseudokeu.Square newValue
+Sqr r2c2 : Set value to '6'
+
+INFO: Pseudokeu record #344
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+INFO: Pseudokeu record #345
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '68'
+
+CONFIG: Pseudokeu record #346
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 4
+
+INFO: Pseudokeu record #347
+mhs.pseudokeu.Square newValue
+Sqr r2c2 : Set value to '68'
+
+INFO: Pseudokeu record #348
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #349
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 5
+
+INFO: Pseudokeu record #350
+mhs.pseudokeu.Square newValue
+Sqr r6c6 : Set value to '3'
+
+CONFIG: Pseudokeu record #351
+mhs.pseudokeu.Grid incBlankCount
+53 >> 52 ; numConflicts == 0
+
+INFO: Pseudokeu record #352
+mhs.pseudokeu.Grid newValue
+New Square value == 4
+
+CONFIG: Pseudokeu record #353
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 6
+
+INFO: Pseudokeu record #354
+mhs.pseudokeu.Square newValue
+Sqr r6c8 : Set value to '4'
+
+CONFIG: Pseudokeu record #355
+mhs.pseudokeu.Grid incBlankCount
+52 >> 51 ; numConflicts == 0
+
+INFO: Pseudokeu record #356
+mhs.pseudokeu.Launcher$GameListener actionPerformed
+Show Conflicts event
+
+INFO: Pseudokeu record #357
+mhs.pseudokeu.Launcher setConflicts
+<html><font color=green><b>NO conflicting values</b></font></html> ; flip == true
+
+INFO: Pseudokeu record #358
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #359
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 7
+
+INFO: Pseudokeu record #360
+mhs.pseudokeu.Square newValue
+Sqr r0c8 : Set value to '6'
+
+CONFIG: Pseudokeu record #361
+mhs.pseudokeu.Grid incBlankCount
+51 >> 50 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #362
+mhs.pseudokeu.Square display
+ Sqr r1c6_z2/A = 0 (OPEN): nPV.2 SV.0 PV.516
+ nGrpSqrsWithVal (1-9): 1|2 2|0 3|1 4|2 5|1 6|2 7|1 8|1 9|0 
+    possibleVals (1-9): 2 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #363
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #364
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '2'
+
+CONFIG: Pseudokeu record #365
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 8
+
+INFO: Pseudokeu record #366
+mhs.pseudokeu.Square newValue
+Sqr r1c6 : Set value to '2'
+
+INFO: Pseudokeu record #367
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #368
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '29'
+
+CONFIG: Pseudokeu record #369
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 9
+
+INFO: Pseudokeu record #370
+mhs.pseudokeu.Square newValue
+Sqr r1c6 : Set value to '29'
+
+INFO: Pseudokeu record #371
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+INFO: Pseudokeu record #372
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '3'
+
+CONFIG: Pseudokeu record #373
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 10
+
+INFO: Pseudokeu record #374
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '3'
+
+INFO: Pseudokeu record #375
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #376
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '39'
+
+CONFIG: Pseudokeu record #377
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 11
+
+INFO: Pseudokeu record #378
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '39'
+
+INFO: Pseudokeu record #379
+mhs.pseudokeu.Launcher$GameListener actionPerformed
+How to Play... event
+
+INFO: Pseudokeu record #380
+mhs.pseudokeu.Launcher launchInstructionBox
+How to Play...
+
+INFO: Pseudokeu record #381
+mhs.pseudokeu.Launcher$GameListener actionPerformed
+About Pseudokeu Game event
+
+INFO: Pseudokeu record #382
+mhs.pseudokeu.Launcher launchAboutBox
+About Pseudokeu Game
+
+INFO: Pseudokeu record #383
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #384
+mhs.pseudokeu.Square newValue
+Sqr r0c3 : Set value to '58'
+
+INFO: Pseudokeu record #385
+mhs.pseudokeu.Square newValue
+Sqr r0c4 : Set value to '45'
+
+INFO: Pseudokeu record #386
+mhs.pseudokeu.Square newValue
+Sqr r0c5 : Set value to '48'
+
+INFO: Pseudokeu record #387
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '279'
+
+INFO: Pseudokeu record #388
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '237'
+
+INFO: Pseudokeu record #389
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '369'
+
+INFO: Pseudokeu record #390
+mhs.pseudokeu.Square newValue
+Sqr r1c4 : Set value to '456'
+
+INFO: Pseudokeu record #391
+mhs.pseudokeu.Square newValue
+Sqr r1c7 : Set value to '23'
+
+INFO: Pseudokeu record #392
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '678'
+
+INFO: Pseudokeu record #393
+mhs.pseudokeu.Square newValue
+Sqr r3c1 : Set value to '168'
+
+INFO: Pseudokeu record #394
+mhs.pseudokeu.Square newValue
+Sqr r3c3 : Set value to '568'
+
+INFO: Pseudokeu record #395
+mhs.pseudokeu.Square newValue
+Sqr r3c5 : Set value to '168'
+
+INFO: Pseudokeu record #396
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '178'
+
+INFO: Pseudokeu record #397
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '278'
+
+INFO: Pseudokeu record #398
+mhs.pseudokeu.Square newValue
+Sqr r4c1 : Set value to '128'
+
+INFO: Pseudokeu record #399
+mhs.pseudokeu.Square newValue
+Sqr r4c3 : Set value to '289'
+
+INFO: Pseudokeu record #400
+mhs.pseudokeu.Square newValue
+Sqr r4c8 : Set value to '37'
+
+INFO: Pseudokeu record #401
+mhs.pseudokeu.Square newValue
+Sqr r5c5 : Set value to '168'
+
+INFO: Pseudokeu record #402
+mhs.pseudokeu.Square newValue
+Sqr r5c8 : Set value to '57'
+
+INFO: Pseudokeu record #403
+mhs.pseudokeu.Square newValue
+Sqr r7c1 : Set value to '68'
+
+INFO: Pseudokeu record #404
+mhs.pseudokeu.Square newValue
+Sqr r7c2 : Set value to '678'
+
+INFO: Pseudokeu record #405
+mhs.pseudokeu.Square newValue
+Sqr r7c4 : Set value to '126'
+
+INFO: Pseudokeu record #406
+mhs.pseudokeu.Square newValue
+Sqr r7c8 : Set value to '79'
+
+INFO: Pseudokeu record #407
+mhs.pseudokeu.Square newValue
+Sqr r8c1 : Set value to '468'
+
+INFO: Pseudokeu record #408
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '269'
+
+INFO: Pseudokeu record #409
+mhs.pseudokeu.Square newValue
+Sqr r8c4 : Set value to '126'
+
+INFO: Pseudokeu record #410
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '169'
+
+INFO: Pseudokeu record #411
+mhs.pseudokeu.Square newValue
+Sqr r8c8 : Set value to '579'
+
+INFO: Pseudokeu record #412
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #413
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 12
+
+INFO: Pseudokeu record #414
+mhs.pseudokeu.Square newValue
+Sqr r4c8 : Set value to '3'
+
+CONFIG: Pseudokeu record #415
+mhs.pseudokeu.Grid incBlankCount
+50 >> 49 ; numConflicts == 0
+
+INFO: Pseudokeu record #416
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #417
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 13
+
+INFO: Pseudokeu record #418
+mhs.pseudokeu.Square newValue
+Sqr r1c4 : Set value to '6'
+
+CONFIG: Pseudokeu record #419
+mhs.pseudokeu.Grid incBlankCount
+49 >> 48 ; numConflicts == 0
+
+INFO: Pseudokeu record #420
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+INFO: Pseudokeu record #421
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '3'
+
+CONFIG: Pseudokeu record #422
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 14
+
+INFO: Pseudokeu record #423
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '3'
+
+INFO: Pseudokeu record #424
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #425
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '39'
+
+CONFIG: Pseudokeu record #426
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 15
+
+INFO: Pseudokeu record #427
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '39'
+
+INFO: Pseudokeu record #428
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #429
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #430
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 16
+
+INFO: Pseudokeu record #431
+mhs.pseudokeu.Square newValue
+Sqr r7c4 : Set value to '1'
+
+INFO: Pseudokeu record #432
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #433
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '12'
+
+CONFIG: Pseudokeu record #434
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 17
+
+INFO: Pseudokeu record #435
+mhs.pseudokeu.Square newValue
+Sqr r7c4 : Set value to '12'
+
+INFO: Pseudokeu record #436
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #437
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #438
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 18
+
+INFO: Pseudokeu record #439
+mhs.pseudokeu.Square newValue
+Sqr r8c4 : Set value to '1'
+
+INFO: Pseudokeu record #440
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #441
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '12'
+
+CONFIG: Pseudokeu record #442
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 19
+
+INFO: Pseudokeu record #443
+mhs.pseudokeu.Square newValue
+Sqr r8c4 : Set value to '12'
+
+INFO: Pseudokeu record #444
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #445
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #446
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 20
+
+INFO: Pseudokeu record #447
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '6'
+
+INFO: Pseudokeu record #448
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #449
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '69'
+
+CONFIG: Pseudokeu record #450
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 21
+
+INFO: Pseudokeu record #451
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '69'
+
+INFO: Pseudokeu record #452
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #453
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #454
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 22
+
+INFO: Pseudokeu record #455
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '6'
+
+INFO: Pseudokeu record #456
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #457
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '69'
+
+CONFIG: Pseudokeu record #458
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 23
+
+INFO: Pseudokeu record #459
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '69'
+
+INFO: Pseudokeu record #460
+mhs.pseudokeu.Grid newValue
+New Square value == 4
+
+INFO: Pseudokeu record #461
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '4'
+
+CONFIG: Pseudokeu record #462
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 24
+
+INFO: Pseudokeu record #463
+mhs.pseudokeu.Square newValue
+Sqr r8c1 : Set value to '4'
+
+INFO: Pseudokeu record #464
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+INFO: Pseudokeu record #465
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '48'
+
+CONFIG: Pseudokeu record #466
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 25
+
+INFO: Pseudokeu record #467
+mhs.pseudokeu.Square newValue
+Sqr r8c1 : Set value to '48'
+
+INFO: Pseudokeu record #468
+mhs.pseudokeu.Grid newValue
+New Square value == 5
+
+INFO: Pseudokeu record #469
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '5'
+
+CONFIG: Pseudokeu record #470
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 26
+
+INFO: Pseudokeu record #471
+mhs.pseudokeu.Square newValue
+Sqr r8c8 : Set value to '5'
+
+INFO: Pseudokeu record #472
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+INFO: Pseudokeu record #473
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '57'
+
+CONFIG: Pseudokeu record #474
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 27
+
+INFO: Pseudokeu record #475
+mhs.pseudokeu.Square newValue
+Sqr r8c8 : Set value to '57'
+
+INFO: Pseudokeu record #476
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #477
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 28
+
+INFO: Pseudokeu record #478
+mhs.pseudokeu.Square newValue
+Sqr r7c8 : Set value to '9'
+
+CONFIG: Pseudokeu record #479
+mhs.pseudokeu.Grid incBlankCount
+48 >> 47 ; numConflicts == 0
+
+INFO: Pseudokeu record #480
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #481
+mhs.pseudokeu.Square newValue
+Sqr r1c0 : Set value to '234'
+
+INFO: Pseudokeu record #482
+mhs.pseudokeu.Square newValue
+Sqr r1c1 : Set value to '245'
+
+INFO: Pseudokeu record #483
+mhs.pseudokeu.Square newValue
+Sqr r4c7 : Set value to '178'
+
+INFO: Pseudokeu record #484
+mhs.pseudokeu.Square newValue
+Sqr r8c1 : Set value to '468'
+
+INFO: Pseudokeu record #485
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '269'
+
+INFO: Pseudokeu record #486
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '169'
+
+INFO: Pseudokeu record #487
+mhs.pseudokeu.Grid newValue
+New Square value == 4
+
+CONFIG: Pseudokeu record #488
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 29
+
+INFO: Pseudokeu record #489
+mhs.pseudokeu.Square newValue
+Sqr r1c0 : Set value to '4'
+
+CONFIG: Pseudokeu record #490
+mhs.pseudokeu.Grid incBlankCount
+47 >> 46 ; numConflicts == 0
+
+INFO: Pseudokeu record #491
+mhs.pseudokeu.Grid newValue
+New Square value == 5
+
+CONFIG: Pseudokeu record #492
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 30
+
+INFO: Pseudokeu record #493
+mhs.pseudokeu.Square newValue
+Sqr r1c1 : Set value to '5'
+
+CONFIG: Pseudokeu record #494
+mhs.pseudokeu.Grid incBlankCount
+46 >> 45 ; numConflicts == 0
+
+INFO: Pseudokeu record #495
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #496
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '238'
+
+INFO: Pseudokeu record #497
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '128'
+
+INFO: Pseudokeu record #498
+mhs.pseudokeu.Grid newValue
+New Square value == 4
+
+CONFIG: Pseudokeu record #499
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 31
+
+INFO: Pseudokeu record #500
+mhs.pseudokeu.Square newValue
+Sqr r8c1 : Set value to '4'
+
+CONFIG: Pseudokeu record #501
+mhs.pseudokeu.Grid incBlankCount
+45 >> 44 ; numConflicts == 0
+
+INFO: Pseudokeu record #502
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #503
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #504
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #505
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 32
+
+INFO: Pseudokeu record #506
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '1'
+
+INFO: Pseudokeu record #507
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #508
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '12'
+
+CONFIG: Pseudokeu record #509
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 33
+
+INFO: Pseudokeu record #510
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '12'
+
+INFO: Pseudokeu record #511
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #512
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '2'
+
+CONFIG: Pseudokeu record #513
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 34
+
+INFO: Pseudokeu record #514
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '2'
+
+INFO: Pseudokeu record #515
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+INFO: Pseudokeu record #516
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '23'
+
+CONFIG: Pseudokeu record #517
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 35
+
+INFO: Pseudokeu record #518
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '23'
+
+SEVERE: Pseudokeu record #519
+mhs.pseudokeu.Square display
+ Sqr r0c2_z0/A = 0 (OPEN): nPV.4 SV.0 PV.778
+ nGrpSqrsWithVal (1-9): 1|0 2|1 3|0 4|2 5|2 6|1 7|1 8|0 9|0 
+    possibleVals (1-9): 1 3 8 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #520
+mhs.pseudokeu.Square display
+ Sqr r3c4_z4/A = 0 (OPEN): nPV.4 SV.0 PV.170
+ nGrpSqrsWithVal (1-9): 1|0 2|1 3|0 4|1 5|0 6|1 7|0 8|1 9|2 
+    possibleVals (1-9): 1 3 5 7 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #521
+mhs.pseudokeu.Square display
+ Sqr r5c3_z4/A = 0 (OPEN): nPV.4 SV.0 PV.356
+ nGrpSqrsWithVal (1-9): 1|1 2|0 3|2 4|2 5|0 6|0 7|1 8|0 9|1 
+    possibleVals (1-9): 2 5 6 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #522
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #523
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '2'
+
+CONFIG: Pseudokeu record #524
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 36
+
+INFO: Pseudokeu record #525
+mhs.pseudokeu.Square newValue
+Sqr r5c3 : Set value to '2'
+
+INFO: Pseudokeu record #526
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #527
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '26'
+
+CONFIG: Pseudokeu record #528
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 37
+
+INFO: Pseudokeu record #529
+mhs.pseudokeu.Square newValue
+Sqr r5c3 : Set value to '26'
+
+INFO: Pseudokeu record #530
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+INFO: Pseudokeu record #531
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '268'
+
+CONFIG: Pseudokeu record #532
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 38
+
+INFO: Pseudokeu record #533
+mhs.pseudokeu.Square newValue
+Sqr r5c3 : Set value to '268'
+
+SEVERE: Pseudokeu record #534
+mhs.pseudokeu.Square display
+ Sqr r5c4_z4/A = 0 (OPEN): nPV.4 SV.0 PV.166
+ nGrpSqrsWithVal (1-9): 1|0 2|0 3|1 4|1 5|0 6|1 7|0 8|1 9|2 
+    possibleVals (1-9): 1 2 5 7 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #535
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #536
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 39
+
+INFO: Pseudokeu record #537
+mhs.pseudokeu.Square newValue
+Sqr r5c4 : Set value to '7'
+
+CONFIG: Pseudokeu record #538
+mhs.pseudokeu.Grid incBlankCount
+44 >> 43 ; numConflicts == 0
+
+INFO: Pseudokeu record #539
+mhs.pseudokeu.Grid newValue
+New Square value == 5
+
+CONFIG: Pseudokeu record #540
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 40
+
+INFO: Pseudokeu record #541
+mhs.pseudokeu.Square newValue
+Sqr r5c8 : Set value to '5'
+
+CONFIG: Pseudokeu record #542
+mhs.pseudokeu.Grid incBlankCount
+43 >> 42 ; numConflicts == 0
+
+INFO: Pseudokeu record #543
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #544
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 41
+
+INFO: Pseudokeu record #545
+mhs.pseudokeu.Square newValue
+Sqr r8c8 : Set value to '7'
+
+CONFIG: Pseudokeu record #546
+mhs.pseudokeu.Grid incBlankCount
+42 >> 41 ; numConflicts == 0
+
+INFO: Pseudokeu record #547
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #548
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '238'
+
+INFO: Pseudokeu record #549
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '128'
+
+INFO: Pseudokeu record #550
+mhs.pseudokeu.Square newValue
+Sqr r3c4 : Set value to '135'
+
+INFO: Pseudokeu record #551
+mhs.pseudokeu.Square newValue
+Sqr r4c4 : Set value to '124'
+
+INFO: Pseudokeu record #552
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '168'
+
+INFO: Pseudokeu record #553
+mhs.pseudokeu.Square newValue
+Sqr r5c7 : Set value to '18'
+
+INFO: Pseudokeu record #554
+mhs.pseudokeu.Square newValue
+Sqr r7c6 : Set value to '128'
+
+INFO: Pseudokeu record #555
+mhs.pseudokeu.Square newValue
+Sqr r7c7 : Set value to '128'
+
+INFO: Pseudokeu record #556
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '368'
+
+INFO: Pseudokeu record #557
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '368'
+
+INFO: Pseudokeu record #558
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '128'
+
+INFO: Pseudokeu record #559
+mhs.pseudokeu.Grid newValue
+New Square value == 4
+
+CONFIG: Pseudokeu record #560
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 42
+
+INFO: Pseudokeu record #561
+mhs.pseudokeu.Square newValue
+Sqr r4c4 : Set value to '4'
+
+CONFIG: Pseudokeu record #562
+mhs.pseudokeu.Grid incBlankCount
+41 >> 40 ; numConflicts == 0
+
+INFO: Pseudokeu record #563
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #564
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 43
+
+INFO: Pseudokeu record #565
+mhs.pseudokeu.Square newValue
+Sqr r3c4 : Set value to '3'
+
+CONFIG: Pseudokeu record #566
+mhs.pseudokeu.Grid incBlankCount
+40 >> 39 ; numConflicts == 0
+
+INFO: Pseudokeu record #567
+mhs.pseudokeu.Grid newValue
+New Square value == 5
+
+CONFIG: Pseudokeu record #568
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 44
+
+INFO: Pseudokeu record #569
+mhs.pseudokeu.Square newValue
+Sqr r0c4 : Set value to '5'
+
+CONFIG: Pseudokeu record #570
+mhs.pseudokeu.Grid incBlankCount
+39 >> 38 ; numConflicts == 0
+
+INFO: Pseudokeu record #571
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #572
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 45
+
+INFO: Pseudokeu record #573
+mhs.pseudokeu.Square newValue
+Sqr r0c3 : Set value to '8'
+
+CONFIG: Pseudokeu record #574
+mhs.pseudokeu.Grid incBlankCount
+38 >> 37 ; numConflicts == 0
+
+INFO: Pseudokeu record #575
+mhs.pseudokeu.Grid newValue
+New Square value == 4
+
+CONFIG: Pseudokeu record #576
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 46
+
+INFO: Pseudokeu record #577
+mhs.pseudokeu.Square newValue
+Sqr r0c5 : Set value to '4'
+
+CONFIG: Pseudokeu record #578
+mhs.pseudokeu.Grid incBlankCount
+37 >> 36 ; numConflicts == 0
+
+INFO: Pseudokeu record #579
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #580
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '23'
+
+INFO: Pseudokeu record #581
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '12'
+
+INFO: Pseudokeu record #582
+mhs.pseudokeu.Square newValue
+Sqr r0c2 : Set value to '139'
+
+INFO: Pseudokeu record #583
+mhs.pseudokeu.Square newValue
+Sqr r3c3 : Set value to '56'
+
+INFO: Pseudokeu record #584
+mhs.pseudokeu.Square newValue
+Sqr r4c3 : Set value to '29'
+
+INFO: Pseudokeu record #585
+mhs.pseudokeu.Square newValue
+Sqr r4c5 : Set value to '189'
+
+INFO: Pseudokeu record #586
+mhs.pseudokeu.Square newValue
+Sqr r5c3 : Set value to '26'
+
+INFO: Pseudokeu record #587
+mhs.pseudokeu.Grid newValue
+New Square value == 5
+
+CONFIG: Pseudokeu record #588
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 47
+
+INFO: Pseudokeu record #589
+mhs.pseudokeu.Square newValue
+Sqr r3c3 : Set value to '5'
+
+CONFIG: Pseudokeu record #590
+mhs.pseudokeu.Grid incBlankCount
+36 >> 35 ; numConflicts == 0
+
+INFO: Pseudokeu record #591
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #592
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #593
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 48
+
+INFO: Pseudokeu record #594
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '6'
+
+INFO: Pseudokeu record #595
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #596
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '69'
+
+CONFIG: Pseudokeu record #597
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 49
+
+INFO: Pseudokeu record #598
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '69'
+
+INFO: Pseudokeu record #599
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #600
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #601
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 50
+
+INFO: Pseudokeu record #602
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '6'
+
+INFO: Pseudokeu record #603
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #604
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '69'
+
+CONFIG: Pseudokeu record #605
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 51
+
+INFO: Pseudokeu record #606
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '69'
+
+INFO: Pseudokeu record #607
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+INFO: Pseudokeu record #608
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '3'
+
+CONFIG: Pseudokeu record #609
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 52
+
+INFO: Pseudokeu record #610
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '3'
+
+INFO: Pseudokeu record #611
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+INFO: Pseudokeu record #612
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '38'
+
+CONFIG: Pseudokeu record #613
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 53
+
+INFO: Pseudokeu record #614
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '38'
+
+INFO: Pseudokeu record #615
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+INFO: Pseudokeu record #616
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '3'
+
+CONFIG: Pseudokeu record #617
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 54
+
+INFO: Pseudokeu record #618
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '3'
+
+INFO: Pseudokeu record #619
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+INFO: Pseudokeu record #620
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '38'
+
+CONFIG: Pseudokeu record #621
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 55
+
+INFO: Pseudokeu record #622
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '38'
+
+INFO: Pseudokeu record #623
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #624
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 56
+
+INFO: Pseudokeu record #625
+mhs.pseudokeu.Square newValue
+Sqr r7c1 : Set value to '6'
+
+CONFIG: Pseudokeu record #626
+mhs.pseudokeu.Grid incBlankCount
+35 >> 34 ; numConflicts == 0
+
+INFO: Pseudokeu record #627
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #628
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 57
+
+INFO: Pseudokeu record #629
+mhs.pseudokeu.Square newValue
+Sqr r7c2 : Set value to '7'
+
+CONFIG: Pseudokeu record #630
+mhs.pseudokeu.Grid incBlankCount
+34 >> 33 ; numConflicts == 0
+
+INFO: Pseudokeu record #631
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #632
+mhs.pseudokeu.Square newValue
+Sqr r3c1 : Set value to '18'
+
+INFO: Pseudokeu record #633
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '269'
+
+INFO: Pseudokeu record #634
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '169'
+
+INFO: Pseudokeu record #635
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #636
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #637
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 58
+
+INFO: Pseudokeu record #638
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '6'
+
+INFO: Pseudokeu record #639
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #640
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '69'
+
+CONFIG: Pseudokeu record #641
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 59
+
+INFO: Pseudokeu record #642
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '69'
+
+INFO: Pseudokeu record #643
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #644
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #645
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 60
+
+INFO: Pseudokeu record #646
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '6'
+
+INFO: Pseudokeu record #647
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+INFO: Pseudokeu record #648
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '69'
+
+CONFIG: Pseudokeu record #649
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 61
+
+INFO: Pseudokeu record #650
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '69'
+
+SEVERE: Pseudokeu record #651
+mhs.pseudokeu.Square display
+ Sqr r8c7_z8/A = 0 (OPEN): nPV.4 SV.0 PV.294
+ nGrpSqrsWithVal (1-9): 1|0 2|0 3|1 4|3 5|0 6|1 7|1 8|0 9|2 
+    possibleVals (1-9): 1 2 5 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #652
+mhs.pseudokeu.Grid newValue
+New Square value == 5
+
+CONFIG: Pseudokeu record #653
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 62
+
+INFO: Pseudokeu record #654
+mhs.pseudokeu.Square newValue
+Sqr r8c7 : Set value to '5'
+
+CONFIG: Pseudokeu record #655
+mhs.pseudokeu.Grid incBlankCount
+33 >> 32 ; numConflicts == 0
+
+INFO: Pseudokeu record #656
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #657
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #658
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 63
+
+INFO: Pseudokeu record #659
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '1'
+
+INFO: Pseudokeu record #660
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #661
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '12'
+
+CONFIG: Pseudokeu record #662
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 64
+
+INFO: Pseudokeu record #663
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '12'
+
+INFO: Pseudokeu record #664
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #665
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 65
+
+INFO: Pseudokeu record #666
+mhs.pseudokeu.Square newValue
+Sqr r7c6 : Set value to '8'
+
+CONFIG: Pseudokeu record #667
+mhs.pseudokeu.Grid incBlankCount
+32 >> 31 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #668
+mhs.pseudokeu.Loader$SavedGame display
+GAME 'SOLUTION_pain4' : length = 9 & difficulty = PAINFUL
+
+	2  1  3    8  5  4    9  7  6    
+	4  5  9    1  6  7    2  3  8    
+	8  7  6    3  9  2    5  4  1    
+	
+	6  8  4    5  3  1    7  9  2    
+	7  2  5    9  4  8    6  1  3    
+	9  3  1    2  7  6    4  8  5    
+	
+	1  9  2    7  8  5    3  6  4    
+	5  6  7    4  1  3    8  2  9    
+	3  4  8    6  2  9    1  5  7    
+
+#######################################
+
+
+INFO: Pseudokeu record #669
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #670
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #671
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 66
+
+INFO: Pseudokeu record #672
+mhs.pseudokeu.Square newValue
+Sqr r7c7 : Set value to '1'
+
+INFO: Pseudokeu record #673
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #674
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '12'
+
+CONFIG: Pseudokeu record #675
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 67
+
+INFO: Pseudokeu record #676
+mhs.pseudokeu.Square newValue
+Sqr r7c7 : Set value to '12'
+
+INFO: Pseudokeu record #677
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #678
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #679
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 68
+
+INFO: Pseudokeu record #680
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '1'
+
+INFO: Pseudokeu record #681
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+INFO: Pseudokeu record #682
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '17'
+
+CONFIG: Pseudokeu record #683
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 69
+
+INFO: Pseudokeu record #684
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '17'
+
+INFO: Pseudokeu record #685
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #686
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 70
+
+INFO: Pseudokeu record #687
+mhs.pseudokeu.Square newValue
+Sqr r1c6 : Set value to '9'
+
+CONFIG: Pseudokeu record #688
+mhs.pseudokeu.Grid incBlankCount
+31 >> 30 ; numConflicts == 0
+
+INFO: Pseudokeu record #689
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #690
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '2'
+
+CONFIG: Pseudokeu record #691
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 71
+
+INFO: Pseudokeu record #692
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '2'
+
+INFO: Pseudokeu record #693
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+INFO: Pseudokeu record #694
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '27'
+
+CONFIG: Pseudokeu record #695
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 72
+
+INFO: Pseudokeu record #696
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '27'
+
+INFO: Pseudokeu record #697
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #698
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 73
+
+INFO: Pseudokeu record #699
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '3'
+
+CONFIG: Pseudokeu record #700
+mhs.pseudokeu.Grid incBlankCount
+30 >> 29 ; numConflicts == 0
+
+INFO: Pseudokeu record #701
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #702
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 74
+
+INFO: Pseudokeu record #703
+mhs.pseudokeu.Square newValue
+Sqr r1c7 : Set value to '2'
+
+CONFIG: Pseudokeu record #704
+mhs.pseudokeu.Grid incBlankCount
+29 >> 28 ; numConflicts == 0
+
+INFO: Pseudokeu record #705
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #706
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 75
+
+INFO: Pseudokeu record #707
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '3'
+
+CONFIG: Pseudokeu record #708
+mhs.pseudokeu.Grid incBlankCount
+28 >> 27 ; numConflicts == 0
+
+INFO: Pseudokeu record #709
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #710
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 76
+
+INFO: Pseudokeu record #711
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '7'
+
+CONFIG: Pseudokeu record #712
+mhs.pseudokeu.Grid incBlankCount
+27 >> 26 ; numConflicts == 0
+
+INFO: Pseudokeu record #713
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #714
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 77
+
+INFO: Pseudokeu record #715
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '2'
+
+CONFIG: Pseudokeu record #716
+mhs.pseudokeu.Grid incBlankCount
+26 >> 25 ; numConflicts == 0
+
+INFO: Pseudokeu record #717
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #718
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 78
+
+INFO: Pseudokeu record #719
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '1'
+
+CONFIG: Pseudokeu record #720
+mhs.pseudokeu.Grid incBlankCount
+25 >> 24 ; numConflicts == 0
+
+INFO: Pseudokeu record #721
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #722
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 79
+
+INFO: Pseudokeu record #723
+mhs.pseudokeu.Square newValue
+Sqr r0c2 : Set value to '9'
+
+CONFIG: Pseudokeu record #724
+mhs.pseudokeu.Grid incBlankCount
+24 >> 23 ; numConflicts == 0
+
+INFO: Pseudokeu record #725
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #726
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 80
+
+INFO: Pseudokeu record #727
+mhs.pseudokeu.Square newValue
+Sqr r2c2 : Set value to '6'
+
+CONFIG: Pseudokeu record #728
+mhs.pseudokeu.Grid incBlankCount
+23 >> 22 ; numConflicts == 0
+
+INFO: Pseudokeu record #729
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #730
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 81
+
+INFO: Pseudokeu record #731
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '1'
+
+CONFIG: Pseudokeu record #732
+mhs.pseudokeu.Grid incBlankCount
+22 >> 21 ; numConflicts == 0
+
+INFO: Pseudokeu record #733
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #734
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 82
+
+INFO: Pseudokeu record #735
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '8'
+
+CONFIG: Pseudokeu record #736
+mhs.pseudokeu.Grid incBlankCount
+21 >> 20 ; numConflicts == 0
+
+INFO: Pseudokeu record #737
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #738
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 83
+
+INFO: Pseudokeu record #739
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '3'
+
+CONFIG: Pseudokeu record #740
+mhs.pseudokeu.Grid incBlankCount
+20 >> 19 ; numConflicts == 0
+
+INFO: Pseudokeu record #741
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #742
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 84
+
+INFO: Pseudokeu record #743
+mhs.pseudokeu.Square newValue
+Sqr r2c0 : Set value to '8'
+
+CONFIG: Pseudokeu record #744
+mhs.pseudokeu.Grid incBlankCount
+19 >> 18 ; numConflicts == 0
+
+INFO: Pseudokeu record #745
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #746
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #747
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 85
+
+INFO: Pseudokeu record #748
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '6'
+
+INFO: Pseudokeu record #749
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+INFO: Pseudokeu record #750
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '67'
+
+CONFIG: Pseudokeu record #751
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 86
+
+INFO: Pseudokeu record #752
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '67'
+
+INFO: Pseudokeu record #753
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #754
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 87
+
+INFO: Pseudokeu record #755
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '7'
+
+CONFIG: Pseudokeu record #756
+mhs.pseudokeu.Grid incBlankCount
+18 >> 17 ; numConflicts == 0
+
+INFO: Pseudokeu record #757
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #758
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 88
+
+INFO: Pseudokeu record #759
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '6'
+
+CONFIG: Pseudokeu record #760
+mhs.pseudokeu.Grid incBlankCount
+17 >> 16 ; numConflicts == 0
+
+INFO: Pseudokeu record #761
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #762
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 89
+
+INFO: Pseudokeu record #763
+mhs.pseudokeu.Square newValue
+Sqr r3c1 : Set value to '8'
+
+CONFIG: Pseudokeu record #764
+mhs.pseudokeu.Grid incBlankCount
+16 >> 15 ; numConflicts == 0
+
+INFO: Pseudokeu record #765
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #766
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 90
+
+INFO: Pseudokeu record #767
+mhs.pseudokeu.Square newValue
+Sqr r4c1 : Set value to '2'
+
+CONFIG: Pseudokeu record #768
+mhs.pseudokeu.Grid incBlankCount
+15 >> 14 ; numConflicts == 0
+
+INFO: Pseudokeu record #769
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #770
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 91
+
+INFO: Pseudokeu record #771
+mhs.pseudokeu.Square newValue
+Sqr r4c3 : Set value to '9'
+
+CONFIG: Pseudokeu record #772
+mhs.pseudokeu.Grid incBlankCount
+14 >> 13 ; numConflicts == 0
+
+INFO: Pseudokeu record #773
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #774
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 92
+
+INFO: Pseudokeu record #775
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '1'
+
+CONFIG: Pseudokeu record #776
+mhs.pseudokeu.Grid incBlankCount
+13 >> 12 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #777
+mhs.pseudokeu.Loader$SavedGame display
+GAME 'SOLUTION_pain4' : length = 9 & difficulty = PAINFUL
+
+	2  1  3    8  5  4    9  7  6    
+	4  5  9    1  6  7    2  3  8    
+	8  7  6    3  9  2    5  4  1    
+	
+	6  8  4    5  3  1    7  9  2    
+	7  2  5    9  4  8    6  1  3    
+	9  3  1    2  7  6    4  8  5    
+	
+	1  9  2    7  8  5    3  6  4    
+	5  6  7    4  1  3    8  2  9    
+	3  4  8    6  2  9    1  5  7    
+
+#######################################
+
+
+SEVERE: Pseudokeu record #778
+mhs.pseudokeu.Group display
+Zone[4]
+ My Sqrs: [5][3][168] [9][4][189] [26][7][168]  V.5 F.0 G.5 O.4
+ nSqrsCanBeVal (1-9): 1|1 2|1 3|0 4|0 5|0 6|2 7|0 8|2 9|0 
+  sqrsCanBeVal (1-9): 1|5 2|6 6|68 8|58 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #779
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '17'
+
+CONFIG: Pseudokeu record #780
+mhs.pseudokeu.Grid incBlankCount
+12 >> 13 ; numConflicts == 0
+
+INFO: Pseudokeu record #781
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 91 & solvedSqr = false
+
+INFO: Pseudokeu record #782
+mhs.pseudokeu.Square newValue
+Sqr r4c3 : Set value to '29'
+
+CONFIG: Pseudokeu record #783
+mhs.pseudokeu.Grid incBlankCount
+13 >> 14 ; numConflicts == 0
+
+INFO: Pseudokeu record #784
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 90 & solvedSqr = false
+
+INFO: Pseudokeu record #785
+mhs.pseudokeu.Square newValue
+Sqr r4c1 : Set value to '128'
+
+CONFIG: Pseudokeu record #786
+mhs.pseudokeu.Grid incBlankCount
+14 >> 15 ; numConflicts == 0
+
+INFO: Pseudokeu record #787
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 89 & solvedSqr = false
+
+INFO: Pseudokeu record #788
+mhs.pseudokeu.Square newValue
+Sqr r3c1 : Set value to '18'
+
+CONFIG: Pseudokeu record #789
+mhs.pseudokeu.Grid incBlankCount
+15 >> 16 ; numConflicts == 0
+
+INFO: Pseudokeu record #790
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 88 & solvedSqr = false
+
+INFO: Pseudokeu record #791
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '67'
+
+CONFIG: Pseudokeu record #792
+mhs.pseudokeu.Grid incBlankCount
+16 >> 17 ; numConflicts == 0
+
+INFO: Pseudokeu record #793
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 87 & solvedSqr = false
+
+INFO: Pseudokeu record #794
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '278'
+
+CONFIG: Pseudokeu record #795
+mhs.pseudokeu.Grid incBlankCount
+17 >> 18 ; numConflicts == 0
+
+INFO: Pseudokeu record #796
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 86 & solvedSqr = false
+
+INFO: Pseudokeu record #797
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '6'
+
+INFO: Pseudokeu record #798
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 85 & solvedSqr = false
+
+INFO: Pseudokeu record #799
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '678'
+
+INFO: Pseudokeu record #800
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 84 & solvedSqr = false
+
+INFO: Pseudokeu record #801
+mhs.pseudokeu.Square newValue
+Sqr r2c0 : Set value to '68'
+
+CONFIG: Pseudokeu record #802
+mhs.pseudokeu.Grid incBlankCount
+18 >> 19 ; numConflicts == 0
+
+INFO: Pseudokeu record #803
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 83 & solvedSqr = false
+
+INFO: Pseudokeu record #804
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '38'
+
+CONFIG: Pseudokeu record #805
+mhs.pseudokeu.Grid incBlankCount
+19 >> 20 ; numConflicts == 0
+
+INFO: Pseudokeu record #806
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 82 & solvedSqr = false
+
+INFO: Pseudokeu record #807
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '38'
+
+CONFIG: Pseudokeu record #808
+mhs.pseudokeu.Grid incBlankCount
+20 >> 21 ; numConflicts == 0
+
+INFO: Pseudokeu record #809
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 81 & solvedSqr = false
+
+INFO: Pseudokeu record #810
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '168'
+
+CONFIG: Pseudokeu record #811
+mhs.pseudokeu.Grid incBlankCount
+21 >> 22 ; numConflicts == 0
+
+INFO: Pseudokeu record #812
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 80 & solvedSqr = false
+
+INFO: Pseudokeu record #813
+mhs.pseudokeu.Square newValue
+Sqr r2c2 : Set value to '68'
+
+CONFIG: Pseudokeu record #814
+mhs.pseudokeu.Grid incBlankCount
+22 >> 23 ; numConflicts == 0
+
+INFO: Pseudokeu record #815
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 79 & solvedSqr = false
+
+INFO: Pseudokeu record #816
+mhs.pseudokeu.Square newValue
+Sqr r0c2 : Set value to '139'
+
+CONFIG: Pseudokeu record #817
+mhs.pseudokeu.Grid incBlankCount
+23 >> 24 ; numConflicts == 0
+
+INFO: Pseudokeu record #818
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 78 & solvedSqr = false
+
+INFO: Pseudokeu record #819
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '12'
+
+CONFIG: Pseudokeu record #820
+mhs.pseudokeu.Grid incBlankCount
+24 >> 25 ; numConflicts == 0
+
+INFO: Pseudokeu record #821
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 77 & solvedSqr = false
+
+INFO: Pseudokeu record #822
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '23'
+
+CONFIG: Pseudokeu record #823
+mhs.pseudokeu.Grid incBlankCount
+25 >> 26 ; numConflicts == 0
+
+INFO: Pseudokeu record #824
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 76 & solvedSqr = false
+
+INFO: Pseudokeu record #825
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '27'
+
+CONFIG: Pseudokeu record #826
+mhs.pseudokeu.Grid incBlankCount
+26 >> 27 ; numConflicts == 0
+
+INFO: Pseudokeu record #827
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 75 & solvedSqr = false
+
+INFO: Pseudokeu record #828
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '237'
+
+CONFIG: Pseudokeu record #829
+mhs.pseudokeu.Grid incBlankCount
+27 >> 28 ; numConflicts == 0
+
+INFO: Pseudokeu record #830
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 74 & solvedSqr = false
+
+INFO: Pseudokeu record #831
+mhs.pseudokeu.Square newValue
+Sqr r1c7 : Set value to '23'
+
+CONFIG: Pseudokeu record #832
+mhs.pseudokeu.Grid incBlankCount
+28 >> 29 ; numConflicts == 0
+
+INFO: Pseudokeu record #833
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 73 & solvedSqr = false
+
+INFO: Pseudokeu record #834
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '39'
+
+CONFIG: Pseudokeu record #835
+mhs.pseudokeu.Grid incBlankCount
+29 >> 30 ; numConflicts == 0
+
+INFO: Pseudokeu record #836
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 72 & solvedSqr = false
+
+INFO: Pseudokeu record #837
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '2'
+
+INFO: Pseudokeu record #838
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 71 & solvedSqr = false
+
+INFO: Pseudokeu record #839
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '279'
+
+INFO: Pseudokeu record #840
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 70 & solvedSqr = false
+
+INFO: Pseudokeu record #841
+mhs.pseudokeu.Square newValue
+Sqr r1c6 : Set value to '29'
+
+CONFIG: Pseudokeu record #842
+mhs.pseudokeu.Grid incBlankCount
+30 >> 31 ; numConflicts == 0
+
+INFO: Pseudokeu record #843
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 69 & solvedSqr = false
+
+SEVERE: Pseudokeu record #844
+mhs.pseudokeu.Loader$SavedGame display
+GAME 'SOLUTION_pain4' : length = 9 & difficulty = PAINFUL
+
+	2  1  3    8  5  4    9  7  6    
+	4  5  9    1  6  7    2  3  8    
+	8  7  6    3  9  2    5  4  1    
+	
+	6  8  4    5  3  1    7  9  2    
+	7  2  5    9  4  8    6  1  3    
+	9  3  1    2  7  6    4  8  5    
+	
+	1  9  2    7  8  5    3  6  4    
+	5  6  7    4  1  3    8  2  9    
+	3  4  8    6  2  9    1  5  7    
+
+#######################################
+
+
+SEVERE: Pseudokeu record #845
+mhs.pseudokeu.Square display
+ Sqr r0c6_z2/A = 279/temp (OPEN): nPV.3 SV.0 PV.644
+ nGrpSqrsWithVal (1-9): 1|1 2|0 3|1 4|3 5|2 6|2 7|0 8|3 9|0 
+    possibleVals (1-9): 2 7 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #846
+mhs.pseudokeu.Square display
+ Sqr r0c7_z2/A = 237/temp (OPEN): nPV.3 SV.0 PV.140
+ nGrpSqrsWithVal (1-9): 1|1 2|0 3|0 4|2 5|3 6|2 7|0 8|2 9|1 
+    possibleVals (1-9): 2 3 7 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #847
+mhs.pseudokeu.Square display
+ Sqr r0c2_z0/A = 139/temp (OPEN): nPV.3 SV.0 PV.522
+ nGrpSqrsWithVal (1-9): 1|0 2|1 3|0 4|3 5|3 6|1 7|2 8|1 9|0 
+    possibleVals (1-9): 1 3 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #848
+mhs.pseudokeu.Square display
+ Sqr r5c2_z3/A = 168/temp (OPEN): nPV.3 SV.0 PV.322
+ nGrpSqrsWithVal (1-9): 1|0 2|1 3|1 4|2 5|2 6|0 7|2 8|0 9|1 
+    possibleVals (1-9): 1 6 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #849
+mhs.pseudokeu.Square display
+ Sqr r3c5_z4/A = 168/temp (OPEN): nPV.3 SV.0 PV.322
+ nGrpSqrsWithVal (1-9): 1|0 2|2 3|2 4|3 5|2 6|0 7|2 8|0 9|1 
+    possibleVals (1-9): 1 6 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #850
+mhs.pseudokeu.Square display
+ Sqr r4c5_z4/A = 189/temp (OPEN): nPV.3 SV.0 PV.770
+ nGrpSqrsWithVal (1-9): 1|0 2|1 3|3 4|2 5|3 6|1 7|2 8|0 9|0 
+    possibleVals (1-9): 1 8 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #851
+mhs.pseudokeu.Square display
+ Sqr r5c5_z4/A = 168/temp (OPEN): nPV.3 SV.0 PV.322
+ nGrpSqrsWithVal (1-9): 1|0 2|1 3|3 4|3 5|3 6|0 7|2 8|0 9|1 
+    possibleVals (1-9): 1 6 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #852
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #853
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 70
+
+INFO: Pseudokeu record #854
+mhs.pseudokeu.Square newValue
+Sqr r5c3 : Set value to '2'
+
+CONFIG: Pseudokeu record #855
+mhs.pseudokeu.Grid incBlankCount
+31 >> 30 ; numConflicts == 0
+
+INFO: Pseudokeu record #856
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #857
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 71
+
+INFO: Pseudokeu record #858
+mhs.pseudokeu.Square newValue
+Sqr r4c3 : Set value to '9'
+
+CONFIG: Pseudokeu record #859
+mhs.pseudokeu.Grid incBlankCount
+30 >> 29 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #860
+mhs.pseudokeu.Loader$SavedGame display
+GAME 'SOLUTION_pain4' : length = 9 & difficulty = PAINFUL
+
+	2  1  3    8  5  4    9  7  6    
+	4  5  9    1  6  7    2  3  8    
+	8  7  6    3  9  2    5  4  1    
+	
+	6  8  4    5  3  1    7  9  2    
+	7  2  5    9  4  8    6  1  3    
+	9  3  1    2  7  6    4  8  5    
+	
+	1  9  2    7  8  5    3  6  4    
+	5  6  7    4  1  3    8  2  9    
+	3  4  8    6  2  9    1  5  7    
+
+#######################################
+
+
+INFO: Pseudokeu record #861
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #862
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 72
+
+INFO: Pseudokeu record #863
+mhs.pseudokeu.Square newValue
+Sqr r8c3 : Set value to '6'
+
+CONFIG: Pseudokeu record #864
+mhs.pseudokeu.Grid incBlankCount
+29 >> 28 ; numConflicts == 0
+
+INFO: Pseudokeu record #865
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #866
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 73
+
+INFO: Pseudokeu record #867
+mhs.pseudokeu.Square newValue
+Sqr r8c5 : Set value to '9'
+
+CONFIG: Pseudokeu record #868
+mhs.pseudokeu.Grid incBlankCount
+28 >> 27 ; numConflicts == 0
+
+INFO: Pseudokeu record #869
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #870
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #871
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 74
+
+INFO: Pseudokeu record #872
+mhs.pseudokeu.Square newValue
+Sqr r4c5 : Set value to '1'
+
+INFO: Pseudokeu record #873
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+INFO: Pseudokeu record #874
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '18'
+
+CONFIG: Pseudokeu record #875
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 75
+
+INFO: Pseudokeu record #876
+mhs.pseudokeu.Square newValue
+Sqr r4c5 : Set value to '18'
+
+SEVERE: Pseudokeu record #877
+mhs.pseudokeu.Square display
+ Sqr r5c5_z4/A = 168/temp (OPEN): nPV.3 SV.0 PV.322
+ nGrpSqrsWithVal (1-9): 1|0 2|2 3|3 4|3 5|3 6|0 7|2 8|0 9|3 
+    possibleVals (1-9): 1 6 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #878
+mhs.pseudokeu.Square display
+ Sqr r3c5_z4/A = 168/temp (OPEN): nPV.3 SV.0 PV.322
+ nGrpSqrsWithVal (1-9): 1|0 2|3 3|2 4|3 5|2 6|0 7|2 8|0 9|3 
+    possibleVals (1-9): 1 6 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #879
+mhs.pseudokeu.Square display
+ Sqr r3c0_z3/A = 678/temp (OPEN): nPV.3 SV.0 PV.448
+ nGrpSqrsWithVal (1-9): 1|1 2|1 3|2 4|2 5|3 6|0 7|0 8|0 9|2 
+    possibleVals (1-9): 6 7 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #880
+mhs.pseudokeu.Square display
+ Sqr r4c0_z3/A = 278/temp (OPEN): nPV.3 SV.0 PV.388
+ nGrpSqrsWithVal (1-9): 1|1 2|0 3|2 4|3 5|2 6|1 7|0 8|0 9|2 
+    possibleVals (1-9): 2 7 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #881
+mhs.pseudokeu.Square display
+ Sqr r4c1_z3/A = 128/temp (OPEN): nPV.3 SV.0 PV.262
+ nGrpSqrsWithVal (1-9): 1|0 2|0 3|2 4|3 5|2 6|2 7|1 8|0 9|3 
+    possibleVals (1-9): 1 2 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #882
+mhs.pseudokeu.Square display
+ Sqr r5c5_z4/A = 168/temp (OPEN): nPV.3 SV.0 PV.322
+ nGrpSqrsWithVal (1-9): 1|0 2|2 3|3 4|3 5|3 6|0 7|2 8|0 9|3 
+    possibleVals (1-9): 1 6 8 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #883
+mhs.pseudokeu.Group display
+Col[2]
+ My Sqrs: [139][39][68] [4][5][168] [2][7][38]  V.4 F.3 G.1 O.5
+ nSqrsCanBeVal (1-9): 1|2 2|0 3|3 4|0 5|0 6|2 7|0 8|3 9|2 
+  sqrsCanBeVal (1-9): 1|05 3|018 6|25 8|258 9|01 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #884
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #885
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 76
+
+INFO: Pseudokeu record #886
+mhs.pseudokeu.Square newValue
+Sqr r4c7 : Set value to '7'
+
+CONFIG: Pseudokeu record #887
+mhs.pseudokeu.Grid incBlankCount
+27 >> 26 ; numConflicts == 0
+
+INFO: Pseudokeu record #888
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #889
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 77
+
+INFO: Pseudokeu record #890
+mhs.pseudokeu.Square newValue
+Sqr r5c5 : Set value to '6'
+
+CONFIG: Pseudokeu record #891
+mhs.pseudokeu.Grid incBlankCount
+26 >> 25 ; numConflicts == 0
+
+INFO: Pseudokeu record #892
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #893
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 78
+
+INFO: Pseudokeu record #894
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '1'
+
+CONFIG: Pseudokeu record #895
+mhs.pseudokeu.Grid incBlankCount
+25 >> 24 ; numConflicts == 0
+
+INFO: Pseudokeu record #896
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #897
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 79
+
+INFO: Pseudokeu record #898
+mhs.pseudokeu.Square newValue
+Sqr r5c7 : Set value to '8'
+
+CONFIG: Pseudokeu record #899
+mhs.pseudokeu.Grid incBlankCount
+24 >> 23 ; numConflicts == 0
+
+INFO: Pseudokeu record #900
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #901
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '2'
+
+CONFIG: Pseudokeu record #902
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 80
+
+INFO: Pseudokeu record #903
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '2'
+
+INFO: Pseudokeu record #904
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+INFO: Pseudokeu record #905
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '23'
+
+CONFIG: Pseudokeu record #906
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 81
+
+INFO: Pseudokeu record #907
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '23'
+
+INFO: Pseudokeu record #908
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #909
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 82
+
+INFO: Pseudokeu record #910
+mhs.pseudokeu.Square newValue
+Sqr r7c7 : Set value to '1'
+
+CONFIG: Pseudokeu record #911
+mhs.pseudokeu.Grid incBlankCount
+23 >> 22 ; numConflicts == 0
+
+INFO: Pseudokeu record #912
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #913
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 83
+
+INFO: Pseudokeu record #914
+mhs.pseudokeu.Square newValue
+Sqr r7c4 : Set value to '2'
+
+CONFIG: Pseudokeu record #915
+mhs.pseudokeu.Grid incBlankCount
+22 >> 21 ; numConflicts == 0
+
+INFO: Pseudokeu record #916
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #917
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 84
+
+INFO: Pseudokeu record #918
+mhs.pseudokeu.Square newValue
+Sqr r8c4 : Set value to '1'
+
+CONFIG: Pseudokeu record #919
+mhs.pseudokeu.Grid incBlankCount
+21 >> 20 ; numConflicts == 0
+
+INFO: Pseudokeu record #920
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #921
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 85
+
+INFO: Pseudokeu record #922
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '2'
+
+CONFIG: Pseudokeu record #923
+mhs.pseudokeu.Grid incBlankCount
+20 >> 19 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #924
+mhs.pseudokeu.Loader$SavedGame display
+GAME 'SOLUTION_pain4' : length = 9 & difficulty = PAINFUL
+
+	2  1  3    8  5  4    9  7  6    
+	4  5  9    1  6  7    2  3  8    
+	8  7  6    3  9  2    5  4  1    
+	
+	6  8  4    5  3  1    7  9  2    
+	7  2  5    9  4  8    6  1  3    
+	9  3  1    2  7  6    4  8  5    
+	
+	1  9  2    7  8  5    3  6  4    
+	5  6  7    4  1  3    8  2  9    
+	3  4  8    6  2  9    1  5  7    
+
+#######################################
+
+
+INFO: Pseudokeu record #925
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '12'
+
+CONFIG: Pseudokeu record #926
+mhs.pseudokeu.Grid incBlankCount
+19 >> 20 ; numConflicts == 0
+
+INFO: Pseudokeu record #927
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 84 & solvedSqr = false
+
+INFO: Pseudokeu record #928
+mhs.pseudokeu.Square newValue
+Sqr r8c4 : Set value to '12'
+
+CONFIG: Pseudokeu record #929
+mhs.pseudokeu.Grid incBlankCount
+20 >> 21 ; numConflicts == 0
+
+INFO: Pseudokeu record #930
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 83 & solvedSqr = false
+
+INFO: Pseudokeu record #931
+mhs.pseudokeu.Square newValue
+Sqr r7c4 : Set value to '12'
+
+CONFIG: Pseudokeu record #932
+mhs.pseudokeu.Grid incBlankCount
+21 >> 22 ; numConflicts == 0
+
+INFO: Pseudokeu record #933
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 82 & solvedSqr = false
+
+INFO: Pseudokeu record #934
+mhs.pseudokeu.Square newValue
+Sqr r7c7 : Set value to '12'
+
+CONFIG: Pseudokeu record #935
+mhs.pseudokeu.Grid incBlankCount
+22 >> 23 ; numConflicts == 0
+
+INFO: Pseudokeu record #936
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 81 & solvedSqr = false
+
+INFO: Pseudokeu record #937
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '2'
+
+INFO: Pseudokeu record #938
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 80 & solvedSqr = false
+
+INFO: Pseudokeu record #939
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '237'
+
+INFO: Pseudokeu record #940
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 79 & solvedSqr = false
+
+INFO: Pseudokeu record #941
+mhs.pseudokeu.Square newValue
+Sqr r5c7 : Set value to '18'
+
+CONFIG: Pseudokeu record #942
+mhs.pseudokeu.Grid incBlankCount
+23 >> 24 ; numConflicts == 0
+
+INFO: Pseudokeu record #943
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 78 & solvedSqr = false
+
+INFO: Pseudokeu record #944
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '17'
+
+CONFIG: Pseudokeu record #945
+mhs.pseudokeu.Grid incBlankCount
+24 >> 25 ; numConflicts == 0
+
+INFO: Pseudokeu record #946
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 77 & solvedSqr = false
+
+INFO: Pseudokeu record #947
+mhs.pseudokeu.Square newValue
+Sqr r5c5 : Set value to '168'
+
+CONFIG: Pseudokeu record #948
+mhs.pseudokeu.Grid incBlankCount
+25 >> 26 ; numConflicts == 0
+
+INFO: Pseudokeu record #949
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 76 & solvedSqr = false
+
+INFO: Pseudokeu record #950
+mhs.pseudokeu.Square newValue
+Sqr r4c7 : Set value to '178'
+
+CONFIG: Pseudokeu record #951
+mhs.pseudokeu.Grid incBlankCount
+26 >> 27 ; numConflicts == 0
+
+INFO: Pseudokeu record #952
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 75 & solvedSqr = false
+
+SEVERE: Pseudokeu record #953
+mhs.pseudokeu.Loader$SavedGame display
+GAME 'SOLUTION_pain4' : length = 9 & difficulty = PAINFUL
+
+	2  1  3    8  5  4    9  7  6    
+	4  5  9    1  6  7    2  3  8    
+	8  7  6    3  9  2    5  4  1    
+	
+	6  8  4    5  3  1    7  9  2    
+	7  2  5    9  4  8    6  1  3    
+	9  3  1    2  7  6    4  8  5    
+	
+	1  9  2    7  8  5    3  6  4    
+	5  6  7    4  1  3    8  2  9    
+	3  4  8    6  2  9    1  5  7    
+
+#######################################
+
+
+INFO: Pseudokeu record #954
+mhs.pseudokeu.Launcher$GameListener actionPerformed
+Reveal a WRONG value (if any) event
+
+INFO: Pseudokeu record #955
+mhs.pseudokeu.Grid findWrongGuess
+Reveal a WRONG guess, if any
+
+INFO: Pseudokeu record #956
+mhs.pseudokeu.Grid setPossibleValsAsTempVals
+
+
+INFO: Pseudokeu record #957
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+INFO: Pseudokeu record #958
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '1'
+
+CONFIG: Pseudokeu record #959
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 76
+
+INFO: Pseudokeu record #960
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '1'
+
+INFO: Pseudokeu record #961
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #962
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '16'
+
+CONFIG: Pseudokeu record #963
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 77
+
+INFO: Pseudokeu record #964
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '16'
+
+INFO: Pseudokeu record #965
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+INFO: Pseudokeu record #966
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '6'
+
+CONFIG: Pseudokeu record #967
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 78
+
+INFO: Pseudokeu record #968
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '6'
+
+INFO: Pseudokeu record #969
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+INFO: Pseudokeu record #970
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '67'
+
+CONFIG: Pseudokeu record #971
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 79
+
+INFO: Pseudokeu record #972
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '67'
+
+INFO: Pseudokeu record #973
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+INFO: Pseudokeu record #974
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '2'
+
+CONFIG: Pseudokeu record #975
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 80
+
+INFO: Pseudokeu record #976
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '2'
+
+INFO: Pseudokeu record #977
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+INFO: Pseudokeu record #978
+mhs.pseudokeu.Grid handleTempMode
+Temp value is now '27'
+
+CONFIG: Pseudokeu record #979
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 81
+
+INFO: Pseudokeu record #980
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '27'
+
+SEVERE: Pseudokeu record #981
+mhs.pseudokeu.Loader$SavedGame display
+GAME 'SOLUTION_pain4' : length = 9 & difficulty = PAINFUL
+
+	2  1  3    8  5  4    9  7  6    
+	4  5  9    1  6  7    2  3  8    
+	8  7  6    3  9  2    5  4  1    
+	
+	6  8  4    5  3  1    7  9  2    
+	7  2  5    9  4  8    6  1  3    
+	9  3  1    2  7  6    4  8  5    
+	
+	1  9  2    7  8  5    3  6  4    
+	5  6  7    4  1  3    8  2  9    
+	3  4  8    6  2  9    1  5  7    
+
+#######################################
+
+
+SEVERE: Pseudokeu record #982
+mhs.pseudokeu.Group display
+Row[0]
+ My Sqrs: [23][12][139] [8][5][4] [279][237][6]  V.4 F.0 G.4 O.5
+ nSqrsCanBeVal (1-9): 1|2 2|4 3|3 4|0 5|0 6|0 7|2 8|0 9|2 
+  sqrsCanBeVal (1-9): 1|12 2|0167 3|027 7|67 9|26 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #983
+mhs.pseudokeu.Square display
+ Sqr r0c2_z0/A = 139/temp (OPEN): nPV.3 SV.0 PV.522
+ nGrpSqrsWithVal (1-9): 1|0 2|1 3|0 4|3 5|3 6|1 7|2 8|1 9|0 
+    possibleVals (1-9): 1 3 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #984
+mhs.pseudokeu.Square display
+ Sqr r0c6_z2/A = 279/temp (OPEN): nPV.3 SV.0 PV.644
+ nGrpSqrsWithVal (1-9): 1|1 2|0 3|1 4|3 5|2 6|2 7|0 8|3 9|0 
+    possibleVals (1-9): 2 7 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #985
+mhs.pseudokeu.Square display
+ Sqr r1c6_z2/A = 29/temp (OPEN): nPV.2 SV.0 PV.516
+ nGrpSqrsWithVal (1-9): 1|2 2|0 3|1 4|3 5|2 6|3 7|1 8|2 9|0 
+    possibleVals (1-9): 2 9 
+     excludeVals (1-9): 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #986
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #987
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 82
+
+INFO: Pseudokeu record #988
+mhs.pseudokeu.Square newValue
+Sqr r2c0 : Set value to '6'
+
+CONFIG: Pseudokeu record #989
+mhs.pseudokeu.Grid incBlankCount
+27 >> 26 ; numConflicts == 0
+
+INFO: Pseudokeu record #990
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #991
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 83
+
+INFO: Pseudokeu record #992
+mhs.pseudokeu.Square newValue
+Sqr r2c2 : Set value to '8'
+
+CONFIG: Pseudokeu record #993
+mhs.pseudokeu.Grid incBlankCount
+26 >> 25 ; numConflicts == 0
+
+INFO: Pseudokeu record #994
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #995
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 84
+
+INFO: Pseudokeu record #996
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '7'
+
+CONFIG: Pseudokeu record #997
+mhs.pseudokeu.Grid incBlankCount
+25 >> 24 ; numConflicts == 0
+
+INFO: Pseudokeu record #998
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #999
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 85
+
+INFO: Pseudokeu record #1000
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '2'
+
+CONFIG: Pseudokeu record #1001
+mhs.pseudokeu.Grid incBlankCount
+24 >> 23 ; numConflicts == 0
+
+INFO: Pseudokeu record #1002
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #1003
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 86
+
+INFO: Pseudokeu record #1004
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '3'
+
+CONFIG: Pseudokeu record #1005
+mhs.pseudokeu.Grid incBlankCount
+23 >> 22 ; numConflicts == 0
+
+INFO: Pseudokeu record #1006
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #1007
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 87
+
+INFO: Pseudokeu record #1008
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '8'
+
+CONFIG: Pseudokeu record #1009
+mhs.pseudokeu.Grid incBlankCount
+22 >> 21 ; numConflicts == 0
+
+INFO: Pseudokeu record #1010
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #1011
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 88
+
+INFO: Pseudokeu record #1012
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '3'
+
+CONFIG: Pseudokeu record #1013
+mhs.pseudokeu.Grid incBlankCount
+21 >> 20 ; numConflicts == 0
+
+INFO: Pseudokeu record #1014
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #1015
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 89
+
+INFO: Pseudokeu record #1016
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '9'
+
+CONFIG: Pseudokeu record #1017
+mhs.pseudokeu.Grid incBlankCount
+20 >> 19 ; numConflicts == 0
+
+INFO: Pseudokeu record #1018
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #1019
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 90
+
+INFO: Pseudokeu record #1020
+mhs.pseudokeu.Square newValue
+Sqr r1c6 : Set value to '2'
+
+CONFIG: Pseudokeu record #1021
+mhs.pseudokeu.Grid incBlankCount
+19 >> 18 ; numConflicts == 0
+
+INFO: Pseudokeu record #1022
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #1023
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 91
+
+INFO: Pseudokeu record #1024
+mhs.pseudokeu.Square newValue
+Sqr r1c7 : Set value to '3'
+
+CONFIG: Pseudokeu record #1025
+mhs.pseudokeu.Grid incBlankCount
+18 >> 17 ; numConflicts == 0
+
+INFO: Pseudokeu record #1026
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #1027
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 92
+
+INFO: Pseudokeu record #1028
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '7'
+
+CONFIG: Pseudokeu record #1029
+mhs.pseudokeu.Grid incBlankCount
+17 >> 16 ; numConflicts == 0
+
+INFO: Pseudokeu record #1030
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #1031
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 93
+
+INFO: Pseudokeu record #1032
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '9'
+
+CONFIG: Pseudokeu record #1033
+mhs.pseudokeu.Grid incBlankCount
+16 >> 15 ; numConflicts == 0
+
+INFO: Pseudokeu record #1034
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #1035
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 94
+
+INFO: Pseudokeu record #1036
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '2'
+
+CONFIG: Pseudokeu record #1037
+mhs.pseudokeu.Grid incBlankCount
+15 >> 14 ; numConflicts == 0
+
+INFO: Pseudokeu record #1038
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1039
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 95
+
+INFO: Pseudokeu record #1040
+mhs.pseudokeu.Square newValue
+Sqr r0c2 : Set value to '1'
+
+CONFIG: Pseudokeu record #1041
+mhs.pseudokeu.Grid incBlankCount
+14 >> 13 ; numConflicts == 0
+
+INFO: Pseudokeu record #1042
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #1043
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 96
+
+INFO: Pseudokeu record #1044
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '6'
+
+CONFIG: Pseudokeu record #1045
+mhs.pseudokeu.Grid incBlankCount
+13 >> 12 ; numConflicts == 0
+
+INFO: Pseudokeu record #1046
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1047
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 97
+
+INFO: Pseudokeu record #1048
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '1'
+
+CONFIG: Pseudokeu record #1049
+mhs.pseudokeu.Grid incBlankCount
+12 >> 11 ; numConflicts == 0
+
+INFO: Pseudokeu record #1050
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #1051
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 98
+
+INFO: Pseudokeu record #1052
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '7'
+
+CONFIG: Pseudokeu record #1053
+mhs.pseudokeu.Grid incBlankCount
+11 >> 10 ; numConflicts == 0
+
+SEVERE: Pseudokeu record #1054
+mhs.pseudokeu.Grid incConflicts
+INCREASE to '1' for Sqr r3c6
+
+INFO: Pseudokeu record #1055
+mhs.pseudokeu.Launcher setConflicts
+<html><font color=red><b>*** PROBLEM WITH VALUES ***</b></font></html> ; flip == false
+
+SEVERE: Pseudokeu record #1056
+mhs.pseudokeu.Grid incConflicts
+INCREASE to '2' for Sqr r3c0
+
+INFO: Pseudokeu record #1057
+mhs.pseudokeu.Launcher setConflicts
+<html><font color=red><b>*** PROBLEM WITH VALUES ***</b></font></html> ; flip == false
+
+SEVERE: Pseudokeu record #1058
+mhs.pseudokeu.Group display
+Zone[5]
+ My Sqrs: [7][9][2] [6][178][3] [4][18][5]  V.7 F.4 G.3 O.2
+ nSqrsCanBeVal (1-9): 1|2 2|0 3|0 4|0 5|0 6|0 7|0 8|2 9|0 
+  sqrsCanBeVal (1-9): 1|47 8|47 
+-----------------------------------------------------------------
+
+SEVERE: Pseudokeu record #1059
+mhs.pseudokeu.Group display
+Zone[5]
+ My Sqrs: [7][9][2] [6][178][3] [4][18][5]  V.7 F.4 G.3 O.2
+ nSqrsCanBeVal (1-9): 1|2 2|0 3|0 4|0 5|0 6|0 7|0 8|2 9|0 
+  sqrsCanBeVal (1-9): 1|47 8|47 
+-----------------------------------------------------------------
+
+INFO: Pseudokeu record #1060
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '17'
+
+CONFIG: Pseudokeu record #1061
+mhs.pseudokeu.Grid incBlankCount
+10 >> 11 ; numConflicts == 2
+
+SEVERE: Pseudokeu record #1062
+mhs.pseudokeu.Grid incConflicts
+DECREASE to '1' for Sqr r3c6
+
+INFO: Pseudokeu record #1063
+mhs.pseudokeu.Launcher setConflicts
+<html><font color=red><b>*** PROBLEM WITH VALUES ***</b></font></html> ; flip == false
+
+SEVERE: Pseudokeu record #1064
+mhs.pseudokeu.Grid incConflicts
+DECREASE to '0' for Sqr r3c0
+
+INFO: Pseudokeu record #1065
+mhs.pseudokeu.Launcher setConflicts
+<html><font color=green><b>NO conflicting values</b></font></html> ; flip == false
+
+INFO: Pseudokeu record #1066
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 97 & solvedSqr = false
+
+INFO: Pseudokeu record #1067
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '12'
+
+CONFIG: Pseudokeu record #1068
+mhs.pseudokeu.Grid incBlankCount
+11 >> 12 ; numConflicts == 0
+
+INFO: Pseudokeu record #1069
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 96 & solvedSqr = false
+
+INFO: Pseudokeu record #1070
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '16'
+
+CONFIG: Pseudokeu record #1071
+mhs.pseudokeu.Grid incBlankCount
+12 >> 13 ; numConflicts == 0
+
+INFO: Pseudokeu record #1072
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 95 & solvedSqr = false
+
+INFO: Pseudokeu record #1073
+mhs.pseudokeu.Square newValue
+Sqr r0c2 : Set value to '139'
+
+CONFIG: Pseudokeu record #1074
+mhs.pseudokeu.Grid incBlankCount
+13 >> 14 ; numConflicts == 0
+
+INFO: Pseudokeu record #1075
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 94 & solvedSqr = false
+
+INFO: Pseudokeu record #1076
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '12'
+
+CONFIG: Pseudokeu record #1077
+mhs.pseudokeu.Grid incBlankCount
+14 >> 15 ; numConflicts == 0
+
+INFO: Pseudokeu record #1078
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 93 & solvedSqr = false
+
+INFO: Pseudokeu record #1079
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '279'
+
+CONFIG: Pseudokeu record #1080
+mhs.pseudokeu.Grid incBlankCount
+15 >> 16 ; numConflicts == 0
+
+INFO: Pseudokeu record #1081
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 92 & solvedSqr = false
+
+INFO: Pseudokeu record #1082
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '237'
+
+CONFIG: Pseudokeu record #1083
+mhs.pseudokeu.Grid incBlankCount
+16 >> 17 ; numConflicts == 0
+
+INFO: Pseudokeu record #1084
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 91 & solvedSqr = false
+
+INFO: Pseudokeu record #1085
+mhs.pseudokeu.Square newValue
+Sqr r1c7 : Set value to '23'
+
+CONFIG: Pseudokeu record #1086
+mhs.pseudokeu.Grid incBlankCount
+17 >> 18 ; numConflicts == 0
+
+INFO: Pseudokeu record #1087
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 90 & solvedSqr = false
+
+INFO: Pseudokeu record #1088
+mhs.pseudokeu.Square newValue
+Sqr r1c6 : Set value to '29'
+
+CONFIG: Pseudokeu record #1089
+mhs.pseudokeu.Grid incBlankCount
+18 >> 19 ; numConflicts == 0
+
+INFO: Pseudokeu record #1090
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 89 & solvedSqr = false
+
+INFO: Pseudokeu record #1091
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '39'
+
+CONFIG: Pseudokeu record #1092
+mhs.pseudokeu.Grid incBlankCount
+19 >> 20 ; numConflicts == 0
+
+INFO: Pseudokeu record #1093
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 88 & solvedSqr = false
+
+INFO: Pseudokeu record #1094
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '38'
+
+CONFIG: Pseudokeu record #1095
+mhs.pseudokeu.Grid incBlankCount
+20 >> 21 ; numConflicts == 0
+
+INFO: Pseudokeu record #1096
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 87 & solvedSqr = false
+
+INFO: Pseudokeu record #1097
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '38'
+
+CONFIG: Pseudokeu record #1098
+mhs.pseudokeu.Grid incBlankCount
+21 >> 22 ; numConflicts == 0
+
+INFO: Pseudokeu record #1099
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 86 & solvedSqr = false
+
+INFO: Pseudokeu record #1100
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '23'
+
+CONFIG: Pseudokeu record #1101
+mhs.pseudokeu.Grid incBlankCount
+22 >> 23 ; numConflicts == 0
+
+INFO: Pseudokeu record #1102
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 85 & solvedSqr = false
+
+INFO: Pseudokeu record #1103
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '27'
+
+CONFIG: Pseudokeu record #1104
+mhs.pseudokeu.Grid incBlankCount
+23 >> 24 ; numConflicts == 0
+
+INFO: Pseudokeu record #1105
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 84 & solvedSqr = false
+
+INFO: Pseudokeu record #1106
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '67'
+
+CONFIG: Pseudokeu record #1107
+mhs.pseudokeu.Grid incBlankCount
+24 >> 25 ; numConflicts == 0
+
+INFO: Pseudokeu record #1108
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 83 & solvedSqr = false
+
+INFO: Pseudokeu record #1109
+mhs.pseudokeu.Square newValue
+Sqr r2c2 : Set value to '68'
+
+CONFIG: Pseudokeu record #1110
+mhs.pseudokeu.Grid incBlankCount
+25 >> 26 ; numConflicts == 0
+
+INFO: Pseudokeu record #1111
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 82 & solvedSqr = false
+
+INFO: Pseudokeu record #1112
+mhs.pseudokeu.Square newValue
+Sqr r2c0 : Set value to '68'
+
+CONFIG: Pseudokeu record #1113
+mhs.pseudokeu.Grid incBlankCount
+26 >> 27 ; numConflicts == 0
+
+INFO: Pseudokeu record #1114
+mhs.pseudokeu.Grid undoLastValue
+undoPtr = 81 & solvedSqr = false
+
+INFO: Pseudokeu record #1115
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #1116
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 82
+
+INFO: Pseudokeu record #1117
+mhs.pseudokeu.Square newValue
+Sqr r2c0 : Set value to '8'
+
+CONFIG: Pseudokeu record #1118
+mhs.pseudokeu.Grid incBlankCount
+27 >> 26 ; numConflicts == 0
+
+INFO: Pseudokeu record #1119
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #1120
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 83
+
+INFO: Pseudokeu record #1121
+mhs.pseudokeu.Square newValue
+Sqr r2c2 : Set value to '6'
+
+CONFIG: Pseudokeu record #1122
+mhs.pseudokeu.Grid incBlankCount
+26 >> 25 ; numConflicts == 0
+
+INFO: Pseudokeu record #1123
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #1124
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 84
+
+INFO: Pseudokeu record #1125
+mhs.pseudokeu.Square newValue
+Sqr r8c0 : Set value to '3'
+
+CONFIG: Pseudokeu record #1126
+mhs.pseudokeu.Grid incBlankCount
+25 >> 24 ; numConflicts == 0
+
+INFO: Pseudokeu record #1127
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #1128
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 85
+
+INFO: Pseudokeu record #1129
+mhs.pseudokeu.Square newValue
+Sqr r0c0 : Set value to '2'
+
+CONFIG: Pseudokeu record #1130
+mhs.pseudokeu.Grid incBlankCount
+24 >> 23 ; numConflicts == 0
+
+INFO: Pseudokeu record #1131
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1132
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 86
+
+INFO: Pseudokeu record #1133
+mhs.pseudokeu.Square newValue
+Sqr r0c1 : Set value to '1'
+
+CONFIG: Pseudokeu record #1134
+mhs.pseudokeu.Grid incBlankCount
+23 >> 22 ; numConflicts == 0
+
+INFO: Pseudokeu record #1135
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #1136
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 87
+
+INFO: Pseudokeu record #1137
+mhs.pseudokeu.Square newValue
+Sqr r3c1 : Set value to '8'
+
+CONFIG: Pseudokeu record #1138
+mhs.pseudokeu.Grid incBlankCount
+22 >> 21 ; numConflicts == 0
+
+INFO: Pseudokeu record #1139
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #1140
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 88
+
+INFO: Pseudokeu record #1141
+mhs.pseudokeu.Square newValue
+Sqr r4c1 : Set value to '2'
+
+CONFIG: Pseudokeu record #1142
+mhs.pseudokeu.Grid incBlankCount
+21 >> 20 ; numConflicts == 0
+
+INFO: Pseudokeu record #1143
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #1144
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 89
+
+INFO: Pseudokeu record #1145
+mhs.pseudokeu.Square newValue
+Sqr r4c0 : Set value to '7'
+
+CONFIG: Pseudokeu record #1146
+mhs.pseudokeu.Grid incBlankCount
+20 >> 19 ; numConflicts == 0
+
+INFO: Pseudokeu record #1147
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #1148
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 90
+
+INFO: Pseudokeu record #1149
+mhs.pseudokeu.Square newValue
+Sqr r3c0 : Set value to '6'
+
+CONFIG: Pseudokeu record #1150
+mhs.pseudokeu.Grid incBlankCount
+19 >> 18 ; numConflicts == 0
+
+INFO: Pseudokeu record #1151
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #1152
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 91
+
+INFO: Pseudokeu record #1153
+mhs.pseudokeu.Square newValue
+Sqr r3c6 : Set value to '7'
+
+CONFIG: Pseudokeu record #1154
+mhs.pseudokeu.Grid incBlankCount
+18 >> 17 ; numConflicts == 0
+
+INFO: Pseudokeu record #1155
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #1156
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 92
+
+INFO: Pseudokeu record #1157
+mhs.pseudokeu.Square newValue
+Sqr r1c7 : Set value to '3'
+
+CONFIG: Pseudokeu record #1158
+mhs.pseudokeu.Grid incBlankCount
+17 >> 16 ; numConflicts == 0
+
+INFO: Pseudokeu record #1159
+mhs.pseudokeu.Grid newValue
+New Square value == 7
+
+CONFIG: Pseudokeu record #1160
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 93
+
+INFO: Pseudokeu record #1161
+mhs.pseudokeu.Square newValue
+Sqr r0c7 : Set value to '7'
+
+CONFIG: Pseudokeu record #1162
+mhs.pseudokeu.Grid incBlankCount
+16 >> 15 ; numConflicts == 0
+
+INFO: Pseudokeu record #1163
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #1164
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 94
+
+INFO: Pseudokeu record #1165
+mhs.pseudokeu.Square newValue
+Sqr r0c6 : Set value to '9'
+
+CONFIG: Pseudokeu record #1166
+mhs.pseudokeu.Grid incBlankCount
+15 >> 14 ; numConflicts == 0
+
+INFO: Pseudokeu record #1167
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #1168
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 95
+
+INFO: Pseudokeu record #1169
+mhs.pseudokeu.Square newValue
+Sqr r1c6 : Set value to '2'
+
+CONFIG: Pseudokeu record #1170
+mhs.pseudokeu.Grid incBlankCount
+14 >> 13 ; numConflicts == 0
+
+INFO: Pseudokeu record #1171
+mhs.pseudokeu.Grid newValue
+New Square value == 9
+
+CONFIG: Pseudokeu record #1172
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 96
+
+INFO: Pseudokeu record #1173
+mhs.pseudokeu.Square newValue
+Sqr r1c2 : Set value to '9'
+
+CONFIG: Pseudokeu record #1174
+mhs.pseudokeu.Grid incBlankCount
+13 >> 12 ; numConflicts == 0
+
+INFO: Pseudokeu record #1175
+mhs.pseudokeu.Grid newValue
+New Square value == 3
+
+CONFIG: Pseudokeu record #1176
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 97
+
+INFO: Pseudokeu record #1177
+mhs.pseudokeu.Square newValue
+Sqr r0c2 : Set value to '3'
+
+CONFIG: Pseudokeu record #1178
+mhs.pseudokeu.Grid incBlankCount
+12 >> 11 ; numConflicts == 0
+
+INFO: Pseudokeu record #1179
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #1180
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 98
+
+INFO: Pseudokeu record #1181
+mhs.pseudokeu.Square newValue
+Sqr r8c2 : Set value to '8'
+
+CONFIG: Pseudokeu record #1182
+mhs.pseudokeu.Grid incBlankCount
+11 >> 10 ; numConflicts == 0
+
+INFO: Pseudokeu record #1183
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1184
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 99
+
+INFO: Pseudokeu record #1185
+mhs.pseudokeu.Square newValue
+Sqr r5c2 : Set value to '1'
+
+CONFIG: Pseudokeu record #1186
+mhs.pseudokeu.Grid incBlankCount
+10 >> 9 ; numConflicts == 0
+
+INFO: Pseudokeu record #1187
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1188
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 100
+
+INFO: Pseudokeu record #1189
+mhs.pseudokeu.Square newValue
+Sqr r3c5 : Set value to '1'
+
+CONFIG: Pseudokeu record #1190
+mhs.pseudokeu.Grid incBlankCount
+9 >> 8 ; numConflicts == 0
+
+INFO: Pseudokeu record #1191
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #1192
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 101
+
+INFO: Pseudokeu record #1193
+mhs.pseudokeu.Square newValue
+Sqr r4c5 : Set value to '8'
+
+CONFIG: Pseudokeu record #1194
+mhs.pseudokeu.Grid incBlankCount
+8 >> 7 ; numConflicts == 0
+
+INFO: Pseudokeu record #1195
+mhs.pseudokeu.Grid newValue
+New Square value == 6
+
+CONFIG: Pseudokeu record #1196
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 102
+
+INFO: Pseudokeu record #1197
+mhs.pseudokeu.Square newValue
+Sqr r5c5 : Set value to '6'
+
+CONFIG: Pseudokeu record #1198
+mhs.pseudokeu.Grid incBlankCount
+7 >> 6 ; numConflicts == 0
+
+INFO: Pseudokeu record #1199
+mhs.pseudokeu.Grid newValue
+New Square value == 8
+
+CONFIG: Pseudokeu record #1200
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 103
+
+INFO: Pseudokeu record #1201
+mhs.pseudokeu.Square newValue
+Sqr r5c7 : Set value to '8'
+
+CONFIG: Pseudokeu record #1202
+mhs.pseudokeu.Grid incBlankCount
+6 >> 5 ; numConflicts == 0
+
+INFO: Pseudokeu record #1203
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1204
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 104
+
+INFO: Pseudokeu record #1205
+mhs.pseudokeu.Square newValue
+Sqr r4c7 : Set value to '1'
+
+CONFIG: Pseudokeu record #1206
+mhs.pseudokeu.Grid incBlankCount
+5 >> 4 ; numConflicts == 0
+
+INFO: Pseudokeu record #1207
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #1208
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 105
+
+INFO: Pseudokeu record #1209
+mhs.pseudokeu.Square newValue
+Sqr r7c7 : Set value to '2'
+
+CONFIG: Pseudokeu record #1210
+mhs.pseudokeu.Grid incBlankCount
+4 >> 3 ; numConflicts == 0
+
+INFO: Pseudokeu record #1211
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1212
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 106
+
+INFO: Pseudokeu record #1213
+mhs.pseudokeu.Square newValue
+Sqr r7c4 : Set value to '1'
+
+CONFIG: Pseudokeu record #1214
+mhs.pseudokeu.Grid incBlankCount
+3 >> 2 ; numConflicts == 0
+
+INFO: Pseudokeu record #1215
+mhs.pseudokeu.Grid newValue
+New Square value == 2
+
+CONFIG: Pseudokeu record #1216
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 107
+
+INFO: Pseudokeu record #1217
+mhs.pseudokeu.Square newValue
+Sqr r8c4 : Set value to '2'
+
+CONFIG: Pseudokeu record #1218
+mhs.pseudokeu.Grid incBlankCount
+2 >> 1 ; numConflicts == 0
+
+INFO: Pseudokeu record #1219
+mhs.pseudokeu.Grid newValue
+New Square value == 1
+
+CONFIG: Pseudokeu record #1220
+mhs.pseudokeu.Grid addNewUndoEntry
+totalEntries == 108
+
+INFO: Pseudokeu record #1221
+mhs.pseudokeu.Square newValue
+Sqr r8c6 : Set value to '1'
+
+CONFIG: Pseudokeu record #1222
+mhs.pseudokeu.Grid incBlankCount
+1 >> 0 ; numConflicts == 0
+
+INFO: Pseudokeu record #1223
+mhs.pseudokeu.Launcher gameOver
+SUCCESS!
+
+=================================================================
+Pseudokeu END
+Jan 1, 2012 1:41:55 PM
+=================================================================
+
