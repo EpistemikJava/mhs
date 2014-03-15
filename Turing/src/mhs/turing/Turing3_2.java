@@ -42,11 +42,11 @@ public class Turing3_2
   private int tape_size ;
 
   /** number of 'squares' available on the 'tape' */
-  final static int DEFAULT_TAPE_SIZE = 1024 ;
+  final static int DEFAULT_TAPE_SIZE =  256 ;
   /** MAXIMUM number of 'squares' available on the 'tape' */
   final static int     MAX_TAPE_SIZE = 1024*16 ;
   /** MINIMUM number of 'squares' available on the 'tape' */
-  final static int     MIN_TAPE_SIZE =   32 ;
+  final static int     MIN_TAPE_SIZE =   16 ;
   
   /** determine whether each step is displayed */
   private boolean show_steps ;
@@ -61,24 +61,24 @@ public class Turing3_2
   final static int     MAX_DELAY_MS = 1000*60*60 ;
   
   /** tape symbol */
-  final static int nSCHWA = -101 ,
-                   nBLANK =    0 ,
-                   nZERO  =   10 ,
-                   nONE   =   11 ,
-                   nX     =   99 ;
+  final static int nBLANK =    0 , // nBLANK = 0 so tape array is initialized by default to all blanks
+                   nZERO  =    1 ,
+                   nONE   =    2 ,
+                   nX     =    3 ,
+                   nSCHWA =    4  ;
+  
+  /** symbols to display */
+  static String[] STR_SYMBOLS = { " ", "0", "1", "x", "@" };
   
   /** machine state */
   final static int  STATE_BEGIN   = 0 ,
                     STATE_PRINT_X = 1 ,
                     STATE_ERASE_X = 2 ,
                     STATE_PRINT_0 = 3 ,
-                    STATE_PRINT_1 = 4 ;
+                    STATE_PRINT_1 = 4  ;
   
   /** state names for display */
-  static final String[] STR_STATES = { "STATE_BEGIN", "STATE_PRINT_X", "STATE_ERASE_X", "STATE_PRINT_0", "STATE_PRINT_1" };
-  
-  /** character to use to print blank positions of the tape - default is 'space' */
-  static String blank = " " ;
+  final static String[] STR_STATES = { "STATE_BEGIN", "STATE_PRINT_X", "STATE_ERASE_X", "STATE_PRINT_0", "STATE_PRINT_1" };
   
   /**
    * create the machine, process the command line, then start the algorithm
@@ -138,7 +138,7 @@ public class Turing3_2
       show_steps = true ;
       
       // use "-" for blank squares to see each step more clearly
-      blank = "-" ;
+      STR_SYMBOLS[nBLANK] = "-" ;
       
       if( options.hasArgument("s") )
       {
@@ -180,7 +180,8 @@ public class Turing3_2
     
     state = STATE_BEGIN ;
     position = 0 ;
-  }
+    
+  }// setup()
   
   /**
    * run the algorithm:<br>
@@ -342,7 +343,6 @@ public class Turing3_2
       System.out.println( "Position is " + position + "." );
       end();
     }
-    
   }
   
   /** move left on the tape by one square  */
@@ -360,9 +360,12 @@ public class Turing3_2
   {
     position -= count ;
     
-    /* return to 0 if move before the start of the array */
+    /* return to 0 if move before the start of the array -- SHOULD NEVER HAPPEN */
     if( position < 0 )
+    {
+      System.out.println( "WARNING: Position: [" + position + "] is less than 0 !" );
       position = 0 ;
+    }
   }
   
   /**
@@ -402,21 +405,26 @@ public class Turing3_2
     switch( posn )
     {
       case nBLANK:
-        System.out.print( blank ); break ;
+        System.out.print( STR_SYMBOLS[nBLANK] );
+        break ;
         
       case nSCHWA:
-        System.out.print( "@" ); break ;
+        System.out.print( STR_SYMBOLS[nSCHWA] );
+        break ;
         
       case nX:
-        System.out.print( "x" ); break ;
+        System.out.print( STR_SYMBOLS[nX] );
+        break ;
         
       case nZERO:
         if( newline)
           System.out.println();
-        System.out.print( "0" ); break ;
+        System.out.print( STR_SYMBOLS[nZERO] );
+        break ;
         
       case nONE:
-        System.out.print( "1" ); break ;
+        System.out.print( STR_SYMBOLS[nONE] );
+        break ;
       
       default: throw new IllegalStateException( "\n\t>> Current symbol is '" + posn + "'?!" );
     }
