@@ -10,17 +10,16 @@
 
 package mhs.eclipse.wordjumble ;
 
+import java.io.IOException;
+
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
 /**
- * Java implementation of the Turing machine described in "On Computable Numbers (1936)", section 3.II,<br>
- * which generates a sequence of 0's followed by an increasing number of 1's, from 0 to infinity,<br>
- * i.e. 001011011101111011111...<br>
- * See also <i>The Annotated Turing</i> by <b>Charles Petzold</b>; Chapter 5, pp.85-94.
+ * Java implementation of ...<br>
  * 
  * @author mhsatto
- * @version 1.4.5
+ * @version 0.1
  * 
  */
 public class WordJumble
@@ -34,6 +33,7 @@ public class WordJumble
   {
     WordJumble jumble = new WordJumble();
     jumble.setup( args );
+    jumble.generate();
   }
   
   /**
@@ -51,14 +51,11 @@ public class WordJumble
     if( options.has("h") )
     {
       System.out.println( 
-      "\n Java implementation of the Turing machine described in 'On Computable Numbers' (1936), section 3.II," +
-      "\n which generates a sequence of 0's followed by an increasing number of 1's, from 0 to infinity," +
-      "\n i.e. 001011011101111011111... \n" +
+      "\n Java implementation of ... \n" +
       "\n Usage: java <executable> [-h] [-s [arg]] [-t <arg>] " +
       "\n -h to print this message." +
-      "\n -t <int> to specify the size of the tape array (within reason)." +
-      "\n -s [int] to have each step of the algorithm displayed, with a 2-second delay between steps," +
-      "\n    > the optional argument sets an alternate delay between each step, in milliseconds.\n" );
+      "\n -t <int> to specify " +
+      "\n -s [int] to have \n" );
 /*
       try
       {
@@ -88,44 +85,56 @@ public class WordJumble
     
   }// setup()
   
+  /**
+   * 
+   */
+  private void generate()
+  {
+    byte[] unjumbled = new byte[1024];
+    String jumbled = new String( "" );
+    int posn = 1 ;
+    
+    System.out.println( "Please enter a string to jumble: ");
+    try
+    {
+      System.in.read( unjumbled );
+    }
+    catch( IOException ie )
+    {
+      // TODO Auto-generated catch block
+      ie.printStackTrace();
+    }
+    jumble( unjumbled, jumbled, posn );
+    
+    System.out.println( "PROGRAM ENDED." );
+    
+  }// generate()
   
-}
-/*
-program  WordJumble ;
-
-  procedure jumble( unjumbled, jumbled: string; posn: integer) ;
-    var
-      len, pos2: integer ;
-      x: char ;
-    BEGIN
-      len := length(unjumbled) ;
-      if len >= posn then
-        BEGIN
-          pos2 := posn + 1 ;
-          if pos2 <= len then
-            jumble(unjumbled, jumbled, pos2) ;
-          x := unjumbled[(posn mod len)+1] ;
-          delete(unjumbled, (posn mod len)+1, 1) ;
-          jumbled := jumbled + x ;
-          jumble(unjumbled, jumbled, posn)
-        END
+  /**
+   * 
+   */
+  private void jumble( byte[] unjumbled, String jumbled, int posn )
+  {
+    int len, pos2 ;
+    char x ;
+    len = unjumbled.length ;
+    if( len >= posn )
+    {
+      pos2 = posn + 1 ;
+      if( pos2 <= len )
+      {
+        jumble( unjumbled, jumbled, pos2 );
+        x = (char)unjumbled[(posn % len)+1] ;
+        delete( unjumbled, (posn % len)+1, 1 );
+        jumbled = jumbled + x ;
+        jumble( unjumbled, jumbled, posn );
+      }
       else
-      if length(jumbled) > 0 then
-        writeln(jumbled) ;
-    END;
-  { private proc jumble }
-
-  var
-    unjumbled, jumbled: string ;
-    posn: integer ;
-
-  BEGIN
-    write('Please enter a string to jumble: ');
-    readln(unjumbled) ;
-    jumbled := '' ;
-    posn := 1 ;
-    jumble(unjumbled, jumbled, posn) ;
-   
-    writeln( 'PROGRAM ENDED.' )
-  END.
-*/
+      if( jumbled.length() > 0 )
+      {
+        System.out.println( jumbled );
+      }
+    }
+  }// jumble()
+  
+}// class WordJumble
