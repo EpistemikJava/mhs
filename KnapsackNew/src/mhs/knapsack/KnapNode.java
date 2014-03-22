@@ -7,6 +7,8 @@
      $Change: 58 $
      $DateTime: 2011/02/02 11:56:15 $
 
+   git version created Mar 22, 2014.
+   
 ****************************************************************************** */
 
 package mhs.knapsack;
@@ -45,7 +47,7 @@ public class KnapNode // implements Comparable
     $index  = 0 ;
     $profit = $weight = 0 ;
     $pwr    = $bound  = 0.0 ;
-  };
+  }
 	
   /**
    * Constructor with name of item(s) and index
@@ -58,7 +60,7 @@ public class KnapNode // implements Comparable
     $index  = i ;
     $profit = $weight = 0 ;
     $pwr    = $bound  = 0.0 ;
-  };
+  }
 	
   /**
    * Constructor with name of item(s), profit & weight
@@ -74,7 +76,7 @@ public class KnapNode // implements Comparable
     $weight = w ;
     $pwr    = (w > 0) ? ( (double)p / (double)w ) : 0.0 ;
     $bound  = 0.0 ;
-  };
+  }
   
   /**
    * Copy Constructor
@@ -88,30 +90,30 @@ public class KnapNode // implements Comparable
     $weight = k.getWeight() ;
     $pwr    = k.getPwr() ;
     $bound  = k.getBound() ;
-  };
+  }
   
   /*    METHODS
   ==================================================================================================== */
   
-  String  getName() { return $items ; };
-  void    setName( String s ) { $items = s ; };
-  void    addName( String s ) { $items = $items.concat(s); };
+  String  getName() { return $items ; }
+  void    setName( String s ) { $items = s ; }
+  void    addName( String s ) { $items = $items.concat(s); }
   
-  int	    getIndex() { return $index ; };
-  void    setIndex( int i ) { $index = i ; };
-  void    incIndex( int ii ) { $index += ii ; };
+  int	    getIndex() { return $index ; }
+  void    setIndex( int i ) { $index = i ; }
+  void    incIndex( int ii ) { $index += ii ; }
   
-  int	    getProfit() { return $profit ; };
-  void    setProfit( int p ) { $profit = p ; };
+  int	    getProfit() { return $profit ; }
+  void    setProfit( int p ) { $profit = p ; }
   
-  int	    getWeight() { return $weight ; };
-  void    setWeight( int w ) { $weight = w ; };
+  int	    getWeight() { return $weight ; }
+  void    setWeight( int w ) { $weight = w ; }
   
-  double  getPwr() { return $pwr ; };
-  void    setPwr( double r ) { $pwr = r ; };
+  double  getPwr() { return $pwr ; }
+  void    setPwr( double r ) { $pwr = r ; }
   
-  double  getBound() { return $bound ; };
-  void    setBound( double b ) { $bound = b ; };
+  double  getBound() { return $bound ; }
+  void    setBound( double b ) { $bound = b ; }
   
   // natural ordering method if implementing Comparable interface
   int compareTo( KnapNode k )

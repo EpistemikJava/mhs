@@ -1,11 +1,14 @@
 /* ***************************************************************************************
 
-    Mark Sattolo (epistemik@gmail.com)
-   -----------------------------------------------
+   Mark Sattolo (epistemik@gmail.com)
+  -----------------------------------------------
      $File: //depot/Eclipse/Java/workspace/KnapsackNew/src/mhs/knapsack/KnapSack.java $
      $Revision: #6 $
      $Change: 58 $
      $DateTime: 2011/02/02 11:56:15 $
+   
+   git version created Mar 22, 2014.
+  -----------------------------------------------
   
   Best-First Search with Branch-and-Bound Pruning Algorithm for the 0-1 Knapsack Problem
   
@@ -88,7 +91,8 @@ public class KnapSack
       return 0 ;
     }
   };
-
+  
+  /** project name  */
   public static final String PROJECT_NAME = "KnapsackNew" ;
   
   private int numItems = 0 ,
@@ -354,6 +358,7 @@ class KnapItemList extends Vector<KnapNode>
   /**
    * Verify the requested index and if good then return the item at that position, otherwise {@link System#exit(int)}.
    * @param index - place in the list of the KnapNode to return
+   * @return {@link KnapNode}
    */
   KnapNode getItem( int index )
   {

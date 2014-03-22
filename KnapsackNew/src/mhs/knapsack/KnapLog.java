@@ -1,15 +1,13 @@
 /* ***************************************************************************************
  
-   Mark Sattolo (epistemik@gmail.com)
+  Mark Sattolo (epistemik@gmail.com)
  -----------------------------------------------
- $File: //depot/Eclipse/Java/workspace/KnapsackNew/src/mhs/knapsack/KnapLog.java $
- $Revision: #5 $
- $Change: 58 $
- $DateTime: 2011/02/02 11:56:15 $
- -----------------------------------------------
- 
-  mhs.latinsquare.LogController.java
-  Eclipse version created Jan 23, 2008, 09h31
+   $File: //depot/Eclipse/Java/workspace/KnapsackNew/src/mhs/knapsack/KnapLog.java $
+   $Revision: #5 $
+   $Change: 58 $
+   $DateTime: 2011/02/02 11:56:15 $
+   
+ git version created Mar 22, 2014.
  
 *************************************************************************************** */
 
