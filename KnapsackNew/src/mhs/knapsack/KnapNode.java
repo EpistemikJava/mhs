@@ -39,6 +39,7 @@ public class KnapNode // implements Comparable
   
   /**
    * Constructor with name of item(s)
+   * 
    * @param s - item name(s)
    */
   public KnapNode( String s )
@@ -51,6 +52,7 @@ public class KnapNode // implements Comparable
 	
   /**
    * Constructor with name of item(s) and index
+   * 
    * @param s - item name(s)
    * @param i - index
    */
@@ -64,6 +66,7 @@ public class KnapNode // implements Comparable
 	
   /**
    * Constructor with name of item(s), profit & weight
+   * 
    * @param s - item name(s)
    * @param p - profit
    * @param w - weight
@@ -80,6 +83,7 @@ public class KnapNode // implements Comparable
   
   /**
    * Copy Constructor
+   * 
    * @param k - KnapNode to copy
    */
   public KnapNode( KnapNode k )
@@ -130,6 +134,7 @@ public class KnapNode // implements Comparable
   
   /**
    * Calculate the bound for this {@link KnapNode} in the given {@link KnapItemList}
+   * 
    * @param items - other KnapNodes to select from
    * @param maxWeight - restriction specified by user
    * @param label - info
@@ -191,6 +196,7 @@ public class KnapNode // implements Comparable
   
   /**
    * Log info for a node
+   * 
    * @param k - logger to print to
    * @param lev - level to print at
    * @param s - extra info
@@ -204,6 +210,7 @@ public class KnapNode // implements Comparable
   
   /**
    * String description of a node
+   * 
    * @return String with info
    */
   public String display()

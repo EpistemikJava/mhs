@@ -28,6 +28,7 @@ public class KnapPriQue extends Vector<KnapNode>
 {	
   /**
    * add the given node at the proper priority position
+   * 
    * @see java.util.Vector#add(java.lang.Object)
    */
   @Override
@@ -56,6 +57,7 @@ public class KnapPriQue extends Vector<KnapNode>
   
   /**
    * Log each {@link KnapNode} in the list
+   * 
    * @param k - logger to print to
    * @param lev - level to print at
    * @param s - extra info to print
@@ -80,6 +82,7 @@ public class KnapPriQue extends Vector<KnapNode>
   
   /**
    * Log the head {@link KnapNode} in the list
+   * 
    * @param k - logger to print to
    * @param lev - level to print at
    */

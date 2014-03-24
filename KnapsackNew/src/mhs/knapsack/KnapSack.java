@@ -109,12 +109,12 @@ public class KnapSack
   
   /**
    * Default Constructor
+   * 
    * @param args - from command line
    */
   public KnapSack( String args[] )
   {
     // INIT LOGGING
-    
     logManager = new KnapLogManager( args.length >= 2 ? args[1] : STR_DEFAULT_LEVEL );
     if( logManager == null )
     {
@@ -139,7 +139,7 @@ public class KnapSack
     
     logger.log( currentLevel, " File name is '" + fileName + "'\n Max Weight = " + maxWeight );
     
-    // set loop protection
+    // report loop protection
     logger.log( currentLevel, " LOOP_LIMIT = " + KnapItemList.LOOP_LIMIT );
   }
   
@@ -148,6 +148,7 @@ public class KnapSack
   
 	/**
 	 * MAIN
+	 * 
 	 * @param args - from user
 	 */
   public static void main( final String args[] )
@@ -157,7 +158,8 @@ public class KnapSack
   }/* main() */
   
   /**
-   * Check the command line parameters 
+   * Check the command line parameters
+   * 
    * @param params - from main() via the Constructor
    */
   private void setup( String params[] ) 
@@ -232,6 +234,8 @@ public class KnapSack
   
   /**
    * Open the user-specified file and parse the data
+   * 
+   * @return boolean indicating if data was retrieved without problem
    */
   private boolean getFileData()
   {
@@ -302,7 +306,8 @@ public class KnapSack
   
   /**
    * get user String
-   * @return user input
+   * 
+   * @return input String
    */
   static String getInputString()
   {
@@ -323,7 +328,8 @@ public class KnapSack
   
   /**
    * get user integer
-   * @return user input
+   * 
+   * @return input int
    */
   static int getInputInteger()
   {
@@ -338,6 +344,7 @@ public class KnapSack
 /**
  * A collection of {@link KnapNode}s, ordered by highest profit-to-weight ratio,
  * used to store the initial list of items received by {@link KnapSack}.
+ * 
  * @author MARK SATTOLO
  * @version $Revision: #6 $
  */
@@ -345,6 +352,8 @@ public class KnapSack
 class KnapItemList extends Vector<KnapNode>
 {
   /**
+   * Constructor with Logger
+   * 
    * @param $logger - {@link KnapLogger} to use
    */
   public KnapItemList( KnapLogger $logger )
@@ -356,7 +365,8 @@ class KnapItemList extends Vector<KnapNode>
   ==================================================================================================== */
   
   /**
-   * Verify the requested index and if good then return the item at that position, otherwise {@link System#exit(int)}.
+   * Verify the requested index and if good then return the item at that position, otherwise {@link System#exit(int)}
+   * 
    * @param index - place in the list of the KnapNode to return
    * @return {@link KnapNode}
    */
@@ -374,6 +384,7 @@ class KnapItemList extends Vector<KnapNode>
   
   /**
    * Find the optimal set of items for the given maximum weight
+   * 
    * @param bestItems - store the optimal set
    * @param maxWeight - weight restriction
    */
@@ -478,6 +489,7 @@ class KnapItemList extends Vector<KnapNode>
   
   /**
    * Log each {@link KnapNode} in the list
+   * 
    * @param lev - level to print at
    * @param s - extra info to print
    */

@@ -86,10 +86,12 @@ class KnapLogManager
   }// CONSTRUCTOR
   
   /** @return  private static {@link KnapLogger} <var>myLogger</var>  */
-  protected KnapLogger getLogger() { return myLogger ; }
+  protected KnapLogger getLogger()
+  { return myLogger ; }
   
   /** @return  private static {@link Level} <var>currentLevel</var>  */
-  protected Level getLevel() { return currentLevel ;}
+  protected Level getLevel()
+  { return currentLevel ;}
   
   /** @param level - {@link java.util.logging.Level}  */
   protected void setLevel( Level level )
@@ -228,6 +230,7 @@ class KnapLogger extends Logger
   /**
    * Allow other package classes to create a {@link Logger} <br>
    * - adds this new {@link Logger} to the {@link LogManager} namespace
+   * 
    * @param name - identify the {@link Logger}
    * @return the <b>new</b> {@link Logger}
    * @see LogManager#addLogger(Logger)
@@ -242,6 +245,7 @@ class KnapLogger extends Logger
   
   /**
    * Prepare and send a {@link LogRecord} with data from the log buffer
+   * 
    * @param level - {@link Level} to log at
    */
   protected void send( Level level )
@@ -259,17 +263,21 @@ class KnapLogger extends Logger
   
   /** Add data to the log buffer
    *  @param msg - data String */
-  protected synchronized void append( String msg ) { buffer.append( msg ); }
+  protected synchronized void append( String msg )
+  { buffer.append( msg ); }
   
   /** Add data to the log buffer with a terminating newline
    *  @param msg - data String */
-  protected void appendln( String msg ) { append( msg + "\n" ); }
+  protected void appendln( String msg )
+  { append( msg + "\n" ); }
   
   /** Add a newline to the log buffer  */
-  protected void appendnl() { append( "\n" ); }
+  protected void appendnl()
+  { append( "\n" ); }
   
   /** <b>Remove</b> <em>ALL</em> data in the log buffer  */
-  protected void clean() { buffer.delete( 0, buffer.length() ); }
+  protected void clean()
+  { buffer.delete( 0, buffer.length() ); }
   
   /*/ for debugging  
   @Override
@@ -289,6 +297,7 @@ class KnapLogger extends Logger
   
   /**
    * Provide a <b>new</b> {@link LogRecord} with Caller class and method name info
+   * 
    * @param level - {@link Level} to log at
    * @param msg - info to insert in the {@link LogRecord}
    * @return the produced {@link LogRecord}
@@ -304,6 +313,7 @@ class KnapLogger extends Logger
   
   /**
    *  Actually send the {@link LogRecord} to the logging handler
+   *  
    *  @param lr - {@link LogRecord} to send
    *  @see Logger#log(LogRecord)
    */
@@ -318,6 +328,7 @@ class KnapLogger extends Logger
   
   /**
    *  Get the name of the {@link Class} and <em>Method</em> that called {@link KnapLogger}
+   *  
    *  @see Throwable#getStackTrace
    *  @see StackTraceElement#getClassName
    *  @see StackTraceElement#getMethodName
@@ -362,6 +373,7 @@ class KnapLogger extends Logger
 
 /**
  *  Do all the actual formatting of {@link LogRecord}s for {@link KnapLogger}
+ *  
  *  @author Mark Sattolo
  *  @see java.util.logging.Formatter
  */
@@ -369,6 +381,7 @@ class KnapFormatter extends Formatter
 {
   /**
    *  Instructions on how to format a {@link LogRecord}
+   *  
    *  @see Formatter#format
    */
   @Override
@@ -380,6 +393,7 @@ class KnapFormatter extends Formatter
   
   /**
    *  Printed at the beginning of a Log file
+   *  
    *  @see Formatter#getHead
    */
   @Override
@@ -390,6 +404,7 @@ class KnapFormatter extends Formatter
   
   /**
    *  Printed at the end of a Log file
+   *  
    *  @see Formatter#getTail
    */
   @Override
