@@ -90,43 +90,49 @@ public class WordJumble
    */
   private void generate()
   {
-    byte[] unjumbled = new byte[1024];
-    String jumbled = new String( "" );
-    int posn = 1 ;
+    byte[] entry = new byte[1024];
+    StringBuilder jumbled = new StringBuilder( "" );
+    int posn = 0 ;
     
-    System.out.println( "Please enter a string to jumble: ");
+    System.out.print( "Please enter a string to jumble: ");
     try
     {
-      System.in.read( unjumbled );
+      System.in.read( entry );
     }
     catch( IOException ie )
     {
       // TODO Auto-generated catch block
       ie.printStackTrace();
     }
-    jumble( unjumbled, jumbled, posn );
+    
+    String letters = new String( entry );
+    jumble( new StringBuilder( letters.trim() ), jumbled, posn );
     
     System.out.println( "PROGRAM ENDED." );
     
   }// generate()
   
   /**
+   * Delete characters from a StringBuilder
    * 
+   * @param unjumbled - StringBuilder to jumble
+   * @param jumbled - StringBuilder that was jumbled
+   * @param posn - position in unjumbled
    */
-  private void jumble( byte[] unjumbled, String jumbled, int posn )
+  private void jumble( StringBuilder unjumbled, StringBuilder jumbled, int posn )
   {
     int len, pos2 ;
     char x ;
-    len = unjumbled.length ;
+    len = unjumbled.length() ;
     if( len >= posn )
     {
       pos2 = posn + 1 ;
       if( pos2 <= len )
       {
         jumble( unjumbled, jumbled, pos2 );
-        x = (char)unjumbled[(posn % len)+1] ;
-        delete( unjumbled, (posn % len)+1, 1 );
-        jumbled = jumbled + x ;
+        x = unjumbled.charAt( posn % len );
+        unjumbled.deleteCharAt( posn % len );
+        jumbled.insert( jumbled.length(), x );
         jumble( unjumbled, jumbled, posn );
       }
       else
@@ -136,5 +142,5 @@ public class WordJumble
       }
     }
   }// jumble()
-  
+
 }// class WordJumble
