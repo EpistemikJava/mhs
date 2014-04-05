@@ -1,5 +1,6 @@
 package mhs.eclipse.wordjumble;
 
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Vector;
  *  - initial implementation imported from remote
  *  
  * @author mhsatto
- * @version 0.2
+ * @version 0.3
  */
 public class Jumble
 {
@@ -18,25 +19,44 @@ public class Jumble
    */
   public static void main( String[] args )
   {
-    // get the letters from the command line
-    if( args.length < 1 )
+    byte[] entry ;
+    String letters ;
+    
+    if( args.length < 1 ) // need to ask the user to enter some letters
     {
-      System.out.println( "You must enter some letters on the command line." );
-      System.exit( 1 );
+      entry = new byte[1024];
+      System.out.print( "Please enter a string to jumble: ");
+      try
+      {
+        System.in.read( entry );
+      }
+      catch( IOException ie )
+      {
+        ie.printStackTrace();
+        System.exit( 1 );
+      }
+      
+      letters = new String( entry );
     }
-
-    // run the test
+    else // some letters were entered on the command line
+    {
+      letters = new String( args[0] );
+    }
+    
+    //TODO - CHECK INPUT FOR ALPHABETIC ONLY
+    
+    // do the jumble
     Jumble j1 = new Jumble();
-    j1.go( args[0] );
+    j1.go( letters.trim() );
     
     System.out.println( "\n PROGRAM ENDED" );
-
+    
   }// main()
-
+  
   /**
    * Prep the String with the submitted letters then jumble.
    * 
-   * @param str - submitted letters from command line
+   * @param str - letters from the user
    */
   private void go( final String str )
   {
@@ -44,12 +64,12 @@ public class Jumble
     System.out.println( "letters arriving in go():" + letters );
     
     Vector<StringBuilder> vsb = new Vector<>( 32, 8 );
-    System.out.println( "vsb capacity = " + vsb.capacity() );
-    System.out.println( "vsb size = " + vsb.size() );
+    System.out.println( "Vector capacity == " + vsb.capacity() );
+    System.out.println( "Vector size == " + vsb.size() );
     
     jumbler( letters, vsb );
     
-    System.out.println( "Final size of vsb: " + vsb.size() );
+    System.out.println( "Final size of Vector: " + vsb.size() );
     System.out.println( "All letter combinations from the submitted string:" );
     for( StringBuilder sb : vsb )
     {
@@ -57,7 +77,7 @@ public class Jumble
     }
     
   }// go()
-
+  
   /**
    * recursive method to find all letter combinations from a selection of letters
    * 
@@ -71,7 +91,7 @@ public class Jumble
     if( sb.length() == 1 )
     {
       vsb.add( sb );
-      System.out.println( "Added " + sb + " to vsb." );
+      System.out.println( "Added " + sb + " to Vector." );
     }
     else
     {
@@ -84,11 +104,11 @@ public class Jumble
     }
     
   }// jumbler()
-
+  
   /**
    * Remove the first letter from a StringBuilder and return it as a StringBuilder
    * 
-   * @param target - StringBuilder which will be 'plucked'
+   * @param target - letter which will be 'plucked'
    * @return StringBuilder of the initial letter
    */
   private StringBuilder pluck( StringBuilder target )
@@ -106,7 +126,7 @@ public class Jumble
     return headsb ;
     
   }// pluck()
-
+  
   /**
    * Insert the head letter into each position of each StringBuilder in the Vector
    * 
@@ -115,10 +135,10 @@ public class Jumble
    */
   private void insert( final StringBuilder head, Vector<StringBuilder> vsb )
   {
-    System.out.println( "Insert " + head + " to vsb." );
+    System.out.println( "Insert " + head + " to Vector." );
     
     int len, limit = vsb.size();
-    System.out.println( "Size of vsb == " + limit );
+    System.out.println( "Size of Vector == " + limit );
     
     StringBuilder elem, newsb ;
     
@@ -139,4 +159,4 @@ public class Jumble
     
   }// insert()
   
-}// class Testing2
+}// class Jumble
