@@ -2,6 +2,8 @@ package mhs.eclipse.wordjumble;
 
 import java.io.IOException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Class to implement a recursive word jumbling algorithm<br>
@@ -12,6 +14,8 @@ import java.util.Vector;
  */
 public class Jumble
 {
+  static Logger jumbleLogger ;
+  
   /**
    * MAIN
    * 
@@ -19,6 +23,8 @@ public class Jumble
    */
   public static void main( String[] args )
   {
+    Jumble.setLogger();
+    
     String letters ;
 
     // process the command line and get properly formatted user input
@@ -39,6 +45,9 @@ public class Jumble
    */
   private static String setup( final String[] ar_str )
   {
+    jumbleLogger.info( "" );
+    jumbleLogger.entering( Jumble.class.getName(), "setup()" );
+    
     byte[] enter ;
     String entry, result ;
     
@@ -73,6 +82,8 @@ public class Jumble
       System.exit( 12 );
     }
     
+    jumbleLogger.exiting( Jumble.class.getName(), "setup()" );
+
     return result.trim();
     
   }// setup()
@@ -98,6 +109,31 @@ public class Jumble
   }    
   
   /**
+   *  initialize the logger
+   */
+  private static void setLogger()
+  {
+    jumbleLogger = Logger.getLogger( Jumble.class.getName() );
+    /*
+    for( Handler h: jumbleLogger.getHandlers() )
+    {
+      h.setLevel( Level.ALL );
+    }
+    /*
+    ConsoleHandler jumbleHandler = new ConsoleHandler();
+    jumbleHandler.setFormatter( new SimpleFormatter() );
+    jumbleLogger.addHandler( jumbleHandler );
+    */
+    // NEED to set the root ("") Logger's handler 
+    Logger.getLogger("").getHandlers()[0].setLevel( Level.ALL );
+    // AND the jumble logger itself to Level.ALL to get ALL messages to the Console
+    jumbleLogger.setLevel( Level.ALL );
+    
+    jumbleLogger.finer( "Set up Logger" );
+    
+  }// setLogger()
+  
+  /**
    * Prep the String with the submitted letters then jumble.
    * 
    * @param str - letters from the user
@@ -105,7 +141,7 @@ public class Jumble
   private void go( final String str )
   {
     StringBuilder letters = new StringBuilder( str );
-    System.out.println( "letters arriving in go():" + letters );
+    jumbleLogger.info( "letters arriving: " + letters );
     
     Vector<StringBuilder> vsb = new Vector<>( 32, 8 );
     System.out.println( "Vector capacity == " + vsb.capacity() );
