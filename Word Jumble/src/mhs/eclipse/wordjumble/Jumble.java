@@ -19,39 +19,83 @@ public class Jumble
    */
   public static void main( String[] args )
   {
-    byte[] entry ;
     String letters ;
+
+    // process the command line and get properly formatted user input
+    letters = setup( args );
+
+    // do the jumble
+    Jumble j1 = new Jumble();
+    j1.go( letters );
     
-    if( args.length < 1 ) // need to ask the user to enter some letters
+    System.out.println( "\n*** PROGRAM ENDED ***" );
+    
+  }// main()
+  
+  /**
+   * Process the command line then get user input if necessary
+   * 
+   * @param ar_str - command line args
+   */
+  private static String setup( final String[] ar_str )
+  {
+    byte[] enter ;
+    String entry, result ;
+    
+    if( ar_str.length < 1 ) // need to ask the user to enter some letters
     {
-      entry = new byte[1024];
+      enter = new byte[1024];
       System.out.print( "Please enter a string to jumble: ");
       try
       {
-        System.in.read( entry );
+        System.in.read( enter );
       }
       catch( IOException ie )
       {
         ie.printStackTrace();
-        System.exit( 1 );
+        System.exit( 11 );
       }
       
-      letters = new String( entry );
+      entry = new String( enter );
     }
     else // some letters were entered on the command line
     {
-      letters = new String( args[0] );
+      entry = new String( ar_str[0] );
     }
     
-    //TODO - CHECK INPUT FOR ALPHABETIC ONLY
+    // check input for alphabetic only
+    result = checkAlphabetic( entry );
     
-    // do the jumble
-    Jumble j1 = new Jumble();
-    j1.go( letters.trim() );
+    // make sure there are still some letters
+    if( result.length() <= 0 )
+    {
+      System.out.println( "You must enter ONLY alphabetic characters to jumble." );
+      System.exit( 12 );
+    }
     
-    System.out.println( "\n PROGRAM ENDED" );
+    return result.trim();
     
-  }// main()
+  }// setup()
+  
+  /**
+   * @param toCheck - to check
+   */
+  private static String checkAlphabetic( String toCheck )
+  {
+    StringBuilder alpha = new StringBuilder();
+    
+    char[] mychars = toCheck.toCharArray();
+    
+    for( char c: mychars )
+    {
+      if( Character.isLetter(c) )
+      {
+        alpha.append( c );
+      }
+    }
+    
+    return new String( alpha );
+  }    
   
   /**
    * Prep the String with the submitted letters then jumble.
