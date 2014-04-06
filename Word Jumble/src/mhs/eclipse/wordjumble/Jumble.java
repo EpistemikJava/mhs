@@ -10,11 +10,15 @@ import java.util.logging.Logger;
  *  - initial implementation imported from remote
  *  
  * @author mhsatto
- * @version 0.3
+ * @version 1.0
  */
 public class Jumble
 {
+  /** Logger for the class */
   static Logger jumbleLogger ;
+  
+  /** Overall Level to log at */
+  static Level jumbleLevel = Level.INFO ;
   
   /**
    * MAIN
@@ -34,9 +38,27 @@ public class Jumble
     Jumble j1 = new Jumble();
     j1.go( letters );
     
-    System.out.println( "\n*** PROGRAM ENDED ***" );
+    jumbleLogger.info( "*** PROGRAM ENDED ***" );
     
   }// main()
+  
+  /**
+   *  initialize the logger
+   */
+  private static void setLogger()
+  {
+    jumbleLogger = Logger.getLogger( Jumble.class.getName() );
+    
+    // NEED to set the root ("") Logger's handler
+    Logger.getLogger("").getHandlers()[0].setLevel( jumbleLevel );
+    // AND the jumble logger itself to Level.ALL to get ALL messages to the Console
+    jumbleLogger.setLevel( jumbleLevel );
+    
+    jumbleLogger.log( jumbleLevel, "Logging Level is " + jumbleLevel.toString() );
+    
+    jumbleLogger.fine( "Set up Logger" );
+    
+  }// setLogger()
   
   /**
    * Process the command line then get user input if necessary
@@ -45,7 +67,6 @@ public class Jumble
    */
   private static String setup( final String[] ar_str )
   {
-    jumbleLogger.info( "" );
     jumbleLogger.entering( Jumble.class.getName(), "setup()" );
     
     byte[] enter ;
@@ -83,7 +104,7 @@ public class Jumble
     }
     
     jumbleLogger.exiting( Jumble.class.getName(), "setup()" );
-
+    
     return result.trim();
     
   }// setup()
@@ -93,6 +114,8 @@ public class Jumble
    */
   private static String checkAlphabetic( String toCheck )
   {
+    jumbleLogger.entering( Jumble.class.getName(), "checkAlphabetic()" );
+    
     StringBuilder alpha = new StringBuilder();
     
     char[] mychars = toCheck.toCharArray();
@@ -105,33 +128,10 @@ public class Jumble
       }
     }
     
+    jumbleLogger.exiting( Jumble.class.getName(), "checkAlphabetic()" );
+    
     return new String( alpha );
   }    
-  
-  /**
-   *  initialize the logger
-   */
-  private static void setLogger()
-  {
-    jumbleLogger = Logger.getLogger( Jumble.class.getName() );
-    /*
-    for( Handler h: jumbleLogger.getHandlers() )
-    {
-      h.setLevel( Level.ALL );
-    }
-    /*
-    ConsoleHandler jumbleHandler = new ConsoleHandler();
-    jumbleHandler.setFormatter( new SimpleFormatter() );
-    jumbleLogger.addHandler( jumbleHandler );
-    */
-    // NEED to set the root ("") Logger's handler 
-    Logger.getLogger("").getHandlers()[0].setLevel( Level.ALL );
-    // AND the jumble logger itself to Level.ALL to get ALL messages to the Console
-    jumbleLogger.setLevel( Level.ALL );
-    
-    jumbleLogger.finer( "Set up Logger" );
-    
-  }// setLogger()
   
   /**
    * Prep the String with the submitted letters then jumble.
@@ -144,13 +144,13 @@ public class Jumble
     jumbleLogger.info( "letters arriving: " + letters );
     
     Vector<StringBuilder> vsb = new Vector<>( 32, 8 );
-    System.out.println( "Vector capacity == " + vsb.capacity() );
-    System.out.println( "Vector size == " + vsb.size() );
+    jumbleLogger.finer( "Vector capacity == " + vsb.capacity() );
+    jumbleLogger.finer( "Vector size == " + vsb.size() );
     
     jumbler( letters, vsb );
     
-    System.out.println( "Final size of Vector: " + vsb.size() );
-    System.out.println( "All letter combinations from the submitted string:" );
+    jumbleLogger.info( "Final size of Vector: " + vsb.size() );
+    System.out.println( "All combinations from the submitted letters:" );
     for( StringBuilder sb : vsb )
     {
       System.out.println( sb );
@@ -166,12 +166,12 @@ public class Jumble
    */
   private void jumbler( StringBuilder sb, Vector<StringBuilder> vsb )
   {
-    System.out.println( "Letters arriving at jumbler(): " + sb );
+    jumbleLogger.fine( "Letters arriving: " + sb );
     
     if( sb.length() == 1 )
     {
       vsb.add( sb );
-      System.out.println( "Added " + sb + " to Vector." );
+      jumbleLogger.fine( "Added " + sb + " to Vector." );
     }
     else
     {
@@ -193,15 +193,15 @@ public class Jumble
    */
   private StringBuilder pluck( StringBuilder target )
   {
-    System.out.println( "Target arriving at pluck(): " + target );
+    jumbleLogger.fine( "Target arriving: " + target );
     
     String head = target.substring( 0, 1 );
     StringBuilder headsb = new StringBuilder( head );
     
     target.deleteCharAt( 0 );
     
-    System.out.println( "Letter plucked from target: " + headsb );
-    System.out.println( "Letters left after pluck():" + target );
+    jumbleLogger.fine( "Letter plucked from target: " + headsb );
+    jumbleLogger.fine( "Letters left after pluck():" + target );
     
     return headsb ;
     
@@ -215,10 +215,10 @@ public class Jumble
    */
   private void insert( final StringBuilder head, Vector<StringBuilder> vsb )
   {
-    System.out.println( "Insert " + head + " to Vector." );
+    jumbleLogger.fine( "Insert " + head + " to Vector." );
     
     int len, limit = vsb.size();
-    System.out.println( "Size of Vector == " + limit );
+    jumbleLogger.finer( "Size of Vector == " + limit );
     
     StringBuilder elem, newsb ;
     
