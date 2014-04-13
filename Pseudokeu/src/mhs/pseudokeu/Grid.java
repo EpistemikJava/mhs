@@ -2794,9 +2794,6 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   *            F I E L D S
   *************************************************************************************************************/
   
-  /** Perforce file version */
-  static final String strP4_VERSION = "$Revision: #14 $" ;
-  
   static final int
                   INCREASE =  1 ,
                   DECREASE = -1 ,

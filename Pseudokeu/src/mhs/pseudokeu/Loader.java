@@ -1116,16 +1116,4 @@ class Helper
   
   }// Helper.strSetBits()
   
-  /**
-   * @param revision - the Perforce revision string
-   * @return - int obtained from the param
-   */
-  static int getP4VersionNum( final String revision )
-  {
-    int $staffIndex = revision.indexOf( '#' );
-    
-    return Integer.parseInt( revision.replace( '$', ' ' ).substring($staffIndex+1, $staffIndex+4).trim() );
-    
-  }// Helper.getP4VersionNum()
-  
 }// CLASS Helper

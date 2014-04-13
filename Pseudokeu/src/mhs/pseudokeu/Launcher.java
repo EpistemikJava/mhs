@@ -2715,7 +2715,7 @@ public class Launcher extends JFrame
   String   myname() { return getClass().getSimpleName(); }
   String fullname() { return getClass().getName();       }
   
-/*// DEBUG ONLY - to see how often this gets called
+/*/ DEBUG ONLY - to see how often this gets called
   static int pi = 0 ;
   @Override
   public void paint( java.awt.Graphics g )
@@ -2957,24 +2957,18 @@ public class Launcher extends JFrame
   *            F I E L D S
   *************************************************************************************************************/
   
-  /** Perforce file version */
-  static final String strP4_VERSION = "$Revision: #15 $" ;
-  
-  /** game version info */
-  static final int nVERSION_NUM = Helper.getP4VersionNum( strP4_VERSION );
-  
-  /** game text */
+  /** game text and version info */
   static final String
                      strGAME = "Game" ,
                 PROJECT_NAME = "Pseudokeu " ,
                    GAME_NAME = PROJECT_NAME + strGAME ,
                    
-             // Linux version starts a new major number
-             // OpenSUSE = 6, Ubuntu = 7 (Feb 2012)
-             strBASE_VERSION = "7." ,
-              strVERSION_NUM = strBASE_VERSION + String.valueOf( nVERSION_NUM ) + "." + String.valueOf( (
-                                 Helper.getP4VersionNum(Grid.strP4_VERSION) + Helper.getP4VersionNum(Square.strP4_VERSION))/2 ),
-                GAME_VERSION = PROJECT_NAME + "Version #" + strVERSION_NUM ;
+             // Start a new major number
+             // OpenSUSE = 6, Ubuntu = 7 (Feb 2012), git = 8 (Mar 2014) 
+             strMAJOR_VERSION = "8" ,
+             strMINOR_VERSION = "1" ,
+              strVERSION_NUM = strMAJOR_VERSION + "." + strMINOR_VERSION ,
+                GAME_VERSION = PROJECT_NAME + "Version # " + strVERSION_NUM ;
   
   /** game default */
   static final int
