@@ -201,9 +201,9 @@ public class LogControl
   {
     System.out.println( "\n Currently registered Loggers:" );
     for( Enumeration<String> e = LogManager.getLogManager().getLoggerNames(); e.hasMoreElements(); )
-      System.out.println( e.nextElement() );
+      System.out.println( '\t' + e.nextElement() );
 
-    System.out.print( '\n' );
+    System.out.println( ">>> END OF LOGGER LIST." );
     
   }// LogControl.showLoggers()
   
@@ -220,7 +220,7 @@ public class LogControl
     Logger $globLogr = LogManager.getLogManager().getLogger( "global" );
     loggerInfo( $globLogr, "global" );
     
-    System.out.print( '\n' );
+    System.out.println();
     
   }// LogControl.checkLogging()
   
@@ -251,9 +251,11 @@ public class LogControl
   static final int MAX_NUM_LOG_FILES = 128,
                    LOGFILE_MAX_BYTES = 512 * 1024 ;
   
-  /** default {@link Level} */
-  static final Level   INIT_LEVEL = Level.SEVERE ,  // Level to print initialization messages
-                    DEFAULT_LEVEL = Level.WARNING ; // if no value passed to Constructor from Launcher
+  /** {@link Level} to print initialization messages = Level.SEVERE */
+  static final Level   INIT_LEVEL = Level.SEVERE ;
+      
+  /** default {@link Level} if no value passed to Constructor from Launcher = Level.WARNING */
+  static final Level   DEFAULT_LEVEL = Level.WARNING ;
   
   /** default Log name parameter */
   static final String   LOG_SUBFOLDER = "logs/" ,
