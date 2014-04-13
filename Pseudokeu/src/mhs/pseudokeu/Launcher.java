@@ -2396,7 +2396,12 @@ public class Launcher extends JFrame
     pxGameSize.height = ( pxSqrLength * grid.getLength() ) + ( PANEL_HEIGHT * NUM_MAIN_PANELS )+( Y_BORDER * 2 );
     logger.appendln( "CALCULATED New Game width = " + pxGameSize.width + " & height = " + pxGameSize.height );
     
+    /* For some reason, Game will NOT resize programatically in non-DEBUG mode now (April 2014) 
+     * UNLESS setResizable() is made true ... a difference with Java 7 ?? */
+    setResizable( true );
     setSize( pxGameSize );
+    // restore original condition of 'resizable'
+    setResizable( DEBUG );
     
     // center the resized frame on the screen
     setLocationRelativeTo( null );
