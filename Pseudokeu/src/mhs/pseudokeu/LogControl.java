@@ -46,6 +46,8 @@ public class LogControl
    */
   public LogControl( final String lev )
   {
+    // TODO: TRY TO STOP USING Pseudokeu.logging.properties AND CONSOLIDATE ALL LOG COMMANDS IN CODE
+    
     try
     {
       setLevel( Level.parse(lev) );
@@ -55,55 +57,62 @@ public class LogControl
       System.err.println( "Problem with parameter for initial Log Level: " + e.toString() );
       setLevel( DEFAULT_LEVEL );
     }
-
+    
     // package Logger
     myLogger = PskLogger.getNewLogger( PskLogger.myname() );
-    
-    // root Logger sends to Console
-    rootLogger = LogManager.getLogManager().getLogger( "" );
-    
-    try
+
+    // Generally only want to output to file for DEBUG mode
+    // TODO: PUT IN A SEPARATE METHOD; USE A SINGLE FILEHANDLER FIELD AND SET TEXT OR XML WITH A VAR SENT TO METHOD
+    if( Launcher.DEBUG )
     {
-      /*/
-      xmlHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + XML_LOGFILE_TYPE,
-                                    LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
-      xmlHandler.setFormatter( new XMLFormatter() );
-      //*/
-      textHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + TEXT_LOGFILE_TYPE,
-                                     LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
-    }
-    catch( Exception e )
-    {
-      System.err.println( "FileHandler exception: " + e );
-    }
-    
-    // send package Logger output to our FileHandler and Formatter
-    if( Launcher.DEBUG && (textHandler != null) )
-    {
+      /*/ xml file handler
       try
       {
+        xmlHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + XML_LOGFILE_TYPE,
+                                      LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
+        xmlHandler.setFormatter( new XMLFormatter() );
+      }
+      catch( Exception e )
+      {
+        System.err.println( "XmlHandler exception: " + e );
+      }
+      //*/
+      
+      // text file handler
+      try
+      {
+        textHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + TEXT_LOGFILE_TYPE,
+                                       LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
         textHandler.setFormatter( new PskFormatter() );
-        myLogger.addHandler( textHandler );
       }
       catch( Exception e )
       {
         System.err.println( "textHandler exception: " + e );
       }
+      //*/
+      
+      //myLogger.addHandler( xmlHandler );
+      myLogger.addHandler( textHandler );
     }
+    
     // set the level of detail that gets logged
     myLogger.setLevel( currentLevel );
     
-    // send root Logger output to a PskFormatter
+    // root Logger sends to Console
+    rootLogger = LogManager.getLogManager().getLogger( "" );
     try
     {
       // root Logger sends to the default ConsoleHandler
       Handler[] arH = rootLogger.getHandlers();
       for( Handler h : arH )
       {
+        // send root Logger output to a PskFormatter
         h.setFormatter( new PskFormatter() );
-        // increase the level of the ConsoleHandler so ALL logging sent from PskLogger will be sent
+        
+        // increase the level of the root handlers so ALL messages from PskLogger will be seen
         h.setLevel( Level.ALL );
       }
+      
       rootLogger.setLevel( currentLevel );
     }
     catch( Exception e )
@@ -194,7 +203,8 @@ public class LogControl
  // DEBUGGING
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
-  String myname() { return getClass().getSimpleName(); }
+  String myname()
+  { return getClass().getSimpleName(); }
   
   /** Display list of registered {@link Logger}s */
   static void showLoggers()
@@ -379,19 +389,23 @@ class PskLogger extends Logger
    * Add data to {@link PskLogger#buffer}
    * @param msg - data String
    */
-  protected synchronized void append( final String msg ) { buffer.append( msg ); }
+  protected synchronized void append( final String msg )
+  { buffer.append( msg ); }
   
   /**
    * Add data to {@link PskLogger#buffer} with newline
    * @param msg - data String
    */
-  protected void appendln( final String msg ) { append( msg + "\n" ); }
+  protected void appendln( final String msg )
+  { append( msg + "\n" ); }
   
   /** Add newline to {@link PskLogger#buffer} */
-  protected void appendln() { append( "\n" ); }
+  protected void appendln()
+  { append( "\n" ); }
   
   /** <b>Remove</b> <em>ALL</em> data in {@link PskLogger#buffer} */
-  protected void clean() { buffer.delete( 0, buffer.length() ); }
+  protected void clean()
+  { buffer.delete( 0, buffer.length() ); }
   
  // DEBUGGING
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -489,7 +503,7 @@ class PskLogger extends Logger
 /* ========================================================================================================================= */
   
 /**
- * Do all the actual formatting of {@link LogRecord}s for {@link PskLogger}
+ * Do all the actual {@link LogRecord} formatting for {@link PskLogger}
  * 
  * @author Mark Sattolo
  * @see java.util.logging.Formatter
