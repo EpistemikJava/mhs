@@ -37,7 +37,7 @@ import javax.swing.event.ChangeListener;
  * Main Game Frame
  *
  * @author Mark Sattolo
- * @version $Revision: #15 $
+ * @version 8.1.2
  * @see JFrame
  */
 public class Launcher extends JFrame
@@ -48,6 +48,7 @@ public class Launcher extends JFrame
   
   /**
    *  Handles game events - EXCEPT those in the <em>other</em> Inner Classes
+   *  
    *  @see ActionListener
    */
   class GameListener implements ActionListener
@@ -244,6 +245,7 @@ public class Launcher extends JFrame
   /**
    *  An extended <b>JFrame</b> which allows users to change the size of the Game <br>
    *  - contains radio buttons, action buttons, and implements <b>ActionListener</b>
+   *  
    *  @see JFrame
    *  @see ActionListener
    *  @see #launchSetSizeFrame
@@ -483,6 +485,7 @@ public class Launcher extends JFrame
   /**
    *  An extended <b>JFrame</b> which allows users to select a particular Game <br>
    *  - contains a Combo box, action buttons, and implements <b>ActionListener</b>
+   *  
    *  @see JFrame
    *  @see ActionListener
    *  @see #launchSelectGameFrame
@@ -696,6 +699,7 @@ public class Launcher extends JFrame
   /**
    *  An extended <b>JFrame</b> which allows users to ADD a Game <br>
    *  - contains action buttons and implements <b>ActionListener</b>
+   *  
    *  @see JFrame
    *  @see ActionListener
    *  @see #launchAddGameFrame
@@ -889,6 +893,7 @@ public class Launcher extends JFrame
   /**
    *  An extended <b>JFrame</b> which allows users to select a particular level of difficulty <br>
    *  - contains a Combo box, action buttons, and implements <b>ActionListener</b>
+   *  
    *  @see JFrame
    *  @see ActionListener
    *  @see #launchChooseDifficultyFrame
@@ -1086,6 +1091,7 @@ public class Launcher extends JFrame
   /**
    *  An extended <b>JFrame</b> which allows users to select the delay interval for revealing Solved Squares<br>
    *  - contains a Combo box, action buttons, and implements <b>ActionListener</b>
+   *  
    *  @see JFrame
    *  @see ActionListener
    *  @see #solveTimer
@@ -1326,6 +1332,7 @@ public class Launcher extends JFrame
   
   /**
    *  USUAL constructor
+   *  
    *  @param logLevel - initial Logging {@link Level} of this session
     * @param debugMode - enable debug actions
    */
@@ -1343,46 +1350,14 @@ public class Launcher extends JFrame
       logger = logControl.getLogger();
     
     if( logger == null )
-      exitInit( "CONSTRUCTOR", "PROBLEM WITH LOGGER!" );
+      exitInit( "Constructor", "PROBLEM WITH LOGGER!" );
     
-    // check the user's screen size
-    pxScreenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    int res = java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
+    initGameSize();
     
-    logger.logInit( "Screen width = " + pxScreenSize.width 
-                    + " & height = " + pxScreenSize.height + " & Resolution = " + res );
-    
-    // User game starts with the smallest size
-    pxSqrLength = ( DEBUG ? SQUARE_SIZE_MD : SQUARE_SIZE_SM );
-    
-    // make sure the msg frames are not wider than the user's screen
-    pxMsgFrameWidth = Math.min( pxScreenSize.width, (SQUARE_SIZE_SM * INITIAL_GRID_LENGTH) + (X_BORDER * 2) );
-    
-    pxGameSize = new Dimension( (pxSqrLength * INITIAL_GRID_LENGTH) + (X_BORDER * 2),
-                                (pxSqrLength * INITIAL_GRID_LENGTH)
-                                  + (PANEL_HEIGHT * NUM_MAIN_PANELS) + (Y_BORDER * 2) );
-    
-    setSize( pxGameSize );
-    
-    logger.logInit( "Initial Game width = " + pxGameSize.width 
-                     + " & height = " + pxGameSize.height + " & msg Frame width = " + pxMsgFrameWidth );
-    
-    myContentPane = getContentPane();
-    myContentPane.setBackground( COLOR_GAME_BKGRND );
-    
-    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-    
-    initComponents();
-    initActions();
-    
-    setName( GAME_NAME );
-    setTitle( GAME_VERSION );
-    
-    setFocusable( true );
-    setResizable( DEBUG );
+    initWindow();
     
   }// Launcher CONSTRUCTOR
-  
+
  /*
   *            M E T H O D S
   *************************************************************************************************************/
@@ -1391,7 +1366,9 @@ public class Launcher extends JFrame
                         #  M A I N  #
     ======================================================================================================== */
    
-  /** @param args - the command line arguments  */
+  /**
+   *  @param args - the command line arguments 
+   */
   public static void main( final String args[] )
   {
     System.out.println( "Main() STARTED ON " + Thread.currentThread() );
@@ -1433,7 +1410,9 @@ public class Launcher extends JFrame
   
   /**
    *  See if the {@link Loader} thread has returned <br>
+   *  
    *  @return done or not
+   *  
    *  @see #createLoadWorker
    *  @see #gamesLoaded
    */
@@ -1451,6 +1430,7 @@ public class Launcher extends JFrame
    * Toggle the {@link #solveTimer} to send SOLVE events <br>
    * - invoked by the <b>Solve</b> Button or Hot Key <br>
    * - also called by {@link Grid#solveOneSqr} when NO more solving is possible
+   * 
    * @see GameListener#actionPerformed
    * @see #setGridKeyMap
    */
@@ -1483,7 +1463,7 @@ public class Launcher extends JFrame
     else
         solveTimer.stop();
     
-  }// Launcher.startAutoSolve()
+  }// Launcher.toggleAutoSolve()
   
   /**
    *  Game has been filled in correctly <br>
@@ -1505,12 +1485,14 @@ public class Launcher extends JFrame
     
     running = false ;
     
-  }// Launcher.gameSolved()
+  }// Launcher.gameOver()
   
   /**
    *  Set the game to update the count, OR change the show/hide status, of 'conflicts' <br>
    *  - i.e. the presence in the {@link Grid} of one or more conflicting {@link Square}s <br>
+   *  
    *  @param flip - indicate if need to toggle the 'show conflicts' state
+   *  
    *  @see Grid#hasConflicts
    *  @see Square#adjustConflict
    */
@@ -1539,6 +1521,7 @@ public class Launcher extends JFrame
   
   /**
    * Increment/decrement # of Solved actions
+   * 
    * @param inc - amount to increment, +ve or -ve
    * @return updated {@link #solveCount}
    */
@@ -1557,24 +1540,28 @@ public class Launcher extends JFrame
   
   /**
    * Is the game active?
+   * 
    * @return {@link #running}
    */
   boolean isRunning() { return running; }
   
   /**
    * Is the 'Add game' frame active?
+   * 
    * @return {@link #addingGame}
    */
   boolean isAddingGame() { return addingGame; }
   
   /**
    * Is the 'Solve game' function active?
+   * 
    * @return {@link #autoSolveActive}
    */
   boolean autoSolveActivated() { return autoSolveActive; }
   
   /**
    * Are we indicating if any <em>conflicting</em> values are present in the grid?
+   * 
    * @return {@link #showConflicts}
    */
   boolean showingConflicts() { return showConflicts; }
@@ -1591,8 +1578,11 @@ public class Launcher extends JFrame
   /** @return {@link #difficulty}  */
   int getDifficulty() { return difficulty; }
   
-  /** @param diff - new difficulty level
-   *  @return success or failure  */
+  /**
+   *  @param diff - new difficulty level
+   * 
+   *  @return success or failure 
+   */
   boolean setDifficulty( final int diff )
   {
     if( (diff > Loader.nFAIL) && (diff < Loader.NUM_DIFFICULTIES) )
@@ -1608,6 +1598,7 @@ public class Launcher extends JFrame
   
   /**
    * Enable/Disable the Undo button
+   * 
    * @param yes - enable if true, disable if false
    */
   void enableUndo( final boolean yes )
@@ -1618,6 +1609,7 @@ public class Launcher extends JFrame
   
   /**
    * Enable/Disable the Redo button
+   * 
    * @param yes - enable if true, disable if false
    */
   void enableRedo( final boolean yes )
@@ -1628,6 +1620,7 @@ public class Launcher extends JFrame
   
   /**
    * Enable/Disable the Solve button
+   * 
    * @param yes - enable if true, disable if false
    */
   void enableAutoSolve( final boolean yes )
@@ -1638,6 +1631,7 @@ public class Launcher extends JFrame
   
   /**
    * Update the number of unknown {@link Square}s that remain
+   * 
    * @param emp - number of remaining empty {@link Square}s
    * @see Grid#incBlankCount(int)
    */
@@ -1649,18 +1643,21 @@ public class Launcher extends JFrame
   
   /**
    * Update the time display in {@link #timeLabel}
+   * 
    * @param str - <CODE>String</CODE> with the updated time value
    */
   void updateTime( final String str ) { timeLabel.setText( strTIME_TITLE + str ); }
   
   /**
    * Text to display in {@link #infoTitle}
+   * 
    * @param str - <CODE>String</CODE> with updated info
    */
   void updateInfoTitle( final String str ) { infoTitle.setText( str ); }
   
   /**
    * Text to display in {@link #infoMesg}
+   * 
    * @param str - <CODE>String</CODE> with updated info
    */
   void updateInfoMesg( final String str ) { infoMesg.setText( str ); }
@@ -1671,9 +1668,69 @@ public class Launcher extends JFrame
  // ===========================================================================================================
   
   /**
-   *  Init components and add the top level panels to {@link #myContentPane} <br>
-   *  - called by {@link #Launcher(String,boolean)}
+   *  Query the awt toolkit to get screen parameters and set the dimensions of the different Game size options <br>
+   *  - called by {@link #Launcher(String, boolean)}
+   *  
+   *  @see java.awt.Toolkit#getDefaultToolkit
+   *  @see java.awt.Window#setSize(Dimension)
+   */
+  private void initGameSize()
+  {
+    // check the user's screen size
+    pxScreenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    int res = java.awt.Toolkit.getDefaultToolkit().getScreenResolution();
+    
+    logger.logInit( "Screen width = " + pxScreenSize.width 
+                    + " & height = " + pxScreenSize.height + " & Resolution = " + res );
+    
+    // User game starts with the smallest size
+    pxSqrLength = ( DEBUG ? SQUARE_SIZE_MD : SQUARE_SIZE_SM );
+    
+    // make sure the msg frames are not wider than the user's screen
+    pxMsgFrameWidth = Math.min( pxScreenSize.width, (SQUARE_SIZE_SM * INITIAL_GRID_LENGTH) + (X_BORDER * 2) );
+    
+    pxGameSize = new Dimension( (pxSqrLength * INITIAL_GRID_LENGTH) + (X_BORDER * 2),
+                                (pxSqrLength * INITIAL_GRID_LENGTH) + (PANEL_HEIGHT * NUM_MAIN_PANELS) + (Y_BORDER * 2) );
+    
+    setSize( pxGameSize );
+    
+    logger.logInit( "Initial Game width = " + pxGameSize.width 
+                     + " & height = " + pxGameSize.height + " & msg Frame width = " + pxMsgFrameWidth );
+    
+  }// Launcher.initGameSize()
+    
+  /**
+   *  Set Window properties and get access to {@link #myContentPane} <br>
+   *  - called by {@link #Launcher(String, boolean)}
+   *  
    *  @see javax.swing.JFrame#getContentPane
+   *  @see javax.swing.JFrame#setDefaultCloseOperation(int)
+   *  @see java.awt.Component#setFocusable(boolean)
+   *  @see java.awt.Frame#setResizable(boolean)
+   */
+  private void initWindow()
+  {
+    myContentPane = getContentPane();
+    myContentPane.setBackground( COLOR_GAME_BKGRND );
+    
+    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+    
+    initComponents();
+    initActions();
+    
+    setName( GAME_NAME );
+    setTitle( GAME_VERSION );
+    
+    setFocusable( true );
+    setResizable( DEBUG );
+    
+  }// Launcher.initWindow()
+
+  /**
+   *  Init components and add the top level panels to {@link #myContentPane} <br>
+   *  - called by {@link #initWindow}
+   *  
+   *  @see java.awt.Container#add(java.awt.Component, Object)
    */
   private final void initComponents()
   {
@@ -1700,6 +1757,7 @@ public class Launcher extends JFrame
   /**
    *  Init Menu Bar & call Menu init methods <br>
    *  - called by {@link #initComponents}
+   *  
    *  @see #initGameMenu
    *  @see #initSettingsMenu
    *  @see #initHelpMenu
@@ -1789,6 +1847,7 @@ public class Launcher extends JFrame
   /**
    *  Init Top Enclosing Panel & call sub-Panel init methods <br>
    *  - called by {@link #initComponents}
+   *  
    *  @see #initMessagePanel
    *  @see #initTopButtonPanel
    */
@@ -1813,6 +1872,8 @@ public class Launcher extends JFrame
   /**
    *  Init Message Panel & contained panels and labels <br>
    *  - called by {@link #initTopEnclosingPanel}
+   *  
+   *  @see #mesgPanel
    *  @see #infoPanel
    */
   private final void initMessagePanel()
@@ -1882,7 +1943,7 @@ public class Launcher extends JFrame
     topBtnPanel.add( hintButton      );
 
   }// Launcher.initTopButtonPanel()
-
+  
   /**
    *  Init Bottom Button Panel & contained buttons <br>
    *  - called by {@link #initComponents}
@@ -1909,11 +1970,16 @@ public class Launcher extends JFrame
     botBtnPanel.add( redoButton  );
     botBtnPanel.add( solveButton );
     
-  }// Launcher.initBottomButtonPanel()
+  }// Launcher.initBotButtonPanel()
 
   /**
-   *  activate Buttons and {@link #clock} <b>AFTER</b> {@link #listener} has been instantiated <br>
-   *  - called by {@link #Launcher(String,boolean)}
+   *  FIRST get a game {@link #listener} <br>
+   *  activate Buttons, {@link #clock} and {@link #solveTimer} <br>
+   *  activate Menus <br>
+   *  - called by {@link #initWindow}
+   *  
+   *  @see java.awt.event#ActionListener
+   *  @see javax.swing#Timer
    */
   private final void initActions()
   {
@@ -1921,6 +1987,26 @@ public class Launcher extends JFrame
     
     listener = new GameListener();
     
+    initButtonActions();
+    
+    // clock will send an event to listener every (clockDelaySeconds*1000) msec
+    clock = new Timer( clockDelaySeconds*1000, listener );
+    
+    // solve timer will send an event to listener every solveDelay_msec
+    solveDelay_msec = ( DEBUG ? DEBUG_SOLVE_DELAY_MSEC : USER_SOLVE_DELAY_MSEC );
+    solveTimer = new Timer( solveDelay_msec, listener );
+    solveTimer.setInitialDelay( INITIAL_SOLVE_DELAY_MSEC );
+    
+    initMenuActions();
+    
+  }// Launcher.initActions()
+  
+  /**
+   *  initialize top and bottom Buttons <br>
+   *  - called by {@link #initActions}
+   */
+  private void initButtonActions()
+  {
     // top buttons
       newGameButton.addActionListener( listener );
     conflictsButton.addActionListener( listener );
@@ -1937,28 +2023,34 @@ public class Launcher extends JFrame
          undoButton.setEnabled( false );
          redoButton.setEnabled( false );
         solveButton.setEnabled( false );
-    
-    // clock will send an event to listener every (clockDelaySeconds*1000) msec
-    clock = new Timer( clockDelaySeconds*1000, listener );
-    
-    // solve timer will send an event to listener every solveDelay_msec
-    solveDelay_msec = ( DEBUG ? DEBUG_SOLVE_DELAY_MSEC : USER_SOLVE_DELAY_MSEC );
-    solveTimer = new Timer( solveDelay_msec, listener );
-    solveTimer.setInitialDelay( INITIAL_SOLVE_DELAY_MSEC );
-    
-    initMenuActions();
-    
-  }// Launcher.initActions()
+        
+  }// Launcher.initButtonActions()
   
+  /* See setGridKeyMap() for Grid Key Events */
   /**
    *  Set Menu mnemonics and accelerators <br>
    *  - called by {@link #initActions}
+   *  
+   *  @see #setGridKeyMap
    */
   private final void initMenuActions()
   {
     logger.logInit();
     
-    /* Game Menu Items */
+    initGameMenuActions();
+    
+    initSettingsMenuActions();
+    
+    initHelpMenuActions();
+    
+  }// Launcher.initMenuActions()
+  
+  /**
+   *  Set Game Menu mnemonics and accelerators <br>
+   *  - called by {@link #initMenuActions}
+   */
+  private final void initGameMenuActions()
+  {
     gameMenu.setMnemonic( strGAME.charAt(0) );
     
     newGameMenuItem.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0) );
@@ -1975,7 +2067,14 @@ public class Launcher extends JFrame
     exitMenuItem.setMnemonic( KeyEvent.VK_X ); 
     exitMenuItem.addActionListener( listener );
     
-    /* Settings Menu Items */
+  }// Launcher.initGameMenuActions()
+  
+  /**
+   *  Set Settings Menu mnemonics and accelerators <br>
+   *  - called by {@link #initMenuActions}
+   */
+  private final void initSettingsMenuActions()
+  {
     settingsMenu.setMnemonic( strSettings.charAt(0) );
     
     difficultyMenuItem.setMnemonic( strDifficulty.charAt(0) ); 
@@ -1988,11 +2087,19 @@ public class Launcher extends JFrame
     sizeMenuItem.setMnemonic( KeyEvent.VK_Z );
     sizeMenuItem.addActionListener( listener );
     
-    /* Help Menu Items */
+  }// Launcher.initSettingsMenuActions()
+  
+  /**
+   *  Set Help Menu mnemonics and accelerators <br>
+   *  - called by {@link #initMenuActions}
+   */
+  private final void initHelpMenuActions()
+  {
     helpMenu.setMnemonic( strHelp.charAt(0) );
     
     revealWrongMenuItem.setMnemonic( strRevealWrong.charAt(0) );
     revealWrongMenuItem.addActionListener( listener );
+    
     // NOT ENABLED UNTIL A GAME IS LOADED
     revealWrongMenuItem.setEnabled( false );
     
@@ -2004,12 +2111,14 @@ public class Launcher extends JFrame
     aboutMenuItem.setMnemonic( strAbout.charAt(0) );
     aboutMenuItem.addActionListener( listener );
     
-  }// Launcher.initMenuActions()
+  }// Launcher.initHelpMenuActions()
   
   /**
    *  Enable {@link Grid}, {@link Loader} &amp; <code>Inner Class Frames</code>,
    *  then place the game on screen <br>
    *  - called by {@link #main}
+   *  
+   *  @see java.awt.Window#setVisible(boolean)
    *  @see #createGrid
    *  @see #createLoader
    *  @see #createInnerClasses
@@ -2025,11 +2134,11 @@ public class Launcher extends JFrame
     if( ! createGrid() )
       exitInit( "go()", "PROBLEM WITH GRID!" );
     
-    /* 2. Grid must be active BEFORE calling the Loader */
+    /* 2. MUST create the Loader AFTER the Grid has been created */
     if( ! createLoader() )
       exitInit( "go()", "PROBLEM WITH LOADER!" );
     
-    /* 3. Loader must be present BEFORE constructing the Inner Classes */
+    /* 3. MUST construct the Inner Classes AFTER the Loader is present */
     createInnerClasses();
     
     // place the game on the screen
@@ -2043,7 +2152,9 @@ public class Launcher extends JFrame
   /**
    *  Insert the {@link Grid} into {@link #myContentPane} <br>
    *  - called by {@link #go}
+   *  
    *  @return success or failure
+   *  
    *  @see javax.swing.JFrame#getContentPane()
    *  @see #myLayeredPane
    *  @see javax.swing.JLayeredPane
@@ -2077,7 +2188,8 @@ public class Launcher extends JFrame
   /**
    *  Create a {@link #loader} and start the {@link #loadWorker} thread <br>
    *  - called by {@link #go}
-   *  @return success or not
+   *  
+   *  @return success or failure
    *  @see #createLoadWorker
    */
   private final boolean createLoader()
@@ -2103,6 +2215,7 @@ public class Launcher extends JFrame
   /**
    *  Call {@link Loader} to load games from file or jar to {@link Loader.SavedGame}s <br>
    *  - called by {@link #createLoader}
+   *  
    *  @see Loader#loadAllGames
    *  @see #loadWorker
    *  @see #loadWorkerDone
@@ -2140,6 +2253,7 @@ public class Launcher extends JFrame
   /**
    *  Create the Inner Class Frames <br>
    *  - called by {@link #go}
+   *  
    *  @see AddGameFrame
    *  @see GameSizeFrame
    *  @see SelectGameFrame
@@ -2158,6 +2272,7 @@ public class Launcher extends JFrame
   
   }// Launcher.createInnerClasses()
   
+  /* See initMenuActions() for Launcher Key Events */
   /**
    *  Activate {@link Grid} keystroke actions. <br>
    *  - called by {@link #createGrid} <br>
@@ -2167,7 +2282,9 @@ public class Launcher extends JFrame
    *    <li>F8 to REDO the most recent <b>UNDO action</b>
    *    <li>F9 to SOLVE the game
    *  </ul>
+   *  
    *  @see #setGridDebugKeyMap
+   *  @see #initMenuActions
    */
   @SuppressWarnings("serial")
   private void setGridKeyMap()
@@ -2203,8 +2320,10 @@ public class Launcher extends JFrame
   
   /**
    *  <b>Termination</b> because of <b>ERRORS</b> during <i>initialization</i> <br>
+   *  
    *  @param source - calling method name
    *  @param msg - extra info to display
+   *  
    *  @see #Launcher(String,boolean)
    *  @see #go
    */
@@ -2234,6 +2353,7 @@ public class Launcher extends JFrame
   /**
    *  <b>User wants to close the application</b> <br>
    *  <em>ONLY</em> Caller is <b>EXIT</b> action (via Button or Menu)
+   *  
    *  @see GameListener#actionPerformed
    */
   private void halt()
@@ -2271,13 +2391,16 @@ public class Launcher extends JFrame
   /**
    *  Start a new game <br>
    *  - invoked by the <b>New Game</b> Button or Menu item &amp; {@link #selectFrame}
+   *  
    *  @param index of the requested game, or {@link #RANDOM_GAME} for a random selection
+   *  
    *  @see GameListener#actionPerformed
    *  @see Grid#activateGame
    */
   private void newGame( int index )
   {
     if( ! loadWorkerDone() )
+      //TODO: inform user?
       return ;
     
     logger.info( "load game # " + index );
@@ -2337,6 +2460,7 @@ public class Launcher extends JFrame
   /**
    * Tell the {@link Grid} to UNDO the most recent 'Set Value' action <br>
    * - invoked by the <b>Undo</b> Button or Hot Key
+   * 
    * @see Grid#undoLastValue
    * @see GameListener#actionPerformed
    * @see #setGridKeyMap
@@ -2349,11 +2473,13 @@ public class Launcher extends JFrame
     
     grid.undoLastValue();
     repaint();
-  }
+    
+  }//Launcher.undoLastEntry()
   
   /**
    * Tell the {@link Grid} to REDO the most recent 'UNDO' action <br>
    * - invoked by the <b>Redo</b> Button or Hot Key
+   * 
    * @see Grid#redoLastUndo
    * @see GameListener#actionPerformed
    * @see #setGridKeyMap
@@ -2381,6 +2507,7 @@ public class Launcher extends JFrame
   /**
    *  Implement the change after user has selected a new Game size <br>
    *  - called by {@link GameSizeFrame#confirm}
+   *  
    *  @see #pxGameSize
    *  @see #sizeMenuItem
    *  @see #sizeFrame
@@ -2415,7 +2542,8 @@ public class Launcher extends JFrame
   
   /**
    *  Actions needed so that user can define a new Game by adding values to a blank Grid <br>
-   *  - <b>OR</b> clean-up after user has <em>finished</em> Adding new Games
+   *  - <b>OR</b> clean-up after user has <em>finished</em> adding new Games
+   *  
    *  @param start - set up or clean up
    *  @see #launchAddGameFrame
    */
@@ -2447,7 +2575,8 @@ public class Launcher extends JFrame
   }// Launcher.prepareToAddGame()
   
   /**
-   *  Check the values user has added to define a new game, and accept if valid
+   *  Check the values user has added to define a new Game, and accept if valid
+   *  
    *  @see AddGameFrame#confirm
    *  @return game OK or NOT
    */
@@ -2484,6 +2613,7 @@ public class Launcher extends JFrame
   
   /**
    * Reset some key fields to default values <br>
+   * 
    * @see #updateSqrsMesg
    * @see Grid#clear
    */
@@ -2511,6 +2641,7 @@ public class Launcher extends JFrame
   /**
    * Launch a {@link GameSizeFrame} window <br>
    * - invoked by {@link #sizeMenuItem}
+   * 
    * @see #sizeFrame
    * @see GameSizeFrame#actionPerformed
    */
@@ -2527,6 +2658,7 @@ public class Launcher extends JFrame
    * Launch a {@link SelectGameFrame} window <br>
    * - allows user to select a particular {@link Loader.SavedGame} from those that are available <br>
    * - invoked by {@link #selectGameMenuItem}
+   * 
    * @see #selectFrame
    * @see SelectGameFrame#actionPerformed
    */
@@ -2550,6 +2682,7 @@ public class Launcher extends JFrame
    * Launch a {@link ChooseDifficultyFrame} window <br>
    * - allows user to select a particular {@link Loader.SavedGame} level of difficulty from those available <br>
    * - invoked by {@link #difficultyMenuItem}
+   * 
    * @see #difficultyFrame
    * @see SelectGameFrame#actionPerformed
    */
@@ -2569,7 +2702,9 @@ public class Launcher extends JFrame
    * Launch an {@link AddGameFrame} window <br>
    * - allows user to ADD a game to the collection of Saved Games <br>
    * - invoked by {@link #addGameMenuItem}
+   * 
    * @param start - launching OR closing an AddGameFrame
+   * 
    * @see #addFrame
    * @see AddGameFrame#actionPerformed
    * @see Loader.SavedGame
@@ -2594,6 +2729,7 @@ public class Launcher extends JFrame
    * Launch a {@link SolveDelayFrame} window <br>
    * - allows user to select the delay interval for revealing Solved {@link Square}s <br>
    * - invoked by {@link #solveDelayMenuItem}
+   * 
    * @see #delayFrame
    * @see SelectGameFrame#actionPerformed
    */
@@ -2609,6 +2745,7 @@ public class Launcher extends JFrame
   /**
    * Reveal an incorrect guess, if any, in the current game <br>
    * - invoked by {@link #revealWrongMenuItem}
+   * 
    * @see Grid#findWrongGuess
    * @see JOptionPane#showMessageDialog
    */
@@ -2642,6 +2779,7 @@ public class Launcher extends JFrame
   /**
    * Instructions on how to play this Pseudokeu Game <br>
    * - invoked by {@link #instructMenuItem}
+   * 
    * @see JOptionPane#showMessageDialog
    */
   private void launchInstructionBox()
@@ -2655,6 +2793,7 @@ public class Launcher extends JFrame
   /**
    * Information about this Pseudokeu Game <br>
    * - invoked by {@link #aboutMenuItem}
+   * 
    * @see JOptionPane#showMessageDialog
    */
   private void launchAboutBox()
@@ -2668,6 +2807,7 @@ public class Launcher extends JFrame
   /**
    *  Start {@link #clock} <br>
    *  Called ONLY by {@link #newGame}
+   *  
    *  @see #initActions()
    */
   private void startClock()
@@ -2686,6 +2826,7 @@ public class Launcher extends JFrame
   /**
    *  Update the elapsed time <br>
    *  - invoked by the action event generated by {@link #clock}
+   *  
    *  @see Launcher.GameListener#actionPerformed
    */
   private void runClock()
@@ -2752,8 +2893,10 @@ public class Launcher extends JFrame
    *<li>Ctrl-E to display info on the <em>principal active {@link Logger}s</em>
    *<li>Ctrl-Shft-E to list the names of <b>ALL</b> <em>registered {@link Logger}s</em>
    *</ul>
+   *
    * @param gImap - {@link InputMap} for the {@link Grid}
    * @param gAmap - {@link ActionMap} for the {@link Grid}
+   * 
    * @see InputMap#put
    * @see ActionMap#put
    */
@@ -2966,7 +3109,7 @@ public class Launcher extends JFrame
              // Start a new major number
              // OpenSUSE = 6, Ubuntu = 7 (Feb 2012), git = 8 (Mar 2014) 
              strMAJOR_VERSION = "8" ,
-             strMINOR_VERSION = "1" ,
+             strMINOR_VERSION = "1.2" ,
               strVERSION_NUM = strMAJOR_VERSION + "." + strMINOR_VERSION ,
                 GAME_VERSION = PROJECT_NAME + "Version # " + strVERSION_NUM ;
   
@@ -3033,7 +3176,7 @@ public class Launcher extends JFrame
         "<li><h3><font color=red>Note: Some actions are NOT enabled UNLESS " +
           "a Square is selected!</font></h3></li>" +
       "</ul></html>",
-    htmlABOUT_CONTENT = "<html><h2>Created by Mark Sattolo &copy; 2007</h2></html>" + "\n\n[ " + GAME_VERSION + "]\n\n",
+    htmlABOUT_CONTENT = "<html><h2>Created by Mark Sattolo &copy; 2007</h2></html>" + "\n\n[ " + GAME_VERSION + " ]\n\n",
                  
                  strEVENT        =  " event" ,
                  strNewGame      =  "New " + strGAME ,
