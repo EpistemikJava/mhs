@@ -27,34 +27,35 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+import java.util.logging.XMLFormatter;
 
 /**
  * Manage logging for the package
+ * 
  * @author Mark Sattolo
- * @version $Revision: #11 $
+ * @version 8.4
  */
 public class LogControl
 {
   /**
    * USUAL Constructor <br>
-   * Set up my Logger and Handler(s) and initiate logging at the startup Level
+   * Set up my Logger, Handler(s) and Formatter(s) and initiate logging
    * 
    * @param lev - initial log {@link Level} received from {@link Launcher#Launcher(String,boolean)}
+   * 
    * @see PskLogger#getNewLogger
    * @see FileHandler
-   * @see Handler#setFormatter
+   * @see Logger#addHandler(Handler)
    */
   public LogControl( final String lev )
   {
-    // TODO: TRY TO STOP USING Pseudokeu.logging.properties AND CONSOLIDATE ALL LOG COMMANDS IN CODE
-    
     try
     {
       setLevel( Level.parse(lev) );
     }
     catch( Exception e )
     {
-      System.err.println( "Problem with parameter for initial Log Level: " + e.toString() );
+      System.err.println( "\n>> Problem with parameter for initial Log Level: " + e.toString() );
       setLevel( DEFAULT_LEVEL );
     }
     
@@ -62,48 +63,90 @@ public class LogControl
     myLogger = PskLogger.getNewLogger( PskLogger.myname() );
 
     // Generally only want to output to file for DEBUG mode
-    // TODO: PUT IN A SEPARATE METHOD; USE A SINGLE FILEHANDLER FIELD AND SET TEXT OR XML WITH A VAR SENT TO METHOD
     if( Launcher.DEBUG )
     {
-      /*/ xml file handler
-      try
-      {
-        xmlHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + XML_LOGFILE_TYPE,
-                                      LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
-        xmlHandler.setFormatter( new XMLFormatter() );
-      }
-      catch( Exception e )
-      {
-        System.err.println( "XmlHandler exception: " + e );
-      }
-      //*/
+      setHandlers();
       
-      // text file handler
-      try
-      {
-        textHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + TEXT_LOGFILE_TYPE,
-                                       LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
-        textHandler.setFormatter( new PskFormatter() );
-      }
-      catch( Exception e )
-      {
-        System.err.println( "textHandler exception: " + e );
-      }
-      //*/
-      
-      //myLogger.addHandler( xmlHandler );
+      myLogger.addHandler( xmlHandler );
       myLogger.addHandler( textHandler );
+    }
+    else // need a handler for the package logger
+    {
+      myLogger.addHandler( new ConsoleHandler() );
+      myLogger.getHandlers()[0].setFormatter( new PskFormatter() );
     }
     
     // set the level of detail that gets logged
     myLogger.setLevel( currentLevel );
     
-    // root Logger sends to Console
-    rootLogger = LogManager.getLogManager().getLogger( "" );
+    // need to set up root Logger to display properly to Console
+    setRootLogger();
+    
+    myLogger.severe( "STARTING log level is " + currentLevel );
+    
+  }// CONSTRUCTOR
+  
+  /**
+   * Set up my Handler(s) and Formatter(s) <br>
+   *   - called by {@link LogControl#LogControl(String)}
+   * 
+   * @see FileHandler
+   * @see Formatter
+   * @see Handler#setFormatter
+   */
+  private void setHandlers()
+  {
+    // xml file handler
     try
     {
-      // root Logger sends to the default ConsoleHandler
+      xmlHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + XML_LOGFILE_TYPE,
+                                    LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
+      xmlHandler.setFormatter( new XMLFormatter() );
+    }
+    catch( Exception e )
+    {
+      System.err.println( "xmlHandler exception: " + e );
+    }
+    //*/
+    
+    // text file handler
+    try
+    {
+      textHandler = new FileHandler( LOG_SUBFOLDER + Launcher.PROJECT_NAME + LOG_ROLLOVER_SPEC + TEXT_LOGFILE_TYPE,
+                                     LOGFILE_MAX_BYTES, MAX_NUM_LOG_FILES );
+      textHandler.setFormatter( new PskFormatter() );
+    }
+    catch( Exception e )
+    {
+      System.err.println( "textHandler exception: " + e );
+    }
+    //*/
+    
+  }// setHandlers()
+  
+  /**
+   * Set up the root Logger, which handles Console messages <br>
+   *   - called by {@link LogControl#LogControl(String)}
+   * 
+   * @see LogManager#getLogger
+   * @see Logger#getHandlers
+   * @see Handler#setFormatter
+   */
+  private void setRootLogger()
+  {
+    rootLogger = LogManager.getLogManager().getLogger( "" );
+    
+    try
+    {
       Handler[] arH = rootLogger.getHandlers();
+      if( arH.length == 0 )
+      {
+        System.err.println( "\n root Logger has NO handlers!" );
+        
+        //rootLogger.addHandler( new ConsoleHandler() );
+        //System.out.println( "\n >> SET UP a new ConsoleHandler." );
+      }
+      
       for( Handler h : arH )
       {
         // send root Logger output to a PskFormatter
@@ -120,14 +163,16 @@ public class LogControl
       System.err.println( "rootLogger exception: " + e );
     }
     
-    myLogger.severe( "STARTING log level is " + currentLevel );
-    
-  }// CONSTRUCTOR
+  }// setRootLogger()
   
-  /** @return {@link #myLogger} */
+  /**
+   *  @return {@link #myLogger}
+   */
   PskLogger getLogger() { return myLogger ; }
   
-  /** @return {@link #currentLevel} */
+  /**
+   *  @return {@link #currentLevel} 
+   */
   Level getLevel() { return currentLevel ; }
   
   /** @param lev - {@link java.util.logging.Level}   */
@@ -137,8 +182,10 @@ public class LogControl
     intLevel = currentLevel.intValue();
   }
   
-  /** @param lev - {@link java.util.logging.Level}
-   *  @return true if at this Level or lower (i.e. messages of this Level will be logged)  */
+  /**
+   *  @param lev - {@link java.util.logging.Level}
+   *  @return true if at this Level or lower (i.e. messages of this Level will be logged) 
+   */
   static boolean atLevel( final Level lev )
   {
     return intLevel <= lev.intValue();
@@ -163,6 +210,7 @@ public class LogControl
    * Change the amount of information logged <br>
    *   - which means we must decrease or increase the {@link Level} of {@link #myLogger} <br>
    *   - wrap around when reach base or top level
+   * 
    * @param more - increase the amount of logging if <em>true</em>, decrease if <em>false</em>
    * @return {@link #currentLevel}
    */
@@ -204,20 +252,31 @@ public class LogControl
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   String myname()
-  { return getClass().getSimpleName(); }
+  { return getClass().getName(); }
   
-  /** Display list of registered {@link Logger}s */
+  /**
+   *  Display list of registered {@link Logger}s
+   *  
+   *  @see LogManager#getLoggerNames
+   */
   static void showLoggers()
   {
     System.out.println( "\n Currently registered Loggers:" );
     for( Enumeration<String> e = LogManager.getLogManager().getLoggerNames(); e.hasMoreElements(); )
+    {
       System.out.println( '\t' + e.nextElement() );
+    }
 
     System.out.println( ">>> END OF LOGGER LIST." );
     
   }// LogControl.showLoggers()
   
-  /** Display information about active {@link Logger}s */
+  /**
+   *  Display information about active {@link Logger}s
+   *  
+   *  @see LogControl#loggerInfo(Logger,String)
+   *  @see LogManager#getLogger(String)
+   */
   static void checkLogging()
   {
     // package logger
@@ -236,10 +295,20 @@ public class LogControl
   
   /**
    * Display the <var>name</var>, {@link Level}, {@link Handler}s, and {@link Formatter}s of the submitted {@link Logger}
+   * 
    * @param lgr - logger to query
+   * 
+   * @see Logger#getHandlers()
+   * @see Handler#getFormatter()
    */
   private static void loggerInfo( final Logger lgr, final String name )
   {
+    if( lgr == null )
+    {
+      System.err.println( "LogControl.loggerInfo: passed Logger is null!" );
+      return ;
+    }
+    
     System.out.println( "\n" + name + " = '" + lgr.getName() + "' at Level '" + lgr.getLevel() + "'" );
     
     Handler[] $handlerAr = lgr.getHandlers();
@@ -289,7 +358,7 @@ public class LogControl
   private static Logger rootLogger ;
   
   /** @see FileHandler */
-  private static FileHandler textHandler;// , xmlHandler ;
+  private static FileHandler textHandler, xmlHandler ;
   
   /** current {@link Level} */
   private static Level currentLevel ;
@@ -302,7 +371,8 @@ public class LogControl
 /* ========================================================================================================================= */
 
 /**
- * Perform all the actual logging operations
+ * Perform all the Pseudokeu logging operations
+ * 
  * @author Mark Sattolo
  * @see java.util.logging.Logger
  */
@@ -314,8 +384,10 @@ class PskLogger extends Logger
   
   /**
    * USUAL constructor - just calls the super equivalent
+   * 
    * @param name - may be <var>null</var>
    * @param resourceBundleName - may be <var>null</var>
+   * 
    * @see Logger#Logger(String,String)
    */
   private PskLogger( final String name, final String resourceBundleName )
@@ -333,34 +405,43 @@ class PskLogger extends Logger
   
   /**
    * Allow other package classes to create a {@link Logger} <br>
-   *   - adds this new {@link Logger} to the {@link LogManager} namespace
+   *   - register this new {@link Logger} with the {@link LogManager}
+   *   
    * @param name - identify the {@link Logger}
    * @return the <b>new</b> {@link Logger}
+   * 
    * @see LogManager#addLogger(Logger)
    */
   protected static synchronized PskLogger getNewLogger( final String name )
   {
     PskLogger $logger = new PskLogger( name, null );
     LogManager.getLogManager().addLogger( $logger );
+    
     return $logger;
     
   }// PskLogger.getNewLogger()
 
   /**
    * Prepare and send a customized {@link LogRecord} for an <em>initialization</em> method
+   * 
    * @param msg - the text to insert in the {@link LogRecord}
    */
   protected void logInit( final String msg )
   {
     if( ( callclass == null ) || ( callmethod == null ) )
+    {
       getCallerClassAndMethodName();
+    }
+    
     LogRecord $logRec = getRecord( LogControl.INIT_LEVEL, "<INIT> " + msg );
     
     sendRecord( $logRec );
     
   }// PskLogger.logInit(String)
   
-  /** Prepare and send a basic {@link LogRecord} for an initialization method */
+  /**
+   *  Prepare and send a basic {@link LogRecord} for an initialization method 
+   */
   protected void logInit()
   {
     getCallerClassAndMethodName();
@@ -370,6 +451,7 @@ class PskLogger extends Logger
   
   /**
    * Prepare and send a {@link LogRecord} with data from {@link PskLogger#buffer}
+   * 
    * @param level - {@link Level} to log at
    */
   protected void send( final Level level )
@@ -387,6 +469,7 @@ class PskLogger extends Logger
   
   /**
    * Add data to {@link PskLogger#buffer}
+   * 
    * @param msg - data String
    */
   protected synchronized void append( final String msg )
@@ -394,23 +477,28 @@ class PskLogger extends Logger
   
   /**
    * Add data to {@link PskLogger#buffer} with newline
+   * 
    * @param msg - data String
    */
   protected void appendln( final String msg )
   { append( msg + "\n" ); }
   
-  /** Add newline to {@link PskLogger#buffer} */
+  /**
+   *  Add newline to {@link PskLogger#buffer}
+   */
   protected void appendln()
   { append( "\n" ); }
   
-  /** <b>Remove</b> <em>ALL</em> data in {@link PskLogger#buffer} */
+  /**
+   *  <b>Remove</b> <em>ALL</em> data in {@link PskLogger#buffer} 
+   */
   protected void clean()
   { buffer.delete( 0, buffer.length() ); }
   
  // DEBUGGING
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
-  static String myname() { return "mhs.Pseudokeu.PskLogger"; }
+  static String myname() { return "mhs.pseudokeu.PskLogger"; }
   
   /*/
   @Override
@@ -430,8 +518,10 @@ class PskLogger extends Logger
   
   /**
    * Provide a <b>new</b> {@link LogRecord} with Caller class and method name info
+   * 
    * @param level - {@link Level} to log at
    * @param msg - info to insert in the {@link LogRecord}
+   * 
    * @return the produced {@link LogRecord}
    */
   private LogRecord getRecord( final Level level, final String msg )
@@ -439,12 +529,14 @@ class PskLogger extends Logger
     LogRecord $logRec = new LogRecord( ( level == null ? LogControl.DEFAULT_LEVEL : level ), msg );
     $logRec.setSourceClassName( callclass );
     $logRec.setSourceMethodName( callmethod );
+    
     return $logRec;
     
   }// PskLogger.getRecord()
   
   /**
    * Actually send the {@link LogRecord} to the logging handler
+   * 
    * @param rec - {@link LogRecord} to send
    * @see Logger#log(LogRecord)
    */
@@ -459,17 +551,20 @@ class PskLogger extends Logger
   
   /**
    * Get the name of the {@link Class} and <em>Method</em> that called {@link PskLogger}
+   * 
    * @see Throwable#getStackTrace
    * @see StackTraceElement#getClassName
    * @see StackTraceElement#getMethodName
    */
   private void getCallerClassAndMethodName()
   {
-    Throwable t = new Throwable();
-    StackTraceElement[] $elementAr = t.getStackTrace();
+    Throwable $t = new Throwable();
+    StackTraceElement[] $elementAr = $t.getStackTrace();
     
     if( $elementAr.length < 3 )
+    {
       callclass = callmethod = strUNKNOWN ;
+    }
     else
     {
       callclass = $elementAr[2].getClassName();
@@ -491,6 +586,7 @@ class PskLogger extends Logger
   /**
    * Store info from multiple {@link PskLogger#append} or {@link PskLogger#appendln} calls <br>
    *   - i.e. do a 'bulk send'
+   *   
    * @see StringBuilder
    */
   private StringBuilder buffer = new StringBuilder( 1024 );
@@ -511,7 +607,8 @@ class PskLogger extends Logger
 class PskFormatter extends Formatter
 {
   /**
-   * Instructions on how to format a {@link LogRecord}
+   * Instructions on how to format a Pseudokeu {@link LogRecord}
+   * 
    * @see Formatter#format
    */
   @Override
@@ -522,8 +619,7 @@ class PskFormatter extends Formatter
   }
   
   /**
-   * Printed at the beginning of a Log file
-   * @see Formatter#getHead
+   * Printed at the beginning of a Pseudokeu Log file
    */
   @Override
   public String getHead( Handler h )
@@ -532,8 +628,7 @@ class PskFormatter extends Formatter
   }
   
   /**
-   * Printed at the end of a Log file
-   * @see Formatter#getTail
+   * Printed at the end of a Pseudokeu Log file
    */
   @Override
   public String getTail( Handler h )
