@@ -2281,6 +2281,8 @@ public class Launcher extends JFrame
    *    <li>F7 to UNDO the most recent <b>value assignment</b>
    *    <li>F8 to REDO the most recent <b>UNDO action</b>
    *    <li>F9 to SOLVE the game
+   *    <li>Ctrl-L to INCREASE the amount of <b>logging</b> - or wrap around to LOWEST amount
+   *    <li>Ctrl-Shft-L to DECREASE the amount of <b>logging</b> - or wrap around to HIGHEST amount
    *  </ul>
    *  
    *  @see #setGridDebugKeyMap
@@ -2313,6 +2315,17 @@ public class Launcher extends JFrame
     $gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_F9, 0 ), strSolve );
     $gAmap.put( strSolve, new AbstractAction()
       { public void actionPerformed( ActionEvent aevt ) { toggleAutoSolve(); } } );
+    
+    // Ctrl-L = INCREASE Application Logging amount
+    $gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK ), strMoreLogging );
+    $gAmap.put( strMoreLogging, new AbstractAction()
+      { public void actionPerformed( ActionEvent ae ) { logControl.changeLogging( true ); } } );
+    
+    // Ctrl-Shft-L = DECREASE Application Logging amount
+    $gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK ),
+               strLessLogging );
+    $gAmap.put( strLessLogging, new AbstractAction()
+      { public void actionPerformed( ActionEvent ae ) { logControl.changeLogging( false ); } } );
     
     setGridDebugKeyMap( $gImap, $gAmap );
   
@@ -2867,32 +2880,30 @@ public class Launcher extends JFrame
 //*/
   
   /**
-   *  Activate {@link Grid} DEBUG keystroke actions.<br>
-   *  - called by {@link #setGridKeyMap} <br>
-   *<ul>
-   *<li>Ctrl-A to display <b>ALL</b> Active items
-   *<li>Ctrl-S to display the Active {@link Square}, if it exists
-   *<li>Ctrl-Shft-S to display <b>ALL</b> <code>Squares</code>
-   *<li>Ctrl-R to display the Active {@link Row}
-   *<li>Ctrl-Shft-R to display <b>ALL</b> <CODE>Rows</CODE>
-   *<li>Ctrl-C to display the Active {@link Col}
-   *<li>Ctrl-Shft-C to display <b>ALL</b> <CODE>Cols</CODE>
-   *<li>Ctrl-Z to display the Active {@link Zone}
-   *<li>Ctrl-Shft-Z to display <b>ALL</b> <CODE>Zones</CODE>
-   *<li>Ctrl-G to display the Active {@link Group}s
-   *<li>Ctrl-Shft-G to display <b>ALL</b> <CODE>Groups</CODE>
-   *<li>Ctrl-F to display important <b>fields</b> of the {@link Grid}
-   *<li>Ctrl-V to run the <b>Locked Values</b> Solving algorithm
-   *<li>Ctrl-U to display the current game <b>SOLUTION</b>
-   *<li>Ctrl-P to set possible values as temp values in the {@link Grid}
-   *<li>Ctrl-Shft-P to clear ALL temp values in the {@link Grid}
-   *<li>Ctrl-K to toggle the display of <em>keystrokes</em>
-   *<li>Ctrl-M to toggle the display of <em>mouseclicks</em>
-   *<li>Ctrl-L to increase the amount of <b>logging</b> - or wrap around to LOWEST amount
-   *<li>Ctrl-Shft-L to decrease the amount of <b>logging</b> - or wrap around to HIGHEST amount
-   *<li>Ctrl-E to display info on the <em>principal active {@link Logger}s</em>
-   *<li>Ctrl-Shft-E to list the names of <b>ALL</b> <em>registered {@link Logger}s</em>
-   *</ul>
+   * Activate {@link Grid} DEBUG keystroke actions.<br>
+   * - called by {@link #setGridKeyMap} <br>
+   *  <ul>
+   *    <li>Ctrl-A to display <b>ALL</b> Active items
+   *    <li>Ctrl-S to display the Active {@link Square}, if it exists
+   *    <li>Ctrl-Shft-S to display <b>ALL</b> <code>Squares</code>
+   *    <li>Ctrl-R to display the Active {@link Row}
+   *    <li>Ctrl-Shft-R to display <b>ALL</b> <CODE>Rows</CODE>
+   *    <li>Ctrl-C to display the Active {@link Col}
+   *    <li>Ctrl-Shft-C to display <b>ALL</b> <CODE>Cols</CODE>
+   *    <li>Ctrl-Z to display the Active {@link Zone}
+   *    <li>Ctrl-Shft-Z to display <b>ALL</b> <CODE>Zones</CODE>
+   *    <li>Ctrl-G to display the Active {@link Group}s
+   *    <li>Ctrl-Shft-G to display <b>ALL</b> <CODE>Groups</CODE>
+   *    <li>Ctrl-F to display important <b>fields</b> of the {@link Grid}
+   *    <li>Ctrl-V to run the <b>Locked Values</b> Solving algorithm
+   *    <li>Ctrl-U to display the current game <b>SOLUTION</b>
+   *    <li>Ctrl-P to set possible values as temp values in the {@link Grid}
+   *    <li>Ctrl-Shft-P to clear ALL temp values in the {@link Grid}
+   *    <li>Ctrl-K to toggle the display of <em>keystrokes</em>
+   *    <li>Ctrl-M to toggle the display of <em>mouseclicks</em>
+   *    <li>Ctrl-E to display info on the <em>principal active {@link Logger}s</em>
+   *    <li>Ctrl-Shft-E to list the names of <b>ALL</b> <em>registered {@link Logger}s</em>
+   *  </ul>
    *
    * @param gImap - {@link InputMap} for the {@link Grid}
    * @param gAmap - {@link ActionMap} for the {@link Grid}
@@ -2905,7 +2916,7 @@ public class Launcher extends JFrame
   {
     if( DEBUG )
     {
-    logger.logInit();
+      logger.logInit();
     
     // Ctrl-A = display ACTIVE Square AND Groups
     gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK ), strActive );
@@ -3057,23 +3068,6 @@ public class Launcher extends JFrame
       { public void actionPerformed( ActionEvent ae )
         {
           grid.toggleMouseclicks(); } } );
-    
-    // Ctrl-L = INCREASE Application Logging amount
-    gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK ), strMoreLogging );
-    gAmap.put(
-      strMoreLogging, new AbstractAction()
-      { public void actionPerformed( ActionEvent ae )
-        {
-          logControl.changeLogging( true ); } } );
-    
-    // Ctrl-Shft-L = DECREASE Application Logging amount
-    gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK ),
-               strLessLogging );
-    gAmap.put(
-      strLessLogging, new AbstractAction()
-      { public void actionPerformed( ActionEvent ae )
-        {
-          logControl.changeLogging( false ); } } );
     
     // Ctrl-E = display info on principal LoggErs
     gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK ), strMainLoggers );
