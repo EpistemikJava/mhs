@@ -22,6 +22,7 @@ import java.util.logging.Level;
 /**
  *  Used by {@link Square} <var>type</var> to define different types of Squares
  *  and to centralize various useful {@link Square} properties
+ *  
  *  @author Mark Sattolo
  */
 enum SqrTypes
@@ -57,8 +58,9 @@ enum SqrTypes
 /**
  *  The data structure behind every <code>Square</code> in the <code>Grid</code> <br>
  *  - {@link Grid} uses a 2D array of <code>Squares</code>
+ *  
  *  @author Mark Sattolo
- *  @version $Revision: #13 $
+ *  @version 8.1.1
  */
 class Square
 {
@@ -67,11 +69,18 @@ class Square
   ***************************************************************************************/
     
   /**
-   *  default Constructor 
+   *  default Constructor
+   *  
    *  @param homeGrid - enclosing {@link Grid}
    */
   public Square( final Grid homeGrid )
   {
+    if( homeGrid == null )
+    {
+      System.err.println( "Square Constructor: passed a null Grid!!??" );
+      System.exit( this.hashCode() );
+    }
+    
     grid = homeGrid ;
     gridLength = grid.getLength() ;
     logger = Grid.logger ;
@@ -98,6 +107,22 @@ class Square
    */
   void setGroups( final Row row, final Col col, final Zone zone )
   {
+    if( row == null )
+    {
+      logger.severe( "Passed a null Row!!??" );
+      return ;
+    }
+    if( col == null )
+    {
+      logger.severe( "Passed a null Col!!??" );
+      return ;
+    }
+    if( zone == null )
+    {
+      logger.severe( "Passed a null Zone!!??" );
+      return ;
+    }
+    
     // each Square is in a particular row, col, and zone
     myRow  = row ;
     myCol  = col ;
@@ -107,6 +132,7 @@ class Square
   
   /**
    * Set {@link SqrTypes#FIXED} for this {@link Square}
+   * 
    * @see Grid#activateGame
    */
   void setFixed()
@@ -126,6 +152,7 @@ class Square
    *  - start the <em>'Set Value Chain'</em> to update the relevant variables in this Square, its {@link Group}s,
    *  its <b>Group Squares</b>, and the <code>Groups</code> of each <b>Group Square</b> <br>
    *  - called by {@link Grid#activateGame} OR {@link Grid#newValue}
+   *  
    *  @param val - the new <var>value</var>
    *  @param tempMode - temp status when new value was entered
    */
@@ -192,8 +219,10 @@ class Square
    *  Must increment OR decrement {@link #nGrpSqrsWithVal} for the old and new values,
    *  then adjust {@link #conflicting} and reset {@link #possibleVals} <br>
    *  - called by {@link Group#notifySqrsOfValChange} or {@link Zone#notifySqrsOfValChange}
+   *  
    *  @param oldVal - old <var>value</var> of the changed Square
    *  @param newVal - new <var>value</var> of the changed Square
+   *  
    *  @see #adjustConflict
    *  @see #resetPossibleVals
    */
@@ -215,19 +244,29 @@ class Square
     
   }// Square.adjustGroupSqrCounts()
   
-  /** @return value of {@link #nGrpSqrsWithVal} at the specified index
-   *  @param index - into array  */
-  int numGrpSqrsWithVal( final int index ) { return nGrpSqrsWithVal[index] ;}
+  /**
+   * @return value of {@link #nGrpSqrsWithVal} at the specified index
+   * @param index - into array
+   */
+  int numGrpSqrsWithVal( final int index )
+  { return nGrpSqrsWithVal[index] ;}
 
-  /** @return {@link #possibleVals}  */
-  int getPossibleVals() { return possibleVals ;}
+  /**
+   * @return {@link #possibleVals}
+   */
+  int getPossibleVals()
+  { return possibleVals ;}
   
-  /** @return {@link #nPossibleVals}  */
-  int numPossibleVals() { return nPossibleVals ;}
+  /**
+   * @return {@link #nPossibleVals}
+   */
+  int numPossibleVals()
+  { return nPossibleVals ;}
   
   /**
    *  Remove an entry from {@link #possibleVals} and add this entry to {@link #excludeVals} <br>
    *  - called by Solving methods
+   *  
    *  @param val - value to remove
    *  @return success or failure
    */
@@ -268,6 +307,7 @@ class Square
   /**
    *  Find my only possible value <br>
    *  - called by {@link Grid#findSqrSingle}
+   *  
    *  @return success or failure
    */
   boolean findSingleVal()
@@ -292,6 +332,7 @@ class Square
   
   /**
    *  Is the parameter one of my possible values? <br>
+   *  
    *  @param val - value to check
    *  @return success or failure
    */
@@ -304,14 +345,19 @@ class Square
     
   }// Square.canBeVal()
   
-  /** @return value of {@link #excludeVals} at the specified index
-   *  @param index - into the array  */
-  boolean getExcludeVal( final int index ) { return excludeVals[index] ;}
+  /**
+   * @return value of {@link #excludeVals} at the specified index
+   * @param index - into the array
+   */
+  boolean getExcludeVal( final int index )
+  { return excludeVals[index] ;}
   
   /**
    * Set the chain color
+   * 
    * @param color - color to set
-   * @return previous color  */
+   * @return previous color
+   */
   int putInChain( final int color )
   {
     int $old = chainColor ;
@@ -347,13 +393,15 @@ class Square
    * What is my <var>type</var>?
    * @return {@link SqrTypes} {@link #type}
    */
-  SqrTypes getType() { return type ;}
+  SqrTypes getType()
+  { return type ;}
   
   /**
    * What is my {@link #value}?
    * @return int with <var>value</var>
    */
-  int getValue() { return value ;}
+  int getValue()
+  { return value ;}
   
   /**
    * Set {@link #autoSolved} for this {@link Square}
@@ -369,6 +417,7 @@ class Square
   
   /**
    * Set {@link #wrong} for this {@link Square}
+   * 
    * @param state - WRONG or NOT
    * @see Grid#findWrongGuess
    */
@@ -381,19 +430,23 @@ class Square
   }// Square.setWrong()
   
   /** @return {@link #type} == {@link SqrTypes#OPEN}  */
-  boolean isOpen() { return type == SqrTypes.OPEN ;}
+  boolean isOpen()
+  { return type == SqrTypes.OPEN ;}
   
   /** @return {@link #type} == {@link SqrTypes#GUESS}  */
-  boolean isGuess() { return type == SqrTypes.GUESS ;}
+  boolean isGuess()
+  { return type == SqrTypes.GUESS ;}
   
   /** @return {@link #type} == {@link SqrTypes#GUESS}  */
-  boolean isFixed() { return type == SqrTypes.FIXED ;}
+  boolean isFixed()
+  { return type == SqrTypes.FIXED ;}
   
   /**
    * This {@link Square} is currently selected
    * @return boolean <var>active</var>
    */
-  boolean isActive() { return active ;}
+  boolean isActive()
+  { return active ;}
   
   /**
    * This {@link Square} has just been selected or de-selected
@@ -417,19 +470,24 @@ class Square
    * other {@link Square} in one of its {@link Group}s
    * @return boolean {@link #conflicting}
    */
-  boolean isConflicting() { return conflicting ;}
+  boolean isConflicting()
+  { return conflicting ;}
   
   /** @return {@link #temp}  */
-  boolean isTemp() { return temp ; }
+  boolean isTemp()
+  { return temp ; }
   
   /** @return {@link #autoSolved}  */
-  boolean isAutoSolved() { return autoSolved ; }
+  boolean isAutoSolved()
+  { return autoSolved ; }
   
   /** @return {@link #wrong}  */
-  boolean isWrong() { return wrong ; }
+  boolean isWrong()
+  { return wrong ; }
   
   /** @return whether {@link #chainColor} is set  */
-  boolean inColorChain() { return chainColor > Grid.NO_COLOR ; }
+  boolean inColorChain()
+  { return chainColor > Grid.NO_COLOR ; }
   
   /**
    * Which {@link Zone} am I in?
@@ -474,8 +532,9 @@ class Square
   
   /**
    * Update my {@link #type} according to mode or new {@link #value} <br>
-   * <b> !! value has ALREADY been updated !! </b><br>
+   * <b> >> the value has ALREADY been updated</b> <br>
    * - called by {@link #newValue}
+   * 
    * @param tempMode - temp status when type changed
    * @see SqrTypes
    */
@@ -504,8 +563,10 @@ class Square
   /**
    *  Set or unset if this {@link Square} has a duplicate <var>value</var> <br>
    *  - called by {@link #newValue} OR {@link #adjustGroupSqrCounts}
+   *  
    *  @param oldval - old <var>value</var> of the changed {@link Square}
    *  @param newval - new <var>value</var> of the changed {@link Square}
+   *  
    *  @see Launcher#setConflicts
    *  @see Grid#hasConflicts
    */
@@ -549,7 +610,9 @@ class Square
   /**
    *  Reset my possible values fields <br>
    *  - called by {@link #newValue} and {@link #adjustGroupSqrCounts}
+   *  
    *  @return {@link #nPossibleVals}
+   *  
    *  @see #nGrpSqrsWithVal
    *  @see #excludeVals
    */
@@ -588,6 +651,7 @@ class Square
   /**
    *  Remove an entry from each of my Group's possible values <br>
    *  - called by {@link #removePossibleVal}
+   *  
    *  @param val - value to remove
    *  @see Group#removeSqrFromVal
    */
@@ -617,6 +681,7 @@ class Square
   
   /**
    *  Set my possible values (if 3 or fewer) as a temp value
+   *  
    *  @return the calculated int
    *  @see Grid#setPossibleValsAsTempVals
    */
@@ -658,12 +723,21 @@ class Square
   
   /**
    * display a {@link Square}
-   * @param level - {@link Level} to display at
+   * 
+   * @param lev - {@link Level} to display at
    * @param brief - option to display less information
    * @param info  - extra info
    */
-  void display( final Level level, final boolean brief, final String info )
+  void display( final Level lev, final boolean brief, final String info )
   {
+    Level level = lev ;
+    
+    if( lev == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      level = LogControl.DEFAULT_LEVEL ;
+    }
+    
     int v ;
     
     if( !brief ) logger.appendln( info + "\n-----------------------------" );
@@ -694,9 +768,6 @@ class Square
  /*
   *            F I E L D S
   ***************************************************************************************/ 
-  
-  /** Perforce file version */
-  static final String strP4_VERSION = "$Revision: #13 $" ;
   
   /** Logging */
   private static PskLogger logger ;

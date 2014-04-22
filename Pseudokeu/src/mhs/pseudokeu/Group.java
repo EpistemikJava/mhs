@@ -26,7 +26,7 @@ import java.util.logging.Level;
  *  Each implemented <code>Group</code> <em>Subclass</em> is an extension of this <b>abstract</b> Class
  *
  *  @author  Mark Sattolo
- *  @version $Revision: #15 $
+ *  @version 8.1.1
  */
 public abstract class Group
 {
@@ -35,11 +35,18 @@ public abstract class Group
   ***************************************************************************************/
   
   /**
-   *  Base Constructor  
+   *  Base Constructor
+   *  
    *  @param mygrid - reference to the {@link Grid} I am in
    */
   public Group( final Grid mygrid )
   {
+    if( mygrid == null )
+    {
+      System.err.println( "Group Constructor: passed a null Grid!!??" );
+      System.exit( this.hashCode() );
+    }
+    
     grid = mygrid ;
     gridLength = grid.getLength() ;
     logger = Grid.logger ;
@@ -59,6 +66,7 @@ public abstract class Group
   
   /**
    *  Intermediate Constructor
+   *  
    *  @param mygrid - reference to the {@link Grid} I am in
    *  @param row - 1st index into {@link Grid#sqrs2dArray}
    *  @param col - 2nd index into {@link Grid#sqrs2dArray}
@@ -66,12 +74,14 @@ public abstract class Group
   public Group( final Grid mygrid, final int row, final int col )
   {
     this( mygrid );
+    
     startingRow = row ;
     startingCol = col ;
   }
   
   /**
    *  USUAL Constructor
+   *  
    *  @param mygrid - reference to the {@link Grid} I am in
    *  @param pos - index into the {@link Group} array for my type
    *  @param row - 1st index into {@link Grid#sqrs2dArray}
@@ -80,6 +90,7 @@ public abstract class Group
   public Group( final Grid mygrid, final int pos, final int row, final int col )
   {
     this( mygrid, row, col );
+    
     posnIndex = pos ;
   }
   
@@ -94,14 +105,22 @@ public abstract class Group
    *  There is a {@link Square} with a changed <var>value</var> in this {@link Group}<br>
    *  Must update my <var>fields</var> then notify the <b>Group Squares</b> in this Group <br> 
    *  - called by {@link Square#newValue}
+   *  
    *  @param oldval  - old <var>value</var> of the changed {@link Square}
    *  @param newval  - new <var>value</var> of the changed {@link Square}
    *  @param oldtype - old <var>type</var> of the changed {@link Square}
    *  @param newtype - new <var>type</var> of the changed {@link Square}
+   *  
    *  @see #notifySqrsOfValChange
    */
   void changedSqr( final int oldval, final int newval, final SqrTypes oldtype, final SqrTypes newtype )
   {
+    if( oldtype == null || newtype == null )
+    {
+      logger.severe( "Passed a null SqrTypes!!??" );
+      return ;
+    }
+    
     logger.fine( myPosn() + ": " + oldval + " (" + oldtype + ") -> " + newval + " (" + newtype + ")" );
     
     if( oldtype != newtype )
@@ -121,11 +140,18 @@ public abstract class Group
   /**
    *  <var>Type</var> of the <b>Active Square</b> is changing <br>
    *  - called by {@link #changedSqr} or {@link Square#setFixed}
+   *  
    *  @param oldType - old <var>type</var> of the changed {@link Square}
    *  @param newType - new <var>type</var> of the changed {@link Square}
    */
   void adjustTypeCounts( final SqrTypes oldType, final SqrTypes newType )
   {
+    if( oldType == null || newType == null )
+    {
+      logger.severe( "Passed a null SqrTypes!!??" );
+      return ;
+    }
+    
     logger.fine( myPosn() + ": '" + oldType + "' -> '" + newType + "'" );
     
     if( newType == SqrTypes.FIXED ) // Guess -> Fixed : ONLY when Loading a game
@@ -151,8 +177,10 @@ public abstract class Group
    *  Have a new <var>value</var> in one of my {@link Square}s <br>
    *  - must update each <b>Group Square</b> of the Active Square <br>
    *  - called by {@link #changedSqr}
+   *  
    *  @param oldVal - old <var>value</var> in the changed {@link Square}
    *  @param newVal - new <var>value</var> in the changed {@link Square}
+   *  
    *  @see Zone#notifySqrsOfValChange
    *  @see Square#adjustGroupSqrCounts
    */
@@ -174,7 +202,9 @@ public abstract class Group
     
   }// Group.notifySqrsOfValChange()
   
-  /** Set all mutable fields to default values */
+  /**
+   * Set all mutable fields to default values
+   */
   final void clear()
   {
     for( int v=0; v <= gridLength; v++ )
@@ -194,8 +224,10 @@ public abstract class Group
   /**
    * Find one of my {@link Square}s that is the Color match for the parameter Square at the parameter value <br>
    * - called by {@link Grid#buildColorChain}
+   * 
    * @param chainColor - current level
    * @param val - to check
+   * 
    * @return success or failure
    */
   boolean findColorSqr( final int chainColor, final int val )
@@ -218,6 +250,7 @@ public abstract class Group
   /**
    *  Find one of my {@link Square}s that is the <b>only possibility</b> for a particular value <br>
    *  - called by {@link Grid#findGrpSingle}
+   *  
    *  @return the Square or null if none
    */
   Square findSingleSqrForVal()
@@ -245,6 +278,7 @@ public abstract class Group
   /**
    *  Find any locked values and adjust the possible vals of affected Squares, if necessary <br>
    *  - called by {@link Grid#findLockedVals}
+   *  
    *  @return success or failure
    */
   boolean findLockedVals()
@@ -304,10 +338,13 @@ public abstract class Group
   /**
    *  See if the Locked vals in a {@link Row} or {@link Col} have a common {@link Zone} <br>
    *  - called by {@link #findLockedVals}
+   *  
    *  @param sqr1 - index of first Square to check
    *  @param sqr2 - index of second Square to check
    *  @param sqr3 - index of third Square to check
+   *  
    *  @return common Sub{@link Group} if any, or null
+   *  
    *  @see Zone#getCommonGroup
    */
   Group getCommonGroup( final int sqr1, final int sqr2, final int sqr3 )
@@ -333,14 +370,22 @@ public abstract class Group
   /**
    *  Adjust the possible vals of my Squares <br>
    *  - called by {@link #findLockedVals}
+   *  
    *  @param own - Zone to exclude
    *  @param val - value to remove from Squares
    *  @return success or failure
+   *  
    *  @see Square#removePossibleVal
    *  @see Zone#setPossValsFromLockedVals
    */
   boolean setPossValsFromLockedVals( final Group own, final int val )
   {
+    if( own == null )
+    {
+      logger.severe( "Passed a null Group!!??" );
+      return false ;
+    }
+    
     boolean $interim = false, $result = false ;
     for( Square s : mySqrs )
       if( s.getZone() != own )
@@ -358,12 +403,20 @@ public abstract class Group
   /**
    *  Remove a {@link Square} from {@link #sqrsCanBeVal}[] <br>
    *  - called by {@link Square#removeSqrFromGrpVal}
+   *  
    *  @param sqr - Square to remove
    *  @param val - value to remove from
+   *  
    *  @return success or failure
    */
   boolean removeSqrFromVal( final Square sqr, final int val )
   {
+    if( sqr == null )
+    {
+      logger.severe( "Passed a null Square!!??" );
+      return false ;
+    }
+    
     int $bitIndex ;
     boolean $result = false ;
     
@@ -395,8 +448,10 @@ public abstract class Group
   /**
    *  Set the {@link Square} indices for each of my Open values <br>
    *  - called by {@link Grid#setSqrsCanBeVal}
-   *  @see #sqrsCanBeVal
+   *  
    *  @return success or failure
+   *  
+   *  @see #sqrsCanBeVal
    */
   boolean setSqrsCanBeVal()
   {
@@ -429,6 +484,7 @@ public abstract class Group
   /**
    *  Find Square Pairs [aka "Naked Pairs"]<br>
    *  - called by {@link Grid#findPairs}
+   *  
    *  @return success or failure
    */
   boolean findSqrPairs()
@@ -471,6 +527,7 @@ public abstract class Group
   /**
    *  Find Group Pairs [aka "Hidden Pairs"]<br>
    *  - called by {@link Grid#findPairs}
+   *  
    *  @return success or failure
    */
   boolean findGrpPairs()
@@ -513,6 +570,7 @@ public abstract class Group
   /**
    *  Find Square Triples [aka "Naked Triples"]<br>
    *  - called by {@link Grid#findTriples}
+   *  
    *  @return success or failure
    */
   boolean findSqrTriples()
@@ -573,6 +631,7 @@ public abstract class Group
   /**
    *  Find Group Triples [aka "Hidden Triples"]<br>
    *  - called by {@link Grid#findTriples}
+   *  
    *  @return success or failure
    */
   boolean findGrpTriples()
@@ -633,6 +692,7 @@ public abstract class Group
   /**
    *  Find Square Quads [aka "Naked Quads"]<br>
    *  - called by {@link Grid#findQuads}
+   *  
    *  @return success or failure
    */
   boolean findSqrQuads()
@@ -707,6 +767,7 @@ public abstract class Group
   /**
    *  Find Group Quads [aka "Hidden Quads"]<br>
    *  - called by {@link Grid#findQuads}
+   *  
    *  @return success or failure
    */
   boolean findGrpQuads()
@@ -781,8 +842,10 @@ public abstract class Group
   /**
    *  Update possible values using the Block fields <br>
    *  - called by the Block Solving methods
+   *  
    *  @param fromSqrBlock - from a Square block or a Group block
    *  @return success or failure
+   *  
    *  @see #blockSqrs
    *  @see #blockVals
    */
@@ -832,9 +895,11 @@ public abstract class Group
   /**
    *  Process Rectad value <br>
    *  - called by {@link Grid#findRectads}
+   *  
    * @param val - value
    * @param sqr1 - 1st Square to exclude
    * @param sqr2 - 2nd Square to exclude
+   * 
    * @return success or failure
    */
   boolean processRectadVal( final int val, final int sqr1, final int sqr2 )
@@ -853,10 +918,12 @@ public abstract class Group
   /**
    *  Process Rectad value <br>
    *  - called by {@link Grid#findHexad}
+   *  
    * @param val - value
    * @param sqr1 - 1st Square to exclude
    * @param sqr2 - 2nd Square to exclude
    * @param sqr3 - 3rd Square to exclude
+   * 
    * @return success or failure
    */
   boolean processHexadVal( final int val, final int sqr1, final int sqr2, final int sqr3 )
@@ -889,11 +956,18 @@ public abstract class Group
   
   /**
    *  Get the index in {@link #mySqrs} of the parameter {@link Square} <br>
+   *  
    *  @param sqr - Square to check
    *  @return index, or -1 if this Square is NOT one of my Squares
    */
   int getSqrIndex( final Square sqr )
   {
+    if( sqr == null )
+    {
+      logger.severe( "Passed a null Square!!??" );
+      return -1 ;
+    }
+    
     for( int i=0; i < gridLength; i++ )
       if( mySqrs[i] == sqr )
         return i ;
@@ -904,9 +978,11 @@ public abstract class Group
   
   /**
    * What is my position in the grid?
+   * 
    * @return int with <var>posnIndex</var>
    */
-  int getPosn() { return posnIndex ;}
+  int getPosn()
+  { return posnIndex ;}
   
  // ===========================================================================================================
  //                            D E B U G    C O D E
@@ -917,12 +993,21 @@ public abstract class Group
   
   /**
    *  Send this {@link Group}'s parameters to {@link #logger}
-   *  @param level - {@link Level} to display at
+   *  
+   *  @param lev - {@link Level} to display at
    *  @param brief - print less information
    *  @param info  - extra text to display
    */
-  void display( final Level level, final boolean brief, final String info )
+  void display( final Level lev, final boolean brief, final String info )
   {
+    Level level = lev ;
+    
+    if( lev == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      level = LogControl.DEFAULT_LEVEL ;
+    }
+    
     int i ;
     
     if( !brief ) logger.appendln( info );
@@ -966,9 +1051,6 @@ public abstract class Group
   *            F I E L D S
   ***************************************************************************************/
  
-  /** Perforce file version */
-  static final String strP4_VERSION = "$Revision: #15 $" ;
-  
   /** Reference to my {@link Grid} */
   static Grid grid ;
   
@@ -1049,7 +1131,8 @@ public abstract class Group
 //////////////////////////////////
 
 /**
- *  {@link Grid} sub-section composed of a vertical line of {@link Square}s, numbering <var>Grid.gridLength</var>
+ *  {@link Grid} sub-section composed of a vertical line of {@link Square}s, of count <var>Grid.gridLength</var>
+ *  
  *  @author Mark Sattolo
  *  @see Grid#getLength()
  */
@@ -1057,6 +1140,7 @@ class Col extends Group
 {
   /**
    *  Constructor
+   *  
    *  @param mygrid - reference to my {@link Grid}
    *  @param pos - index into the {@link Group} array for my type
    *  @param row - 1st index into {@link Grid#sqrs2dArray}
@@ -1073,6 +1157,7 @@ class Col extends Group
   /**
    *  Fill {@link #mySqrs}[] with references to the appropriate
    *  {@link Square}s in {@link Grid#sqrs2dArray} <br><br>
+   *  
    *  ONLY called by {@link Col#Col(Grid,int,int,int)}
    */
   @Override
@@ -1093,7 +1178,8 @@ class Col extends Group
 //////////////////////////////////
 
 /**
- *  {@link Grid} sub-section composed of a horizontal line of {@link Square}s, numbering <var>Grid.gridLength</var>
+ *  {@link Grid} sub-section composed of a horizontal line of {@link Square}s, of count <var>Grid.gridLength</var>
+ *  
  *  @author Mark Sattolo
  *  @see Grid#getLength()
  */
@@ -1117,6 +1203,7 @@ class Row extends Group
   
   /**
    *  Fill {@link #mySqrs}[] with references to the appropriate {@link Square}s in {@link Grid#sqrs2dArray} <br><br>
+   *  
    *  ONLY called by {@link Row#Row(Grid,int,int,int)}
    */
   @Override
@@ -1138,6 +1225,7 @@ class Row extends Group
 
 /**
  *  {@link Grid} sub-section composed of an 'N x N' block of {@link Square}s, and N = square root of <var>Grid.gridLength</var>
+ *  
  *  @author Mark Sattolo
  *  @see Grid#getLength()
  */
@@ -1204,8 +1292,10 @@ class Zone extends Group
    *  Have a new <var>value</var> in one of my {@link Square}s <br>
    *  - must update each <b>Group Square</b> of the Active Square <br>
    *  - called by {@link #changedSqr}
+   *  
    *  @param oldVal - old <var>value</var> in the changed {@link Square}
    *  @param newVal - new <var>value</var> in the changed {@link Square}
+   *  
    *  @see Group#notifySqrsOfValChange
    *  @see Square#adjustGroupSqrCounts
    */
@@ -1236,16 +1326,25 @@ class Zone extends Group
   /**
    *  Adjust the possible vals of my Squares <br>
    *  - called by {@link #findLockedVals}
+   *  
    *  @param own - Row or Col to exclude
    *  @param val - value to remove from Squares
    *  @return success or failure
+   *  
    *  @see Square#removePossibleVal
    *  @see Group#setPossValsFromLockedVals
    */
   @Override
   boolean setPossValsFromLockedVals( final Group own, final int val )
   {
+    if( own == null )
+    {
+      logger.severe( "Passed a null Group!!??" );
+      return false ;
+    }
+    
     boolean $interim = false, $result = false ;
+    
     for( Square s : mySqrs )
       if( !( (s.getCol() == own) || (s.getRow() == own) ) )
       {
@@ -1261,9 +1360,11 @@ class Zone extends Group
   /**
    *  See if the Locked vals in a {@link Zone} have a common {@link Row} or {@link Col} <br>
    *  - called by {@link #findLockedVals}
+   *  
    *  @param sqr1 - index of first Square to check
    *  @param sqr2 - index of second Square to check
    *  @param sqr3 - index of third Square to check
+   *  
    *  @return common Sub{@link Group} if any, or null
    *  @see Group#getCommonGroup
    */

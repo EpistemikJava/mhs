@@ -37,7 +37,8 @@ import mhs.pseudokeu.Loader.SavedGame;
  * The grid containing 9 {@link Col}umns, 9 {@link Row}s, and 9 {@link Zone}s, each filled with 9 {@link Square}s
  *
  * @author Mark Sattolo
- * @version $Revision: #14 $
+ * @version 8.1.1
+ * 
  * @see JPanel
  * @see MouseListener
  * @see KeyListener
@@ -50,8 +51,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  Handles the information needed to Undo & Redo value assignments to {@link Square}s
-   *  @see #undoVector
+   *  
    *  @author Mark Sattolo
+   *  @see #undoVector
    */
   class UndoMatrix
   {
@@ -66,6 +68,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     /**
      *  Position of the {@link Square} whose value was changed <br>
      *  x = row & y = col
+     *  
      *  @see Point
      */
     private Point sqrLocation ;
@@ -73,6 +76,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     /**
      *  Previous and New values in the changed {@link Square} <br>
      *  x = old & y = new
+     *  
      *  @see Point
      */
     private Point values ;
@@ -80,6 +84,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     /**
      *  CONSTRUCTOR - new {@link #sqrLocation} & {@link #values} are created ;
      *   - other fields are set from parameters <br>
+     *   
      *  @param indx - {@link #index}
      *  @param old - {@link #oldTemp}
      *  @param newtmp - {@link #newTemp}
@@ -103,6 +108,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     
     /**
      *  Set {@link #sqrLocation}
+     *  
      *  @param row - assigned to sqrLocation.x
      *  @param col - assigned to sqrLocation.y
      */
@@ -114,6 +120,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     
     /**
      *  Set {@link #values}
+     *  
      *  @param oldVal - assigned to values.x
      *  @param newVal - assigned to values.y
      */
@@ -147,6 +154,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     
     /**
      *  Show the fields of {@link UndoMatrix}
+     *  
      *  @param level - {@link Level} to display at
      *  @param msg - additional info
      */
@@ -165,9 +173,11 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  Handles the information needed to use Color Chains for Solving
+   *  
+   *  @author Mark Sattolo
+   *  
    *  @see Grid#colorChain
    *  @see Grid#findColorChainVal
-   *  @author Mark Sattolo
    */
   class ColorChain
   {
@@ -328,10 +338,17 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  USUAL Constructor <br>
    *  - called by {@link Launcher#createGrid}
+   *  
    *  @param frame - reference to the enclosing {@link Launcher}
    */
   public Grid( final Launcher frame )
   {
+    if( frame == null )
+    {
+      System.err.println( "Grid Constructor: passed a null Launcher!!??" );
+      System.exit( this.hashCode() );
+    }
+    
     gameview = frame ;
     logger = Launcher.logger ;
     
@@ -432,6 +449,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Calculate the position to place the {@link Grid} in {@link Launcher#myLayeredPane} in {@link Launcher#myContentPane}<br>
    *  - called by {@link #Grid(Launcher)}
+   *  
    *  @see java.awt.Component#setLocation
    */
   private final void initLocation()
@@ -493,14 +511,22 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    * Load {@link #sqrs2dArray} with values from a {@link Loader.SavedGame} then get the solution from Solver<br>
    * - called by {@link Launcher#newGame}
+   * 
    * @param loader - {@link Loader} to use
    * @param diff - level
-   * @param sel - index of selected {@link Loader.SavedGame}, OR a value LT zero for a random selection
+   * @param sel - index of selected {@link Loader.SavedGame}, OR a value LT zero to obtain a random saved game
+   * 
    * @return name of loaded game
-   * @see Solver#getSolution
+   * @see #getSolutionGame
    */
   String activateGame( final Loader loader, final int diff, final int sel )
   {
+    if( loader == null )
+    {
+      logger.severe( "Passed a null Loader!!??" );
+      return null ;
+    }
+    
     logger.config( (new Date()).toString() );
     
     int $newval ;
@@ -509,7 +535,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     activeGameIndex = (sel < 0) ? (int)Math.round( Math.random() * (loader.getNumLoadedGames(diff) - 1) ) : sel ;
     
     activeGame = loader.getSavedGame( diff, activeGameIndex );
-    if( null == activeGame )
+    if( activeGame == null )
     {
       logger.warning( "loader.getSavedGame() DID NOT WORK !! ??" );
       return null ;
@@ -547,7 +573,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  See if the {@link Solver} thread has returned <br>
+   *  
    *  @return done or not
+   *  
    *  @see #createSolveWorker
    *  @see #savedSolnReady
    */
@@ -563,7 +591,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Change the {@link Grid} size to accommodate a new {@link Square} size <br>
    *  - also adjusts the Font
+   *  
    *  @param size - the new value
+   *  
    *  @see Launcher.GameSizeFrame#confirm
    *  @see java.awt.Component#setSize
    *  @see javax.swing.JComponent#setFont
@@ -608,6 +638,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Set the Sqr indices for each value in each Group <br>
    *  - called by {@link Square#newValue}
+   *  
    *  @see Group#setSqrsCanBeVal
    */
   void setSqrsCanBeVal()
@@ -623,6 +654,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  modify {@link #numBlankSqrs}
+   *  
    *  @param diff - the +ve or -ve amount to increment/decrement
    *  @see Square#adjustType
    */
@@ -638,6 +670,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  Reset all {@link Grid} fields whose value depends on the current loaded game and user actions
+   *  
    *  @see Launcher#reset
    */
   final void clear()
@@ -656,8 +689,10 @@ public class Grid extends JPanel implements MouseListener, KeyListener
       }
     }
     
-    activeGame = null ;
-    savedSolution = null ;
+    if( activeGame != null ) 
+      activeGame = null ;
+    if( savedSolution != null )
+      savedSolution = null ;
     
     defaultSqr = sqrs2dArray[0][0] ;
     
@@ -676,6 +711,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * Reverse the most recent value assignment to a {@link Square}
+   * 
    * @see #addNewUndoEntry
    * @see Launcher#undoLastEntry
    */
@@ -717,7 +753,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * Reverse the most recent UNDO action
+   * 
    * @return success or failure
+   * 
    * @see #undoLastValue
    * @see Launcher#redoLastUndoAction
    */
@@ -757,6 +795,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Find a new possible value in the current Grid and set it <br>
    *  - called by {@link Launcher#revealSquare}
+   *  
    *  @see Launcher#toggleAutoSolve
    *  @see #findGrpSingle
    *  @see #findSqrSingle
@@ -947,11 +986,19 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  Find and show a WRONG guess, if any, in the current Grid
+   *  
    *  @return success or failure
    *  @see Launcher#revealWrongGuess
    */
   boolean findWrongGuess()
   {
+    // do NOT have a proper Solution...
+    if( ! savedSolnGood )
+    {
+      logger.warning( "Solution is NOT GOOD!" );
+      return false ;
+    }
+    
     logger.info( "Reveal a WRONG guess, if any" );
     
     Square $target ;
@@ -981,7 +1028,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  Any {@link Square}s with conflicting <var>values</var>?<br>
+   *  
    *  @return boolean indicating if {@link #nConflicts} is GT zero
+   *  
    *  @see #incConflicts
    *  @see Launcher#setConflicts
    *  @see Square#adjustConflict
@@ -995,12 +1044,20 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /** 
    *  Increment (or decrement) {@link #nConflicts}
+   *  
    *  @param inc - the amount to increment, +ve or -ve 
    *  @param sqr - {@link Square} that made the call
+   *  
    *  @see #hasConflicts
    */
   void incConflicts( final int inc, final Square sqr )
   {
+    if( sqr == null )
+    {
+      logger.severe( "Passed a null Square!!??" );
+      return ;
+    }
+    
     nConflicts += inc ;
     logger.severe( ( inc >= INCREASE ? "INCREASE" : "DECREASE" ) + " to '" + nConflicts + "' for Sqr " + sqr.strGridPosn() );
     
@@ -1009,20 +1066,25 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   }// Grid.incConflicts()
   
   /** @return int {@link #gridLength}  */
-  int getLength() { return gridLength; }
+  int getLength()
+  { return gridLength; }
   
   /** @return number of {@link Square}s with values (FIXED or GUESS)  */
-  int getNumValues() { return( totalSqrs - numBlankSqrs ); }
+  int getNumValues()
+  { return( totalSqrs - numBlankSqrs ); }
   
   /** @return {@link #totalSqrs}  */
-  int getTotalSqrs() { return totalSqrs ;}
+  int getTotalSqrs()
+  { return totalSqrs ;}
 
   /** @return {@link #zoneLength}  */
-  int getZoneLength() { return zoneLength ;}
+  int getZoneLength()
+  { return zoneLength ;}
 
   /**
    *  Check if {@link #activeSqr} is valid and return it, 
    *  or {@link #defaultSqr} if <em>activeSqr</em> is <b>INVALID</b>
+   *  
    *  @return {@link Square} {@link #activeSqr} OR {@link #defaultSqr}
    *  @see #setDefaultSqr
    */
@@ -1040,22 +1102,28 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   }// Grid.getActiveSqr()
   
   /** @return {@link #undoMode}  */
-  boolean inUndoMode() { return undoMode ; }
+  boolean inUndoMode()
+  { return undoMode ; }
   
   /** @return boolean indicating if {@link #totalEntries} GT zero  */
-  boolean hasEntries() { return( totalEntries > 0 ); }
+  boolean hasEntries()
+  { return( totalEntries > 0 ); }
   
   /** @return boolean indicating if any ACTIVE entries, i.e. NOT undone  */
-  boolean hasActiveEntries() { return( (totalEntries > 0) && (undoPtr > 0) ); }
+  boolean hasActiveEntries()
+  { return( (totalEntries > 0) && (undoPtr > 0) ); }
   
   /** @return active {@link Col}  */
-  Col activeCol() { return getActiveSqr().getCol(); }
+  Col activeCol()
+  { return getActiveSqr().getCol(); }
   
   /** @return active {@link Row}  */
-  Row activeRow() { return getActiveSqr().getRow(); }
+  Row activeRow()
+  { return getActiveSqr().getRow(); }
   
   /** @return active {@link Zone}  */
-  Zone activeZone() { return getActiveSqr().getZone(); }
+  Zone activeZone()
+  { return getActiveSqr().getZone(); }
  
  // end INTERFACE
  // ===========================================================================================================
@@ -1065,6 +1133,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Check key input for an Arrow key press <br>
    *  - called by {@link #keyPressed}
+   *  
    *  @param keycode - the input
    *  @return success or failure
    */
@@ -1112,11 +1181,18 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Process a new {@link Square} input event <br>
    *  - called by {@link #keyPressed} or {@link #keyTyped}
+   *  
    *  @param kevt - the input event
    *  @see #newValue
    */
   private void processInput( final KeyEvent kevt )
   {
+    if( kevt == null )
+    {
+      logger.severe( "Passed a null KeyEvent!!??" );
+      return ;
+    }
+    
     logger.finer( "Event = " + kevt.toString() );
     
     // seems to work, but getKeyChar() is supposedly NOT reliable in KeyEvents from keyPressed() ?
@@ -1134,8 +1210,10 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Process a new {@link Square} value <br>
    *  - called by {@link #processInput} or {@link #setAutoSolvedSqr}
+   *  
    *  @param newval - the new value
    *  @return success or failure
+   *  
    *  @see #handleTempMode
    *  @see #addNewUndoEntry
    *  @see Square#newValue
@@ -1146,7 +1224,12 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     if( getActiveSqr().isFixed() )
       return false ;
     
-    // make sure we have a proper value
+    /*
+       make sure we have a proper value
+       e.g. If the Grid has focus, then menu keystrokes like Alt-x, Alt-h, etc
+            end up here with inappropriate values like 72, 56 ...
+       - just ignore any of these
+    */
     if( (newval < SqrTypes.BLANK_VAL) || (newval > gridLength) )
     {
       logger.warning( "* New value '" + newval + "' OUT OF RANGE *" );
@@ -1185,8 +1268,10 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * Handle the multiple digits that can be displayed by a {@link Square} in 'temp' mode
+   * 
    * @param inVal - new digit typed in a {@link Square}
    * @return up to {@link SqrTypes#MAX_TEMP_VAL}
+   * 
    * @see #newValue
    */
   private int handleTempMode( final int inVal )
@@ -1224,7 +1309,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * Keep track of value assignments in order to support Undo & Redo actions
+   * 
    * @param newVal - new value of the Active Square
+   * 
    * @see #undoVector
    * @see #newValue
    */
@@ -1276,12 +1363,20 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Use the {@link Loader} to create a new SavedGame and start the {@link #solveWorker} thread <br>
    *  - called by {@link #activateGame}
-   *  @param loader - load games
+   *  
+   *  @param loader - to load games
+   *  
    *  @return success or failure
    *  @see #createSolveWorker
    */
   private final boolean getSolutionGame( final Loader loader )
   {
+    if( loader == null )
+    {
+      logger.severe( "Passed a null Loader!!??" );
+      return false ;
+    }
+
     if( activeGame == null )
     {
       logger.warning( "Active SavedGame not constructed!" );
@@ -1310,6 +1405,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Call {@link Loader} to load games from file or jar to {@link Loader.SavedGame}s <br>
    *  - called by {@link #activateGame}
+   *  
    *  @see Solver#getSolution
    *  @see #solveWorker
    *  @see #savedSolnReady
@@ -1331,7 +1427,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
       @Override
       public void done()
       {
-        savedSolnGood = savedSolnTime.intValue() > 0 ;
+        savedSolnGood = savedSolnTime > 0 ;
         savedSolnReady = true ;
       }
       
@@ -1344,6 +1440,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  as the other Squares in this Group have that value in a Group Square,
    *  then set this Square to that value [aka "Hidden Single"]<br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    *  @see Group#findSingleSqrForVal
    */
@@ -1376,6 +1473,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  Find a Square that has only 1 possible value because of the values
    *  in Group Squares and set this Square to that value [aka "Naked Single"]<br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    *  @see Square#findSingleVal
    */
@@ -1396,6 +1494,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  Find a value that is already in (gridLength - 1) Grid locations, so there is only 1 possible
    *  Square remaining which can have the last token of that value <br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findGridSingle()
@@ -1431,6 +1530,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Find any locked values [aka "Locked Candidates"] in Groups and then re-check for any Solvable Squares <br>
    *  - called by {@link #solveOneSqr} OR {@link Launcher#setGridDebugKeyMap} Ctrl-V keystroke
+   *  
    *  @return success or failure
    *  @see Group#findLockedVals
    */
@@ -1456,6 +1556,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Find any Square or Group Pairs and then re-check for any Solvable Squares <br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findPairs()
@@ -1483,6 +1584,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Find any Square or Group Triples and then re-check for any Solvable Squares <br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findTriples()
@@ -1510,6 +1612,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Find any Square or Group Quads and then re-check for any Solvable Squares <br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findQuads()
@@ -1538,9 +1641,11 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  Two rows OR cols each have only 2 Sqrs where a certain value can go,
    *  and these 2 Sqrs are also in matching cols/rows,
    *  thus can REMOVE that value as a possibility from ALL other open Sqrs
-   *  in the matching cols/rows [aka "X-wing"]<br> 
+   *  in the matching cols/rows [aka "X-wing"]<br>
+   *  
    *  <b>Find</b> any Rectads in the Grid and process the values.<br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findRectads()
@@ -1605,9 +1710,11 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  A Group contains 2 Sqrs with Pairs in the x,y + y,z pattern,
    *  and in a separate Group of one of these Sqrs is a Sqr with an x,z Pair,
    *  thus can REMOVE the x possibility from any open Sqr at the intersection row/cols
-   *  of the x,y and x,z Sqrs [aka "XY-wing"]<br> 
+   *  of the x,y and x,z Sqrs [aka "XY-wing"]<br>
+   *  
    *  <b>Find</b> an Elad in the Grid and process the value.<br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findElad()
@@ -1727,8 +1834,10 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  and these overlap in the SAME three cols/rows,
    *  thus can REMOVE ALL instances of this value in the other open Sqrs 
    *  of the overlapping cols/rows [aka "Swordfish"]<br>
+   *  
    *  <b>Find</b> a Hexad in the Grid and process the value.<br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findHexad()
@@ -1835,8 +1944,10 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  CANNOT have a "rectangle" in two Groups where each corner has the same two possible values,
    *  as the placement of the two different values would be equally likely,
    *  and thus the solution to that game would NOT be unique. [aka "Unique Rectangles" requirement]<br>
+   *  
    *  <b>Find</b> any Tetrads [aka "Deadly Rectangles"] in the Grid and process the values <br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findTetrads()
@@ -1917,6 +2028,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  Find any Color Chain values and then re-check for any Solvable Squares <br>
    *  = TF chaining, reductio ad absurdum <br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return success or failure
    */
   private boolean findColorChainVal()
@@ -1988,15 +2100,24 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  Check the parameter {@link Square} for inclusion in a Color Chain <br>
+   *  
    *  @param chainColor - current Color Chain level
    *  @param val - value to check
    *  @param sqr - Square to check
+   *  
    *  @return success or failure
+   *  
    *  @see #findColorChainVal
    *  @see Group#findColorSqr
    */
   boolean buildColorChain( final int chainColor, final int val, final Square sqr )
   {
+    if( sqr == null )
+    {
+      logger.severe( "Passed a null Square!!??" );
+      return false ;
+    }
+    
     logger.info( "Check Sqr " + sqr.strGridPosn() + " for inclusion in colorChain["
                  + (chainColor == PINK_CHAIN ? "PINK" : "BLUE") + "]" );
     
@@ -2041,8 +2162,10 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Check the Color Chains for values that can be assigned or excluded <br>
    *  - called by {@link #findColorChainVal}
+   *  
    *  @param val - current value
    *  @return success or failure
+   *  
    *  @see #colorChain
    */
   private boolean checkColorChains( final int val )
@@ -2098,6 +2221,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Reset ALL mutable Color Chain fields to default values <br>
    *  - called by {@link #findColorChainVal}
+   *  
    *  @param doSqrs - reset individual {@link Square}s too
    *  @see #colorChain
    */
@@ -2117,6 +2241,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Get a new value directly from the Solution {@link SavedGame} <br>
    *  - called by {@link #solveOneSqr}
+   *  
    *  @return whether or not there are still more values to find in the current game
    *  @see #savedSolution
    */
@@ -2179,11 +2304,18 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Set the required fields when solving a {@link Square} <br>
    *  - value is in {@link Square#solvedValue}
+   *  
    *  @param sqr - Square to set
    *  @return success or failure
    */
   private boolean setAutoSolvedSqr( Square sqr )
   {
+    if( sqr == null )
+    {
+      logger.severe( "Passed a null Square!!??" );
+      return false ;
+    }
+    
     if( sqr.isFixed() )
     {
       logger.warning( "! Trying to solve a FIXED Square: " + sqr.strGridPosn() );
@@ -2218,6 +2350,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    *  Activate the Square in the given row and col
+   *  
    *  @param row - of new Active {@link Square}
    *  @param col - of new Active {@link Square}
    */
@@ -2238,7 +2371,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     
   }// Grid.setActiveSqr()
   
-  /** Set a {@link Square} reference for when the active Square is not valid  */
+  /**
+   * Set a {@link Square} reference for when the active Square is not valid
+   */
   private void setDefaultSqr()
   {
     // first Open Square will be the default
@@ -2252,7 +2387,9 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     
   }// Grid.setDefaultSqr()
   
-  /** Reset all the Undo/Redo fields */
+  /**
+   * Reset all the Undo/Redo fields
+   */
   private final void clearUndo()
   {
     undoVector.clear();
@@ -2268,6 +2405,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
  
    /**
     * Set the active {@link Square}, repaint the {@link Grid} and get Keyboard focus
+    * 
     * @param mevt - {@link MouseEvent}
     * @see MouseListener#mouseClicked
     */
@@ -2304,6 +2442,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    
    /**
     * Terminate 'Active' status & reset temp value if mouse exited the {@link Grid}
+    * 
     * @param mevt - {@link MouseEvent}
     * @see MouseListener#mouseExited
     */
@@ -2343,12 +2482,20 @@ public class Grid extends JPanel implements MouseListener, KeyListener
 
    /**
     *  Deal with {@link KeyEvent}s that are not handled properly in {@link #keyTyped}
+    *  
     *  @param kevt - {@link KeyEvent}
+    *  
     *  @see #processInput
     *  @see KeyListener#keyPressed
     */
    public void keyPressed( final KeyEvent kevt )
    {
+     if( kevt == null )
+     {
+       logger.severe( "Passed a null KeyEvent!!??" );
+       return ;
+     }
+     
      if( (!gameview.isRunning()) || (activeSqr == null) )
        return ;
      
@@ -2407,11 +2554,18 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    
    /**
     *  For DEBUG info
+    *  
     *  @param kevt - {@link KeyEvent}
     *  @see KeyListener#keyReleased
     */
    public void keyReleased( final KeyEvent kevt )
    {
+     if( kevt == null )
+     {
+       logger.severe( "Passed a null KeyEvent!!??" );
+       return ;
+     }
+     
      logger.append( "Key: '" + KeyEvent.getKeyText( kevt.getKeyCode() ) + "'"
                     + " // Mod: '" + KeyEvent.getKeyModifiersText( kevt.getModifiers() ) + "'" );
 
@@ -2421,12 +2575,20 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    
    /**
     * Send the typed value for processing
+    * 
     * @param kevt - {@link KeyEvent}
+    * 
     * @see #processInput
     * @see KeyListener#keyTyped
     */
    public void keyTyped( final KeyEvent kevt )
    {
+     if( kevt == null )
+     {
+       logger.severe( "Passed a null KeyEvent!!??" );
+       return ;
+     }
+     
      if( (!gameview.isRunning()) || (activeSqr == null) || kevt.isControlDown() )
        return ;                                            // ignore Control events
      
@@ -2457,9 +2619,12 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Refresh the graphical representation of the {@link Grid}<br>
    *  - Swing painting guidelines instruct to override this <b>instead of</b> <em>paint()</em> <br>
+   *  
    *  - called by {@link java.awt.Component#repaint}<br>
    *  - invokes {@link #paintSquare}<br>
+   *  
    *  @param page - {@link Graphics} reference
+   *  
    *  @see javax.swing.JComponent#paintComponent
    */
   @Override
@@ -2470,7 +2635,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
     
     if( page == null )
     {
-      logger.warning( " *** PROBLEM: Graphics page is NULL! ***" );
+      logger.severe( " *** PROBLEM: Graphics page is NULL! ***" );
       return ;
     }
     
@@ -2486,6 +2651,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    *  Draw individual {@link Square}s according to the value and type, i.e. whether FIXED, GUESS or OPEN <br>
    *  - called by {@link #paintComponent}
    *  - invokes {@link #paintBlankSquare}<br>
+   *  
    *  @param horiz - <i>x</i> coordinate of the upper left corner
    *  @param vert  - <i>y</i> coordinate of the upper left corner
    *  @param sqr   - {@link Square} to paint
@@ -2493,6 +2659,18 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    */
   private void paintSquare( final int horiz, final int vert, final Square sqr, Graphics page )
   {
+    if( page == null )
+    {
+      logger.severe( " *** PROBLEM: Graphics page is NULL! ***" );
+      return ;
+    }
+    
+    if( sqr == null )
+    {
+      logger.severe( "Passed a null Square!!??" );
+      return ;
+    }
+    
     paintValue = sqr.getValue();
     paintString = String.valueOf( paintValue );
     
@@ -2550,6 +2728,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Draw a blank {@link Square} with edge hilites <br>
    *  - called by {@link #paintSquare}
+   *  
    *  @param horiz - <i>x</i> coordinate of the upper left corner
    *  @param vert  - <i>y</i> coordinate of the upper left corner
    *  @param sqr     - {@link Square} to draw
@@ -2557,6 +2736,18 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    */
   private void paintBlankSquare( final int horiz, final int vert, final Square sqr, Graphics page )
   {
+    if( page == null )
+    {
+      logger.severe( " *** PROBLEM: Graphics page is NULL! ***" );
+      return ;
+    }
+    
+    if( sqr == null )
+    {
+      logger.severe( "Passed a null Square!!??" );
+      return ;
+    }
+    
     logger.finest( "Sqr " + sqr.strGridPosn() );
     
     if( sqr.isActive() )
@@ -2582,14 +2773,18 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   String myname() { return getClass().getSimpleName(); }
   
-  /** Toggle keystroke information display  */
+  /**
+   * Toggle keystroke information display
+   */
   void toggleKeystrokes()
   {
     showKeyStrokes = !showKeyStrokes ;
     logger.warning( "showKeyStrokes is NO" + (showKeyStrokes ? "W" : "T") + " Active!" );
   }
   
-  /** Toggle mouseclick information display  */
+  /**
+   * Toggle mouseclick information display
+   */
   void toggleMouseclicks()
   {
     showMouseActions = !showMouseActions ;
@@ -2599,6 +2794,7 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   /**
    *  Set each {@link Square}'s possible values as a temp value <br>
    *  - called by {@link Launcher#setGridDebugKeyMap}
+   *  
    *  @see Square#setPossValsAsTempVal
    */
   void setPossibleValsAsTempVals()
@@ -2638,11 +2834,21 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * display each {@link Square} in an Active {@link Group}
-   * @param lev - log {@link Level} to display at
+   * 
+   * @param level - log {@link Level} to display at
    * @param info  - extra text to display
    */
-  void displayGrpSqrs( final Level lev, final String info )
+  void displayGrpSqrs( final Level level, final String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
+    
     logger.log( lev, info + "\n--------------------------" );
     
     for( Square[] r : sqrs2dArray )
@@ -2654,11 +2860,19 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * display each entry in {@link #undoVector}
-   * @param lev - log {@link Level} to display at
+   * @param level - log {@link Level} to display at
    * @param info  - extra text to display
    */
-  void displayUndoVector( final Level lev, final String info )
+  void displayUndoVector( final Level level, final String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
     logger.fine( info + "\n--------------------------------------------------------------" );
     
     for( int i=0; i < totalEntries; i++ )
@@ -2674,12 +2888,22 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * display values of important <var>fields</var> in {@link Grid}
-   * @param lev - log {@link Level} to display at
+   * 
+   * @param level - log {@link Level} to display at
    * @param info  - extra text to display
+   * 
    * @see Launcher#setGridDebugKeyMap
    */
-  void displayFields( final Level lev, final String info )
+  void displayFields( final Level level, final String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
     logger.appendln( "\n\t Active Sqr : " + getActiveSqr().strGridPosn() );
     logger.appendln( "\t Current Game : '" + gameview.getGameName() + "'" );
     logger.appendln( "\t numConflicts = " + nConflicts );
@@ -2702,12 +2926,21 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * display <b>Active</b> {@link Group}s in the {@link Grid}
-   * @param lev - log {@link Level} to display at
+   * 
+   * @param level - log {@link Level} to display at
    * @param brief - display less text
    * @param info  - extra text to display
    */
-  void displayActiveGroups( final Level lev, final boolean brief, final String info )
+  void displayActiveGroups( final Level level, final boolean brief, final String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
     logger.log( lev, info + "\n---------------------------" );
     
     activeZone().display( lev, brief, info );
@@ -2718,12 +2951,21 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * display <u>ALL</u> the {@link Group}s in the {@link Grid}
-   * @param lev - log {@link Level} to display at
+   * 
+   * @param level - log {@link Level} to display at
    * @param brief - display less text
    * @param info  - extra text to display
    */
-  void displayAllGroups( final Level lev, final boolean brief, final String info )
+  void displayAllGroups( final Level level, final boolean brief, final String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
     if( !brief )
       logger.log( lev, myname() + ".displayAllGroups(" + info + ")\n-----------------------------" );
     
@@ -2735,12 +2977,21 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * display <u>ALL</u> {@link Col}s in the {@link Grid}
-   * @param lev - log {@link Level} to display at
+   * 
+   * @param level - log {@link Level} to display at
    * @param brief - display less text
    * @param info  - extra text to display
    */
-  void displayCols( final Level lev, final boolean brief, final String info )
+  void displayCols( final Level level, final boolean brief, final String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
     if( !brief )
       logger.log( lev, myname() + ".displayCols(" + info + "):\n--------------------------------" );
     
@@ -2751,28 +3002,46 @@ public class Grid extends JPanel implements MouseListener, KeyListener
   
   /**
    * display <u>ALL</u> {@link Row}s in the {@link Grid}
+   * 
    * @param level - log {@link Level} to display at
    * @param brief - display less text
    * @param info  - extra text to display
    */
   void displayRows( Level level, boolean brief, String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
     if( !brief )
-      logger.log( level, myname() + ".displayRows(" + info + "):\n--------------------------------" );
+      logger.log( lev, myname() + ".displayRows(" + info + "):\n--------------------------------" );
     
     for( Row r: rows )
-      r.display( level, brief, info );
+      r.display( lev, brief, info );
     
   }// Grid.displayRows()
   
   /**
    * display <u>ALL</u> {@link Zone}s in the {@link Grid}
-   * @param lev - log {@link Level} to display at
+   * 
+   * @param level - log {@link Level} to display at
    * @param brief - display less text
    * @param info  - extra text to display
    */
-  void displayZones( final Level lev, final boolean brief, final String info )
+  void displayZones( final Level level, final boolean brief, final String info )
   {
+    Level lev = level ;
+    
+    if( level == null )
+    {
+      logger.severe( "Passed a null Level!!??" );
+      lev = LogControl.DEFAULT_LEVEL ;
+    }
+    
     if( !brief )
       logger.log( lev, myname() + ".displayZones(" + info + "):\n--------------------------------" );
     
@@ -2786,6 +3055,13 @@ public class Grid extends JPanel implements MouseListener, KeyListener
    */
   void displaySolution()
   {
+    // do NOT have a proper Solution...
+    if( ! savedSolnGood )
+    {
+      logger.warning( "Solution is NOT GOOD!" );
+      return ;
+    }
+    
     savedSolution.display( Level.SEVERE );
     
   }// Grid.displaySolution()

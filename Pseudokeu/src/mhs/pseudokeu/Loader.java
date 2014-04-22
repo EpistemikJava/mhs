@@ -28,9 +28,10 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 
 /**
- *  Access <b>games</b> from file or jar and Store as {@link SavedGame}s 
+ *  Access <b>games</b> from file or jar and Store as {@link SavedGame}s
+ *  
  *  @author  Mark Sattolo
- *  @version $Revision: #11 $
+ *  @version 8.1.1
  */
 public class Loader
 {
@@ -38,7 +39,9 @@ public class Loader
   *            I N N E R    C L A S S E S
   *************************************************************************************************************/
   
-  /** Inner CLASS to store and restore Pseudokeu games  */
+  /**
+   * Inner CLASS to store and restore Pseudokeu games
+   */
   class SavedGame
   {
     /** A 2d int array (gridLength x gridLength) to save all values in a {@link Grid}  */
@@ -55,6 +58,7 @@ public class Loader
     
     /**
      * default Constructor
+     * 
      * @param len - number of {@link Square}s on each side of a {@link Grid}
      * @param str - name
      */
@@ -67,6 +71,7 @@ public class Loader
     
     /**
      * Constructor with 'difficulty' parameter
+     * 
      * @param diff - level of difficulty
      * @param len  - number of {@link Square}s on each side of a {@link Grid}
      * @param str - name
@@ -84,9 +89,11 @@ public class Loader
     /**
      * Set a value at a particular row and col in {@link SavedGame#values} <br>
      * - ONLY called by {@link #loadScannedGame}
+     * 
      * @param row - row position
      * @param col - col position
      * @param val - value to set
+     * 
      * @return old value
      */
     protected int setValue( final int row, final int col, final int val )
@@ -108,8 +115,10 @@ public class Loader
     
     /**
      * Get the value at a particular row and col in {@link SavedGame#values} <br>
+     * 
      * @param row - row position
      * @param col - col position
+     * 
      * @return value obtained
      */
     int getValue( final int row, final int col ) { return values[row][col]; }
@@ -125,10 +134,18 @@ public class Loader
     
     /**
      *  display data at submitted log {@link Level}
-     *  @param level - java.util.logging.Level
+     *  @param lev - java.util.logging.Level
      */
-    void display( final Level level )
+    void display( final Level lev )
     {
+      Level level = lev ;
+      
+      if( lev == null )
+      {
+        logger.severe( "Passed a null Level!!??" );
+        level = LogControl.DEFAULT_LEVEL ;
+      }
+      
       if( ! LogControl.atLevel(level) )
         return ;
       
@@ -157,7 +174,7 @@ public class Loader
     }// SavedGame.display()
     
   }/* Inner Class SavedGame */
-  
+
  /*
   *            C O N S T R U C T O R S
   *************************************************************************************************************/
@@ -165,11 +182,22 @@ public class Loader
   /**
    * Constructor <br>
    * - ONLY Caller is {@link Launcher#createLoader}
-   * @param frame    - reference to the enclosing instance of {@link Launcher}
-   * @param numGames - maximum number of <var>games</var> to store
+   * 
+   * @param frame - reference to the enclosing instance of {@link Launcher}
+   * @param num - maximum number of <var>games</var> to store
    */
-  protected Loader( final Launcher frame, final int numGames )
+  protected Loader( final Launcher frame, final int num )
   {
+    if( frame == null )
+    {
+      System.err.println( "Loader Constructor: passed a null Launcher!!??" );
+      System.exit( this.hashCode() );
+    }
+    
+    int numGames = num ;
+    if( num < Loader.MIN_NUM_LOADED_GAMES )
+      numGames = Launcher.MAX_NUM_LOADED_GAMES ;
+      
     gameview = frame ;
     maxNumGames = numGames ;
     
@@ -193,6 +221,7 @@ public class Loader
   
   /**
    *  Load ALL games from the default Jar OR Folder ({@link #DEFAULT_PATH})
+   *  
    *  @return {@link #totalGames}
    *  @see Launcher#createLoader
    */
@@ -211,9 +240,12 @@ public class Loader
   
   /**
    * Load files in the given folder
+   * 
    * @param folder - with Pseudokeu games
    * @param prefix - of all games
+   * 
    * @return {@link #nLoadedGames}[{@link #USER}]
+   * 
    * @see Launcher#createLoader
    */
   int loadFiles( final String folder, final String prefix )
@@ -244,9 +276,12 @@ public class Loader
   
   /**
    * Load this game from the default Folder - {@link #DEFAULT_PATH}
+   * 
    * @param relativePath - of the given file
    * @param name - of the file
+   * 
    * @return {@link #nLoadedGames}[{@link #USER}]
+   * 
    * @see Launcher#createLoader
    */
   int loadFile( final String relativePath, final String name )
@@ -280,8 +315,10 @@ public class Loader
   
   /**
    *  User wants to add a game
+   *  
    *  @param grid - reference to the {@link Grid} with the new Game's values
    *  @return success or failure
+   *  
    *  @see Launcher#verifyAddedGame
    *  @see PrintWriter
    */
@@ -351,8 +388,10 @@ public class Loader
   
   /**
    * Get a particular LOADED game to insert into the Grid <br>
+   * 
    * @param difficulty - level of the requested game
    * @param index      - which game to return
+   * 
    * @return an instance of {@link Loader.SavedGame} OR null if a problem
    * @see Grid#activateGame
    */
@@ -384,8 +423,10 @@ public class Loader
   
   }// Loader.getSavedGame()
   
-  /** @param difficulty - level
-   *  @return {@link #nLoadedGames} for this difficulty level  */
+  /**
+   * @param difficulty - level
+   * @return {@link #nLoadedGames} for this difficulty level
+   */
   int getNumLoadedGames( final int difficulty )
   {
     if( (difficulty <= nFAIL) || (difficulty >= NUM_DIFFICULTIES) )
@@ -400,8 +441,10 @@ public class Loader
   
   /**
    * Get the file name used at the requested difficulty level
+   * 
    * @param difficulty - level
    * @return {@link String} with the requested file name
+   * 
    * @see #userPrefix
    * @see #STR_DIFF_FILES
    */
@@ -423,8 +466,10 @@ public class Loader
   
   /**
    * Get the name of the game at the requested difficulty level and index
+   * 
    * @param difficulty - level
    * @param index - of the requested {@link SavedGame}
+   * 
    * @return {@link String} with the name of the requested game
    */
   String getGameName( final int difficulty, final int index )
@@ -448,8 +493,10 @@ public class Loader
   
   /**
    * Get the index of the given game in the array of the given difficulty
+   * 
    * @param difficulty - level
    * @param name - of the requested {@link SavedGame}
+   * 
    * @return index of the requested game
    */
   int getGameIndex( final int difficulty, final String name )
@@ -476,8 +523,10 @@ public class Loader
   
   /**
    * Get the position in the difficulty array of a particular difficulty level
+   * 
    * @param difficulty - name of the level
    * @return position index of the requested level
+   * 
    * @see #STR_DIFF_FOLDERS
    */
   int getDifficultyIndex( final String difficulty )
@@ -502,8 +551,10 @@ public class Loader
   
   /**
    * Load ALL games with this prefix and suffix from the given location
+   * 
    * @param location - of Pseudokeu games
    * @param   suffix - of game names (e.g. '.psk')
+   * 
    * @return success or failure
    */
   private boolean loadGamesFromLocation( final String location, final String suffix )
@@ -537,6 +588,7 @@ public class Loader
   
   /**
    * Get games from the different difficulty folders at this location
+   * 
    * @param location - of Pseudokeu games
    * @return success or failure
    */
@@ -571,8 +623,10 @@ public class Loader
   
   /**
    * Load ALL games from the folder with the supplied name
+   * 
    * @param folder - folder with LatinSquare games (psk files)
    * @param difficulty - level
+   * 
    * @return success or failure
    */
   private boolean loadGamesFromFolder( final File folder, final int difficulty )
@@ -629,8 +683,10 @@ public class Loader
   
   /**
    * Scan and Load a game of the given difficulty from the given file
+   * 
    * @param file - with the <var>game</var> to load
    * @param difficulty - level
+   * 
    * @return success or failure
    */
   private boolean getFileGame( final File file, final int difficulty )
@@ -666,8 +722,10 @@ public class Loader
   
   /**
    *  Scan a file with a game
+   *  
    *  @param file - the <var>file</var> to scan
    *  @return success or failure
+   *  
    *  @see java.util.Scanner
    */
   private boolean scanFile( final File file )
@@ -705,8 +763,10 @@ public class Loader
   
   /**
    * Load ALL games with this prefix and suffix from the parameter jar resource
+   * 
    * @param jar - with Pseudokeu games
    * @param suffix - of game names (e.g. '.psk')
+   * 
    * @return success or failure
    */
   private boolean loadFromJar( final String jar, final String suffix )
@@ -745,8 +805,10 @@ public class Loader
   
   /**
    * Scan and Load a game from a jar
+   * 
    * @param name - of the <var>game</var> to load
    * @param difficulty - level
+   * 
    * @return success or failure
    */
   private boolean getJarGame( final String name, final int difficulty )
@@ -776,8 +838,10 @@ public class Loader
   
   /**
    *  Scan a jar resource game
+   *  
    *  @param name - of the <em>jar game</em> to scan
    *  @return success or failure
+   *  
    *  @see java.util.Scanner
    */
   private boolean scanJar( final String name )
@@ -822,8 +886,10 @@ public class Loader
   
   /**
    * Load a game into a {@link SavedGame} from the <var>scanner</var>
+   * 
    * @param difficulty - level
    * @return success or failure
+   * 
    * @see java.util.StringTokenizer
    */
   private boolean loadScannedGame( final int difficulty )
@@ -893,6 +959,7 @@ public class Loader
   /**  
    *  Input is a file name <b>WITHOUT</b> path but <b>may have</b> a file type extension<br>
    *  - sets <var>fileBasename</var> to file name <b>WITHOUT</b> the extension, if any
+   *  
    *  @param name - of the game file
    *  @return success or failure 
    */
@@ -927,28 +994,31 @@ public class Loader
   *            F I E L D S
   *************************************************************************************************************/
   
-  /** Perforce file version */
-  static final String strP4_VERSION = "$Revision: #11 $" ;
-  
   /** Logging */
   protected static PskLogger logger ;
   
-  /** Maximum number of {@link SavedGame}s to store <br>
-   *  - set in {@link #Loader(Launcher,int)} from {@link Launcher#MAX_NUM_LOADED_GAMES}  */
-  private int maxNumGames = 9 ;
+  /**
+   * Maximum number of {@link SavedGame}s to store <br>
+   *  - set in {@link #Loader(Launcher,int)}
+   */
+  private int maxNumGames = 99 ;
   
-  /** Number of {@link SavedGame}s for each difficulty level <br>
-   *  - set in {@link #loadScannedGame}  */
+  /**
+   * Number of {@link SavedGame}s available at each difficulty level <br>
+   *  - set in {@link #loadScannedGame}
+   */
   private int nLoadedGames[] ;
   
-  /** Number of {@link SavedGame}s that are loaded and available to solve <br>
-   *  - set in {@link #loadScannedGame}  */
+  /**
+   * Number of {@link SavedGame}s that are loaded and available to solve <br>
+   *  - set in {@link #loadScannedGame}
+   */
   private int totalGames ;
   
   /** For calculating row & value in {@link #loadScannedGame} */
   private int base ;
   
-  /** path separator */
+  /** system path separator */
   private String pathSep ;
   
   /** file name prefix for USER files */
@@ -966,12 +1036,15 @@ public class Loader
   /** the folder name used for an ADDED file */
   private String addfolderName ;
   
-  /** to write out an ADDED Game as a .psk file
-   *  @see #addGame  */
+  /**
+   * to write out an ADDED Game as a .psk file
+   * @see #addGame
+   */
   private PrintWriter pw ;
   
   /**
    *  Used so can load <b>game files</b> from a <em>filesystem</em> or as a <em>Jar resource</em>
+   *  
    *  @see java.util.Scanner
    *  @see Scanner#Scanner(File)
    *  @see Scanner#Scanner(java.io.InputStream)
@@ -995,12 +1068,19 @@ public class Loader
   /** Default suffix for <CODE>Game</CODE> files */
   static final String GAME_SUFFIX = ".psk" ;
   
-  /** File name prefixes for the different levels of difficulty <br>
-   *  - MUST match with the values of the static ints  */
+  /** Minimum number of {@link SavedGame}s to store */
+  private static final int MIN_NUM_LOADED_GAMES = 8 ;
+  
+  /**
+   * File name prefixes for the different levels of difficulty <br>
+   *  - MUST match with the values of the static ints
+   */
   static final String[] STR_DIFF_FILES = { "easy" , "mod" , "hard" , "pain" , "dead" , "user" };
   
-  /** Names of difficulty levels/folders containing game files of different difficulty <br>
-   *  - MUST match with the values of the static ints  */
+  /**
+   * Names of difficulty levels/folders containing game files of different difficulty <br>
+   *  - MUST match with the values of the static ints
+   */
   static final String[] STR_DIFF_FOLDERS = { "EASY" , "MODERATE" , "HARD" , "PAINFUL" , "DEADLY" , "USER" };
   
   /** level of difficulty */
@@ -1023,14 +1103,17 @@ public class Loader
 
 /**
  *  Centralize various utility methods for Pseudokeu game
+ *  
  *  @author Mark Sattolo
  */
 class Helper
 {
   /**
    * Get the number of set bits in the $int parameter
+   * 
    * @param val - int to examine
    * @param lim - number of bits to process, starting at LSbit
+   * 
    * @return number of set bits
    */
   static int numSetBits( final int val, final int lim )
@@ -1060,8 +1143,10 @@ class Helper
   
   /**
    * Find the position (zero-based, from LSbit) in $int of the set bit specified by place
+   * 
    * @param val - int to examine
    * @param place - which set bit to find position of, i.e. 1st, 2nd, 3rd...
+   * 
    * @return position index of the requested set bit
    */
   static int getBitPosn( final int val, final int place )
@@ -1086,9 +1171,11 @@ class Helper
   
   /**
    * Produce a String indicating the positions of the set bits in $int
+   * 
    * @param val - int to examine
    * @param lim - number of bits to process 
    * @param extra - formatting
+   * 
    * @return processed String
    */
   static String displaySetBits( final int val, final int lim, final String extra )
