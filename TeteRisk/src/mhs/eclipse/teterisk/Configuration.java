@@ -2,14 +2,10 @@
  
    Mark Sattolo (epistemik@gmail.com)
  -----------------------------------------------
- $File: //depot/Eclipse/Java/workspace/TeteRisk/src/mhs/eclipse/teterisk/Configuration.java $
- $Revision: #5 $
- $Change: 189 $
- $DateTime: 2012/05/25 18:58:41 $
- -----------------------------------------------
   
   mhs.eclipse.teterisk.Configuration.java
   Eclipse version created Jan 6, 2012
+  git version created Apr 26, 2014
   
   This work is free software; you can redistribute it and/or modify it under the terms
   of the GNU General Public License as published by the Free Software Foundation;
@@ -19,7 +15,7 @@
   without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU General Public License for more details.
   
-  Copyright (c) 2012 Mark Sattolo.  All rights reserved.
+  Copyright (c) 2012-14 Mark Sattolo.  All rights reserved.
   
 ***************************************************************************************** */
 
@@ -33,7 +29,7 @@ import java.util.Hashtable;
  * This class provides static methods for simplifying the reading of configuration parameters.
  * It also provides some methods for transforming string values into more useful objects.
  * 
- * @version $Revision: #5 $
+ * @version 1.1
  * @author Mark Sattolo - based on code by <a href="mailto:per@percederberg.net">Per Cederberg</a>
  */
 class Configuration
@@ -158,6 +154,6 @@ class Configuration
     * setting configuration parameters in the system properties, as some programs (applets)
     * do not have the security permissions to set system properties.
     */
-   private static Hashtable<String, String> config = new Hashtable<String, String>();
+   private static Hashtable<String, String> config = new Hashtable<>();
 
 }// class Configuration

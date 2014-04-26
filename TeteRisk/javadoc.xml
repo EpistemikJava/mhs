@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="private" author="true" classpath="." destdir="doc" doctitle="Tete Risk" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="mhs.eclipse.teterisk" source="1.7" sourcepath="src" splitindex="true" stylesheetfile="/home/marksa/dev/Java/javadoc.stylesheet.css" use="true" version="true"/>
+    </target>
+</project>

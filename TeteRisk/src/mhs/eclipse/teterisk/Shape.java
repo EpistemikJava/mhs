@@ -2,14 +2,10 @@
  
    Mark Sattolo (epistemik@gmail.com)
  -----------------------------------------------
- $File: //depot/Eclipse/Java/workspace/TeteRisk/src/mhs/eclipse/teterisk/Shape.java $
- $Revision: #7 $
- $Change: 197 $
- $DateTime: 2012/06/03 08:48:38 $
- -----------------------------------------------
   
   mhs.eclipse.teterisk.Shape.java
   Eclipse version created Jan 6, 2012
+  git version created Apr 26, 2014
   
   This work is free software; you can redistribute it and/or modify it under the terms
   of the GNU General Public License as published by the Free Software Foundation;
@@ -19,7 +15,7 @@
   without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU General Public License for more details.
   
-  Copyright (c) 2012 Mark Sattolo.  All rights reserved.
+  Copyright (c) 2012-14 Mark Sattolo.  All rights reserved.
   
 ***************************************************************************************** */
 
@@ -37,7 +33,7 @@ import java.awt.Color;
  * occur with other squares on the board. When not attached, any rotation can be made (and
  * will be kept when attached to a new Board).
  * 
- * @version $Revision: #7 $
+ * @version 1.1
  * @author Mark Sattolo - based on code by <a href="mailto:per@percederberg.net">Per Cederberg</a>
  */
 class Shape
@@ -251,8 +247,11 @@ class Shape
     board = null ;
   }
   
-  /** If the shape isn't attached to a board, false will be returned.
-   *  @return true if the shape is fully visible, false otherwise    */
+  /**
+   * If the shape isn't attached to a board, false will be returned.
+   * 
+   * @return true if the shape is fully visible, false otherwise
+   */
   boolean isFullyVisible()
   {
     if( !isAttached() )
@@ -363,7 +362,9 @@ class Shape
     }
   }// moveAllWayDown()
   
-  /** @return the current shape rotation (orientation)  */
+  /**
+   * @return the current shape rotation (orientation)
+   */
   int getRotation() { return orientation ;}
   
   /**

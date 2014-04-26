@@ -2,14 +2,10 @@
  
    Mark Sattolo (epistemik@gmail.com)
  -----------------------------------------------
- $File: //depot/Eclipse/Java/workspace/TeteRisk/src/mhs/eclipse/teterisk/Game.java $
- $Revision: #13 $
- $Change: 196 $
- $DateTime: 2012/06/03 08:47:46 $
- -----------------------------------------------
   
   mhs.eclipse.teterisk.Game.java
   Eclipse version created Jan 6, 2012
+  git version created Apr 26, 2014
   
   This work is free software; you can redistribute it and/or modify it under the terms
   of the GNU General Public License as published by the Free Software Foundation;
@@ -19,7 +15,7 @@
   without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU General Public License for more details.
   
-  Copyright (c) 2012 Mark Sattolo.  All rights reserved.
+  Copyright (c) 2012-14 Mark Sattolo.  All rights reserved.
   
 ***************************************************************************************** */
 
@@ -52,7 +48,7 @@ import javax.swing.UIManager;
  * This class controls all events in the game and handles all the game logic.<br>
  * The game is started through user interaction with the graphical game component provided by this class.
  * 
- * @version $Revision: #13 $
+ * @version 1.1
  * @author Mark Sattolo - based on code by <a href="mailto:per@percederberg.net">Per Cederberg</a>
  */
 class Game extends JFrame
@@ -181,7 +177,9 @@ class Game extends JFrame
     gameThread = null ;
   }
   
-  /** @return {@link #gameContainer}  */
+  /**
+   * @return {@link #gameContainer}
+   */
   private Component getGameContainer()
   {
     if( gameContainer == null )
@@ -222,7 +220,9 @@ class Game extends JFrame
     gameThread.reset();
   }
   
-  /** Handle a game over event. This will stop the game thread, reset all shapes and print a "Game Over" message.  */
+  /** 
+   * Handle a game over event. This will stop the game thread, reset all shapes and print a "Game Over" message.
+   */
   private void handleGameOver()
   {
     System.out.println( "Game ENDED on " + Thread.currentThread() );
@@ -497,7 +497,9 @@ class Game extends JFrame
     }
   }// handleKeyEvent()
   
-  /** @return a random shape from the shapes array, NOT initialized  */
+  /**
+   * @return a random shape from the shapes array, NOT initialized
+   */
   private Shape randomShape()
   {
     return shapes[ (int)( Math.random() * shapes.length ) ];
@@ -507,10 +509,14 @@ class Game extends JFrame
   *      I N N E R   C L A S S E S
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
   
-  /** A {@link java.awt.Container} for all the game components.  */
+  /**
+   * A {@link java.awt.Container} for all the game components
+   */
   private class GameContainer extends Container
   {
-    /** Create a new game container. All the components will be added to this.  */
+    /**
+     * Create a new game container. All the components will be added to this
+     */
     public GameContainer()
     {
       super();
@@ -692,9 +698,9 @@ class Game extends JFrame
     /** The generic button  */
     private JButton button = new JButton( "Start" );
     
-    /** Generated  */
-    static final long serialVersionUID = 6436480460396721622L ;
-    
+    /** generated */
+    private static final long serialVersionUID = 4347035043865113879L;
+
   }// inner class GameContainer
   
   /**
@@ -703,7 +709,9 @@ class Game extends JFrame
    */
   private class GameThread extends Thread
   {
-    /** CONSTRUCTOR creates a new game thread with default values  */
+    /**
+     * CONSTRUCTOR - creates a new game thread with default values
+     */
     public GameThread()
     { }
     
@@ -725,10 +733,14 @@ class Game extends JFrame
       }
     }
     
-    /** @return true if the thread is paused, false otherwise  */
+    /**
+     * @return true if the thread is paused, false otherwise
+     */
     boolean isPaused() { return paused ;}
     
-    /** @param pause - the new paused flag value  */
+    /**
+     * @param pause - the new paused flag value
+     */
     void setPaused( boolean pause )
     {
       paused = pause ;
@@ -758,10 +770,14 @@ class Game extends JFrame
       handleVelocityModification();
     }
     
-    /** @return <var>velocity</var>  */
+    /**
+     * @return <var>velocity</var>
+     */
     int getVelocity() { return velocity ;}
     
-    /** Runs the game  */
+    /**
+     * Run the game thread
+     */
     public void run()
     {
       while( gameThread == this )
@@ -828,7 +844,8 @@ class Game extends JFrame
     
     /**
      * The number of milliseconds to sleep between each move.
-     * This number is reduced with each increase in {@link Game#level}.
+     * This number is reduced with each increase in {@link Game#level}
+     * 
      * @see #velocity
      */
     private int sleepTime = BASE_SLEEP_TIME_MS ;

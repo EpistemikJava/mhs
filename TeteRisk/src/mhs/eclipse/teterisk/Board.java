@@ -2,14 +2,10 @@
  
    Mark Sattolo (epistemik@gmail.com)
  -----------------------------------------------
- $File: //depot/Eclipse/Java/workspace/TeteRisk/src/mhs/eclipse/teterisk/Board.java $
- $Revision: #9 $
- $Change: 196 $
- $DateTime: 2012/06/03 08:47:46 $
- -----------------------------------------------
   
   mhs.eclipse.teterisk.Board.java
   Eclipse version created Jan 6, 2012
+  git version created Apr 26, 2014
   
   This work is free software; you can redistribute it and/or modify it under the terms
   of the GNU General Public License as published by the Free Software Foundation;
@@ -19,7 +15,7 @@
   without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU General Public License for more details.
   
-  Copyright (c) 2012 Mark Sattolo.  All rights reserved.
+  Copyright (c) 2012-14 Mark Sattolo.  All rights reserved.
   
 ***************************************************************************************** */
 
@@ -42,7 +38,7 @@ import javax.swing.JPanel;
  * There is no constraint at the top of the board,
  * although colors assigned to positions above the board are not saved.
  * 
- * @version $Revision: #9 $
+ * @version 1.1
  * @author Mark Sattolo - based on code by <a href="mailto:per@percederberg.net">Per Cederberg</a>
  */
 class Board extends JPanel
@@ -67,8 +63,8 @@ class Board extends JPanel
     bufferRect = new Rectangle();
     updateRect = new Rectangle();
     
-    lighterColors = new Hashtable<Color, Color>();
-    darkerColors = new Hashtable<Color, Color>();
+    lighterColors = new Hashtable<>();
+    darkerColors = new Hashtable<>();
     
     clear();
 
@@ -157,7 +153,9 @@ class Board extends JPanel
     return true ;
   }
 
-  /** @return true if there are full lines on the board, false otherwise */
+  /**
+   * @return true if there are full lines on the board, false otherwise
+   */
   boolean hasFullLines()
   {
     for( int y = height - 1 ; y >= 0 ; y-- )
@@ -170,13 +168,19 @@ class Board extends JPanel
     return false ;
   }
 
-  /** @return the board height in squares */
+  /**
+   * @return the board height in squares
+   */
   int getBoardHeight() { return height ;}
 
-  /** @return the board width in squares */
+  /**
+   * @return the board width in squares
+   */
   int getBoardWidth() { return width ;}
 
-  /** @return the number of lines removed since the last clear call */
+  /**
+   * @return the number of lines removed since the last clear call
+   */
   int getRemovedLines() { return removedLines ;}
 
   /**
@@ -326,20 +330,31 @@ class Board extends JPanel
     redraw();
   }
   
-  /** @return true as this component is double buffered */
-  public boolean isDoubleBuffered() { return true ;}
+  /**
+   * @return true as this component is double buffered
+   */
+  public boolean isDoubleBuffered()
+  { return true ;}
   
-  /** @return the preferred size of this component */
+  /**
+   * @return the preferred size of this component
+   */
   public Dimension getPreferredSize()
   {
     return new Dimension( width * SQUARE_SIDE_LENGTH_PX, height * SQUARE_SIDE_LENGTH_PX );
   }
   
-  /** @return the minimum size of this component */
-  public Dimension getMinimumSize() { return getPreferredSize(); }
+  /**
+   * @return the minimum size of this component
+   */
+  public Dimension getMinimumSize()
+  { return getPreferredSize(); }
   
-  /** @return the maximum size of this component */
-  public Dimension getMaximumSize() { return getPreferredSize(); }
+  /**
+   * @return the maximum size of this component
+   */
+  public Dimension getMaximumSize()
+  { return getPreferredSize(); }
   
   /*
    *      G R A P H I C S
@@ -630,6 +645,7 @@ class Board extends JPanel
    *   
    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+  /** default side length */
   static final int SQUARE_SIDE_LENGTH_PX = 30 ;
 
   /** The board width (in squares) */
