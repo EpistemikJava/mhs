@@ -55,27 +55,27 @@ class Game extends JFrame
 {
   /**
    * Create a new TeteRisk game with default width and height
-   * @param dbg - enable debug mode
+   * @param debug - enable debug mode
    */
-  public Game( boolean dbg )
+  public Game( boolean debug )
   {
-    this( DEFAULT_WIDTH, DEFAULT_HEIGHT, dbg );
+    this( DEFAULT_WIDTH, DEFAULT_HEIGHT, debug );
     
-  }// DEFAULT SIZE CONSTRUCTOR
+  }// Game CONSTRUCTOR with DEFAULT SIZE
   
   /**
    * Create a new TeteRisk game of the specified size.
    * 
    * @param width - the width of the board (in squares)
    * @param height - the height of the board (in squares)
-   * @param dbg - enable debug mode
+   * @param debug - enable debug mode
    */
-  public Game( int width, int height, boolean dbg )
+  public Game( int width, int height, boolean debug )
   {
-    debugMode = dbg ;
+    debugMode = debug ;
 
-    board = new Board( width, height, dbg );
-    board.setMessage( "Press start" );
+    board = new Board( width, height, debug );
+    board.setMessage( "Press Start" );
     
     previewBoard = new Board( PREVIEW_BOARD_LENGTH, PREVIEW_BOARD_LENGTH, false );
     
@@ -88,7 +88,7 @@ class Game extends JFrame
     setFocusable( true );
     setResizable( false );
     
-  }// CONSTRUCTOR WITH ALL PARAMETERS
+  }// Game CONSTRUCTOR with ALL PARAMETERS
   
  /*
   *    M E T H O D S
@@ -134,7 +134,7 @@ class Game extends JFrame
       }
     );// SwingUtilities.invokeLater()
     
-    System.out.println( "Main() ENDED ON " + Thread.currentThread() );
+    System.out.println( "Main() ENDED on " + Thread.currentThread() );
     
   }// main()
   
@@ -151,7 +151,7 @@ class Game extends JFrame
     {
       public void windowClosing( WindowEvent wevt )
       {
-        System.out.println( "run() EXITED FROM " + Thread.currentThread() );
+        System.out.println( "run() EXITED from " + Thread.currentThread() );
         System.exit( 0 );
       }
     } );
@@ -165,7 +165,7 @@ class Game extends JFrame
     // so will respond to key event 'P' to start the game
     gameContainer.requestFocus();
     
-  }// go()
+  }// Game.go()
   
   /**
    * Kill the game running thread and do necessary clean-up.
@@ -186,7 +186,8 @@ class Game extends JFrame
       gameContainer = new GameContainer();
     
     return gameContainer ;
-  }
+    
+  }// Game.getGameContainer()
   
   /**
    * Handle a game start event. Both the main and preview boards will be reset,
@@ -218,7 +219,8 @@ class Game extends JFrame
     
     // start game thread
     gameThread.reset();
-  }
+    
+  }// Game.handleStart()
   
   /** 
    * Handle a game over event. This will stop the game thread, reset all shapes and print a "Game Over" message.
@@ -246,7 +248,8 @@ class Game extends JFrame
     // handle components
     board.setMessage( "Game Over" );
     gameContainer.button.setText( "Start" );
-  }
+    
+  }// Game.handleGameOver()
   
   /**
    * Handle a game pause event.<br>
@@ -259,7 +262,8 @@ class Game extends JFrame
     gameThread.setPaused( true );
     board.setMessage( "Paused" );
     gameContainer.button.setText( "Resume" );
-  }
+    
+  }// Game.handlePause()
   
   /** Handle a game resume event. This will resume the game thread and remove any messages on the game board.  */
   private void handleResume()
@@ -269,7 +273,8 @@ class Game extends JFrame
     board.setMessage( null );
     gameContainer.button.setText( "Pause" );
     gameThread.setPaused( false );
-  }
+    
+  }// Game.handleResume()
   
   /** Handle a level modification event. This will modify the level label and adjust the thread speed.  */
   private void handleLevelModification()
@@ -325,7 +330,7 @@ class Game extends JFrame
       
       handleGameOver();
     }
-  }// handleShapeStart()
+  }// Game.handleShapeStart()
   
   /**
    * Handle a shape-landed event.
@@ -351,9 +356,11 @@ class Game extends JFrame
       setScore( board.removeFullLines() );
     }
 
-  }// handleShapeLanded()
+  }// Game.handleShapeLanded()
   
-  /** Adjust the score based on current level and number of lines removed in a turn  */
+  /**
+   * Adjust the score based on current level and number of lines removed in a turn
+   */
   private void setScore( int lines )
   {
     int extra = (BASE_SCORE + level) * lines * lines ;
@@ -364,9 +371,12 @@ class Game extends JFrame
     handleScoreModification();
     
     setLevel();
-  }
+    
+  }// Game.setScore()
   
-  /** Adjust the level if the score changes  */
+  /**
+   * Adjust the level if the score changes
+   */
   private void setLevel()
   {
     if( level_score >= (BASE_LEVEL_SCORE + (BASE_LEVEL_MULTIPLIER * level)) )
@@ -378,7 +388,7 @@ class Game extends JFrame
       
       handleLevelModification();
     }
-  }
+  }// Game.handleStart()
   
   /**
    * Handle a timer event. This will normally move the shape down one step, but when a
@@ -399,7 +409,7 @@ class Game extends JFrame
     {
       shape.moveDown();
     }
-  }// handleTimer()
+  }// Game.handleTimer()
   
   /**
    * Handle a button press event. This will launch different events depending on the
@@ -420,7 +430,7 @@ class Game extends JFrame
     {
       handlePause();
     }
-  }// handleButtonPressed()
+  }// Game.handleButtonPressed()
   
   /**
    * Handle a keyboard event. This will result in different actions being taken,
@@ -495,7 +505,7 @@ class Game extends JFrame
             previewBoard.clear();
         break ;
     }
-  }// handleKeyEvent()
+  }// Game.handleKeyEvent()
   
   /**
    * @return a random shape from the shapes array, NOT initialized
@@ -546,9 +556,12 @@ class Game extends JFrame
       page.setColor( getBackground() );
       page.fillRect( $rect.x, $rect.y, $rect.width, $rect.height );
       super.paint( page );
-    }
+      
+    }// GameContainer.paint()
     
-    /** Initialize all the components and place them in the container.  */
+    /**
+     * Initialize all the components and place them in the container
+     */
     private void initComponents()
     {
       GridBagConstraints c;
@@ -645,9 +658,11 @@ class Game extends JFrame
         }
       } );
       
-    }// initComponents()
+    }// GameContainer.initComponents()
     
-    /** Resizes all the static components and invalidates the current layout.  */
+    /**
+     * Resizes all the static components and invalidates the current layout
+     */
     private void resizeComponents()
     {
       Dimension $size = scoreLabel.getSize();
@@ -674,7 +689,7 @@ class Game extends JFrame
       velocityLabel.invalidate();
       button.invalidate();
       
-    }// resizeComponents()
+    }// GameContainer.resizeComponents()
     
     /*
      *    F I E L D S
@@ -701,7 +716,7 @@ class Game extends JFrame
     /** generated */
     private static final long serialVersionUID = 4347035043865113879L;
 
-  }// inner class GameContainer
+  }/* inner class GameContainer */
   
   /**
    * The game thread makes sure that the timer events are launched appropriately, making the current shape fall.
@@ -731,12 +746,13 @@ class Game extends JFrame
       {
         start();
       }
-    }
+    }// GameThread.reset()
     
     /**
      * @return true if the thread is paused, false otherwise
      */
-    boolean isPaused() { return paused ;}
+    boolean isPaused()
+    { return paused ;}
     
     /**
      * @param pause - the new paused flag value
@@ -746,7 +762,8 @@ class Game extends JFrame
       paused = pause ;
       if( paused )
         removePointsFlag = 1 ;
-    }
+      
+    }// GameThread.setPaused()
     
     /** Game is over -- waiting for user to press 'Start' to begin again.  */
     void setGameOver()
@@ -768,12 +785,14 @@ class Game extends JFrame
       velocity = ( board.getHeight() * 10 ) / sleepTime ;
       
       handleVelocityModification();
-    }
+      
+    }// GameThread.adjustVelocity()
     
     /**
      * @return <var>velocity</var>
      */
-    int getVelocity() { return velocity ;}
+    int getVelocity()
+    { return velocity ;}
     
     /**
      * Run the game thread
@@ -821,7 +840,7 @@ class Game extends JFrame
           
         }// PAUSED or MINIMIZED
       }
-    }// run()
+    }// GameThread.run()
     
     /*
      *    F I E L D S
@@ -862,7 +881,7 @@ class Game extends JFrame
     /** The velocity of the moving pieces - determined by {@link #sleepTime}.  */
     private int velocity ;
     
-  }// inner class GameThread
+  }/* inner class GameThread */
   
  /*
   *    F I E L D S
@@ -872,6 +891,7 @@ class Game extends JFrame
   final static int  DEFAULT_WIDTH  = 16 ,
                     DEFAULT_HEIGHT = 24 ;
   
+  /** default Score setting */
   final static int
                              BASE_SCORE =   9 ,
                        BASE_LEVEL_SCORE = 200 ,

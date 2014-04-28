@@ -51,8 +51,8 @@ class Shape
    * 
    * @see #SQUARE_SHAPE
    * @see #LINE_SHAPE
-   * @see #S_SHAPE
    * @see #Z_SHAPE
+   * @see #S_SHAPE
    * @see #GAMMA_SHAPE
    * @see #L_SHAPE
    * @see #TRIANGLE_SHAPE
@@ -72,12 +72,16 @@ class Shape
     {
       case SQUARE_SHAPE:
         maxOrientation = 1 ;
+        // square 1
         shapeX[0] = -1 ;
         shapeY[0] =  0 ;
+        // square 2
         shapeX[1] =  0 ;
         shapeY[1] =  0 ;
+        // square 3
         shapeX[2] = -1 ;
         shapeY[2] =  1 ;
+        // square 4
         shapeX[3] =  0 ;
         shapeY[3] =  1 ;
         break ;
@@ -94,7 +98,7 @@ class Shape
         shapeY[3] =  0 ;
         break ;
         
-      case S_SHAPE:
+      case Z_SHAPE:
         maxOrientation = 2 ;
         shapeX[0] =  0 ;
         shapeY[0] =  0 ;
@@ -106,7 +110,7 @@ class Shape
         shapeY[3] =  1 ;
         break ;
         
-      case Z_SHAPE:
+      case S_SHAPE:
         maxOrientation = 2 ;
         shapeX[0] = -1 ;
         shapeY[0] =  0 ;
@@ -126,7 +130,7 @@ class Shape
         shapeY[1] =  0 ;
         shapeX[2] =  1 ;
         shapeY[2] =  0 ;
-        shapeX[3] =  1 ;
+        shapeX[3] = -1 ;
         shapeY[3] =  1 ;
         break ;
         
@@ -138,7 +142,7 @@ class Shape
         shapeY[1] =  0 ;
         shapeX[2] =  1 ;
         shapeY[2] =  0 ;
-        shapeX[3] = -1 ;
+        shapeX[3] =  1 ;
         shapeY[3] =  1 ;
         break ;
         
@@ -585,13 +589,15 @@ class Shape
   private int maxOrientation ;
   
   /**
-   * The horizontal coordinates of the shape.<br>
+   * The horizontal coordinates of each square in the shape.<br>
+   * Each entry in the array is for one of the four squares making up each shape.<br>
    * The coordinates are relative to the current position and orientation.
    */
   private int[] shapeX = new int[ 4 ];
   
   /**
-   * The vertical coordinates of the shape.<br>
+   * The vertical coordinates of each square in the shape.<br>
+   * Each entry in the array is for one of the four squares making up each shape.<br>
    * The coordinates are relative to the current position and orientation.
    */
   private int[] shapeY = new int[ 4 ];

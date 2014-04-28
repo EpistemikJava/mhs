@@ -408,7 +408,7 @@ class Board extends JPanel
   private void redraw()
   {
     Graphics page ;
-
+    
     if( !updated )
     {
       updated = true ;
@@ -426,7 +426,7 @@ class Board extends JPanel
   private void redrawAll()
   {
     Graphics page ;
-
+    
     updated = true ;
     page = getGraphics();
     if( page == null )
@@ -448,7 +448,7 @@ class Board extends JPanel
   private Color getLighterColor( Color clr )
   {
     Color $lighter ;
-
+    
     $lighter = lighterColors.get( clr );
     if( $lighter == null )
     {
@@ -470,7 +470,7 @@ class Board extends JPanel
   private Color getDarkerColor( Color clr )
   {
     Color $darker ;
-
+    
     $darker = darkerColors.get( clr );
     if( $darker == null )
     {
@@ -490,7 +490,7 @@ class Board extends JPanel
   {
     Graphics $bufferPage ;
     Rectangle $rect ;
-
+    
     // handle component size change
     if( brdSize == null || !brdSize.equals( getSize() ) )
     {
@@ -512,16 +512,16 @@ class Board extends JPanel
       brdInsets.bottom = brdSize.height - height * sqrSize.height ;
       bufferImage = createImage( width * sqrSize.width, height * sqrSize.height );
     }
-
+    
     // paint component in buffer image
     $rect = page.getClipBounds();
     $bufferPage = bufferImage.getGraphics();
     $bufferPage.setClip( $rect.x - brdInsets.left, $rect.y - brdInsets.top, $rect.width, $rect.height );
     paintComponent( $bufferPage );
-
+    
     // paint image buffer
     page.drawImage( bufferImage, brdInsets.left, brdInsets.top, getBackground(), null );
-
+    
   }// paint()
 
   /**
@@ -535,7 +535,7 @@ class Board extends JPanel
     // paint background
     page.setColor( getBackground() );
     page.fillRect( 0, 0, width * sqrSize.width, height * sqrSize.height );
-
+    
     // paint squares
     for( int y=0; y < height ; y++ )
     {
@@ -547,7 +547,7 @@ class Board extends JPanel
         }
       }
     }
-
+    
     // paint message
     if( message != null )
     {
@@ -570,7 +570,7 @@ class Board extends JPanel
     int $xMax = $xMin + sqrSize.width - 1 ;
     int $yMax = $yMin + sqrSize.height - 1 ;
     int i ;
-
+    
     // skip drawing if not visible
     bufferRect.x = $xMin ;
     bufferRect.y = $yMin ;
@@ -580,11 +580,11 @@ class Board extends JPanel
     {
       return;
     }
-
+    
     // fill with base color
     page.setColor( $color );
     page.fillRect( $xMin, $yMin, sqrSize.width, sqrSize.height );
-
+    
     // draw brighter lines
     page.setColor( getLighterColor( $color ) );
     for( i=0 ; i < sqrSize.width/10 ; i++ )
@@ -592,7 +592,7 @@ class Board extends JPanel
       page.drawLine( $xMin + i, $yMin + i, $xMax - i, $yMin + i );
       page.drawLine( $xMin + i, $yMin + i, $xMin + i, $yMax - i );
     }
-
+    
     // draw darker lines
     page.setColor( getDarkerColor( $color ) );
     for( i=0 ; i < sqrSize.width/10 ; i++ )
@@ -613,15 +613,15 @@ class Board extends JPanel
     int $fontWidth ;
     int $offset ;
     int x , y ;
-
+    
     // find string font width
     page.setFont( new Font( "SansSerif", Font.BOLD, sqrSize.width + 4 ) );
     $fontWidth = page.getFontMetrics().stringWidth( msg );
-
+    
     // find centered position
     x = ( width * sqrSize.width - $fontWidth ) / 2 ;
     y = height * sqrSize.height / 2 ;
-
+    
     // draw black version of the string
     $offset = sqrSize.width / 10 ;
     page.setColor( Color.black );
@@ -633,11 +633,11 @@ class Board extends JPanel
     page.drawString( msg, x + $offset, y - $offset );
     page.drawString( msg, x + $offset, y );
     page.drawString( msg, x + $offset, y + $offset );
-
+    
     // draw white version of the string
     page.setColor( messageColor );
     page.drawString( msg, x, y );
-
+    
   }// paintMessage()
 
   /*
