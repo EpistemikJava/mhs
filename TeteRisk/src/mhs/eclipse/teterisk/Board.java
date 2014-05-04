@@ -52,9 +52,10 @@ class Board extends JPanel
    */
   public Board( int wd, int ht, boolean dbg )
   {
+    debugMode = dbg ;
+
     width = wd ;
     height = ht ;
-    debugMode = dbg ;
     
     brdInsets = new Insets( 0, 0, 0, 0 );
     matrix = new Color[ ht ][ wd ];
@@ -217,7 +218,7 @@ class Board extends JPanel
     {
       return ;
     }
-
+    
     matrix[vert][horz] = clr ;
     invalidateSquare( horz, vert );
   }
@@ -647,22 +648,22 @@ class Board extends JPanel
 
   /** default side length */
   static final int SQUARE_SIDE_LENGTH_PX = 30 ;
-
-  /** The board width (in squares) */
-  private int width = 0 ;
-
-  /** The board height (in squares) */
-  private int height = 0 ;
-
+  
   /** Enable or disable debug actions.  */
-  private boolean debugMode ;
-
+  boolean debugMode ;
+  
+  /** The board width (in squares) */
+  int width = 0 ;
+  
+  /** The board height (in squares) */
+  int height = 0 ;
+  
   /**
    * The board color matrix. This matrix (or grid) contains a color entry for each square
    * in the board. The matrix is indexed by the vertical, and then the horizontal coordinate.
    */
   private Color[][] matrix ;
-
+  
   /**
    * An optional board message.<br>
    * The board message can be set at any time, printing it on top of the board.

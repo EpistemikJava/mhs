@@ -73,11 +73,15 @@ class Game extends JFrame
   public Game( int width, int height, boolean debug )
   {
     debugMode = debug ;
+    
+    System.out.println( (debug ? "In" : "NOT in" ) + " DEBUG Mode." );
 
     board = new Board( width, height, debug );
     board.setMessage( "Press Start" );
     
     previewBoard = new Board( PREVIEW_BOARD_LENGTH, PREVIEW_BOARD_LENGTH, false );
+    
+    createShapes( debug );
     
     gameThread = new GameThread();
     
@@ -295,6 +299,22 @@ class Game extends JFrame
   }
   
   /**
+   * Create the seven possible shapes
+   * 
+   * @param debug - determine if in debug mode
+   */
+  private void createShapes( boolean debug )
+  {
+    shapes[Shape.SQUARE_SHAPE]   = new Shape( Shape.SQUARE_SHAPE,   debugMode );
+    shapes[Shape.LINE_SHAPE]     = new Shape( Shape.LINE_SHAPE,     debugMode );
+    shapes[Shape.S_SHAPE]        = new Shape( Shape.S_SHAPE,        debugMode );
+    shapes[Shape.Z_SHAPE]        = new Shape( Shape.Z_SHAPE,        debugMode );
+    shapes[Shape.GAMMA_SHAPE]    = new Shape( Shape.GAMMA_SHAPE,    debugMode );
+    shapes[Shape.L_SHAPE]        = new Shape( Shape.L_SHAPE,        debugMode );
+    shapes[Shape.TRIANGLE_SHAPE] = new Shape( Shape.TRIANGLE_SHAPE, debugMode );
+  }
+
+  /**
    * Handle a shape-start event. This will move the next shape to the current shape
    * position, while also creating a new preview shape. If the shape cannot be
    * introduced onto the game board, a game over event will be launched.
@@ -443,8 +463,10 @@ class Game extends JFrame
   {
     int key = kevt.getKeyCode();
     
+    /*/
     if( debugMode )
       System.out.println( "Key '" + KeyEvent.getKeyText(key) + "' was pressed." );
+    //*/
     
     // handle start, pause and resume
     if( key == KeyEvent.VK_P )
@@ -919,16 +941,7 @@ class Game extends JFrame
    * All shapes are re-utilized in order to avoid creating new objects while the game is running.<br>
    * Special care has to be taken when the preview shape and the current shape refer to the same object.
    */
-  private Shape[] shapes =
-  {
-    new Shape( Shape.SQUARE_SHAPE, debugMode ),
-    new Shape( Shape.LINE_SHAPE, debugMode ),
-    new Shape( Shape.S_SHAPE, debugMode ),
-    new Shape( Shape.Z_SHAPE, debugMode ),
-    new Shape( Shape.GAMMA_SHAPE, debugMode ),
-    new Shape( Shape.L_SHAPE, debugMode ),
-    new Shape( Shape.TRIANGLE_SHAPE, debugMode )
-  };
+  private Shape[] shapes = new Shape[7] ;
   
   /**
    * The {@link Game.GameContainer} that holds the game components.<br>

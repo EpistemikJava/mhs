@@ -46,7 +46,7 @@ class Shape
    * Create a new Shape in one of the seven pre-defined types.<br>
    * The Shape will not be attached to a Board and default colors and orientations will be assigned.
    * 
-   * @param type - the figure type (one of the figure constants)
+   * @param shp - the figure type (one of the figure constants)
    * @param dbg - enable debug mode
    * 
    * @see #SQUARE_SHAPE
@@ -59,19 +59,22 @@ class Shape
    * 
    * @throws IllegalArgumentException if the shape type specified is not recognized
    */
-  public Shape( int type, boolean dbg ) throws IllegalArgumentException
+  public Shape( int shp, boolean dbg ) throws IllegalArgumentException
   {
+    debugMode = dbg ;
+    type = shp ;
+    
     // initialize default variables
     board = null ;
     xPos = yPos = 0 ;
     orientation = 0 ;
-    typeColor = Configuration.getColor( names[type], colors[type] );
+    typeColor = Configuration.getColor( names[shp], colors[shp] );
     
     // initialize shape type variables
-    switch( type )
+    switch( shp )
     {
       case SQUARE_SHAPE:
-        maxOrientation = 1 ;
+        numOrientations = 1 ;
         // square 1
         shapeX[0] = -1 ;
         shapeY[0] =  0 ;
@@ -87,7 +90,7 @@ class Shape
         break ;
         
       case LINE_SHAPE:
-        maxOrientation = 2 ;
+        numOrientations = 2 ;
         shapeX[0] = -2 ;
         shapeY[0] =  0 ;
         shapeX[1] = -1 ;
@@ -99,7 +102,7 @@ class Shape
         break ;
         
       case Z_SHAPE:
-        maxOrientation = 2 ;
+        numOrientations = 2 ;
         shapeX[0] =  0 ;
         shapeY[0] =  0 ;
         shapeX[1] =  1 ;
@@ -111,7 +114,7 @@ class Shape
         break ;
         
       case S_SHAPE:
-        maxOrientation = 2 ;
+        numOrientations = 2 ;
         shapeX[0] = -1 ;
         shapeY[0] =  0 ;
         shapeX[1] =  0 ;
@@ -123,7 +126,7 @@ class Shape
         break ;
         
       case GAMMA_SHAPE:
-        maxOrientation = 4 ;
+        numOrientations = 4 ;
         shapeX[0] = -1 ;
         shapeY[0] =  0 ;
         shapeX[1] =  0 ;
@@ -135,7 +138,7 @@ class Shape
         break ;
         
       case L_SHAPE:
-        maxOrientation = 4 ;
+        numOrientations = 4 ;
         shapeX[0] = -1 ;
         shapeY[0] =  0 ;
         shapeX[1] =  0 ;
@@ -147,7 +150,7 @@ class Shape
         break ;
         
       case TRIANGLE_SHAPE:
-        maxOrientation = 4 ;
+        numOrientations = 4 ;
         shapeX[0] = -1 ;
         shapeY[0] =  0 ;
         shapeX[1] =  0 ;
@@ -158,12 +161,11 @@ class Shape
         shapeY[3] =  1 ;
         break ;
         
-      default: throw new IllegalArgumentException( ">>> NO shape constant of type: " + type );
+      default: throw new IllegalArgumentException( ">>> NO shape constant of type: " + shp );
       
     }// switch( type )
     
-    if( debugMode )
-      System.out.println( "Created a " + type + " shape." );
+    System.out.println( "Created a " + names[shp] + " shape." );
     
   }// CONSTRUCTOR
   
@@ -178,10 +180,11 @@ class Shape
   }
   
   /**
-   * Attaches the shape to a specified {@link #board}.<br>The shape will be drawn either at
-   * the absolute top of the board, with only the bottom line visible, or centered onto
-   * the board. In both cases, the squares on the new board are checked for collisions. If
-   * the squares are already occupied, this method returns false and no attachment is made.
+   * Attaches the shape to a specified {@link #board}.<br>
+   * The shape will be drawn either at the absolute top of the board,
+   * with only the bottom line visible, or centered onto the board.
+   * In both cases, the squares on the new board are checked for collisions.
+   * If the squares are already occupied, this method returns false and no attachment is made.
    * <p>
    * The horizontal and vertical coordinates will be reset for the shape, when centering
    * the shape on the new board. The shape orientation (rotation) will be kept, however.
@@ -236,8 +239,11 @@ class Shape
     xPos = $newX ;
     yPos = $newY ;
     paint( typeColor );
-    brd.update();
+    board.update();
     
+    if( debugMode && board.height > Game.PREVIEW_BOARD_LENGTH )
+      System.out.println( "Attached a " + names[type] + " shape." );
+
     return true ;
     
   }// attach()
@@ -380,59 +386,68 @@ class Shape
    */
   void setRotation( int rotation )
   {
-    // set new orientation
-    int newOrientation = rotation % maxOrientation ;
+    // check new orientation against number of possible orientations
+    int newOrientation = rotation % numOrientations ;
     
     // check new position
     if( !isAttached() )
     {
       orientation = newOrientation ;
     }
-    else if( canMoveTo(xPos, yPos, newOrientation) )
-    {
-      paint( null );
-      orientation = newOrientation ;
-      paint( typeColor );
-      board.update();
-    }
+    else
+      if( canMoveTo(xPos, yPos, newOrientation) )
+      {
+        // clear the squares in the current location of the shape
+        paint( null );
+        orientation = newOrientation ;
+        // paint the new position of the shape
+        paint( typeColor );
+        
+        board.update();
+      }
   }// setRotation()
   
   /**
-   * Rotate the shape randomly. If such a rotation is not possible with respect to the
-   * board, nothing is done. The board will be changed as the shape moves,
-   * clearing the previous cells. If no board is attached, the rotation is performed directly.
+   * Rotate the shape randomly.
+   * If such a rotation is not possible with respect to the board, nothing is done.
+   * The board will be changed as the shape moves, clearing the previous cells.
+   * If no board is attached, the rotation is performed directly.
    */
   void rotateRandom()
   {
-    setRotation( (int)(Math.random() * 4.0) % maxOrientation );
+    setRotation( (int)(Math.random() * 4.0) );
   }
   
   /**
-   * Rotate the shape clockwise. If such a rotation is not possible with respect to the
-   * board, nothing is done. The board will be changed as the shape moves,
-   * clearing the previous cells. If no board is attached, the rotation is performed directly.
+   * Rotate the shape clockwise.
+   * If such a rotation is not possible with respect to the board, nothing is done.
+   * The board will be changed as the shape moves, clearing the previous cells.
+   * If no board is attached, the rotation is performed directly.
    */
   void rotateClockwise()
   {
-    if( maxOrientation == 1 )
+    if( numOrientations == 1 )
     {
       return ;
     }
-    setRotation( (orientation + 1) % maxOrientation );
+    
+    setRotation( orientation + 1 );
   }
 
   /**
-   * Rotate the shape counter-clockwise. If such a rotation is not possible with respect
-   * to the board, nothing is done. The board will be changed as the shape
-   * moves, clearing the previous cells. If no board is attached, the rotation is performed directly.
+   * Rotate the shape counter-clockwise.
+   * If such a rotation is not possible with respect to the board, nothing is done.
+   * The board will be changed as the shape moves, clearing the previous cells.
+   * If no board is attached, the rotation is performed directly.
    */
   void rotateCounterClockwise()
   {
-    if( maxOrientation == 1 )
+    if( numOrientations == 1 )
     {
       return ;
     }
-    setRotation( (orientation + 3) % 4 );
+    
+    setRotation( orientation + 3 );
   }
   
   /**
@@ -458,8 +473,9 @@ class Shape
   }// isInside()
   
   /**
-   * Check if the shape can move to a new position. The current shape position is taken
-   * into account when checking for collisions. If a collision is detected, returns false.
+   * Check if the shape can move to a new position.
+   * The current shape position is taken into account when checking for collisions.
+   * If a collision is detected, returns false.
    * 
    * @param newX - the new horizontal position
    * @param newY - the new vertical position
@@ -486,7 +502,7 @@ class Shape
   
   /**
    * Return the relative horizontal position of a specified square.<br>
-   * The will be rotated according to the specified orientation.
+   * The square will be rotated according to the specified orientation.
    * 
    * @param square - the square to rotate (0-3)
    * @param orient - the orientation to use (0-3)
@@ -557,36 +573,35 @@ class Shape
   *    F I E L D S
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
   
-  /** The board to which the shape is attached. If this variable is set to null, the shape is not attached.  */
+  /** Enable or disable debug actions */
+  boolean debugMode ;
+
+  /** The board to which the shape is attached. If this variable is set to null, the shape is not attached. */
   private Board board ;
   
   /** The horizontal shape position on the board.<br>
-   *  This value has no meaning when the shape is not attached to a board.  */
+   *  This value has no meaning when the shape is not attached to a board. */
   private int xPos ;
   
   /** The vertical shape position on the board.<br>
-   *  This value has no meaning when the shape is not attached to a board.  */
+   *  This value has no meaning when the shape is not attached to a board. */
   private int yPos ;
   
   /**
-   * The shape orientation (or rotation).<br>
-   * This value is normally between 0 and 3, but must also be less than the maxOrientation value.
-   * 
-   * @see #maxOrientation
+   * The shape's current orientation (rotation)<br>
+   * A value between 0 and 3, that must also be less than the {@link #numOrientations} value
    */
   private int orientation ;
   
-  /** Enable or disable debug actions.  */
-  private boolean debugMode ;
-
   /**
-   * The maximum allowed orientation number. This is used to reduce the number of possible
-   * rotations for some shapes, such as the square shape. If this value is not used, the
-   * square shape will be possible to rotate around one of its squares, which gives an erroneous effect.
+   * The number of unique orientations.<br>
+   * This is used to reduce the number of possible rotations for some shapes, such as the square shape.
+   * If this value is not used, the square shape will be allowed to rotate around one of its squares,
+   * which gives an erroneous effect.
    * 
    * @see #orientation
    */
-  private int maxOrientation ;
+  private int numOrientations ;
   
   /**
    * The horizontal coordinates of each square in the shape.<br>
@@ -602,10 +617,13 @@ class Shape
    */
   private int[] shapeY = new int[ 4 ];
   
-  /** The shape color  */
-  private Color typeColor = Color.white ;
+  /** The shape type */
+  private int type ;
   
-  /** shape constant  */
+  /** The shape color */
+  private Color typeColor ;
+  
+  /** shape identifier */
   static final int
                   SQUARE_SHAPE = 0 ,
                     LINE_SHAPE = 1 ,
@@ -615,8 +633,11 @@ class Shape
                        L_SHAPE = 5 ,
                 TRIANGLE_SHAPE = 6 ;
 
-  static final String[] names = { "shape.SQUARE", "shape.LINE", "shape.S", "shape.Z", "shape.GAMMA", "shape.L", "shape.TRIANGLE" };
+  /** shape names  */
+  static final String[] names = { "SQUARE", "LINE", "S", "Z", "GAMMA", "L", "TRIANGLE" };
   
+  /** shape colors */
+  //                                beige      pink       blue       magenta    violet     yellow     green
   static final String[] colors = { "#FFD8B1", "#FFB4B4", "#A3D5EE", "#F4ADFF", "#C0B6FA", "#F5F4A7", "#A4D9B6" };
   
 }// class Shape
