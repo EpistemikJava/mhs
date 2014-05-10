@@ -49,7 +49,7 @@ public class Launcher extends JFrame
   /**
    *  Handles game events - EXCEPT those in the <em>other</em> Inner Classes
    *  
-   *  @see ActionListener
+   *  @see java.awt.event.ActionListener
    */
   class GameListener implements ActionListener
   {
@@ -309,7 +309,7 @@ public class Launcher extends JFrame
       
     }// GameSizeFrame Constructor
     
-    /** called by {@link GameSizeFrame#GameSizeFrame()} */
+    /** called by {@link #GameSizeFrame} */
     private void initComponents()
     {
       myFont = new Font( "serif", Font.BOLD, getWidth() / 24 );
@@ -547,7 +547,7 @@ public class Launcher extends JFrame
       
     }// SelectGameFrame Constructor
     
-    /** called by {@link SelectGameFrame#SelectGameFrame()} */
+    /** called by {@link #SelectGameFrame} */
     private void initComponents()
     {
       myFont = new Font( "serif", Font.BOLD, getWidth() / 21 );
@@ -775,7 +775,7 @@ public class Launcher extends JFrame
       
     }// AddGameFrame Constructor
     
-    /** called by {@link AddGameFrame#AddGameFrame()} */
+    /** called by {@link #AddGameFrame} */
     private void initComponents()
     {
       myFont = new Font( "serif", Font.BOLD, getWidth() / 24 );
@@ -799,7 +799,7 @@ public class Launcher extends JFrame
       
     }// AddGameFrame.initComponents()
     
-    /** called by {@link AddGameFrame#initComponents} */
+    /** called by {@link #initComponents} */
     private void initActionButtons()
     {
       confirmPanel = new JPanel( new GridLayout(1,1) );
@@ -955,7 +955,7 @@ public class Launcher extends JFrame
       
     }// ChooseDifficultyFrame Constructor
     
-    /** called by {@link SelectGameFrame#SelectGameFrame()} */
+    /** called by {@link #ChooseDifficultyFrame} */
     private void initComponents()
     {
       myFont = new Font( "serif", Font.BOLD, getWidth() / 21 );
@@ -976,7 +976,7 @@ public class Launcher extends JFrame
       
     }// ChooseDifficultyFrame.initComponents()
     
-    /** called by {@link SelectGameFrame#initComponents} */
+    /** called by {@link #initComponents} */
     @SuppressWarnings( { "rawtypes", "unchecked" } )
     private void initComboBox()
     {
@@ -991,7 +991,7 @@ public class Launcher extends JFrame
       
     }// ChooseDifficultyFrame.initComboBox()
     
-    /** called by {@link SelectGameFrame#initComponents} */
+    /** called by {@link #initComponents} */
     private void initActionButtons()
     {
       confirmPanel = new JPanel( new GridLayout(1,1) );
@@ -1160,7 +1160,7 @@ public class Launcher extends JFrame
       
     }// SolveDelayFrame Constructor
     
-    /** called by {@link SelectGameFrame#SelectGameFrame()} */
+    /** called by {@link #SolveDelayFrame} */
     private void initComponents()
     {
       myFont = new Font( "serif", Font.BOLD, getWidth() / 21 );
@@ -1181,7 +1181,7 @@ public class Launcher extends JFrame
       
     }// SolveDelayFrame.initComponents()
     
-    /** called by {@link SelectGameFrame#initComponents} */
+    /** called by {@link #initComponents} */
     @SuppressWarnings( { "unchecked", "rawtypes" } )
     private void initComboBox()
     {
@@ -1197,7 +1197,7 @@ public class Launcher extends JFrame
       
     }// SolveDelayFrame.initComboBox()
     
-    /** called by {@link SelectGameFrame#initComponents} */
+    /** called by {@link #initComponents} */
     private void initActionButtons()
     {
       confirmPanel = new JPanel( new GridLayout(1,1) );
@@ -1978,8 +1978,8 @@ public class Launcher extends JFrame
    *  activate Menus <br>
    *  - called by {@link #initWindow}
    *  
-   *  @see java.awt.event#ActionListener
-   *  @see javax.swing#Timer
+   *  @see java.awt.event.ActionListener
+   *  @see javax.swing.Timer
    */
   private final void initActions()
   {
