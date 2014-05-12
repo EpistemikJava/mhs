@@ -33,139 +33,29 @@ import java.awt.Color;
  * occur with other squares on the board. When not attached, any rotation can be made (and
  * will be kept when attached to a new Board).
  * 
- * @version 1.1
+ * @version 1.2
  * @author Mark Sattolo - based on code by <a href="mailto:per@percederberg.net">Per Cederberg</a>
  */
-class Shape
+public abstract class Shape
 {
  /*
   *    M E T H O D S
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
    
   /**
-   * Create a new Shape in one of the seven pre-defined types.<br>
-   * The Shape will not be attached to a Board and default colors and orientations will be assigned.
+   * Create a new Shape.<br>
+   * The Shape will not be attached to a Board and default position and orientation will be assigned.
    * 
-   * @param shp - the figure type (one of the figure constants)
    * @param dbg - enable debug mode
-   * 
-   * @see #SQUARE_SHAPE
-   * @see #LINE_SHAPE
-   * @see #Z_SHAPE
-   * @see #S_SHAPE
-   * @see #GAMMA_SHAPE
-   * @see #L_SHAPE
-   * @see #TRIANGLE_SHAPE
-   * 
-   * @throws IllegalArgumentException if the shape type specified is not recognized
    */
-  public Shape( int shp, boolean dbg ) throws IllegalArgumentException
+  public Shape( boolean dbg )
   {
     debugMode = dbg ;
-    type = shp ;
     
     // initialize default variables
     board = null ;
     xPos = yPos = 0 ;
     orientation = 0 ;
-    typeColor = Configuration.getColor( names[shp], colors[shp] );
-    
-    // initialize shape type variables
-    switch( shp )
-    {
-      case SQUARE_SHAPE:
-        numOrientations = 1 ;
-        // square 1
-        shapeX[0] = -1 ;
-        shapeY[0] =  0 ;
-        // square 2
-        shapeX[1] =  0 ;
-        shapeY[1] =  0 ;
-        // square 3
-        shapeX[2] = -1 ;
-        shapeY[2] =  1 ;
-        // square 4
-        shapeX[3] =  0 ;
-        shapeY[3] =  1 ;
-        break ;
-        
-      case LINE_SHAPE:
-        numOrientations = 2 ;
-        shapeX[0] = -2 ;
-        shapeY[0] =  0 ;
-        shapeX[1] = -1 ;
-        shapeY[1] =  0 ;
-        shapeX[2] =  0 ;
-        shapeY[2] =  0 ;
-        shapeX[3] =  1 ;
-        shapeY[3] =  0 ;
-        break ;
-        
-      case Z_SHAPE:
-        numOrientations = 2 ;
-        shapeX[0] =  0 ;
-        shapeY[0] =  0 ;
-        shapeX[1] =  1 ;
-        shapeY[1] =  0 ;
-        shapeX[2] = -1 ;
-        shapeY[2] =  1 ;
-        shapeX[3] =  0 ;
-        shapeY[3] =  1 ;
-        break ;
-        
-      case S_SHAPE:
-        numOrientations = 2 ;
-        shapeX[0] = -1 ;
-        shapeY[0] =  0 ;
-        shapeX[1] =  0 ;
-        shapeY[1] =  0 ;
-        shapeX[2] =  0 ;
-        shapeY[2] =  1 ;
-        shapeX[3] =  1 ;
-        shapeY[3] =  1 ;
-        break ;
-        
-      case GAMMA_SHAPE:
-        numOrientations = 4 ;
-        shapeX[0] = -1 ;
-        shapeY[0] =  0 ;
-        shapeX[1] =  0 ;
-        shapeY[1] =  0 ;
-        shapeX[2] =  1 ;
-        shapeY[2] =  0 ;
-        shapeX[3] = -1 ;
-        shapeY[3] =  1 ;
-        break ;
-        
-      case L_SHAPE:
-        numOrientations = 4 ;
-        shapeX[0] = -1 ;
-        shapeY[0] =  0 ;
-        shapeX[1] =  0 ;
-        shapeY[1] =  0 ;
-        shapeX[2] =  1 ;
-        shapeY[2] =  0 ;
-        shapeX[3] =  1 ;
-        shapeY[3] =  1 ;
-        break ;
-        
-      case TRIANGLE_SHAPE:
-        numOrientations = 4 ;
-        shapeX[0] = -1 ;
-        shapeY[0] =  0 ;
-        shapeX[1] =  0 ;
-        shapeY[1] =  0 ;
-        shapeX[2] =  1 ;
-        shapeY[2] =  0 ;
-        shapeX[3] =  0 ;
-        shapeY[3] =  1 ;
-        break ;
-        
-      default: throw new IllegalArgumentException( ">>> NO shape constant of type: " + shp );
-      
-    }// switch( type )
-    
-    System.out.println( "Created a " + names[shp] + " shape." );
     
   }// CONSTRUCTOR
   
@@ -601,37 +491,37 @@ class Shape
    * 
    * @see #orientation
    */
-  private int numOrientations ;
+  int numOrientations ;
   
   /**
    * The horizontal coordinates of each square in the shape.<br>
    * Each entry in the array is for one of the four squares making up each shape.<br>
    * The coordinates are relative to the current position and orientation.
    */
-  private int[] shapeX = new int[ 4 ];
+  int[] shapeX = new int[ 4 ];
   
   /**
    * The vertical coordinates of each square in the shape.<br>
    * Each entry in the array is for one of the four squares making up each shape.<br>
    * The coordinates are relative to the current position and orientation.
    */
-  private int[] shapeY = new int[ 4 ];
+  int[] shapeY = new int[ 4 ];
   
   /** The shape type */
-  private int type ;
+  int type ;
   
   /** The shape color */
-  private Color typeColor ;
+  Color typeColor ;
   
   /** shape identifier */
   static final int
-                  SQUARE_SHAPE = 0 ,
-                    LINE_SHAPE = 1 ,
-                       S_SHAPE = 2 ,
-                       Z_SHAPE = 3 ,
-                   GAMMA_SHAPE = 4 ,
-                       L_SHAPE = 5 ,
-                TRIANGLE_SHAPE = 6 ;
+                    SQUARE = 0 ,
+                      LINE = 1 ,
+                   S_SHAPE = 2 ,
+                   Z_SHAPE = 3 ,
+                     GAMMA = 4 ,
+                   L_SHAPE = 5 ,
+                  TRIANGLE = 6 ;
 
   /** shape names  */
   static final String[] names = { "SQUARE", "LINE", "S", "Z", "GAMMA", "L", "TRIANGLE" };
@@ -641,3 +531,173 @@ class Shape
   static final String[] colors = { "#FFD8B1", "#FFB4B4", "#A3D5EE", "#F4ADFF", "#C0B6FA", "#F5F4A7", "#A4D9B6" };
   
 }// class Shape
+
+/*
+ *  <                                                                                           >  *
+ *  <                               S U B C L A S S E S                                         >  *
+ *  *********************************************************************************************  *
+ */
+class Square extends Shape
+{
+  public Square( boolean debug )
+  {
+    super( debug );
+    
+    type = SQUARE ;
+    typeColor = Configuration.getColor( names[type], colors[type] );
+    numOrientations = 1 ;
+    
+    // square 1
+    shapeX[0] = -1 ;
+    shapeY[0] =  0 ;
+    // square 2
+    shapeX[1] =  0 ;
+    shapeY[1] =  0 ;
+    // square 3
+    shapeX[2] = -1 ;
+    shapeY[2] =  1 ;
+    // square 4
+    shapeX[3] =  0 ;
+    shapeY[3] =  1 ;
+    
+    System.out.println( "Created a " + names[type] + " shape." );
+  }
+}// class Square
+
+class Line extends Shape
+{
+  public Line( boolean debug )
+  {
+    super( debug );
+    
+    type = LINE ;
+    typeColor = Configuration.getColor( names[type], colors[type] );
+    numOrientations = 2 ;
+    
+    shapeX[0] = -2 ;
+    shapeY[0] =  0 ;
+    shapeX[1] = -1 ;
+    shapeY[1] =  0 ;
+    shapeX[2] =  0 ;
+    shapeY[2] =  0 ;
+    shapeX[3] =  1 ;
+    shapeY[3] =  0 ;
+    
+    System.out.println( "Created a " + names[type] + " shape." );
+  }
+}// class Line
+
+class Sshape extends Shape
+{
+  public Sshape( boolean debug )
+  {
+    super( debug );
+    
+    type = S_SHAPE ;
+    typeColor = Configuration.getColor( names[type], colors[type] );
+    numOrientations = 2 ;
+    
+    shapeX[0] =  0 ;
+    shapeY[0] =  0 ;
+    shapeX[1] =  1 ;
+    shapeY[1] =  0 ;
+    shapeX[2] = -1 ;
+    shapeY[2] =  1 ;
+    shapeX[3] =  0 ;
+    shapeY[3] =  1 ;
+    
+    System.out.println( "Created a " + names[type] + " shape." );
+  }
+}// class Sshape
+
+class Zshape extends Shape
+{
+  public Zshape( boolean debug )
+  {
+    super( debug );
+    
+    type = Z_SHAPE ;
+    typeColor = Configuration.getColor( names[type], colors[type] );
+    numOrientations = 2 ;
+    
+    shapeX[0] = -1 ;
+    shapeY[0] =  0 ;
+    shapeX[1] =  0 ;
+    shapeY[1] =  0 ;
+    shapeX[2] =  0 ;
+    shapeY[2] =  1 ;
+    shapeX[3] =  1 ;
+    shapeY[3] =  1 ;
+    
+    System.out.println( "Created a " + names[type] + " shape." );
+  }
+}// class Zshape
+
+class Gamma extends Shape
+{
+  public Gamma( boolean debug )
+  {
+    super( debug );
+    
+    type = GAMMA ;
+    typeColor = Configuration.getColor( names[type], colors[type] );
+    numOrientations = 4 ;
+    
+    shapeX[0] = -1 ;
+    shapeY[0] =  0 ;
+    shapeX[1] =  0 ;
+    shapeY[1] =  0 ;
+    shapeX[2] =  1 ;
+    shapeY[2] =  0 ;
+    shapeX[3] =  1 ;
+    shapeY[3] =  1 ;
+    
+    System.out.println( "Created a " + names[type] + " shape." );
+  }
+}// class Gamma
+
+class Lshape extends Shape
+{
+  public Lshape( boolean debug )
+  {
+    super( debug );
+    
+    type = L_SHAPE ;
+    typeColor = Configuration.getColor( names[type], colors[type] );
+    numOrientations = 4 ;
+    
+    shapeX[0] = -1 ;
+    shapeY[0] =  0 ;
+    shapeX[1] =  0 ;
+    shapeY[1] =  0 ;
+    shapeX[2] =  1 ;
+    shapeY[2] =  0 ;
+    shapeX[3] = -1 ;
+    shapeY[3] =  1 ;
+    
+    System.out.println( "Created a " + names[type] + " shape." );
+  }
+}// class Lshape
+
+class Triangle extends Shape
+{
+  public Triangle( boolean debug )
+  {
+    super( debug );
+    
+    type = TRIANGLE ;
+    typeColor = Configuration.getColor( names[type], colors[type] );
+    numOrientations = 4 ;
+    
+      shapeX[0] = -1 ;
+      shapeY[0] =  0 ;
+      shapeX[1] =  0 ;
+      shapeY[1] =  0 ;
+      shapeX[2] =  1 ;
+      shapeY[2] =  0 ;
+      shapeX[3] =  0 ;
+      shapeY[3] =  1 ;
+      
+      System.out.println( "Created a " + names[type] + " shape." );
+  }
+}// class Triangle

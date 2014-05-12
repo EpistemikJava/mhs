@@ -53,7 +53,7 @@ class Board extends JPanel
   public Board( int wd, int ht, boolean dbg )
   {
     debugMode = dbg ;
-
+    
     width = wd ;
     height = ht ;
     
@@ -100,7 +100,7 @@ class Board extends JPanel
     {
       return horz >= 0 && horz < width && vert < 0 ;
     }
-
+    
     return matrix[vert][horz] == null ;
   }
 
@@ -118,7 +118,7 @@ class Board extends JPanel
     {
       return false ;
     }
-
+    
     for( int x = 0 ; x < width ; x++ )
     {
       if( matrix[vert][x] != null )
@@ -143,7 +143,7 @@ class Board extends JPanel
     {
       return true ;
     }
-
+    
     for( int x = 0 ; x < width ; x++ )
     {
       if( matrix[vert][x] == null )
@@ -199,7 +199,7 @@ class Board extends JPanel
     {
       return null ;
     }
-
+    
     return matrix[vert][horz];
   }
 
@@ -266,7 +266,7 @@ class Board extends JPanel
   {
     boolean repaint = false ;
     int base = removedLines ;
-
+    
     // remove full lines
     for( int y=height-1; y >= 0 ; y-- )
     {
@@ -278,7 +278,7 @@ class Board extends JPanel
         repaint = true ;
       }
     }
-
+    
     // repaint if necessary
     if( repaint )
     {
@@ -306,7 +306,7 @@ class Board extends JPanel
     {
       return ;
     }
-
+    
     for( ; y > 0 ; y-- )
     {
       for( int x = 0 ; x < width ; x++ )
@@ -314,7 +314,7 @@ class Board extends JPanel
         matrix[y][x] = matrix[y - 1][x];
       }
     }
-
+    
     for( int x = 0 ; x < width ; x++ )
     {
       matrix[0][x] = null ;

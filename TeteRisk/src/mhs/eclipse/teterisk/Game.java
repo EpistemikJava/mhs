@@ -48,7 +48,7 @@ import javax.swing.UIManager;
  * This class controls all events in the game and handles all the game logic.<br>
  * The game is started through user interaction with the graphical game component provided by this class.
  * 
- * @version 1.1
+ * @version 1.2
  * @author Mark Sattolo - based on code by <a href="mailto:per@percederberg.net">Per Cederberg</a>
  */
 class Game extends JFrame
@@ -305,13 +305,13 @@ class Game extends JFrame
    */
   private void createShapes( boolean debug )
   {
-    shapes[Shape.SQUARE_SHAPE]   = new Shape( Shape.SQUARE_SHAPE,   debugMode );
-    shapes[Shape.LINE_SHAPE]     = new Shape( Shape.LINE_SHAPE,     debugMode );
-    shapes[Shape.S_SHAPE]        = new Shape( Shape.S_SHAPE,        debugMode );
-    shapes[Shape.Z_SHAPE]        = new Shape( Shape.Z_SHAPE,        debugMode );
-    shapes[Shape.GAMMA_SHAPE]    = new Shape( Shape.GAMMA_SHAPE,    debugMode );
-    shapes[Shape.L_SHAPE]        = new Shape( Shape.L_SHAPE,        debugMode );
-    shapes[Shape.TRIANGLE_SHAPE] = new Shape( Shape.TRIANGLE_SHAPE, debugMode );
+    shapes[Shape.SQUARE]   = new Square( debugMode );
+    shapes[Shape.LINE]     = new Line( debugMode );
+    shapes[Shape.S_SHAPE]  = new Sshape( debugMode );
+    shapes[Shape.Z_SHAPE]  = new Zshape( debugMode );
+    shapes[Shape.GAMMA]    = new Gamma( debugMode );
+    shapes[Shape.L_SHAPE]  = new Lshape( debugMode );
+    shapes[Shape.TRIANGLE] = new Triangle( debugMode );
   }
 
   /**
