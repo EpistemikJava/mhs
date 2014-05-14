@@ -74,7 +74,7 @@ class Game extends JFrame
   {
     debugMode = debug ;
     
-    System.out.println( (debug ? "In" : "NOT in" ) + " DEBUG Mode." );
+    System.out.println( (debug ? "In" : "NOT in") + " DEBUG Mode." );
 
     board = new Board( width, height, debug );
     board.setMessage( "Press Start" );
@@ -453,9 +453,10 @@ class Game extends JFrame
   }// Game.handleButtonPressed()
   
   /**
-   * Handle a keyboard event. This will result in different actions being taken,
-   * depending on the key pressed. In some cases, other events will be launched. This
-   * method is synchronized to avoid race conditions with other asynchronous events (timer and mouse).
+   * Handle a keyboard event.<br>
+   * This will result in different actions being taken, depending on the key pressed.
+   * In some cases, other events will be launched.
+   * This method is synchronized to avoid race conditions with other asynchronous events (timer and mouse).
    * 
    * @param kevt - the key event
    */
@@ -468,7 +469,7 @@ class Game extends JFrame
       System.out.println( "Key '" + KeyEvent.getKeyText(key) + "' was pressed." );
     //*/
     
-    // handle start, pause and resume
+    // events are: start, pause and resume
     if( key == KeyEvent.VK_P )
     {
       handleButtonPressed();
@@ -534,7 +535,7 @@ class Game extends JFrame
    */
   private Shape randomShape()
   {
-    return shapes[ (int)( Math.random() * shapes.length ) ];
+    return shapes[ (int)(Math.random() * shapes.length) ];
   }
   
  /*
@@ -561,38 +562,33 @@ class Game extends JFrame
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
     /**
-     * Paint the game component.<br>
-     * This method is overridden from the default implementation in order to set the correct background color.
-     * 
-     * @param page - the graphics context to use
-     */
-    public void paint( Graphics page )
-    {
-      Rectangle $rect = page.getClipBounds();
-      
-      if( size == null || !size.equals( getSize() ) )
-      {
-        size = getSize();
-        resizeComponents();
-      }
-      page.setColor( getBackground() );
-      page.fillRect( $rect.x, $rect.y, $rect.width, $rect.height );
-      super.paint( page );
-      
-    }// GameContainer.paint()
-    
-    /**
      * Initialize all the components and place them in the container
      */
     private void initComponents()
     {
-      GridBagConstraints c;
-      
       // set layout manager and background
       setLayout( new GridBagLayout() );
-      setBackground( Configuration.getColor( "background", "#d4d0c8" ) );
+      setBackground( Configuration.getColor("background", "#d4d0c8") );
       
-      // add game board
+      // add boards
+      addGameBoard();
+      addPreviewBoard();
+      
+      // add labels
+      addScoreLabel();
+      addLevelLabel();
+      addVelocityLabel();
+      
+      // add start/pause/resume button
+      addGameButton();
+      
+      initEventHandling();
+      
+    }// GameContainer.initComponents()
+
+    /** the active board */
+    private void addGameBoard()
+    {
       board.init();
       c = new GridBagConstraints();
       c.gridx = 0;
@@ -602,8 +598,11 @@ class Game extends JFrame
       c.weighty = 1.0;
       c.fill = GridBagConstraints.BOTH;
       add( board, c );
-      
-      // add next shape board
+    }
+    
+    /** to preview the next piece */
+    private void addPreviewBoard()
+    {
       previewBoard.init();
       c = new GridBagConstraints();
       c.gridx = 1;
@@ -613,9 +612,12 @@ class Game extends JFrame
       c.fill = GridBagConstraints.BOTH;
       c.insets = new Insets( 5, 15, 5, 15 );
       add( previewBoard, c );
-      
-      // add score label
-      scoreLabel.setForeground( Configuration.getColor( "label", "#000000" ) );
+    }
+
+    /** show the score */
+    private void addScoreLabel()
+    {
+      scoreLabel.setForeground( Configuration.getColor("label", "#000000") );
       c = new GridBagConstraints();
       c.gridx = 1;
       c.gridy = 1;
@@ -625,9 +627,12 @@ class Game extends JFrame
       c.fill = GridBagConstraints.BOTH;
       c.insets = new Insets( 0, 15, 0, 15 );
       add( scoreLabel, c );
-      
-      // add level label
-      levelLabel.setForeground( Configuration.getColor( "label", "#000000" ) );
+    }
+
+    /** display the current game level */
+    private void addLevelLabel()
+    {
+      levelLabel.setForeground( Configuration.getColor("label", "#000000") );
       c = new GridBagConstraints();
       c.gridx = 1;
       c.gridy = 2;
@@ -637,9 +642,12 @@ class Game extends JFrame
       c.fill = GridBagConstraints.BOTH;
       c.insets = new Insets( 0, 15, 0, 15 );
       add( levelLabel, c );
-      
-      // add sleep label
-      velocityLabel.setForeground( Configuration.getColor( "label", "#000000" ) );
+    }
+
+    /** display the current velocity of the descending piece */
+    private void addVelocityLabel()
+    {
+      velocityLabel.setForeground( Configuration.getColor("label", "#000000") );
       c = new GridBagConstraints();
       c.gridx = 1;
       c.gridy = 3;
@@ -649,9 +657,12 @@ class Game extends JFrame
       c.fill = GridBagConstraints.BOTH;
       c.insets = new Insets( 0, 10, 5, 10 );
       add( velocityLabel, c );
-      
-      // add start/pause/resume button
-      button.setBackground( Configuration.getColor( "button", "#d4d0c8" ) );
+    }
+
+    /** display the start/pause/resume message */
+    private void addGameButton()
+    {
+      button.setBackground( Configuration.getColor("button", "#d4d0c8") );
       c = new GridBagConstraints();
       c.gridx = 1;
       c.gridy = 4;
@@ -661,9 +672,20 @@ class Game extends JFrame
       c.fill = GridBagConstraints.HORIZONTAL;
       c.insets = new Insets( 15, 15, 15, 15 );
       add( button, c );
-      
+    }
+
+    /** 
+     * respond to keyboard and button events
+     * 
+     * @see java.awt.event.KeyAdapter
+     * @see java.awt.event.ActionListener
+     * 
+     */
+    private void initEventHandling()
+    {
       // add event handling
       enableEvents( KeyEvent.KEY_EVENT_MASK );
+      
       addKeyListener( new KeyAdapter()
       {
         public void keyPressed( KeyEvent kevt )
@@ -672,24 +694,24 @@ class Game extends JFrame
         }
       } );
       
-      button.addActionListener( new ActionListener() {
+      button.addActionListener( new ActionListener()
+      {
         public void actionPerformed( ActionEvent aevt )
         {
           handleButtonPressed();
           gameContainer.requestFocus();
         }
       } );
-      
-    }// GameContainer.initComponents()
-    
+    }
+
     /**
-     * Resizes all the static components and invalidates the current layout
+     * Resize all the static components and invalidate the current layout
      */
     private void resizeComponents()
     {
-      Dimension $size = scoreLabel.getSize();
-      Font $font;
-      int $unitSize;
+      Dimension $size ;
+      Font $font ;
+      int $unitSize ;
       
       // calculate the unit size
       $size = board.getSize();
@@ -698,7 +720,7 @@ class Game extends JFrame
       $unitSize = $size.width > $size.height ? $size.height : $size.width ;
       
       // adjust font sizes
-      $font = new Font( "SansSerif", Font.BOLD, 3 + (int)( $unitSize / 1.8 ) );
+      $font = new Font( "SansSerif", Font.BOLD, 3 + (int)($unitSize / 1.8) );
       scoreLabel.setFont( $font );
       levelLabel.setFont( $font );
       velocityLabel.setFont( $font );
@@ -713,6 +735,27 @@ class Game extends JFrame
       
     }// GameContainer.resizeComponents()
     
+    /**
+     * Paint the game component<br>
+     * This method is overridden from the default implementation in order to set the correct background color
+     * 
+     * @param page - the graphics context to use
+     */
+    public void paint( Graphics page )
+    {
+      Rectangle $rect = page.getClipBounds();
+      
+      if( size == null || !size.equals(getSize()) )
+      {
+        size = getSize();
+        resizeComponents();
+      }
+      page.setColor( getBackground() );
+      page.fillRect( $rect.x, $rect.y, $rect.width, $rect.height );
+      super.paint( page );
+      
+    }// GameContainer.paint()
+    
     /*
      *    F I E L D S
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -723,6 +766,9 @@ class Game extends JFrame
      */
     private Dimension size = null ;
     
+    /** for aligning components */
+    private GridBagConstraints c ;
+
     /** The score label  */
     private JLabel scoreLabel = new JLabel( "Score: 0" );
     
