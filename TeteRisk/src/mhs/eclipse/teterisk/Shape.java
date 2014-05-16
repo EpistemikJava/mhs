@@ -60,9 +60,9 @@ public abstract class Shape
   }// CONSTRUCTOR
   
   /**
-   * Checks if this shape is attached to a board.
+   * Checks if this shape is attached to a board
    * 
-   * @return true if the shape is already attached, or false otherwise
+   * @return true if the shape is already attached, false otherwise
    */
   boolean isAttached()
   {
@@ -131,6 +131,7 @@ public abstract class Shape
     paint( typeColor );
     board.update();
     
+    // inform when a shape gets attached to the game board
     if( debugMode && board.height > Game.PREVIEW_BOARD_LENGTH )
       System.out.println( "Attached a " + names[type] + " shape." );
 
@@ -139,8 +140,8 @@ public abstract class Shape
   }// attach()
   
   /**
-   * Detaches this shape from its board. The shape will not be removed from the
-   * board by this operation, resulting in the shape being left intact.
+   * Detaches this shape from its board.<br>
+   * The shape will not be removed from the board by this operation, resulting in the shape being left intact.
    */
   void detach()
   {
@@ -158,6 +159,7 @@ public abstract class Shape
     {
       return false ;
     }
+    
     for( int i=0; i < shapeX.length; i++ )
     {
       if( yPos + getRelativeY(i, orientation) < 0 )
@@ -165,6 +167,7 @@ public abstract class Shape
         return false ;
       }
     }
+    
     return true ;
     
   }// isFullyVisible()
@@ -249,8 +252,10 @@ public abstract class Shape
     {
       y++ ;
     }
-    // back up one line so user can move piece left or right just before reaching the bottom
-    y-- ;
+    
+    if( y - yPos > 2 )
+      // back up one line so user can move piece left or right just before reaching the bottom
+      y-- ;
     
     // update
     if( y != yPos )
@@ -263,7 +268,7 @@ public abstract class Shape
   }// moveAllWayDown()
   
   /**
-   * @return the current shape rotation (orientation)
+   * @return the current shape's rotation (orientation)
    */
   int getRotation() { return orientation ;}
   
@@ -272,12 +277,12 @@ public abstract class Shape
    * respect to the board, nothing is done. The board will be changed as the
    * shape moves, clearing the previous cells. If no board is attached, the rotation is performed directly.
    * 
-   * @param rotation - the new shape orientation
+   * @param rotn - the new shape orientation
    */
-  void setRotation( int rotation )
+  void setRotation( int rotn )
   {
     // check new orientation against number of possible orientations
-    int newOrientation = rotation % numOrientations ;
+    int newOrientation = rotn % numOrientations ;
     
     // check new position
     if( !isAttached() )
@@ -316,12 +321,10 @@ public abstract class Shape
    */
   void rotateClockwise()
   {
-    if( numOrientations == 1 )
+    if( numOrientations > 1 )
     {
-      return ;
+      setRotation( orientation + 1 );
     }
-    
-    setRotation( orientation + 1 );
   }
 
   /**
@@ -332,12 +335,10 @@ public abstract class Shape
    */
   void rotateCounterClockwise()
   {
-    if( numOrientations == 1 )
+    if( numOrientations > 1 )
     {
-      return ;
+      setRotation( orientation + 3 );
     }
-    
-    setRotation( orientation + 3 );
   }
   
   /**
@@ -358,6 +359,7 @@ public abstract class Shape
         return true ;
       }
     }
+    
     return false ;
     
   }// isInside()
@@ -404,13 +406,13 @@ public abstract class Shape
     switch( orient % 4 )
     {
       case 0:
-        return shapeX[square];
+             return shapeX[square];
       case 1:
-        return -shapeY[square];
+             return -shapeY[square];
       case 2:
-        return -shapeX[square];
+             return -shapeX[square];
       case 3:
-        return shapeY[square];
+             return shapeY[square];
       default:
               throw new IllegalArgumentException( "Shape.getRelativeX(): " + orient ); // should NEVER occur
     }
@@ -430,13 +432,13 @@ public abstract class Shape
     switch( orient % 4 )
     {
       case 0:
-        return shapeY[square];
+             return shapeY[square];
       case 1:
-        return shapeX[square];
+             return shapeX[square];
       case 2:
-        return -shapeY[square];
+             return -shapeY[square];
       case 3:
-        return -shapeX[square];
+             return -shapeX[square];
       default:
               throw new IllegalArgumentException( "Shape.getRelativeY(): " + orient ); // should NEVER occur
     }
@@ -445,9 +447,9 @@ public abstract class Shape
   /**
    * Paint the shape on the board with the specified color.
    * 
-   * @param clr - the color to paint with, or null for clearing
+   * @param cl - the color to paint with, or null for clearing
    */
-  private void paint( Color clr )
+  private void paint( Color cl )
   {
     int x, y ;
     
@@ -455,7 +457,7 @@ public abstract class Shape
     {
       x = xPos + getRelativeX( i, orientation );
       y = yPos + getRelativeY( i, orientation );
-      board.setSquareColor( x, y, clr );
+      board.setSquareColor( x, y, cl );
     }
   }// paint()
   
@@ -485,8 +487,8 @@ public abstract class Shape
   
   /**
    * The number of unique orientations.<br>
-   * This is used to reduce the number of possible rotations for some shapes, such as the square shape.
-   * If this value is not used, the square shape will be allowed to rotate around one of its squares,
+   * This is used to reduce the number of possible rotations for some shapes, such as the Square Shape.
+   * If this value is not used, the Square Shape will be allowed to rotate around one of its squares,
    * which gives an erroneous effect.
    * 
    * @see #orientation
@@ -524,7 +526,7 @@ public abstract class Shape
                   TRIANGLE = 6 ;
 
   /** shape names  */
-  static final String[] names = { "SQUARE", "LINE", "S", "Z", "GAMMA", "L", "TRIANGLE" };
+  static final String[] names = {  "SQUARE",  "LINE",    "S",       "Z",       "GAMMA",   "L",       "TRIANGLE" };
   
   /** shape colors */
   //                                beige      pink       blue       magenta    violet     yellow     green

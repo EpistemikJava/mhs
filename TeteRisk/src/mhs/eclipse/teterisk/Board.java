@@ -79,8 +79,11 @@ class Board extends JPanel
   /** Set the background and message color.  */
   void init()
   {
+    // black background
     setBackground( Configuration.getColor( "board.background", "#000000" ) );
-    messageColor = Configuration.getColor( "board.message", "#ffffff" );
+    
+    // red messages
+    messageColor = Configuration.getColor( "board.message", "#ff1111" );
 
   }// init()
 
@@ -307,15 +310,16 @@ class Board extends JPanel
       return ;
     }
     
+    int x ;
     for( ; y > 0 ; y-- )
     {
-      for( int x = 0 ; x < width ; x++ )
+      for( x = 0 ; x < width ; x++ )
       {
         matrix[y][x] = matrix[y - 1][x];
       }
     }
     
-    for( int x = 0 ; x < width ; x++ )
+    for( x = 0 ; x < width ; x++ )
     {
       matrix[0][x] = null ;
     }
@@ -426,17 +430,16 @@ class Board extends JPanel
   /** Redraw the whole component */
   private void redrawAll()
   {
-    Graphics page ;
-    
     updated = true ;
-    page = getGraphics();
+
+    Graphics page = getGraphics();
     if( page == null )
       return ;
     
     page.setClip( brdInsets.left, brdInsets.top, width * sqrSize.width, height * sqrSize.height );
     paint( page );
   }
-
+  
   /**
    * Returns a lighter version of the specified color.<br>
    * The lighter color will looked up in a hashtable, making this method fast. 
@@ -458,7 +461,7 @@ class Board extends JPanel
     }
     return $lighter ;
   }
-
+  
   /**
    * Returns a darker version of the specified color.<br>
    * The darker color will looked up in a hashtable, making this method fast. 
@@ -480,7 +483,7 @@ class Board extends JPanel
     }
     return $darker ;
   }
-
+  
   /**
    * Paints this component indirectly.<br>
    * The painting is first done to a buffer image, that is then painted directly to the specified graphics context.
@@ -524,7 +527,7 @@ class Board extends JPanel
     page.drawImage( bufferImage, brdInsets.left, brdInsets.top, getBackground(), null );
     
   }// paint()
-
+  
   /**
    * Paints this component directly.<br>
    * All the squares on the board will be painted directly to the specified graphics context.
@@ -555,7 +558,7 @@ class Board extends JPanel
       paintMessage( page, message );
     }
   }// paintComponent()
-
+  
   /**
    * Paints a single board square. The specified position must contain a color object.
    * 
@@ -577,7 +580,7 @@ class Board extends JPanel
     bufferRect.y = $yMin ;
     bufferRect.width = sqrSize.width ;
     bufferRect.height = sqrSize.height ;
-    if( !bufferRect.intersects( page.getClipBounds() ) )
+    if( !bufferRect.intersects(page.getClipBounds()) )
     {
       return;
     }
@@ -602,7 +605,7 @@ class Board extends JPanel
       page.drawLine( $xMin + i, $yMax - i, $xMax - i, $yMax - i );
     }
   }// paintSquare()
-
+  
   /**
    * Paints a board message. The message will be drawn at the center of the component.
    * 
@@ -613,29 +616,29 @@ class Board extends JPanel
   {
     int $fontWidth ;
     int $offset ;
-    int x , y ;
+    int x, y ;
     
     // find string font width
-    page.setFont( new Font( "SansSerif", Font.BOLD, sqrSize.width + 4 ) );
+    page.setFont( new Font("SansSerif", Font.BOLD, sqrSize.width + 4) );
     $fontWidth = page.getFontMetrics().stringWidth( msg );
     
     // find centered position
     x = ( width * sqrSize.width - $fontWidth ) / 2 ;
     y = height * sqrSize.height / 2 ;
     
-    // draw black version of the string
+    // draw black outline for the message
     $offset = sqrSize.width / 10 ;
     page.setColor( Color.black );
     page.drawString( msg, x - $offset, y - $offset );
-    page.drawString( msg, x - $offset, y );
-    page.drawString( msg, x - $offset, y - $offset );
-    page.drawString( msg, x, y - $offset );
-    page.drawString( msg, x, y + $offset );
+    page.drawString( msg, x - $offset, y           );
+    page.drawString( msg, x - $offset, y + $offset );
+    page.drawString( msg, x          , y - $offset );
+    page.drawString( msg, x          , y + $offset );
     page.drawString( msg, x + $offset, y - $offset );
-    page.drawString( msg, x + $offset, y );
+    page.drawString( msg, x + $offset, y           );
     page.drawString( msg, x + $offset, y + $offset );
     
-    // draw white version of the string
+    // display the message
     page.setColor( messageColor );
     page.drawString( msg, x, y );
     
@@ -709,19 +712,19 @@ class Board extends JPanel
   private Rectangle bufferRect ;
 
   /** The board message color */
-  private Color messageColor = Color.white ;
+  private Color messageColor ;
 
   /**
    * A lookup table containing lighter versions of the colors.<br>
    * This table is used to avoid calculating the lighter versions of the colors for each and every square drawn.
    */
-  private Hashtable<Color, Color> lighterColors ;
+  private Hashtable<Color,Color> lighterColors ;
 
   /**
    * A lookup table containing darker versions of the colors.<br>
    * This table is used to avoid calculating the darker versions of the colors for each and every square drawn.
    */
-  private Hashtable<Color, Color> darkerColors ;
+  private Hashtable<Color,Color> darkerColors ;
 
   /** A flag set when the component has been updated */
   private boolean updated = true ;
