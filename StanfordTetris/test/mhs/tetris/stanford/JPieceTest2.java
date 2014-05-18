@@ -14,7 +14,7 @@
  * ***************************************************************************************
  */
 
-package mhs.tetris.stanford.test;
+package mhs.tetris.stanford;
 
 import java.awt.*;
 import javax.swing.*;
@@ -29,14 +29,14 @@ import mhs.tetris.stanford.*;
  * This is the starter file version -- The outer shell is done. You need to complete
  * paintComponent() and drawPiece().
  */
-class JPieceTest extends JComponent
+class JPieceTest2 extends JComponent
 {
   /** keep the compiler from complaining */
   private static final long serialVersionUID = -1938011970392936777L;
 
   protected Piece root;
 
-  public JPieceTest( Piece piece, int width, int height )
+  public JPieceTest2( Piece piece, int width, int height )
   {
     super();
 
@@ -122,7 +122,7 @@ class JPieceTest extends JComponent
 
     for( int i = 0; i < pieces.length; i++ )
     {
-      JPieceTest test = new JPieceTest( pieces[i], 375, 75 );
+      JPieceTest2 test = new JPieceTest2( pieces[i], 375, 75 );
       container.add( test );
     }
 

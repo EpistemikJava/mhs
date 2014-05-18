@@ -14,12 +14,11 @@
  * ***************************************************************************************
  */
 
-package mhs.tetris.stanford.test;
+package mhs.tetris.stanford;
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import mhs.tetris.stanford.*;
 
 /**
  * JBoardTest is a unit test application for tetris -- its sole purpose is exercising the
@@ -38,7 +37,7 @@ import mhs.tetris.stanford.*;
  * of the Board transparent, so you can see what's going on as you exercise your code.
  */
 
-class JBoardTest extends JComponent
+class JBoardTest2 extends JComponent
 {
   /** keep the compiler from complaining */
   private static final long serialVersionUID = 6757155944837398844L;
@@ -58,7 +57,7 @@ class JBoardTest extends JComponent
 
   private int pieceY;
 
-  public JBoardTest( int width, int height )
+  public JBoardTest2( int width, int height )
   {
     super();
 
@@ -456,7 +455,7 @@ class JBoardTest extends JComponent
     JComponent container = (JComponent)frame.getContentPane();
     container.setLayout( new BorderLayout() );
 
-    JBoardTest bt = new JBoardTest( 200, 300 );
+    JBoardTest2 bt = new JBoardTest2( 200, 300 );
 
     container.add( bt, BorderLayout.CENTER );
 
