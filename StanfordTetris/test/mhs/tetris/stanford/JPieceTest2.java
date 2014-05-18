@@ -19,7 +19,6 @@ package mhs.tetris.stanford;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import mhs.tetris.stanford.*;
 
 /**
  * Debugging client for the Piece class. The JPieceTest component draws all the rotations
