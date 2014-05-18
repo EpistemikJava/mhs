@@ -119,8 +119,8 @@ final class Piece
       return false;
     
     // your code
-    Collection<Point> $setA = new HashSet<Point>();
-    Collection<Point> $setB = new HashSet<Point>();
+    Collection<Point> $setA = new HashSet<>();
+    Collection<Point> $setB = new HashSet<>();
     
     for( int i = 0; i < this.body.length; i++ )
     {
@@ -163,7 +163,7 @@ final class Piece
   private static Point[] parsePoints( String string )
   {
     // could use Arraylist here, but use vector so works on Java 1.1
-    Vector<Point> $points = new Vector<Point>();
+    Vector<Point> $points = new Vector<>();
     StringTokenizer $tok = new StringTokenizer( string );
     try
     {
