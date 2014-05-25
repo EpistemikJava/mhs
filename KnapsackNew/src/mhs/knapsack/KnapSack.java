@@ -118,7 +118,7 @@ public class KnapSack
     logManager = new KnapLogManager( args.length >= 2 ? args[1] : STR_DEFAULT_LEVEL );
     if( logManager == null )
     {
-      System.err.print( "\t>> KnapSack CONSTRUCTOR: CANNOT create a KnapLogManager!" );
+      System.err.print( "\t>> KnapSack CONSTRUCTOR: COULD NOT create a KnapLogManager!" );
       System.exit( this.hashCode() );
     }
     
@@ -127,20 +127,21 @@ public class KnapSack
     logger = logManager.getLogger();
     if( logger == null )
     {
-      System.err.print( "\t>> KnapSack CONSTRUCTOR: CANNOT create a KnapLogger!" );
+      System.err.print( "\t>> KnapSack CONSTRUCTOR: COULD NOT create a KnapLogger!" );
       System.exit( this.hashCode() );
     }
     
     // CHECK COMMAND LINE PARAMETERS
+    // TODO handle logging setup as well
     setup( args );
     
     logManager.listLoggers();
     logManager.reportLevel();
     
-    logger.log( currentLevel, " File name is '" + fileName + "'\n Max Weight = " + maxWeight );
+    logger.log( " File name is '" + fileName + "'\n Max Weight = " + maxWeight );
     
     // report loop protection
-    logger.log( currentLevel, " LOOP_LIMIT = " + KnapItemList.LOOP_LIMIT );
+    logger.log( " LOOP_LIMIT = " + KnapItemList.LOOP_LIMIT );
   }
   
   /*    METHODS
@@ -168,7 +169,7 @@ public class KnapSack
     if( params.length < 1 )
     {
       System.err.println( "\n Usage: java " + this.getClass().getSimpleName() + " <items file> [log_level] [max weight]\n"
-                          + "        (log_level = INFO, CONFIG or FINE\n" );
+                          + "        (log_level = INFO, CONFIG or FINE\n)" );
       
       System.exit( this.hashCode() );
     }
@@ -211,14 +212,14 @@ public class KnapSack
     if( ! getFileData() )
       System.exit( numItems );
     
-    itemList.log( currentLevel, "initial" ); // the original vector
+    itemList.log( "initial" ); // the original vector
     
     // sort the KnapItemList by profit/weight ratio - descending order
     Collections.sort( itemList, PWR_ORDER );
     
     // display the sorted items
     logger.severe( "There are " + numItems + " items in the KnapItemList." );
-    itemList.log( currentLevel, "Sorted by p/w" );
+    itemList.log( "Sorted by p/w" );
     
     /* RUN THE ALGORITHM */
     itemList.bestFirstSearch( bestItems, maxWeight );
@@ -510,6 +511,16 @@ class KnapItemList extends Vector<KnapNode>
     logger.send( lev );
     
   }// log()
+  
+  /**
+   * Log each {@link KnapNode} in the list
+   * 
+   * @param s - extra info to print
+   */
+  public void log( String s )
+  {
+    log( KnapSack.currentLevel, s );
+  }
   
   /*    FIELDS
   ==================================================================================================== */

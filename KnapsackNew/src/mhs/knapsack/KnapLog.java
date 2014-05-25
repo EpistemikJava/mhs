@@ -261,13 +261,19 @@ class KnapLogger extends Logger
   
   }// KnapLogger.send()
   
-  /** Add data to the log buffer
-   *  @param msg - data String */
+  /**
+   * Add data to the log buffer
+   * 
+   * @param msg - data String 
+   */
   protected synchronized void append( String msg )
   { buffer.append( msg ); }
   
-  /** Add data to the log buffer with a terminating newline
-   *  @param msg - data String */
+  /** 
+   * Add data to the log buffer with a terminating newline
+   * 
+   * @param msg - data String 
+   */
   protected void appendln( String msg )
   { append( msg + "\n" ); }
   
@@ -279,6 +285,16 @@ class KnapLogger extends Logger
   protected void clean()
   { buffer.delete( 0, buffer.length() ); }
   
+  /**
+   * Log the submitted info at the current level
+   * 
+   * @param s - info to print
+   */
+  public void log( String s )
+  {
+    log( KnapSack.currentLevel, s );
+  }
+
   /*/ for debugging  
   @Override
   public void log( LogRecord record )
