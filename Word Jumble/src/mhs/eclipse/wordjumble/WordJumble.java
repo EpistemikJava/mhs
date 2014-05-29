@@ -16,7 +16,11 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
 /**
- * Java implementation of ...<br>
+ * Java implementation of a recursive word jumble algorithm.<br>
+ *  - this is the initial port to java of the pascal source code in Jumble.pas<br>
+ *  - compiles but doesn't run properly<br>
+ * 
+ * <b>SUPPLANTED by mhs.eclipse.wordjumble.Jumble.java</b>
  * 
  * @author mhsatto
  * @version 0.1

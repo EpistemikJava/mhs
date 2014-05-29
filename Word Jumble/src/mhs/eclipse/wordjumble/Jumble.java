@@ -1,3 +1,13 @@
+/* **************************************************************************************
+ 
+   Mark Sattolo (epistemik@gmail.com)
+ -----------------------------------------------
+  mhs.eclipse.wordjumble.Jumble.java
+  Created March 30, 2014
+  original was mhs.eclipse.wordjumble.WordJumble.java
+  
+*************************************************************************************** */
+
 package mhs.eclipse.wordjumble;
 
 import java.io.IOException;
@@ -7,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  * Class to implement a recursive word jumbling algorithm<br>
- *  - initial implementation imported from remote
+ *  - initial work imported from remote
  *  
  * @author mhsatto
  * @version 1.0
