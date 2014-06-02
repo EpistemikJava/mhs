@@ -115,7 +115,7 @@ class Game extends JFrame
         {
           try
           {
-            System.out.println( "new Runnable.run() STARTED ON " + Thread.currentThread() );
+            System.out.println( "new Runnable.run() STARTED on " + Thread.currentThread() );
             
             // Set System L&F
             UIManager.setLookAndFeel
