@@ -8,6 +8,7 @@
      $DateTime: 2011/02/02 11:56:15 $
    
    git version created Mar 22, 2014.
+   repo is mhs-git
   -----------------------------------------------
   
   Best-First Search with Branch-and-Bound Pruning Algorithm for the 0-1 Knapsack Problem
@@ -93,7 +94,7 @@ public class KnapSack
   };
   
   /** project name  */
-  public static final String PROJECT_NAME = "KnapsackNew" ;
+  public static final String PROJECT_NAME = "New Knapsack" ;
   
   private int numItems = 0 ,
               maxWeight    ; // maximum allowed weight of items (user-supplied)
@@ -306,7 +307,7 @@ public class KnapSack
   }// getFileData()
   
   /**
-   * get user String
+   * get a String from user
    * 
    * @return input String
    */
@@ -328,13 +329,23 @@ public class KnapSack
   }// getInputString()
   
   /**
-   * get user integer
+   * get an int from user
    * 
    * @return input int
    */
   static int getInputInteger()
   {
-    return Integer.parseInt( getInputString() );
+    int response = 0;
+    try
+    {
+      response = Integer.parseInt( getInputString() );
+    }
+    catch( NumberFormatException nfe )
+    {
+      logger.severe( "Problem converting String to int:" + nfe.toString() );
+    }
+    
+    return response ;
     
   }// getInputInteger()
   
