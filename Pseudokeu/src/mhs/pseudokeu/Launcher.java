@@ -2323,7 +2323,7 @@ public class Launcher extends JFrame
     
     // Ctrl-Shft-L = DECREASE Application Logging amount
     $gImap.put( KeyStroke.getKeyStroke( KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK ),
-               strLessLogging );
+                strLessLogging );
     $gAmap.put( strLessLogging, new AbstractAction()
       { public void actionPerformed( ActionEvent ae ) { logControl.changeLogging( false ); } } );
     

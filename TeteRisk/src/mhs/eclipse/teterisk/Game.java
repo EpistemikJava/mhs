@@ -1026,7 +1026,6 @@ class Game extends JFrame
   private boolean moveLock = false ;
 
   /** Generated  */
-  @SuppressWarnings( "unused" )
   private static final long serialVersionUID = 3099704049228659953L ;
 
 }// class Game
