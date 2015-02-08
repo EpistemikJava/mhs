@@ -1,0 +1,13 @@
+/bin
+/javadoc
+/javadocRemote
+/logs
+/BAK
+/screenshots
+/javadoc.xml
+/consoles
+/doc
+/.project
+/.classpath
+/.settings
+/*.jardesc
